@@ -280,6 +280,140 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/558864227.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/558864227.html" itemprop="url">
+                  Bump Python SDK
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-11T11:40:53+08:00">
+                2022-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Update-corresponding-versions"><a href="#Update-corresponding-versions" class="headerlink" title="Update corresponding versions"></a>Update corresponding versions</h2><p>Update <em>package name + package version</em>:</p>
+<ul>
+<li>setup.py;</li>
+<li>requirements.py3.Linux.txt;</li>
+<li>requirements.py3.Darwin.txt;</li>
+<li>requirements.py3.Windows.txt;</li>
+</ul>
+<p>Update <em>resource type + api version</em>:</p>
+<ul>
+<li>_shared.py (latest);</li>
+</ul>
+<h2 id="Setup-development-environment"><a href="#Setup-development-environment" class="headerlink" title="Setup development environment"></a>Setup development environment</h2><p>Install expected Python packages:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/558864227.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -808,139 +942,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3290605089.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3290605089.html" itemprop="url">
-                  场景：寻找元类替代品
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T21:12:14+08:00">
-                2022-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don’t (the people who actually need them know with certainty that they need them, and don’t need an explanation about why).<br>-- <em>Tim Peters</em></p>
-</blockquote>
-<p>元类是 Python 中的一种特殊对象，它<strong>控制着类的创建行为</strong>，就像普通类控制着实例的创建行为一样。type 是 Python 中最基本的元类，直接调用 type() 就可以创建一个类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Foo = type(&apos;Foo&apos;, (), &#123;&apos;bar&apos;: 3&#125;)</span><br><span class="line">&gt;&gt;&gt; Foo</span><br><span class="line">&lt;class &apos;__main__.Foo&apos;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在调用 type() 创建类时，需要提供三个参数，它们的含义如下：</p>
-<ul>
-<li>name: str，需要创建的类名；</li>
-<li>bases: Tuple[Type]，包含其他类的元组，代表类的所有基类；</li>
-<li>attrs: Dict[str, Any]，包含所有类成员（属性、方法）的字典；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3290605089.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -988,7 +989,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-count">267</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -280,6 +280,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2042627151.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2042627151.html" itemprop="url">
+                  Load Balancers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-23T18:02:25+08:00">
+                2022-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><em>Azure Load Balancer</em> is used to support scaling and high availability for applications and services. A load balancer is primarily composed of <strong>three components—a frontend, a backend, and routing rules</strong>. Requests coming to the frontend of a load balancer are distributed based on routing rules to the backend, where we place multiple instances of a service.</p>
+<p>This can be used for performance-related reasons, where we would like to distribute traffic equally between endpoints in the backend, or for high availability, where multiple instances of services are used to increase the chances that at least one endpoint will be available at all times. Azure supports <strong>two types of load balancers—internal and public</strong>.</p>
+<h2 id="Create-an-internal-load-balancer"><a href="#Create-an-internal-load-balancer" class="headerlink" title="Create an internal load balancer"></a>Create an internal load balancer</h2><p>An internal load balancer is assigned a private IP address (from the address range of subnets in the VNet) for a frontend IP address, and it targets the private IP addresses of our services (usually, an Azure VM) in the backend. An internal load balancer is <strong>usually used by services that are not internet-facing and are accessed only from within our VNet</strong>.</p>
+<p>Traffic can come from other networks (other VNets or local networks) if there is some kind of VPN in place. <strong>The traffic coming to the frontend of the internal load balancer will be distributed across the endpoints in the backend of the load balancer</strong>. Internal load balancers are usually used for services that are not placed in a <em>DeMilitarized Zone</em> (DMZ) (and are therefore not accessible over the internet), but rather in middle- or back-tier services in a multitier application architecture.</p>
+<p>We also need to keep in mind the differences between the Basic and Standard SKUs. The main difference is in <em>Performance</em> (this is better in the Standard SKU) and <em>SLA</em> (Standard has an SLA guaranteeing 99.99% availability, while Basic has no SLA). Also, note that <strong>Standard SKU requires an NSG</strong>. If an NSG is not present on the subnet or network interface, or NIC (of the VM in the backend), traffic will not be allowed to reach its target. For more information on load balancer SKUs, see <a href="https://docs.microsoft.com/azure/load-balancer/skus" target="_blank" rel="noopener">https://docs.microsoft.com/azure/load-balancer/skus</a>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2042627151.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2931158028.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -769,130 +895,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1042644649.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1042644649.html" itemprop="url">
-                  Local and Virtual Network Gateways
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T23:37:08+08:00">
-                2022-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Local and virtual network gateways are <em>Virtual Private Network</em> (VPN) gateways that are used to <strong>connect to on-premises networks and encrypt all traffic going between a VNet and a local network</strong>. Each VNet can have only one virtual network gateway, but one virtual network gateway can be used to configure multiple VPN connections.</p>
-<h2 id="Create-a-local-network-gateway"><a href="#Create-a-local-network-gateway" class="headerlink" title="Create a local network gateway"></a>Create a local network gateway</h2><p>When a Site-to-Site connection is created, we have to <strong>provide configuration for both sides of the connection</strong>—that is, both Azure and on-premises. Although a <em>Local Network Gateway</em> is created in Azure, it represents your local (on-premises) network and holds configuration information on your local network settings. It’s an essential component for creating the VPN connection that is needed to create a Site-to-Site connection between the VNet and the local network.</p>
-<p>The local network gateway is used to connect a virtual network gateway to an on-premises network. The virtual network gateway is directly connected to the VNet and has all the relevant Azure VNet information needed to create a VPN connection. On the other hand, a local network gateway <strong>holds all the local network information needed to create a VPN connection</strong>.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1042644649.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -940,7 +942,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-count">267</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
