@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Azure,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="Azure Load Balancer is limited to providing high availability and scalability only to Azure VMs. Also, a single load balancer is limited to VMs in a single Azure region. If we want to provide high ava">
+<meta name="keywords" content="Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Traffic Manager">
+<meta property="og:url" content="https://necusjz.github.io/p/1841516736.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="Azure Load Balancer is limited to providing high availability and scalability only to Azure VMs. Also, a single load balancer is limited to VMs in a single Azure region. If we want to provide high ava">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Traffic Manager">
+<meta name="twitter:description" content="Azure Load Balancer is limited to providing high availability and scalability only to Azure VMs. Also, a single load balancer is limited to VMs in a single Azure region. If we want to provide high ava">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/1841516736.html">
+
+
+
+
+
+  <title> Traffic Manager | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1841516736.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Traffic Manager
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-23T23:44:09+08:00">
+                2022-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Azure Load Balancer is limited to providing high availability and scalability only to Azure VMs. Also, a single load balancer is limited to VMs in a single Azure region. If we want to provide high availability and scalability to other Azure services that are globally distributed, we must introduce a new component—<em>Azure Traffic Manager</em>. Traffic manager is <strong>DNS-based and provides the ability to distribute traffic over services and spread traffic across Azure regions</strong>. But traffic manager is not limited to Azure services only; we can add external endpoints as well.</p>
+<h2 id="Create-a-traffic-manager-profile"><a href="#Create-a-traffic-manager-profile" class="headerlink" title="Create a traffic manager profile"></a>Create a traffic manager profile</h2><p>Traffic manager provides load balancing to services, but traffic is routed and directed using DNS entries. <strong>The frontend is an FQDN assigned during creation, and all traffic coming to traffic manager is distributed to endpoints in the backend</strong>. The default routing method is <em>Performance</em>. The performance method will distribute traffic based on the best possible performance available.</p>
+<p>For example, if we have more than one backend endpoint in the same region, traffic will be spread evenly. If the endpoints are located across different regions, traffic manager will <strong>direct traffic to the endpoint closest to the incoming traffic in terms of geographical location and minimum network latency</strong>.</p>
+<a id="more"></a>
+<h2 id="Add-an-endpoint"><a href="#Add-an-endpoint" class="headerlink" title="Add an endpoint"></a>Add an endpoint</h2><p>After a traffic manager profile is created, we have the frontend endpoint and routing method defined. But we still <strong>need to define where the traffic needs to go after it’s reached traffic manager</strong>. We need to add endpoints to the backend and define where the traffic is directed. Incoming requests reach traffic manager by hitting the frontend endpoint of traffic manager. Based on rules (mainly the routing method), traffic is then forwarded to the backend endpoints.</p>
+<p>The load balancer works by forwarding traffic to private IP addresses. On the other hand, traffic manager uses public endpoints in the backend. <strong>The supported endpoint types are Azure, external, and nested</strong>. Based on the endpoint type, we can add Azure or external endpoints. Endpoints can be either (public) FQDNs or public IP addresses. Nested endpoints allow us to add other traffic manager profiles to the backend of the traffic manager.</p>
+<p>Custom header settings <strong>add specific HTTP headers to the health checks that traffic manager sends to endpoints under a profile</strong>. They can be defined either at profile level (and applied to all endpoints under that profile) or for each individual endpoint. It comes in <em>header:value</em> format and we can add up to 8 pairs.</p>
+<h2 id="Configure-traffic-based-on-weight"><a href="#Configure-traffic-based-on-weight" class="headerlink" title="Configure traffic based on weight"></a>Configure traffic based on weight</h2><p>The default routing method for traffic manager is performance. The performance method will distribute traffic based on the best possible performance available. This method only <strong>takes full effect if we have multiple instances of a service in multiple regions</strong>. As this often isn’t the case, other methods are available, such as distributed traffic (also referred to as the weighted routing method).</p>
+<p>The weighted routing method will distribute traffic evenly across all endpoints in the backend. We can further <strong>set weight settings to give an advantage to a certain endpoint</strong> and say that some endpoints will receive a bigger or smaller percentage of the traffic. This method is usually used when we have multiple instances of an application in the same region, or for scaling out to increase performance.</p>
+<h2 id="Configure-traffic-based-on-priority"><a href="#Configure-traffic-based-on-priority" class="headerlink" title="Configure traffic based on priority"></a>Configure traffic based on priority</h2><p>Another routing method available is priority. Priority, as its name suggests, gives priority to some endpoints, while some endpoints are kept as backups. <strong>Backup endpoints are only used if endpoints with priority become unavailable</strong>. All traffic will first go to the endpoints with the highest priority. Other endpoints (with lower priority) are backed up, and traffic is routed to these endpoints only when higher-priority endpoints become unavailable.</p>
+<p><strong>The default priority order is the order of adding endpoints to traffic manager</strong>, where the endpoint added first becomes the one with the highest priority and the endpoint added last becomes the endpoint with the least priority. Priority can be changed under the endpoint settings.</p>
+<h2 id="Configure-traffic-based-on-geographical-location"><a href="#Configure-traffic-based-on-geographical-location" class="headerlink" title="Configure traffic based on geographical location"></a>Configure traffic based on geographical location</h2><p>Geographical location is another routing method in traffic manager. This method is based on network latency and directs a request based on the geographical location of the origin and the endpoint. When a request comes to traffic manager, based on the origin of the request, it’s routed to the nearest endpoint in terms of region. This way, it <strong>provides the least network latency possible</strong>.</p>
+<p>The geographic routing method <strong>matches the request origin with the closest endpoint in terms of geographical location</strong>. For example, let’s say we have multiple endpoints, each on a different continent. If a request comes from Europe, it would make no sense to route it to Asia or North America. The geographic routing method will make sure that a request coming from Europe will be pointed to the endpoint located in Europe.</p>
+<h2 id="Manage-endpoints"><a href="#Manage-endpoints" class="headerlink" title="Manage endpoints"></a>Manage endpoints</h2><p>After we add endpoints to traffic manager, we may <strong>have to make changes over time</strong>. This can be either to make adjustments or to completely remove endpoints. We can delete the endpoint to completely remove it from traffic manager, or we can disable it to temporarily remove it from the backend. We can also change the endpoint completely, to point to another service or a completely different type.</p>
+<h2 id="Manage-profiles"><a href="#Manage-profiles" class="headerlink" title="Manage profiles"></a>Manage profiles</h2><p>The traffic manager profile is another setting that we can manage and adjust. Although it has very limited options, where we can only <em>Disable</em> and <em>Enable</em> traffic manager, <strong>managing the profile setting can be very useful for maintenance purposes</strong>.</p>
+<p>Managing the traffic manager profile with the disable and enable options will make the traffic manager frontend unavailable or available (based on the option selected). If we must apply changes across all endpoints, and changes need to be applied to all endpoints at the same time, we can <strong>disable the traffic manager profile temporarily</strong>. Once the changes are applied to all the endpoints, we can make traffic manager available again by enabling the profile.</p>
+<h2 id="Configure-traffic-manager-with-load-balancers"><a href="#Configure-traffic-manager-with-load-balancers" class="headerlink" title="Configure traffic manager with load balancers"></a>Configure traffic manager with load balancers</h2><p>Combining traffic manager with load balancers is often done to provide maximum availability. Load balancers are limited to providing high availability to a set of resources located in the same region. This gives us an advantage if a single resource fails, as we have multiple instances of a resource. But what if a complete region fails? Load balancers can’t handle resources in multiple regions, but we can combine load balancers with traffic manager to <strong>provide even better availability with resources across Azure regions</strong>.</p>
+<p>Traffic manager will become the frontend, and we will add load balancers as the backend endpoints of traffic manager. <strong>All requests will come to traffic manager first, and will then be routed to the appropriate load balancer in the backend</strong>. Traffic manager will monitor the health of the load balancers, and if one of them becomes unavailable, the traffic will be rerouted to an active load balancer.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2042627151.html" rel="next" title="Load Balancers">
+                <i class="fa fa-chevron-left"></i> Load Balancers
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/3697556407.html" rel="prev" title="Azure Application Gateway and Azure WAF">
+                Azure Application Gateway and Azure WAF <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-traffic-manager-profile"><span class="nav-number">1.</span> <span class="nav-text">Create a traffic manager profile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-an-endpoint"><span class="nav-number">2.</span> <span class="nav-text">Add an endpoint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-traffic-based-on-weight"><span class="nav-number">3.</span> <span class="nav-text">Configure traffic based on weight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-traffic-based-on-priority"><span class="nav-number">4.</span> <span class="nav-text">Configure traffic based on priority</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-traffic-based-on-geographical-location"><span class="nav-number">5.</span> <span class="nav-text">Configure traffic based on geographical location</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manage-endpoints"><span class="nav-number">6.</span> <span class="nav-text">Manage endpoints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manage-profiles"><span class="nav-number">7.</span> <span class="nav-text">Manage profiles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-traffic-manager-with-load-balancers"><span class="nav-number">8.</span> <span class="nav-text">Configure traffic manager with load balancers</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

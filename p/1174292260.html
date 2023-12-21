@@ -1,0 +1,1005 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="SystemDesign,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, “ba">
+<meta name="keywords" content="SystemDesign">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Back-of-the-envelope Estimation">
+<meta property="og:url" content="https://necusjz.github.io/p/1174292260.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, “ba">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/03/00.png">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Back-of-the-envelope Estimation">
+<meta name="twitter:description" content="In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, “ba">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/03/00.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/1174292260.html">
+
+
+
+
+
+  <title> Back-of-the-envelope Estimation | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1174292260.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Back-of-the-envelope Estimation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-14T15:21:21+08:00">
+                2023-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, “back-of-the-envelope calculations are estimates you create using a combination of thought experiments and common performance numbers to get a good feel for which designs will meet your requirements” [1].</p>
+<p>You need to have a good sense of scalability basics to effectively carry out back-of-the-envelope estimation. The following concepts should be well understood: power of two [2], latency numbers every programmer should know, and availability numbers.</p>
+<h2 id="Power-of-two"><a href="#Power-of-two" class="headerlink" title="Power of two"></a>Power of two</h2><p>Although data volume can become enormous when dealing with distributed systems, calculation all boils down to the basics. To obtain correct calculations, it is critical to know the data volume unit using the power of 2. A byte is a sequence of 8 bits. An ASCII character uses one byte of memory (8 bits). Below is a table explaining the data volume unit (Table 1):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Power</th>
+<th align="left">Approximate value</th>
+<th align="left">Full name</th>
+<th align="left">Short name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">10</td>
+<td align="left">1 Thousand</td>
+<td align="left">1 Kilobyte</td>
+<td align="left">1 KB</td>
+</tr>
+<tr>
+<td align="left">20</td>
+<td align="left">1 Million</td>
+<td align="left">1 Megabyte</td>
+<td align="left">1 MB</td>
+</tr>
+<tr>
+<td align="left">30</td>
+<td align="left">1 Billion</td>
+<td align="left">1 Gigabyte</td>
+<td align="left">1 GB</td>
+</tr>
+<tr>
+<td align="left">40</td>
+<td align="left">1 Trillion</td>
+<td align="left">1 Terabyte</td>
+<td align="left">1 TB</td>
+</tr>
+<tr>
+<td align="left">50</td>
+<td align="left">1 Quadrillion</td>
+<td align="left">1 Petabyte</td>
+<td align="left">1 PB</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h2 id="Latency-numbers-every-programmer-should-know"><a href="#Latency-numbers-every-programmer-should-know" class="headerlink" title="Latency numbers every programmer should know"></a>Latency numbers every programmer should know</h2><p>Dr. Dean from Google reveals the length of typical computer operations in 2010 [1]. Some numbers are outdated as computers become faster and more powerful. However, those numbers should still be able to give us an idea of the fastness and slowness of different computer operations:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Operation name</th>
+<th align="left">Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">L1 cache reference</td>
+<td align="left">0.5 ns</td>
+</tr>
+<tr>
+<td align="left">Branch mispredict</td>
+<td align="left">5 ns</td>
+</tr>
+<tr>
+<td align="left">L2 cache reference</td>
+<td align="left">7 ns</td>
+</tr>
+<tr>
+<td align="left">Mutex lock/unlock</td>
+<td align="left">100 ns</td>
+</tr>
+<tr>
+<td align="left">Main memory reference</td>
+<td align="left">100 ns</td>
+</tr>
+<tr>
+<td align="left">Compress 1K bytes with Zippy</td>
+<td align="left">10,000 ns = 10 µs</td>
+</tr>
+<tr>
+<td align="left">Send 2K bytes over 1 Gbps network</td>
+<td align="left">20,000 ns = 20 µs</td>
+</tr>
+<tr>
+<td align="left">Read 1 MB sequentially from memory</td>
+<td align="left">Read 1 MB sequentially from memory</td>
+</tr>
+<tr>
+<td align="left">Round trip within the same datacenter</td>
+<td align="left">500,000 ns = 500 µs</td>
+</tr>
+<tr>
+<td align="left">Disk seek</td>
+<td align="left">10,000,000 ns = 10 ms</td>
+</tr>
+<tr>
+<td align="left">Read 1 MB sequentially from the network</td>
+<td align="left">10,000,000 ns = 10 ms</td>
+</tr>
+<tr>
+<td align="left">Read 1 MB sequentially from disk</td>
+<td align="left">30,000,000 ns = 30 ms</td>
+</tr>
+<tr>
+<td align="left">Send packet CA-&gt;Netherlands-&gt;CA</td>
+<td align="left">150,000,000 ns = 150 ms</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ns = nanosecond, µs = microsecond, ms = millisecond<br>1 ns = 10^-9 seconds<br>1 µs= 10^-6 seconds = 1,000 ns<br>1 ms = 10^-3 seconds = 1,000 µs = 1,000,000 ns</p>
+</blockquote>
+<p>A Google software engineer built a tool to visualize Dr. Dean’s numbers. The tool also takes the time factor into consideration. Figures 1 shows the visualized latency numbers as of 2020 [3].<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/03/00.png" alt></p>
+<p>By analyzing the numbers in Figure 1, we get the following conclusions:</p>
+<ul>
+<li>Memory is fast but the disk is slow.</li>
+<li>Avoid disk seeks if possible.</li>
+<li>Simple compression algorithms are fast.</li>
+<li>Compress data before sending it over the internet if possible.</li>
+<li>Data centers are usually in different regions, and it takes time to send data between them.</li>
+</ul>
+<h2 id="Availability-numbers"><a href="#Availability-numbers" class="headerlink" title="Availability numbers"></a>Availability numbers</h2><p>High availability is the ability of a system to be continuously operational for a desirably long period of time. High availability is measured as a percentage, with 100% means a service that has 0 downtime. Most services fall between 99% and 100%.</p>
+<p>A Service Level Agreement (SLA) is a commonly used term for service providers. This is an agreement between you (the service provider) and your customer, and this agreement formally defines the level of uptime your service will deliver. Cloud providers Amazon [4], Google [5] and Microsoft [6] set their SLAs at 99.9% or above. Uptime is traditionally measured in nines. The more the nines, the better. As shown in Table 3, the number of nines correlate to the expected system downtime:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Availability %</th>
+<th align="left">Downtime /day</th>
+<th align="left">Downtime /week</th>
+<th align="left">Downtime /month</th>
+<th align="left">Downtime /year</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">99%</td>
+<td align="left">14.40 minutes</td>
+<td align="left">1.68 hours</td>
+<td align="left">7.31 hours</td>
+<td align="left">3.65 days</td>
+</tr>
+<tr>
+<td align="left">99.99%</td>
+<td align="left">8.64 seconds</td>
+<td align="left">1.01 minutes</td>
+<td align="left">4.38 minutes</td>
+<td align="left">52.60 minutes</td>
+</tr>
+<tr>
+<td align="left">99.999%</td>
+<td align="left">864.00 milliseconds</td>
+<td align="left">6.05 seconds</td>
+<td align="left">26.30 seconds</td>
+<td align="left">5.26 minutes</td>
+</tr>
+<tr>
+<td align="left">99.9999%</td>
+<td align="left">86.40 milliseconds</td>
+<td align="left">604.80 milliseconds</td>
+<td align="left">2.63 seconds</td>
+<td align="left">31.56 seconds</td>
+</tr>
+</tbody></table>
+<h2 id="Example-Estimate-Twitter-QPS-and-storage-requirements"><a href="#Example-Estimate-Twitter-QPS-and-storage-requirements" class="headerlink" title="Example: Estimate Twitter QPS and storage requirements"></a>Example: Estimate Twitter QPS and storage requirements</h2><p>Please note the following numbers are for this exercise only as they are not real numbers from Twitter.</p>
+<p>Assumptions:</p>
+<ul>
+<li>300 million monthly active users.</li>
+<li>50% of users use Twitter daily.</li>
+<li>Users post 2 tweets per day on average.</li>
+<li>10% of tweets contain media.</li>
+<li>Data is stored for 5 years.</li>
+</ul>
+<p>Query Per Second (QPS) estimate:</p>
+<ul>
+<li>Daily Active Users (DAU) = 300 million * 50% = 150 million</li>
+<li>Tweets QPS = 150 million * 2 tweets / 24 hour / 3600 seconds = ~3500</li>
+<li>Peek QPS = 2 * QPS = ~7000</li>
+</ul>
+<p>We will only estimate media storage here:</p>
+<ul>
+<li>Media: 1 MB</li>
+<li>Media storage: 150 million * 2 * 10% * 1 MB = 30 TB/day</li>
+<li>5-year media storage: 30 TB * 365 * 5 = ~55 PB</li>
+</ul>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>Back-of-the-envelope estimation is all about the process. Solving the problem is more important than obtaining results. Interviewers may test your problem-solving skills. Here are a few tips to follow:</p>
+<ul>
+<li>Rounding and Approximation. It is difficult to perform complicated math operations during the interview. For example, what is the result of “99987 / 9.1”? There is no need to spend valuable time to solve complicated math problems. Precision is not expected. Use round numbers and approximation to your advantage. The division question can be simplified as follows: “100,000 / 10”.</li>
+<li>Write down your assumptions. It is a good idea to write down your assumptions to be referenced later.</li>
+<li>Label your units. When you write down “5”, does it mean 5 KB or 5 MB? You might confuse yourself with this. Write down the units because “5 MB” helps to remove ambiguity.</li>
+<li>Commonly asked back-of-the-envelope estimations: QPS, peak QPS, storage, cache, number of servers, etc. You can practice these calculations when preparing for an interview. Practice makes perfect.</li>
+</ul>
+<p>Congratulations on getting this far! Now give yourself a pat on the back. Good job!</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] J. Dean.Google Pro Tip: Use Back-Of-The-Envelope-Calculations To Choose The Best Design:<br><a href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html" target="_blank" rel="noopener">http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html</a><br>[2] System design primer:<br><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">https://github.com/donnemartin/system-design-primer</a><br>[3] Latency Numbers Every Programmer Should Know:<br><a href="https://colin-scott.github.io/personal_website/research/interactive_latency.html" target="_blank" rel="noopener">https://colin-scott.github.io/personal_website/research/interactive_latency.html</a><br>[4] Amazon Compute Service Level Agreement:<br><a href="https://aws.amazon.com/compute/sla/" target="_blank" rel="noopener">https://aws.amazon.com/compute/sla/</a><br>[5] Compute Engine Service Level Agreement (SLA):<br><a href="https://cloud.google.com/compute/sla" target="_blank" rel="noopener">https://cloud.google.com/compute/sla</a><br>[6] SLA summary for Azure services:<br><a href="https://azure.microsoft.com/en-us/support/legal/sla/summary/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/support/legal/sla/summary/</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SystemDesign/" rel="tag"># SystemDesign</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/1166998146.html" rel="next" title="Scale from Zero to Millions of Users">
+                <i class="fa fa-chevron-left"></i> Scale from Zero to Millions of Users
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/2855311307.html" rel="prev" title="A Framework for System Design Interviews">
+                A Framework for System Design Interviews <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Power-of-two"><span class="nav-number">1.</span> <span class="nav-text">Power of two</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Latency-numbers-every-programmer-should-know"><span class="nav-number">2.</span> <span class="nav-text">Latency numbers every programmer should know</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Availability-numbers"><span class="nav-number">3.</span> <span class="nav-text">Availability numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-Estimate-Twitter-QPS-and-storage-requirements"><span class="nav-number">4.</span> <span class="nav-text">Example: Estimate Twitter QPS and storage requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">5.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

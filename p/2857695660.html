@@ -1,0 +1,940 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="数据模型与描述符在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为魔法方法（Magic Method）。 字符串魔法方法12345678910111213141516171">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发大型项目">
+<meta property="og:url" content="https://necusjz.github.io/p/2857695660.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="数据模型与描述符在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为魔法方法（Magic Method）。 字符串魔法方法12345678910111213141516171">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Python/craftsman/2.png">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发大型项目">
+<meta name="twitter:description" content="数据模型与描述符在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为魔法方法（Magic Method）。 字符串魔法方法12345678910111213141516171">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/Python/craftsman/2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/2857695660.html">
+
+
+
+
+
+  <title> 开发大型项目 | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2857695660.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                开发大型项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-22T00:10:30+08:00">
+                2022-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据模型与描述符"><a href="#数据模型与描述符" class="headerlink" title="数据模型与描述符"></a>数据模型与描述符</h2><p>在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为<strong>魔法方法</strong>（Magic Method）。</p>
+<h3 id="字符串魔法方法"><a href="#字符串魔法方法" class="headerlink" title="字符串魔法方法"></a>字符串魔法方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, favorite_color)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.favorite_color = favorite_color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 变量名后的 !r 表示在渲染字符串模版时，程序会优先使用 repr() 而非 str() 的结果</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;cls_name&#125;(name=&#123;name!r&#125;, age=&#123;age!r&#125;, favorite_color=&#123;color!r&#125;)'</span>.format(</span><br><span class="line">            cls_name=self.__class__.__name__,</span><br><span class="line">            name=self.name,</span><br><span class="line">            age=self.age,</span><br><span class="line">            color=self.favorite_color,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__format__</span><span class="params">(self, format_spec)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> format_spec == <span class="string">'verbose'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)[<span class="subst">&#123;self.favorite_color&#125;</span>]'</span></span><br><span class="line">        <span class="keyword">elif</span> format_spec == <span class="string">'simple'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)'</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h4 id="str"><a href="#str" class="headerlink" title="__str__"></a>__str__</h4><p>使用 __str__ 方法，可以定义对象的字符串值。这种场景下的字符串注重<strong>可读性</strong>，格式应当对用户友好：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p = Person(&apos;ethan&apos;, 18, &apos;black&apos;)</span><br><span class="line">&gt;&gt;&gt; print(p)</span><br><span class="line">ethan</span><br></pre></td></tr></table></figure>
+
+<h4 id="repr"><a href="#repr" class="headerlink" title="__repr__"></a>__repr__</h4><p>使用 __repr__ 方法，可以定义对象对调试友好的详细字符串值。这种场景下的字符串注重内容的<strong>完整性</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p = Person(&apos;ethan&apos;, 18, &apos;black&apos;)</span><br><span class="line">&gt;&gt;&gt; p</span><br><span class="line">Person(name=&apos;ethan&apos;, age=18, favorite_color=&apos;black&apos;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="format"><a href="#format" class="headerlink" title="__format__"></a>__format__</h4><p>使用 __format__ 方法，可以在对象用于字符串模版渲染时，提供多种字符串值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; p = Person(&apos;ethan&apos;, 18, &apos;black&apos;)</span><br><span class="line">&gt;&gt;&gt; print(f&apos;&#123;p:verbose&#125;&apos;)</span><br><span class="line">ethan(18)[black]</span><br><span class="line">&gt;&gt;&gt; print(f&apos;&#123;p:simple&#125;&apos;)</span><br><span class="line">ethan(18)</span><br></pre></td></tr></table></figure>
+
+<h3 id="比较运算符重载"><a href="#比较运算符重载" class="headerlink" title="比较运算符重载"></a>比较运算符重载</h3><p>与比较运算符相关的魔法方法共 6 个，如果使用 <strong>@total_ordering</strong> 装饰一个类，那么在重载类的比较运算符时，你只要先实现 __eq__ 方法，然后在 __lt__、__le__、__gt__、__ge__ 四个方法里随意挑一个实现即可，@total_ordering 会帮你自动补全剩下的所有方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> total_ordering</span><br><span class="line"></span><br><span class="line"><span class="meta">@total_ordering</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, length)</span>:</span></span><br><span class="line">        self.length = length</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.length ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(other, self.__class__):</span><br><span class="line">            <span class="keyword">return</span> self.length == other.length</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__lt__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(other, self.__class__):</span><br><span class="line">            <span class="keyword">return</span> self.length &lt; other.length</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">NotImplemented</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="描述符"><a href="#描述符" class="headerlink" title="描述符"></a>描述符</h3><p>描述符（Descriptor）是 Python 对象模型里的一种特殊协议，任何一个实现了 __get__、__set__ 或 __delete__ 的类，都可以称为<strong>描述符类</strong>，它的实例则叫作描述符对象。</p>
+<p>按照实现方式的不同，描述符可以分为两大类：</p>
+<ul>
+<li><strong>非数据描述符</strong>：只实现了 __get__ 方法的描述符，比如实例方法、类方法、静态方法，你可以轻易覆盖它们的行为；</li>
+<li><strong>数据描述符</strong>：实现了 __set__ 或 __delete__ 其中任何一个方法的描述符，比如属性装饰器，你无法直接通过重写修改它的状态；</li>
+</ul>
+<h4 id="无描述符时，实现属性校验功能"><a href="#无描述符时，实现属性校验功能" class="headerlink" title="无描述符时，实现属性校验功能"></a>无描述符时，实现属性校验功能</h4><p>使用属性装饰器最大的缺点是——<strong>很难复用</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @age.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            value = int(value)</span><br><span class="line">        <span class="keyword">except</span> (TypeError, ValueError):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'value is not a valid integer!'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span> &lt;= value &lt;= <span class="number">150</span>):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'value must between 0 and 150!'</span>)</span><br><span class="line">        self._age = value</span><br></pre></td></tr></table></figure>
+
+<h4 id="用描述符实现属性校验功能"><a href="#用描述符实现属性校验功能" class="headerlink" title="用描述符实现属性校验功能"></a>用描述符实现属性校验功能</h4><p>为了提供更高的可复用性，这次我们在年龄字段的基础上抽象出一个支持校验功能的整型描述符类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntegerField</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, min_value, max_value)</span>:</span></span><br><span class="line">        self.min_value = min_value</span><br><span class="line">        self.max_value = max_value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set_name__</span><span class="params">(self, owner, name)</span>:</span></span><br><span class="line">        <span class="comment"># 将绑定属性名保存在描述符对象中</span></span><br><span class="line">        self._name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> instance:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="comment"># 在数据存取时，使用动态的 self._name</span></span><br><span class="line">        <span class="keyword">return</span> instance.__dict__[self._name]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></span><br><span class="line">        value = self._validate_value(value)</span><br><span class="line">        instance.__dict__[self._name] = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_validate_value</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            value = int(value)</span><br><span class="line">        <span class="keyword">except</span> (TypeError, ValueError):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">f'<span class="subst">&#123;self._name&#125;</span> is not a valid integer!'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (self.min_value &lt;= value &lt;= self.max_value):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">f'<span class="subst">&#123;self._name&#125;</span> must between <span class="subst">&#123;self.min_value&#125;</span> and <span class="subst">&#123;self.max_value&#125;</span>!'</span>)</span><br><span class="line">        <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
+
+<h3 id="编程建议"><a href="#编程建议" class="headerlink" title="编程建议"></a>编程建议</h3><p>每当你想要重写 __hash__ 方法时，一定要保证方法产生的哈希值是稳定的，不会随着对象状态而改变：</p>
+<ul>
+<li>对象不可变，不允许任何修改，比如定义 dataclass 时指定的 frozen=True；</li>
+<li>至少保证，被卷入哈希值计算的条件不会改变；</li>
+</ul>
+<p>虽然数据模型能帮我们写出更 Pythonic 的代码，但切勿过度推崇：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Events</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, events)</span>:</span></span><br><span class="line">        self.events = events</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> bool(self.events)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_events_by_range</span><span class="params">(self, start, end)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.events[start:end]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Events</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, events)</span>:</span></span><br><span class="line">        self.events = events</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.events)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.events[index]</span><br></pre></td></tr></table></figure>
+
+<p><strong>__del__ 方法不是在执行 del 语句时被触发</strong>，而是在对象被作为垃圾回收时被触发。换句话说，del 让对象的引用计数减 1，但只有当引用计数降为 0 时，它才会马上被 Python 解释器回收，不要使用 __del__ 来做任何自动化的资源回收工作。</p>
+<h2 id="开发大型项目"><a href="#开发大型项目" class="headerlink" title="开发大型项目"></a>开发大型项目</h2><p>Python 的自由感体现在，它既可以用来写一些快糙猛的小脚本，同时也能用它来做一些真正的大项目，解决一些更为复杂的问题。在经历了多年发展后，如今的 Python 有着成熟的打包机制、强大的工具链以及繁荣的第三方生态，无数企业乐于用 Python 来开发重要项目。</p>
+<h3 id="常用工具介绍"><a href="#常用工具介绍" class="headerlink" title="常用工具介绍"></a>常用工具介绍</h3><p>在多人参与的大型项目里，最基本的一件事就是让所有人的代码风格保持一致，整洁得就像是出自同一人之手。</p>
+<h4 id="flake8"><a href="#flake8" class="headerlink" title="flake8"></a>flake8</h4><p>Python 有一份官方代码风格指南：PEP 8，但在开发项目时，光有一套纸面上的规范是不够的。纸面规范只适合阅读，无法用来快速检索真实代码是否符合规范，只有通过 Linter 才能最大地发挥 PEP 8 的作用。</p>
+<blockquote>
+<p>Linter 指一类特殊的代码静态分析工具，专门用来找出代码里的格式问题、语法问题等，帮助提升代码质量。</p>
+</blockquote>
+<p>flake8 的主要检查能力是由它所集成的其他工具所提供的：</p>
+<ul>
+<li>pycodestyle：PEP 8 检查工具；</li>
+<li>pyflakes：更专注于检查代码的正确性，比如语法错误、变量名未定义等；</li>
+<li>mccabe：扫描代码的圈复杂度；</li>
+</ul>
+<p>此外，flake8 还通过插件机制提供了强大的定制能力，可谓 Python 代码检查领域的一把瑞士军刀，非常值得在项目中使用。</p>
+<h4 id="isort"><a href="#isort" class="headerlink" title="isort"></a>isort</h4><p>PEP 8 认为，一个源码文件的所有 import 语句，都应该依照以下规则分为三组：</p>
+<ol>
+<li>导入 Python 标准库包的 import 语句；</li>
+<li>导入相关联的第三方包的 import 语句；</li>
+<li>与当前应用（或当前库）相关的 import 语句；</li>
+</ol>
+<p>有了 isort 以后，你在调整 import 语句时可以变得随心所欲，只需负责一些简单的编辑工作，isort 会帮你搞定剩下的所有事情。</p>
+<h4 id="black"><a href="#black" class="headerlink" title="black"></a>black</h4><p>虽然 PEP 8 规范为许多代码风格问题提供了标准答案，但这份答案其实非常宏观，在许多细节要求上并不严格。在许多场景中，同一段代码在符合 PEP 8 规范的前提下，可以写成好几种风格。作为一个代码格式化工具，black 最大的特点就在于它的不可配置性：</p>
+<blockquote>
+<p>The uncompromising Python code formatter.<br>-- <em>GitHub</em></p>
+</blockquote>
+<p>black 能让我们不用在各种编码风格间纠结，能有效解决许多问题，整体来看，在大型项目中引入 black，利远大于弊。</p>
+<h4 id="pre-commit"><a href="#pre-commit" class="headerlink" title="pre-commit"></a>pre-commit</h4><p>只是安装好工具，再偶尔手动执行那么一两次是远远不够的，要最大地发挥工具的能力，你必须让它们融入所有人的开发流程里。Git 有个特殊的钩子功能，它允许你给每个仓库配置一些钩子程序（Hook），之后每当你进行特定的 Git 操作时，这些钩子程序就会执行。</p>
+<p>pre-commit 是一个专门用于预提交阶段的工具，要使用它，你需要先创建一个配置文件 <em>.pre-commit-config.yaml</em>，由于它与项目源码存放在一起，都在代码仓库中，因此项目的所有开发者天然共享 pre-commit 的插件配置，每个人不用单独维护各自的配置。</p>
+<h4 id="mypy"><a href="#mypy" class="headerlink" title="mypy"></a>mypy</h4><p>在现实世界里，我们写的程序里的许多 bug 都和类型系统息息相关。mypy 是最为流行的<strong>静态类型检查工具</strong>，在大型项目中，类型注解与 mypy 的组合能大大提高项目代码的可读性与正确性。mypy 让动态类型的 Pyhon 拥有了部分静态类型语言才有的能力，值得在大型项目中推广使用。</p>
+<h3 id="单元测试简介"><a href="#单元测试简介" class="headerlink" title="单元测试简介"></a>单元测试简介</h3><p>根据关注点的不同，自动化测试可以分为不同的类型，比如 UI 测试、集成测试、单元测试等：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Python/craftsman/2.png" alt></p>
+<p>作为一名程序员，编写单元测试其实是一项收益极高的工作，它不光能让你更容易发现代码里的问题，还能驱使你写出更具扩展性的好代码。</p>
+<h4 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h4><p>在 Python 里编写单元测试，最正统的方式是使用 unittest 模块，它是标准库里的单元测试模块，使用方便、无须额外安装。用 unittest 编写测试的第一步，是创建一个继承 unittest.TestCase 的子类，然后编写许多以 test 开头的测试方法；在方法内部，通过调用一些以 assert 开头的方法来进行测试断言。</p>
+<p>通过定义 setUp() 和 tearDown() 方法，你可以让程序在执行每个测试方法的前后，运行额外的代码逻辑。unittest 模块在最初实现时，大量参考了 Java 语言的单元测试框架 JUnit，因此，它的许多奇怪设计其实是 Java 化的表现，比如只能用类来定义测试用例，又比如方法都采用驼峰命名法等。</p>
+<h4 id="pytest"><a href="#pytest" class="headerlink" title="pytest"></a>pytest</h4><p>pytest 是一个开源的第三方单元测试框架，它功能更多、设计更复杂、上手难度也更高，但 pytest 的最大优势在于，它把 Python 的一些惯用写法与单元测试很好地融合了起来：</p>
+<ul>
+<li>不必用一个 TestCase 类来定义测试用例，用一个以 test 开头的普通函数也行；</li>
+<li>不需要调用任何特殊的 assert{xx}() 方法，只要写一条原生的断言语句 assert {expression} 就好；</li>
+</ul>
+<h5 id="parametrize"><a href="#parametrize" class="headerlink" title="parametrize"></a>parametrize</h5><p>在单元测试领域，有一种常用的编写测试代码的技术：<strong>表驱动测试</strong>（Table-driven Testing），它鼓励你将不同测试用例间的差异点抽象出来，提炼成一张包含多份输入参数、期望结果的数据表，以此驱动测试执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">from</span> string_utils <span class="keyword">import</span> string_upper</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.parametrize(</span></span><br><span class="line">    <span class="string">'s, expected'</span>,</span><br><span class="line">    [</span><br><span class="line">        (<span class="string">'foo'</span>, <span class="string">'FOO'</span>),</span><br><span class="line">        (<span class="string">''</span>, <span class="string">''</span>),</span><br><span class="line">        (<span class="string">'foo BAR'</span>, <span class="string">'FOO BAR'</span>),</span><br><span class="line">    ],</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_string_upper</span><span class="params">(s, expected)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> string_upper(s) == expected</span><br></pre></td></tr></table></figure>
+
+<h5 id="fixture"><a href="#fixture" class="headerlink" title="fixture"></a>fixture</h5><p>在编写单元测试时，我们常常需要重复用到一些东西，这类被许多单元测试依赖、需要重复使用的对象，常被称为 fixture：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_token</span><span class="params">()</span>:</span></span><br><span class="line">    token_l = []</span><br><span class="line">    char_pool = string.ascii_lowercase + string.digits</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">32</span>):</span><br><span class="line">        token_l.append(random.choice(char_pool))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">''</span>.join(token_l)</span><br></pre></td></tr></table></figure>
+
+<p>假如你在 fixture 函数中使用 yield 关键字，把它变成一个生成器函数，那么就能<strong>为 fixture 增加额外的清理逻辑</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">db_connection</span><span class="params">()</span>:</span></span><br><span class="line">    conn = create_db_conn()</span><br><span class="line">    <span class="keyword">yield</span> conn</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+
+<p>除了作为函数参数，被主动注入测试方法中以外，pytest 的 fixture 还有另外一种触发方式——自动执行，非常适合用来做一些测试准备与事后清理工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@pytest.fixture(autouse=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prepare_data</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 在测试开始前，创建两个用户</span></span><br><span class="line">    User.objects.create(...)</span><br><span class="line">    User.objects.create(...)</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    <span class="comment"># 在测试结束时，销毁所有用户</span></span><br><span class="line">    User.objects.all().delete()</span><br></pre></td></tr></table></figure>
+
+<p>pytest 里的 fixture 可以使用五种<strong>作用域</strong>（Scope），根据作用域的不同，被缓存的 fixture 结果会在不同的时机被销毁：</p>
+<ul>
+<li>function：默认作用域，结果会在每个测试函数结束后销毁；</li>
+<li>class：结果会在执行完类里的所有测试方法后销毁；</li>
+<li>module：结果会在执行完整个模块的所有测试后销毁；</li>
+<li>package：结果会在执行完整个包的所有测试后销毁；</li>
+<li>session：结果会在测试会话（也就是一次完整的 pytest 执行过程）结束后销毁；</li>
+</ul>
+<h3 id="编程建议-1"><a href="#编程建议-1" class="headerlink" title="编程建议"></a>编程建议</h3><p>虽然好像人人都认为单元测试很有用，但在实际工作中，有完善单元测试的项目仍然是极其罕见的。</p>
+<h4 id="写单元测试不是浪费时间"><a href="#写单元测试不是浪费时间" class="headerlink" title="写单元测试不是浪费时间"></a>写单元测试不是浪费时间</h4><p>虽然不写单元测试看上去节约了一丁点儿时间，但有问题的代码上线后，你会花费更多的时间去定位、去处理这个 bug。缺少单元测试的帮助，你需要耐心找到改动可能会影响到的每个模块，手动验证它们是否正常工作，所有这些事所花费的时间，足够你写好几十遍单元测试。</p>
+<p>在有着完善单元测试的模块里，重构是件轻松惬意的事情。在重构时，可以按照任何你想要的方式随意调整和优化旧代码，每次调整后，只要重新运行一遍测试用例，几秒钟之内就能得到完善和准确的反馈。</p>
+<h4 id="不要总想着补测试"><a href="#不要总想着补测试" class="headerlink" title="不要总想着补测试"></a>不要总想着补测试</h4><p>单元测试不光能验证程序的正确性，还能极大地帮助你改进代码设计，但这种帮助有一个前提，那就是你必须在编写代码的同时编写单元测试。当开发功能与编写测试同步进行时，你会来回切换自己的角色，分别作为代码的设计者和使用者，不断从代码里找出问题，调整设计。经过多次调整与打磨后，你的代码会变得更好、更具扩展性。</p>
+<p>测试代码并不比普通代码地位低，选择事后补测试，你其实丢掉了用<strong>测试驱动开发</strong>（Test-Driven Development）的机会：</p>
+<ol>
+<li><del>写测试用例（哪怕测试用例引用的模块根本不存在）；</del></li>
+<li><del>执行测试用例，让其失败；</del></li>
+<li>编写最简单的代码（此时只关心实现功能，不关心代码整洁度）；</li>
+<li>执行测试用例，让测试通过；</li>
+<li>重构代码，删除重复内容，让代码变得更整洁；</li>
+<li>执行测试用例，验证重构；</li>
+<li>重复整个过程；</li>
+</ol>
+<h4 id="难测试的代码就是烂代码"><a href="#难测试的代码就是烂代码" class="headerlink" title="难测试的代码就是烂代码"></a>难测试的代码就是烂代码</h4><p>在不写单元测试时，烂代码就已经是烂代码了，只是我们没有很好地意识到这一点。因此，每当你发现很难为代码编写测试时，就应该意识到代码设计可能存在问题，需要努力调整设计，让代码变得更容易测试。单元测试是评估代码质量的标尺，每当你写好一段代码，都能清楚地知道到底写得好还是坏，因为单元测试不会说谎。</p>
+<h4 id="像应用代码一样对待测试代码"><a href="#像应用代码一样对待测试代码" class="headerlink" title="像应用代码一样对待测试代码"></a>像应用代码一样对待测试代码</h4><p>人们在对待应用代码和测试代码的态度上，常常有一些微妙的区别：</p>
+<ul>
+<li>对重复代码的容忍程度：在测试代码里，出现 10 行重复代码是件稀松平常的事情，人们甚至能容忍更长的重复代码段；</li>
+<li>对代码执行效率的重视程度：假如有人在测试代码里偶然引入了一个效率低下的 fixture，导致整个测试的执行耗时突然增加了 30%，似乎也不是什么大事儿，极少会有人关心；</li>
+<li>对重构的态度：我们很少对测试代码做重构工作，除非某个旧测试用例突然坏掉了，否则我们绝不去动它；</li>
+</ul>
+<p>但这样其实是不对的，如果对测试代码缺少必要的重视，那么它就会慢慢腐烂。当它最终变得不堪入目，执行耗时以小时计时，人们就会从心理上开始排斥编写测试，也不愿意执行测试。</p>
+<h4 id="避免教条主义"><a href="#避免教条主义" class="headerlink" title="避免教条主义"></a>避免教条主义</h4><p>要更好地实践单元测试，你要做的第一件事就是摒弃教条主义，脚踏实地，不断寻求最适合当前项目的测试方案：</p>
+<ul>
+<li>单元测试里的单元其实并不严格地指某个方法、函数，而是指软件模块的一个行为单元，或者说功能单元；</li>
+<li>某个测试用例应该算作集成测试还是单元测试并不重要，所有的自动化测试只要能满足：快、用例间互相隔离、没有副作用，这样就够了；</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/3290605089.html" rel="next" title="场景：寻找元类替代品">
+                <i class="fa fa-chevron-left"></i> 场景：寻找元类替代品
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/2165241535.html" rel="prev" title="场景：处理旅游数据">
+                场景：处理旅游数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型与描述符"><span class="nav-number">1.</span> <span class="nav-text">数据模型与描述符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串魔法方法"><span class="nav-number">1.1.</span> <span class="nav-text">字符串魔法方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#str"><span class="nav-number">1.1.1.</span> <span class="nav-text">__str__</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repr"><span class="nav-number">1.1.2.</span> <span class="nav-text">__repr__</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#format"><span class="nav-number">1.1.3.</span> <span class="nav-text">__format__</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较运算符重载"><span class="nav-number">1.2.</span> <span class="nav-text">比较运算符重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述符"><span class="nav-number">1.3.</span> <span class="nav-text">描述符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无描述符时，实现属性校验功能"><span class="nav-number">1.3.1.</span> <span class="nav-text">无描述符时，实现属性校验功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用描述符实现属性校验功能"><span class="nav-number">1.3.2.</span> <span class="nav-text">用描述符实现属性校验功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议"><span class="nav-number">1.4.</span> <span class="nav-text">编程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发大型项目"><span class="nav-number">2.</span> <span class="nav-text">开发大型项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用工具介绍"><span class="nav-number">2.1.</span> <span class="nav-text">常用工具介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flake8"><span class="nav-number">2.1.1.</span> <span class="nav-text">flake8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isort"><span class="nav-number">2.1.2.</span> <span class="nav-text">isort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#black"><span class="nav-number">2.1.3.</span> <span class="nav-text">black</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pre-commit"><span class="nav-number">2.1.4.</span> <span class="nav-text">pre-commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mypy"><span class="nav-number">2.1.5.</span> <span class="nav-text">mypy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试简介"><span class="nav-number">2.2.</span> <span class="nav-text">单元测试简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#unittest"><span class="nav-number">2.2.1.</span> <span class="nav-text">unittest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pytest"><span class="nav-number">2.2.2.</span> <span class="nav-text">pytest</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#parametrize"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">parametrize</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fixture"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">fixture</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议-1"><span class="nav-number">2.3.</span> <span class="nav-text">编程建议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写单元测试不是浪费时间"><span class="nav-number">2.3.1.</span> <span class="nav-text">写单元测试不是浪费时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不要总想着补测试"><span class="nav-number">2.3.2.</span> <span class="nav-text">不要总想着补测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#难测试的代码就是烂代码"><span class="nav-number">2.3.3.</span> <span class="nav-text">难测试的代码就是烂代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#像应用代码一样对待测试代码"><span class="nav-number">2.3.4.</span> <span class="nav-text">像应用代码一样对待测试代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免教条主义"><span class="nav-number">2.3.5.</span> <span class="nav-text">避免教条主义</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

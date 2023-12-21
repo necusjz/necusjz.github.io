@@ -1,0 +1,836 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Azure,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="In Azure, we can have two types of IP addresses, private and public. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private comm">
+<meta name="keywords" content="Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manage IP Addresses">
+<meta property="og:url" content="https://necusjz.github.io/p/4269680769.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="In Azure, we can have two types of IP addresses, private and public. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private comm">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Manage IP Addresses">
+<meta name="twitter:description" content="In Azure, we can have two types of IP addresses, private and public. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private comm">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/4269680769.html">
+
+
+
+
+
+  <title> Manage IP Addresses | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4269680769.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Manage IP Addresses
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T22:45:13+08:00">
+                2022-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In Azure, we can have <strong>two types of IP addresses, private and public</strong>. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private communication on private networks. Addresses can be assigned to a resource or can exist as a separate resource.</p>
+<h2 id="Create-a-public-IP-address"><a href="#Create-a-public-IP-address" class="headerlink" title="Create a public IP address"></a>Create a public IP address</h2><p><em>Public IP Address</em> can be created as a separate resource or created during the creation of some other resources (a VM, for example). Therefore, <strong>a public IP can exist as part of a resource or as a standalone resource</strong>.</p>
+<p>The <em>Stock Keeping Unit</em> (SKU) can be either <em>Basic</em> or <em>Standard</em>. The main differences are that Standard is closed to inbound traffic by default (inbound traffic must be whitelisted in NSGs) and that Standard is zone redundant. Another difference is that <strong>a Standard SKU public IP address has a static assignment, while a Basic SKU can be either static or dynamic</strong>. You can choose either the <em>IPv4</em> or <em>IPv6</em> version for the IP address, or both, but choosing IPv6 will limit you to a dynamic assignment for the Basic SKU and static assignment for the Standard SKU.</p>
+<p>The <em>DNS Name Label</em> is optional—it can be used to <strong>resolve the endpoint if dynamic assignment is selected</strong>. Otherwise, there is no point in creating a DNS label, as an IP address can always be used to resolve the endpoint if static assignment is selected.</p>
+<a id="more"></a>
+<h2 id="Assign-a-public-IP-address"><a href="#Assign-a-public-IP-address" class="headerlink" title="Assign a public IP address"></a>Assign a public IP address</h2><p>A public IP address can be created as a separate resource or disassociated from another resource and exist on its own. Such an IP address can then be assigned to a new resource or another already-existing resource. If the resource is no longer in use or has been migrated, we can still use the same public IP address. In this case, the public endpoint that’s used to access a service may stay unchanged. This can be useful when a publicly available application or service is migrated or upgraded, as we can <strong>keep using the same endpoint and users don’t need to be aware of any change</strong>.</p>
+<p>A public IP address exists as a separate resource and can be assigned to a resource at any time. When a public IP address is assigned, you can use this IP address to access services running on a resource that the IP address is assigned to (remember that an appropriate NSG must be applied). We can also <strong>remove an IP address from a resource and assign it to a new resource</strong>. For example, if we want to migrate services to a new VM, the IP address can be removed from the old VM and assigned to the new one. This way, service endpoints running on the VM will not change. This is especially useful when static IP addresses are used.</p>
+<h2 id="Unassign-a-public-IP-address"><a href="#Unassign-a-public-IP-address" class="headerlink" title="Unassign a public IP address"></a>Unassign a public IP address</h2><p>A public IP address can be unassigned from a resource in order to be saved for later use or assigned to another resource. When a resource is deleted or decommissioned, we can still put the public IP address to use and assign it to the next resource. To remove it, we simply <strong>disable the public IP address in the IP configuration under the NIC that the IP address is assigned to</strong>. This will remove the association but keep the IP address as a separate resource.</p>
+<h2 id="Create-a-reservation-for-a-public-IP-address"><a href="#Create-a-reservation-for-a-public-IP-address" class="headerlink" title="Create a reservation for a public IP address"></a>Create a reservation for a public IP address</h2><p><strong>The default option for a public IP address is dynamic IP assignment</strong>. This can be changed during the public IP address creation, or later. If this is changed from dynamic IP assignment, then the public IP address becomes reserved (or static). For example, if a VM that an IP address is assigned to is turned off or rebooted, there is a possibility that the IP address will change after the VM is up and running again.</p>
+<p>This can cause issues if services that are running on the VM are accessed over the public IP address, or if there is a DNS record associated with the public IP address. We create an IP reservation and set the assignment to static to avoid such a scenario and <strong>keep the IP address reserved for our services</strong>.</p>
+<h2 id="Remove-a-reservation-for-a-public-IP-address"><a href="#Remove-a-reservation-for-a-public-IP-address" class="headerlink" title="Remove a reservation for a public IP address"></a>Remove a reservation for a public IP address</h2><p>If the public IP address is set to static, we can remove a reservation and set the IP address assignment to dynamic. This isn’t done often as there is usually a reason why the reservation is set in the first place. But as the reservation for the public IP address has an additional cost, there is sometimes a need to <strong>remove the reservation if it is not necessary</strong>.</p>
+<p>To remove an IP reservation from a public IP address, the public IP address must not be associated with a resource. We can <strong>remove the reservation by setting the IP address assignment to dynamic</strong>. The main reason for this is pricing. In Azure, the first five public IP reservations are free. After the initial five, each new reservation is billed. To avoid paying anything unnecessary, we can remove a reservation when it is not needed or when the public IP address is not being used.</p>
+<h2 id="Create-a-reservation-for-a-private-IP-address"><a href="#Create-a-reservation-for-a-private-IP-address" class="headerlink" title="Create a reservation for a private IP address"></a>Create a reservation for a private IP address</h2><p>Similar to public IP addresses, we can make a reservation for <em>Private IP Address</em>. This is usually done to ensure communication between servers on the same VNet and to allow the usage of IP addresses in connection strings. The difference is that <strong>a private IP address does not exist as a separate resource</strong> but is assigned to an NIC.</p>
+<p>Another difference is that you can <strong>select a value for a private IP address</strong>. A public IP address is assigned randomly and can be reserved, but you cannot choose which value this will be. For private IP addresses, you can select the value for the IP, but it must be an unused IP from the subnet associated with the NIC.</p>
+<h2 id="Change-a-reservation-for-a-private-IP-address"><a href="#Change-a-reservation-for-a-private-IP-address" class="headerlink" title="Change a reservation for a private IP address"></a>Change a reservation for a private IP address</h2><p>For private IP addresses, you can <strong>change the IP address at any time to another value</strong>. With public IP addresses, this isn’t the case, as you get the IP address randomly from a pool and aren’t able to change the value. With a private IP address, you can change the value to another IP address from the address space.</p>
+<p>Again, the value must be <strong>an unused IP address from a subnet associated with the NIC</strong>. If the VM associated with the NIC is turned off, the new IP address will be assigned upon its next startup. If the VM is running, it will be restarted to apply the new changes.</p>
+<h2 id="Remove-a-reservation-for-a-private-IP-address"><a href="#Remove-a-reservation-for-a-private-IP-address" class="headerlink" title="Remove a reservation for a private IP address"></a>Remove a reservation for a private IP address</h2><p>Similar to public IP addresses, we can remove a reservation for a private IP address at any time. A private IP address is free, so additional costs aren’t a factor in this case. But there are scenarios where <strong>dynamic assignment is required, and we can set it at any time</strong>.</p>
+<p>We can <strong>remove a private IP address reservation at any time by switching asignment to dynamic</strong>. When this change is made, the VM associated with the NIC will be restarted to apply the new changes. After a change is made, a private IP address may change after the VM is restarted or turned off.</p>
+<h2 id="Add-multiple-IP-addresses-to-an-NIC"><a href="#Add-multiple-IP-addresses-to-an-NIC" class="headerlink" title="Add multiple IP addresses to an NIC"></a>Add multiple IP addresses to an NIC</h2><p>In various situations, we may need to have multiple IP addresses associated with a single NIC. In Azure, this is possible for both private and public IP addresses. Each IP configuration <strong>must have a private IP address and can have a public IP address</strong>. So, it is possible to add a private IP address without a public IP address, but not the other way around. This provides us with different routing options and the ability to communicate with different applications and services over different IP addresses.</p>
+<h2 id="Create-a-public-IP-prefix"><a href="#Create-a-public-IP-prefix" class="headerlink" title="Create a public IP prefix"></a>Create a public IP prefix</h2><p>Creating new resources is usually associated with creating new IP addresses. There can be issues when public IP addresses need to be associated with firewall rules or app configurations. To overcome this, we can create a public IP prefix and <strong>reserve a range of IP addresses that will be assigned to our resources</strong>.</p>
+<p>When we create a public IP prefix, public IP address association is not done randomly but from a pool of addresses reserved for us. In many ways, this acts similarly to creating a VNet and defining a private IP address space, only with public IP addresses. This can be <strong>very useful when we need to know addresses in advance</strong>. For example, let’s say we need to create a firewall rule for each service we create. That would require us to wait for each service to be deployed and get a public IP address after it has been created. With a public IP prefix, IP addresses are known in advance and we can set a rule for a range of IP addresses, rather than doing it IP by IP.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/907302273.html" rel="next" title="Network Security Groups">
+                <i class="fa fa-chevron-left"></i> Network Security Groups
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/1042644649.html" rel="prev" title="Local and Virtual Network Gateways">
+                Local and Virtual Network Gateways <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-public-IP-address"><span class="nav-number">1.</span> <span class="nav-text">Create a public IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Assign-a-public-IP-address"><span class="nav-number">2.</span> <span class="nav-text">Assign a public IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unassign-a-public-IP-address"><span class="nav-number">3.</span> <span class="nav-text">Unassign a public IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-reservation-for-a-public-IP-address"><span class="nav-number">4.</span> <span class="nav-text">Create a reservation for a public IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remove-a-reservation-for-a-public-IP-address"><span class="nav-number">5.</span> <span class="nav-text">Remove a reservation for a public IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-reservation-for-a-private-IP-address"><span class="nav-number">6.</span> <span class="nav-text">Create a reservation for a private IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-a-reservation-for-a-private-IP-address"><span class="nav-number">7.</span> <span class="nav-text">Change a reservation for a private IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remove-a-reservation-for-a-private-IP-address"><span class="nav-number">8.</span> <span class="nav-text">Remove a reservation for a private IP address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-multiple-IP-addresses-to-an-NIC"><span class="nav-number">9.</span> <span class="nav-text">Add multiple IP addresses to an NIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-public-IP-prefix"><span class="nav-number">10.</span> <span class="nav-text">Create a public IP prefix</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

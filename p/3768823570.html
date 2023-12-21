@@ -1,0 +1,835 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Azure,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="Azure DNS allows us to host Domain Name System (DNS) domains in Azure. When using Azure DNS, we use Microsoft infrastructure for the name resolution, which results in fast and reliable DNS queries. Az">
+<meta name="keywords" content="Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS and Routing">
+<meta property="og:url" content="https://necusjz.github.io/p/3768823570.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="Azure DNS allows us to host Domain Name System (DNS) domains in Azure. When using Azure DNS, we use Microsoft infrastructure for the name resolution, which results in fast and reliable DNS queries. Az">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DNS and Routing">
+<meta name="twitter:description" content="Azure DNS allows us to host Domain Name System (DNS) domains in Azure. When using Azure DNS, we use Microsoft infrastructure for the name resolution, which results in fast and reliable DNS queries. Az">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/3768823570.html">
+
+
+
+
+
+  <title> DNS and Routing | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3768823570.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DNS and Routing
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T09:55:28+08:00">
+                2022-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>Azure DNS</em> allows us to host <em>Domain Name System</em> (DNS) domains in Azure. When using Azure DNS, we use Microsoft infrastructure for the name resolution, which results in fast and reliable DNS queries. Azure DNS infrastructure uses a vast number of servers to provide great reliability and availability of service. <strong>Using anycast networking, each DNS query is answered by the closest available DNS server</strong> to provide a quick reply.</p>
+<h2 id="Create-a-DNS-zone"><a href="#Create-a-DNS-zone" class="headerlink" title="Create a DNS zone"></a>Create a DNS zone</h2><p>To start using Azure DNS, we must first create a DNS zone. A DNS zone holds a DNS record for a specific domain, and it can hold records for a single domain at a time. A DNS zone will <strong>hold DNS records for this domain and possible subdomains</strong>. DNS name servers are set up to reply to any query on a registered domain and point to a destination.</p>
+<p>A DNS zone is required to start using Azure DNS. A new DNS zone is required for each domain we want to host with Azure DNS, as a single DNS zone can hold information for a single domain. After we create a DNS zone, we can <strong>add records, record sets, and route tables to a domain hosted with Azure DNS</strong>. Using these, we can route traffic and define destinations using a <em>Fully Qualified Domain Name</em> (FQDN) for Azure resources (and other resources as well).</p>
+<h2 id="Create-a-private-DNS-zone"><a href="#Create-a-private-DNS-zone" class="headerlink" title="Create a private DNS zone"></a>Create a private DNS zone</h2><p>A private DNS zone operates very similarly to a DNS zone. However, instead of operating on public records, it operates inside a VNet. It is used to <strong>resolve custom names and domains inside your Azure VNet</strong>. When a VNet is created, a default DNS zone is provided. The default DNS zone uses Azure-provided names, and we must use a private DNS zone to use custom names. A private DNS zone is also required for name resolution across VNets, as default DNS doesn’t support such an option.</p>
+<a id="more"></a>
+<h2 id="Integrate-a-VNet-with-a-private-DNS-zone"><a href="#Integrate-a-VNet-with-a-private-DNS-zone" class="headerlink" title="Integrate a VNet with a private DNS zone"></a>Integrate a VNet with a private DNS zone</h2><p>When a private DNS zone is created, it is a standalone service that doesn’t do much on its own. We must <strong>integrate it with a VNet in order to start using it</strong>. Once integrated, it will provide DNS inside the VNet. Once the VNet is linked to the private DNS zone, the zone can be used for name resolution inside the connected VNet.</p>
+<p>For name resolution across multiple connected VNets, we must use a private DNS zone, as default DNS doesn’t support resolution across networks. <strong>The same applies if the network is connected to an on-premises network</strong>. If we enable auto-registration under configuration, newly created VMs will be automatically registered in the private DNS zone. Otherwise, we must add each new resource manually.</p>
+<h2 id="Create-a-record-set"><a href="#Create-a-record-set" class="headerlink" title="Create a record set"></a>Create a record set</h2><p>When creating a DNS zone, we define what domain we’re going to hold records for. <strong>A DNS zone is created for a root domain defined with an FQDN</strong>. We can add additional subdomains and add records to hold information on other resources on the same domain. In this case, the domain would be <em>toroman.cloud</em>, and the subdomain would be <em>demo</em>. This forms an FQDN, <em>demo.toroman.cloud.</em>, and the record points this domain to the IP address we defined.</p>
+<p>The record set can <strong>hold multiple records for a single subdomain, usually used for redundancy and availability</strong>. Using CNAME and/or an alias can be done with <em>Azure Traffic Manager</em>. In this way, custom domain names can be used for name resolution, instead of the default names provided by Azure.</p>
+<h2 id="Create-a-route-table"><a href="#Create-a-route-table" class="headerlink" title="Create a route table"></a>Create a route table</h2><p>Azure routes network traffic in subnets by default. However, in some cases, we want to <strong>use custom traffic routes to define where and how traffic flows</strong>. In such cases, we use route tables. A route table defines the next hop for our traffic and determines where the network traffic needs to go.</p>
+<p>Route tables use rules and subnet associations to define traffic flow in VNet. When a new route table is created, no configuration is created—only an empty resource. After the resource is created, we need to <strong>define rules and subnets in order to use a route table for the traffic flow</strong>.</p>
+<h2 id="Change-a-route-table"><a href="#Change-a-route-table" class="headerlink" title="Change a route table"></a>Change a route table</h2><p>As mentioned in the previous recipe, creating a new route table will result in an empty resource. Once a resource is created, we can change the settings as needed. Before we configure the routes and subnets associated with the route table, <strong>the only setting we can change is the BGP route propagation</strong>. We may change other settings after creation as well.</p>
+<p>Under the settings of the route table, we can <strong>disable or enable gateway route propagation at any time</strong>. This option, if disabled, prevents on-premises routes from being propagated via BGP to the network interfaces in a VNet subnet. Under the settings, we can create, delete, or change routes and subnets.</p>
+<h2 id="Associate-a-route-table-with-a-subnet"><a href="#Associate-a-route-table-with-a-subnet" class="headerlink" title="Associate a route table with a subnet"></a>Associate a route table with a subnet</h2><p>When a route table is created, it doesn’t do anything until it’s properly configured. There are two things we need to address: which resources are affected, and how. To define which resources are affected, we must <strong>make an association between a subnet and a route table</strong>. This is only one part of the configuration, as just associating a subnet to a route table will do nothing. We must create rules that will apply to this association.</p>
+<h2 id="Dissociate-a-route-table-from-a-subnet"><a href="#Dissociate-a-route-table-from-a-subnet" class="headerlink" title="Dissociate a route table from a subnet"></a>Dissociate a route table from a subnet</h2><p>After we create an association and rules, those rules will apply to all resources on the associated subnet. At some point, we may have created rules in a route table that apply to multiple subnets. If we <strong>no longer want to apply one or more rules to a specific subnet, we can remove the association</strong>. Once the association is removed, the rules will no longer apply to the subnet. If we need to make a single rule no longer apply to a specific subnet, we must remove the association.</p>
+<h2 id="Create-a-route"><a href="#Create-a-route" class="headerlink" title="Create a route"></a>Create a route</h2><p>After we create a route table and the associated subnets, there is still a piece missing. We defined the route table that will be affected with subnet association, but we’re missing the part that defines how it will be affected. We <strong>define how associated subnets are affected using rules called routes</strong>. Routes define traffic routes, stating where specific traffic needs to go. If the default route for specific traffic is the internet, we can change this and reroute the traffic to a specific IP or subnet.</p>
+<p>The route defines the traffic flow. <strong>All traffic from the associated subnet will follow the route defined by these rules</strong>. If we define that traffic will go to the internet, all traffic will go outside the network to an IP address range defined with an IP address prefix. If we choose for traffic to go to a VNet, it will go to a subnet defined by the IP address prefix. If that virtual network gateway is used, all traffic will go through the virtual network gateway and reach its connection on the other side—either another VNet or our local network. The <em>Virtual Appliance</em> option will send all traffic to the virtual appliance, which then, with its own set of rules, defines where the traffic goes next.</p>
+<h2 id="Change-a-route"><a href="#Change-a-route" class="headerlink" title="Change a route"></a>Change a route</h2><p>Route requirements may change over time. In such cases, we can <strong>either remove the route or edit it, depending on our needs</strong>. If a route needs to be adjusted, we can select the option to change the route and apply the new traffic flow at any time.</p>
+<p>The most common scenarios are that <strong>the traffic needs to reach a specific service when the service IP changes over time</strong>. For example, we may need to route all traffic through a virtual appliance, but the IP address of the virtual appliance changes over time. We may change the route in the route table to reflect this change and force the traffic flow through the virtual appliance. Another example is when traffic needs to reach our local network through a virtual network gateway—the destination IP address range may change over time, and we need to reflect these changes in the route once again.</p>
+<h2 id="Delete-a-route"><a href="#Delete-a-route" class="headerlink" title="Delete a route"></a>Delete a route</h2><p>As we have already mentioned, route requirements may change over time. In some cases, <strong>rules are no longer applicable and we must remove them</strong>. In such cases, changing the route will not complete the task and we will need to remove the route completely. This task may be completed by deleting the route. We can either edit routes or remove them to meet these new requirements. When multiple routes are used in a single route table, one of the routes may become obsolete, or even block new requirements. In such cases, we may want to delete a route to resolve any issues.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/1042644649.html" rel="next" title="Local and Virtual Network Gateways">
+                <i class="fa fa-chevron-left"></i> Local and Virtual Network Gateways
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/4134241250.html" rel="prev" title="Azure Firewall">
+                Azure Firewall <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-DNS-zone"><span class="nav-number">1.</span> <span class="nav-text">Create a DNS zone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-private-DNS-zone"><span class="nav-number">2.</span> <span class="nav-text">Create a private DNS zone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrate-a-VNet-with-a-private-DNS-zone"><span class="nav-number">3.</span> <span class="nav-text">Integrate a VNet with a private DNS zone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-record-set"><span class="nav-number">4.</span> <span class="nav-text">Create a record set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-route-table"><span class="nav-number">5.</span> <span class="nav-text">Create a route table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-a-route-table"><span class="nav-number">6.</span> <span class="nav-text">Change a route table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Associate-a-route-table-with-a-subnet"><span class="nav-number">7.</span> <span class="nav-text">Associate a route table with a subnet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dissociate-a-route-table-from-a-subnet"><span class="nav-number">8.</span> <span class="nav-text">Dissociate a route table from a subnet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-route"><span class="nav-number">9.</span> <span class="nav-text">Create a route</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-a-route"><span class="nav-number">10.</span> <span class="nav-text">Change a route</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete-a-route"><span class="nav-number">11.</span> <span class="nav-text">Delete a route</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

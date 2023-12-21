@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Azure,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="Exposing management endpoints (RDP, SSH, HTTP, and others) over a public IP address is not a good idea. Any kind of management access should be controlled and allowed only over a secure connection. Us">
+<meta name="keywords" content="Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Connect to Resources Securely">
+<meta property="og:url" content="https://necusjz.github.io/p/2931158028.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="Exposing management endpoints (RDP, SSH, HTTP, and others) over a public IP address is not a good idea. Any kind of management access should be controlled and allowed only over a secure connection. Us">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Connect to Resources Securely">
+<meta name="twitter:description" content="Exposing management endpoints (RDP, SSH, HTTP, and others) over a public IP address is not a good idea. Any kind of management access should be controlled and allowed only over a secure connection. Us">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/2931158028.html">
+
+
+
+
+
+  <title> Connect to Resources Securely | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2931158028.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Connect to Resources Securely
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T23:40:35+08:00">
+                2022-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>Exposing management endpoints (RDP, SSH, HTTP, and others) over a public IP address is not a good idea</strong>. Any kind of management access should be controlled and allowed only over a secure connection. Usually, this is done by connecting to a private network (via S2S or P2S) and accessing resources over private IP addresses. In some situations, this is not easy to achieve. The cause of this can be insufficient local infrastructure, or in some cases, the scenario may be too complex. Fortunately, there are other ways to achieve the same goal. We can safely connect to our resources using <em>Azure Bastion</em>, <em>Azure Virtual WAN</em>, and <em>Azure Private Link</em>.</p>
+<h2 id="Create-a-bastion-instance"><a href="#Create-a-bastion-instance" class="headerlink" title="Create a bastion instance"></a>Create a bastion instance</h2><p><em>Azure Bastion</em> allows us to connect securely to our Azure resources without additional infrastructure. All we need is a browser. It is essentially <strong>a PaaS service provisioned in our VNet that provides a secure RDP/SSH connection to Azure VMs</strong>. The connection is made directly from the Azure Portal over <em>Transport Layer Security</em> (TLS). Using TLS, it provides a secure RDP and SSH connection to all resources on that network. The connection is made through a browser session, and no public IP address is required. This means that we don’t need to expose any of the management ports over a public IP address.</p>
+<h2 id="Connect-to-a-VM-with-bastion"><a href="#Connect-to-a-VM-with-bastion" class="headerlink" title="Connect to a VM with bastion"></a>Connect to a VM with bastion</h2><p>With Azure Bastion, we can connect to a VM through the browser without a public IP address and without exposing it publicly. Azure Bastion <strong>uses a subnet in the VNet to connect to VMs in that specific network</strong>. It provides a safe connection over TLS and allows a connection to a VM without exposing it over a public IP address.</p>
+<a id="more"></a>
+<h2 id="Create-a-virtual-WAN"><a href="#Create-a-virtual-WAN" class="headerlink" title="Create a virtual WAN"></a>Create a virtual WAN</h2><p>In many situations, the network topology can get very complex. It can be difficult to keep track of all network connections, gateways, and peering processes. <em>Azure Virtual WAN</em> <strong>provides a single interface to manage all these points</strong>. From here, we can configure, control, and monitor connections such as Site-to-Site, Point-to-Site, ExpressRoute, or a connection between VNets. When we have multiple Site-to-Site connections or multiple VNets connected with peering, it can be hard to keep track of all these resources. Azure Virtual WAN allows us to do that with a single service.</p>
+<h2 id="Create-a-hub-in-virtual-WAN"><a href="#Create-a-hub-in-virtual-WAN" class="headerlink" title="Create a hub in virtual WAN"></a>Create a hub in virtual WAN</h2><p>Hubs are used as regional connection points. They contain multiple service endpoints that enable connectivity between different networks and services. They’re <strong>the core of networking for each region</strong>. Virtual hubs represent control points inside a region. From there, we can define all connections to VNets inside the region.</p>
+<p>This applies to Site-to-Site, Point-to-Site, and ExpressRoute. Each section is optional, and we can <strong>create a hub without any configurations for connection types</strong>. If we choose to create them at this point, we need to provide an SKU for each type. A Point-to-Site connection also requires the user’s VPN configuration to be provided. Each connection type can be added at a later time as well.</p>
+<h2 id="Add-a-Site-to-Site-connection-in-a-virtual-hub"><a href="#Add-a-Site-to-Site-connection-in-a-virtual-hub" class="headerlink" title="Add a Site-to-Site connection in a virtual hub"></a>Add a Site-to-Site connection in a virtual hub</h2><p>After a virtual hub is created and the Site-to-Site SKU is defined inside the hub, we can proceed to create a Site-to-Site connection. For this, we need to <strong>apply the appropriate connection settings and provide configuration details</strong>. Adding a Site-to-Site connection to our virtual hub allows us to connect to a virtual hub in a specific region from our on-premises network (or other networks using virtual appliance). To do so, we must provide information about the VPN connection in the virtual hub and configure the VPN device that will be used to connect. However, this allows us only to connect to the hub. We need to connect VNets in order to access Azure resources.</p>
+<h2 id="Add-a-VNet-connection-in-a-virtual-hub"><a href="#Add-a-VNet-connection-in-a-virtual-hub" class="headerlink" title="Add a VNet connection in a virtual hub"></a>Add a VNet connection in a virtual hub</h2><p>A virtual hub represents a central point in an Azure region. But <strong>to actually use this point, we need to connect VNets to a virtual hub</strong>. Then, we can use the virtual hub as intended. A connection can be made over a Site-to-Site connection, a Point-to-Site connection, or from another VNet (connected to the same hub). When creating a connection, we need to provide routing and propagation rules in order to define the network flow. We can also define a static route. A static route will force all traffic to go through a single IP address, usually through a firewall or network virtual appliance.</p>
+<h2 id="Create-a-private-link-endpoint"><a href="#Create-a-private-link-endpoint" class="headerlink" title="Create a private link endpoint"></a>Create a private link endpoint</h2><p><em>Azure Private Link</em> allows us to connect to PaaS services over a secure network. As these services are usually exposed over the internet, this gives us a more secure method of access. There are <strong>two components available to make a secure connection</strong>—a <em>Private Link Endpoint</em> and a <em>Private Link Service</em>. Let’s start by creating a Private Link Endpoint first.</p>
+<p>The Private Link Endpoint associates the selected PaaS resource with the subnet on the VNet. By doing so, we have the option to access the PaaS resource over a secure connection. Optionally, we can integrate a private DNS zone and use DNS resolution instead of IP addresses. A Private Link Endpoint <strong>allows us to link services directly but only individual services and only directly</strong>. If we need to add load balancers in place, we can use a Private Link Service.</p>
+<h2 id="Create-a-private-link-service"><a href="#Create-a-private-link-service" class="headerlink" title="Create a private link service"></a>Create a private link service</h2><p>A Private Link Service allows us to set up a secure connection to resources associated with Standard load balancer. For that, we need to prepare infrastructure prior to deploying the Private Link Service. A Private Link Service and a Private Link Endpoint work in a similar way, allowing us to connect to services (that are by default publicly accessible) over a private network. The main difference is that with a Private Link Endpoint, we link PaaS services, and <strong>with a Private Link Service, we create a custom service behind Standard load balancer</strong>.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/3597318647.html" rel="next" title="Create Hybrid Connections">
+                <i class="fa fa-chevron-left"></i> Create Hybrid Connections
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/2042627151.html" rel="prev" title="Load Balancers">
+                Load Balancers <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-bastion-instance"><span class="nav-number">1.</span> <span class="nav-text">Create a bastion instance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connect-to-a-VM-with-bastion"><span class="nav-number">2.</span> <span class="nav-text">Connect to a VM with bastion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-virtual-WAN"><span class="nav-number">3.</span> <span class="nav-text">Create a virtual WAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-hub-in-virtual-WAN"><span class="nav-number">4.</span> <span class="nav-text">Create a hub in virtual WAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-a-Site-to-Site-connection-in-a-virtual-hub"><span class="nav-number">5.</span> <span class="nav-text">Add a Site-to-Site connection in a virtual hub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-a-VNet-connection-in-a-virtual-hub"><span class="nav-number">6.</span> <span class="nav-text">Add a VNet connection in a virtual hub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-private-link-endpoint"><span class="nav-number">7.</span> <span class="nav-text">Create a private link endpoint</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-private-link-service"><span class="nav-number">8.</span> <span class="nav-text">Create a private link service</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

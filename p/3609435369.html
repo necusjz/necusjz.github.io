@@ -1,0 +1,978 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="SystemDesign,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let u">
+<meta name="keywords" content="SystemDesign">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Consistent Hashing">
+<meta property="og:url" content="https://necusjz.github.io/p/3609435369.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let u">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/00.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/01.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/02.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/03.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/04.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/05.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/06.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/07.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/08.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/09.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/10.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/11.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/12.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/13.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/14.svg">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design Consistent Hashing">
+<meta name="twitter:description" content="To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let u">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/00.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/3609435369.html">
+
+
+
+
+
+  <title> Design Consistent Hashing | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3609435369.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Design Consistent Hashing
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-23T22:44:09+08:00">
+                2023-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let us take an in-depth look at the problem.</p>
+<h2 id="The-rehashing-problem"><a href="#The-rehashing-problem" class="headerlink" title="The rehashing problem"></a>The rehashing problem</h2><p>If you have n cache servers, a common way to balance the load is to use the following hash method: <em>serverIndex = hash(key) % N</em>, where N is the size of the server pool.</p>
+<p>Let us use an example to illustrate how it works. As shown in Table 1, we have 4 servers and 8 string keys with their hashes:</p>
+<table>
+<thead>
+<tr>
+<th align="left">key</th>
+<th align="left">hash</th>
+<th align="left">hash % 4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">key0</td>
+<td align="left">18358617</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key1</td>
+<td align="left">26143584</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key2</td>
+<td align="left">18131146</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">key3</td>
+<td align="left">35863496</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key4</td>
+<td align="left">34085809</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key5</td>
+<td align="left">27581703</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">key6</td>
+<td align="left">38164978</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">key7</td>
+<td align="left">22530351</td>
+<td align="left">3</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<p>To fetch the server where a key is stored, we perform the modular operation %4. For instance, <em>hash(key0) % 4 = 1</em> means a client must contact server 1 to fetch the cached data. Figure 1 shows the distribution of keys based on Table 1.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/00.svg" alt></p>
+<p>This approach works well when the size of the server pool is fixed, and the data distribution is even. However, problems arise when new servers are added, or existing servers are removed. For example, if server 1 goes offline, the size of the server pool becomes 3. Using the same hash function, we get the same hash value for a key. But applying modular operation gives us different server indexes because the number of servers is reduced by 1. We get the results as shown in Table 2 by applying %3:</p>
+<table>
+<thead>
+<tr>
+<th align="left">key</th>
+<th align="left">hash</th>
+<th align="left">hash % 3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">key0</td>
+<td align="left">18358617</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key1</td>
+<td align="left">26143584</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key2</td>
+<td align="left">18131146</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key3</td>
+<td align="left">35863496</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">key4</td>
+<td align="left">34085809</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key5</td>
+<td align="left">27581703</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key6</td>
+<td align="left">38164978</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key7</td>
+<td align="left">22530351</td>
+<td align="left">0</td>
+</tr>
+</tbody></table>
+<p>Figure 2 shows the new distribution of keys based on Table 2.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/01.svg" alt></p>
+<p>As shown in Figure 2, most keys are redistributed, not just the ones originally stored in the offline server (server 1). This means that when server 1 goes offline, most cache clients will connect to the wrong servers to fetch data. This causes a storm of cache misses. Consistent hashing is an effective technique to mitigate this problem.</p>
+<h2 id="Consistent-hashing"><a href="#Consistent-hashing" class="headerlink" title="Consistent hashing"></a>Consistent hashing</h2><p>Quoted from Wikipedia: “Consistent hashing is a special kind of hashing such that when a hash table is re-sized and consistent hashing is used, only k/n keys need to be remapped on average, where k is the number of keys, and n is the number of slots. In contrast, in most traditional hash tables, a change in the number of array slots causes nearly all keys to be remapped [1]”.</p>
+<h3 id="Hash-space-and-hash-ring"><a href="#Hash-space-and-hash-ring" class="headerlink" title="Hash space and hash ring"></a>Hash space and hash ring</h3><p>Now we understand the definition of consistent hashing, let us find out how it works. Assume SHA-1 is used as the hash function f, and the output range of the hash function is: x0, x1, x2, x3, …, xn. In cryptography, SHA-1’s hash space goes from 0 to 2^160 - 1. That means x0 corresponds to 0, xn corresponds to 2^160 – 1, and all the other hash values in the middle fall between 0 and 2^160 - 1. Figure 3 shows the hash space.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/02.svg" alt></p>
+<p>By collecting both ends, we get a hash ring as shown in Figure 4:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/03.svg" alt></p>
+<h3 id="Hash-servers"><a href="#Hash-servers" class="headerlink" title="Hash servers"></a>Hash servers</h3><p>Using the same hash function f, we map servers based on server IP or name onto the ring. Figure 5 shows that 4 servers are mapped on the hash ring.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/04.svg" alt></p>
+<h3 id="Hash-keys"><a href="#Hash-keys" class="headerlink" title="Hash keys"></a>Hash keys</h3><p>One thing worth mentioning is that hash function used here is different from the one in “the rehashing problem”, and there is no modular operation. As shown in Figure 6, 4 cache keys (key0, key1, key2, and key3) are hashed onto the hash ring.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/05.svg" alt></p>
+<h3 id="Server-lookup"><a href="#Server-lookup" class="headerlink" title="Server lookup"></a>Server lookup</h3><p>To determine which server a key is stored on, we go clockwise from the key position on the ring until a server is found. Figure 7 explains this process. Going clockwise, key0 is stored on server 0; key1 is stored on server 1; key2 is stored on server 2 and key3 is stored on server 3.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/06.svg" alt></p>
+<h3 id="Add-a-server"><a href="#Add-a-server" class="headerlink" title="Add a server"></a>Add a server</h3><p>Using the logic described above, adding a new server will only require redistribution of a fraction of keys.</p>
+<p>In Figure 8, after a new server 4 is added, only key0 needs to be redistributed. k1, k2, and k3 remain on the same servers. Let us take a close look at the logic. Before server 4 is added, key0 is stored on server 0. Now, key0 will be stored on server 4 because server 4 is the first server it encounters by going clockwise from key0’s position on the ring. The other keys are not redistributed based on consistent hashing algorithm.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/07.svg" alt></p>
+<h3 id="Remove-a-server"><a href="#Remove-a-server" class="headerlink" title="Remove a server"></a>Remove a server</h3><p>When a server is removed, only a small fraction of keys require redistribution with consistent hashing. In Figure 9, when server 1 is removed, only key1 must be remapped to server 2. The rest of the keys are unaffected.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/08.svg" alt></p>
+<h2 id="Two-issues-in-the-basic-approach"><a href="#Two-issues-in-the-basic-approach" class="headerlink" title="Two issues in the basic approach"></a>Two issues in the basic approach</h2><p>The consistent hashing algorithm was introduced by Karger et al. at MIT [1]. The basic steps are:</p>
+<ul>
+<li>Map servers and keys on to the ring using a uniformly distributed hash function.</li>
+<li>To find out which server a key is mapped to, go clockwise from the key position until the first server on the ring is found.</li>
+</ul>
+<p>Two problems are identified with this approach:</p>
+<ul>
+<li>It is impossible to keep the same size of partitions on the ring for all servers considering a server can be added or removed. A partition is the hash space between adjacent servers. It is possible that the size of the partitions on the ring assigned to each server is very small or fairly large. In Figure 10, if s1 is removed, s2’s partition (highlighted with the bidirectional arrows) is twice as large as s0 and s3’s partition.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/09.svg" alt></li>
+<li>It is possible to have a non-uniform key distribution on the ring. For instance, if servers are mapped to positions listed in Figure 11, most of the keys are stored on server 2. However, server 1 and server 3 have no data.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/10.svg" alt></li>
+</ul>
+<h3 id="Virtual-nodes"><a href="#Virtual-nodes" class="headerlink" title="Virtual nodes"></a>Virtual nodes</h3><p>A technique called virtual nodes or replicas is used to solve these problems. A virtual node refers to the real node, and each server is represented by multiple virtual nodes on the ring. In Figure 12, both server 0 and server 1 have 3 virtual nodes. The 3 is arbitrarily chosen; and in real-world systems, the number of virtual nodes is much larger. Instead of using s0, we have s0_0, s0_1, and s0_2 to represent server 0 on the ring. Similarly, s1_0, s1_1, and s1_2 represent server 1 on the ring. With virtual nodes, each server is responsible for multiple partitions. Partitions (edges) with label s0 are managed by server 0. On the other hand, partitions with label s1 are managed by server 1.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/11.svg" alt></p>
+<p>To find which server a key is stored on, we go clockwise from the key’s location and find the first virtual node encountered on the ring. In Figure 13, to find out which server k0 is stored on, we go clockwise from k0’s location and find virtual node s1_1, which refers to server 1.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/12.svg" alt></p>
+<p>As the number of virtual nodes increases, the distribution of keys becomes more balanced. This is because the standard deviation gets smaller with more virtual nodes, leading to balanced data distribution. Standard deviation measures how data are spread out. The outcome of an experiment carried out by online research [2] shows that with one or two hundred virtual nodes, the standard deviation is between 5% (200 virtual nodes) and 10% (100 virtual nodes) of the mean. The standard deviation will be smaller when we increase the number of virtual nodes. However, more spaces are needed to store data about virtual nodes. This is a tradeoff, and we can tune the number of virtual nodes to fit our system requirements.</p>
+<h3 id="Find-affected-keys"><a href="#Find-affected-keys" class="headerlink" title="Find affected keys"></a>Find affected keys</h3><p>When a server is added or removed, a fraction of data needs to be redistributed. How can we find the affected range to redistribute the keys?</p>
+<p>In Figure 14, server 4 is added onto the ring. The affected range starts from s4 (newly added node) and moves anticlockwise around the ring until a server is found (s3). Thus, keys located between s3 and s4 need to be redistributed to s4.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/13.svg" alt></p>
+<p>When a server (s1) is removed as shown in Figure 15, the affected range starts from s1 (removed node) and moves anticlockwise around the ring until a server is found (s0). Thus, keys located between s0 and s1 must be redistributed to s2.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/14.svg" alt></p>
+<h2 id="Wrap-up"><a href="#Wrap-up" class="headerlink" title="Wrap up"></a>Wrap up</h2><p>In this chapter, we had an in-depth discussion about consistent hashing, including why it is needed and how it works. The benefits of consistent hashing include:</p>
+<ul>
+<li>Minimized keys are redistributed when servers are added or removed.</li>
+<li>It is easy to scale horizontally because data are more evenly distributed.</li>
+<li>Mitigate hotspot key problem. Excessive access to a specific shard could cause server overload. Imagine data for Katy Perry, Justin Bieber, and Lady Gaga all end up on the same shard. Consistent hashing helps to mitigate the problem by distributing the data more evenly.</li>
+</ul>
+<p>Consistent hashing is widely used in real-world systems, including some notable ones:</p>
+<ul>
+<li>Partitioning component of Amazon’s Dynamo database [3]</li>
+<li>Data partitioning across the cluster in Apache Cassandra [4]</li>
+<li>Discord chat application [5]</li>
+<li>Akamai content delivery network [6]</li>
+<li>Maglev network load balancer [7]</li>
+</ul>
+<p>Congratulations on getting this far! Now give yourself a pat on the back. Good job!</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] Consistent hashing:<br><a href="https://en.wikipedia.org/wiki/Consistent_hashing" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Consistent_hashing</a><br>[2] Consistent Hashing:<br><a href="https://tom-e-white.com/2007/11/consistent-hashing.html" target="_blank" rel="noopener">https://tom-e-white.com/2007/11/consistent-hashing.html</a><br>[3] Dynamo: Amazon’s Highly Available Key-value Store:<br><a href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" target="_blank" rel="noopener">https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf</a><br>[4] Cassandra - A Decentralized Structured Storage System:<br><a href="http://www.cs.cornell.edu/Projects/ladis2009/papers/Lakshman-ladis2009.PDF" target="_blank" rel="noopener">http://www.cs.cornell.edu/Projects/ladis2009/papers/Lakshman-ladis2009.PDF</a><br>[5] How Discord Scaled Elixir to 5,000,000 Concurrent Users:<br><a href="https://blog.discord.com/scaling-elixir-f9b8e1e7c29b" target="_blank" rel="noopener">https://blog.discord.com/scaling-elixir-f9b8e1e7c29b</a><br>[6] CS168: The Modern Algorithmic Toolbox Lecture #1: Introduction and Consistent Hashing:<br><a href="http://theory.stanford.edu/~tim/s16/l/l1.pdf" target="_blank" rel="noopener">http://theory.stanford.edu/~tim/s16/l/l1.pdf</a><br>[7] Maglev: A Fast and Reliable Software Network Load Balancer:<br><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf" target="_blank" rel="noopener">https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SystemDesign/" rel="tag"># SystemDesign</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/679484188.html" rel="next" title="Design a Rate Limiter">
+                <i class="fa fa-chevron-left"></i> Design a Rate Limiter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/58895832.html" rel="prev" title="Design a Key-value Store">
+                Design a Key-value Store <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-rehashing-problem"><span class="nav-number">1.</span> <span class="nav-text">The rehashing problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-hashing"><span class="nav-number">2.</span> <span class="nav-text">Consistent hashing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-space-and-hash-ring"><span class="nav-number">2.1.</span> <span class="nav-text">Hash space and hash ring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-servers"><span class="nav-number">2.2.</span> <span class="nav-text">Hash servers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-keys"><span class="nav-number">2.3.</span> <span class="nav-text">Hash keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Server-lookup"><span class="nav-number">2.4.</span> <span class="nav-text">Server lookup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-a-server"><span class="nav-number">2.5.</span> <span class="nav-text">Add a server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-a-server"><span class="nav-number">2.6.</span> <span class="nav-text">Remove a server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-issues-in-the-basic-approach"><span class="nav-number">3.</span> <span class="nav-text">Two issues in the basic approach</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Virtual-nodes"><span class="nav-number">3.1.</span> <span class="nav-text">Virtual nodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-affected-keys"><span class="nav-number">3.2.</span> <span class="nav-text">Find affected keys</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wrap-up"><span class="nav-number">4.</span> <span class="nav-text">Wrap up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

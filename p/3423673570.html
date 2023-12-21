@@ -1,0 +1,1029 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="条件分支控制流掌握如何写出好的条件分支代码非常重要，它可以帮助我们用更简洁、更清晰的代码来表达复杂逻辑。 分支惯用写法当某个对象作为主角出现在 if 分支里时，解释器会主动对它进行真值测试，也就是调用 bool() 函数获取它的布尔值： 12&amp;gt;&amp;gt;&amp;gt; bool([]), bool([1, 2, 3])(False, True)  不要因为过度追求简写而引入其他逻辑问题： 12345">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语法结构">
+<meta property="og:url" content="https://necusjz.github.io/p/3423673570.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="条件分支控制流掌握如何写出好的条件分支代码非常重要，它可以帮助我们用更简洁、更清晰的代码来表达复杂逻辑。 分支惯用写法当某个对象作为主角出现在 if 分支里时，解释器会主动对它进行真值测试，也就是调用 bool() 函数获取它的布尔值： 12&amp;gt;&amp;gt;&amp;gt; bool([]), bool([1, 2, 3])(False, True)  不要因为过度追求简写而引入其他逻辑问题： 12345">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="语法结构">
+<meta name="twitter:description" content="条件分支控制流掌握如何写出好的条件分支代码非常重要，它可以帮助我们用更简洁、更清晰的代码来表达复杂逻辑。 分支惯用写法当某个对象作为主角出现在 if 分支里时，解释器会主动对它进行真值测试，也就是调用 bool() 函数获取它的布尔值： 12&amp;gt;&amp;gt;&amp;gt; bool([]), bool([1, 2, 3])(False, True)  不要因为过度追求简写而引入其他逻辑问题： 12345">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/3423673570.html">
+
+
+
+
+
+  <title> 语法结构 | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3423673570.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                语法结构
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-05T19:23:37+08:00">
+                2022-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="条件分支控制流"><a href="#条件分支控制流" class="headerlink" title="条件分支控制流"></a>条件分支控制流</h2><p>掌握如何写出好的条件分支代码非常重要，它可以帮助我们用更简洁、更清晰的代码来表达复杂逻辑。</p>
+<h3 id="分支惯用写法"><a href="#分支惯用写法" class="headerlink" title="分支惯用写法"></a>分支惯用写法</h3><p>当某个对象作为主角出现在 if 分支里时，解释器会主动对它进行真值测试，也就是调用 bool() 函数获取它的布尔值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bool([]), bool([1, 2, 3])</span><br><span class="line">(False, True)</span><br></pre></td></tr></table></figure>
+
+<p>不要因为过度追求简写而引入其他逻辑问题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更精准：只有为 0 的时候，才会满足分支条件</span></span><br><span class="line"><span class="keyword">if</span> containers_count == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更宽泛：为 0、None、空字符串等时，都可以满足分支条件</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> containers_count:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="修改对象的布尔值"><a href="#修改对象的布尔值" class="headerlink" title="修改对象的布尔值"></a>修改对象的布尔值</h3><p>为类定义 __len__ 魔法方法，实际上就是为它实现了 Python 世界的长度协议，类的实例就可以直接用于真值测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCollection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, users)</span>:</span></span><br><span class="line">        self.items = users</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.items)</span><br><span class="line"></span><br><span class="line">users = UserCollection([<span class="string">'ethan'</span>, <span class="string">'yang'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> users:</span><br><span class="line">    print(<span class="string">"There're some users in the collection!"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>不过，定义 __len__ 并非影响布尔值结果的唯一方法，还有一个魔法方法 __bool__ 和对象的布尔值息息相关：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScoreJudger</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, score)</span>:</span></span><br><span class="line">        this.score = score</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__bool__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.score &gt;= <span class="number">60</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bool(ScoreJudger(60))</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; bool(ScoreJudger(59))</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<h3 id="与-None-比较时使用-is-运算符"><a href="#与-None-比较时使用-is-运算符" class="headerlink" title="与 None 比较时使用 is 运算符"></a>与 None 比较时使用 is 运算符</h3><p>对于自定义对象来说，它们在进行 == 运算时行为是可操纵的——只要实现类型的 __eq__ 魔法方法就行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EqualWithAnything</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; foo = EqualWithAnything()</span><br><span class="line">&gt;&gt;&gt; foo == None</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>== 和 is 的本质区别：</p>
+<ul>
+<li>== 对比两个对象的值是否相等，行为可被 __eq__ 方法重载；</li>
+<li>is 判断两个对象是否是内存里的同一个东西，<strong>无法被重载</strong>；</li>
+</ul>
+<p>仅当你需要判断某个对象是否是 None、True、False 时使用 is，因为除了它们外，其他类型的对象在 Python 中并不是严格以<strong>单例模式</strong>存在的。Python 语言使用了一种名为<strong>整数驻留</strong>（Integer Interning）的底层优化技术，对于 -5 到 256 的这些常用小整数，Python 会将它们缓存在内存里的一个数组中。</p>
+<h3 id="编程建议"><a href="#编程建议" class="headerlink" title="编程建议"></a>编程建议</h3><p>要竭尽所能地避免分支嵌套，多层嵌套可以用<strong>提前返回</strong>的技巧来优化。当你编写分支时，首先找到那些会中断执行的条件，把它们移到函数的最前面，然后在分支里直接使用 return 或 raise 结束执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buy_fruit</span><span class="params">(nerd, store)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> store.is_open():</span><br><span class="line">        <span class="keyword">if</span> store.has_stocks(<span class="string">'apple'</span>):</span><br><span class="line">            <span class="keyword">if</span> nerd.can_afford(store.price(<span class="string">'apple'</span>, amount=<span class="number">1</span>)):</span><br><span class="line">                nerd.buy(store, <span class="string">'apple'</span>, amount=<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nerd.go_home_and_get_money()</span><br><span class="line">                <span class="keyword">return</span> buy_fruit(nerd, store)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> MadAtNoFruit(<span class="string">'no apple in the store!'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> MadAtNoFruit(<span class="string">'store is closed!'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buy_fruit</span><span class="params">(nerd, store)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> store.is_open():</span><br><span class="line">        <span class="keyword">raise</span> MadAtNoFruit(<span class="string">'store is closed!'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> store.has_stocks(<span class="string">'apple'</span>):</span><br><span class="line">        <span class="keyword">raise</span> MadAtNoFruit(<span class="string">'no apple in the store!'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> nerd.can_afford(store.price(<span class="string">'apple'</span>, amount=<span class="number">1</span>)):</span><br><span class="line">        nerd.buy(store, <span class="string">'apple'</span>, amount=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        nerd.go_home_and_get_money()</span><br><span class="line">        <span class="keyword">return</span> buy_fruit(nerd, store)</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用 Python 函数的动态关键字参数（**kwargs）特性，降低分支内代码的相似性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> user.no_profile_exists:</span><br><span class="line">    create_user_profile(</span><br><span class="line">        username=data.username,</span><br><span class="line">        gender=data.gender,</span><br><span class="line">        email=data.email,</span><br><span class="line">        age=data.age,</span><br><span class="line">        address=data.address,</span><br><span class="line">        points=<span class="number">0</span>,</span><br><span class="line">        created=now(),</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    update_user_profile(</span><br><span class="line">        username=data.username,</span><br><span class="line">        gender=data.gender,</span><br><span class="line">        email=data.email,</span><br><span class="line">        age=data.age,</span><br><span class="line">        address=data.address,</span><br><span class="line">        updated=now(),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> user.no_profile_exists:</span><br><span class="line">    _update_or_create = create_user_profile</span><br><span class="line">    extra_args = &#123;<span class="string">'points'</span>: <span class="number">0</span>, <span class="string">'created'</span>: now()&#125;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    _update_or_create = update_user_profile</span><br><span class="line">    extra_args = &#123;<span class="string">'updated'</span>: now()&#125;</span><br><span class="line"></span><br><span class="line">_update_or_create(</span><br><span class="line">    username=user.username,</span><br><span class="line">    gender=user.gender,</span><br><span class="line">    email=user.email,</span><br><span class="line">    age=user.age,</span><br><span class="line">    address=user.address,</span><br><span class="line">    **extra_args,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>德摩根定律</strong>：not A or not B 等价于 not (A and B)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> user.has_logged_in <span class="keyword">or</span> <span class="keyword">not</span> user.is_from_chrome:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'our service is only open for chrome logged in user'</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> (user.has_logged_in <span class="keyword">and</span> user.is_from_chrome):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'our service is only open for chrome logged in user'</span></span><br></pre></td></tr></table></figure>
+
+<p>all() 和 any() 接受一个<strong>可迭代对象</strong>作为参数，返回一个布尔值结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">all_numbers_gt_10</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> numbers:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> numbers:</span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">10</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">all_numbers_gt_10</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> bool(numbers) <span class="keyword">and</span> all(n &gt; <span class="number">10</span> <span class="keyword">for</span> n <span class="keyword">in</span> numbers)</span><br></pre></td></tr></table></figure>
+
+<p>or 最有趣的地方是它的<strong>短路求值</strong>特性，使用 a or b 来表示“a 为空时用 b 代替”的写法非常常见，你在各种编程语言、各类项目源码里都能发现它的影子。但在这种写法下，其实藏着一个陷阱：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假如 config.timeout 的值被主动配置成 0 秒，timeout 也会被重新赋值为 60</span></span><br><span class="line"><span class="comment"># 正确的配置反而被忽略了</span></span><br><span class="line">timeout = config.timeout <span class="keyword">or</span> <span class="number">60</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="异常与错误处理"><a href="#异常与错误处理" class="headerlink" title="异常与错误处理"></a>异常与错误处理</h2><p>如果能善用异常机制优雅地处理好程序里的错误，我们就能用更少、更清晰的代码，写出更健壮的程序。</p>
+<h3 id="优先使用异常捕获"><a href="#优先使用异常捕获" class="headerlink" title="优先使用异常捕获"></a>优先使用异常捕获</h3><p>两种截然不同的编程风格：</p>
+<ul>
+<li>LBYL (Look Before You Leap)：三思而后行，在执行一个可能会出错的操作时，先做一些关键的条件判断，仅当条件满足时才进行操作；</li>
+<li>EAFP (Easier to Ask for Forgiveness than Permission)：获取原谅比许可简单，不做任何事前检查直接执行操作，但在外层用 try 来捕获可能发生的异常；</li>
+</ul>
+<p>和 LBYL 相比，EAFP 编程风格更为简单直接，它总是直奔主流程而去，把意外情况都放在异常处理 try/except 块内消化掉：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">incr_by_one</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(value, int):</span><br><span class="line">        <span class="keyword">return</span> value + <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> isinstance(value, str) <span class="keyword">and</span> value.isdigit():</span><br><span class="line">        <span class="keyword">return</span> int(value) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">f'Unable to perform incr for value: <span class="subst">&#123;value&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">incr_by_one</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> int(value) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">except</span> (TypeError, ValueError) <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">f'Unable to perform incr for value: <span class="subst">&#123;value&#125;</span>, error: <span class="subst">&#123;e&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="try-语句常用知识"><a href="#try-语句常用知识" class="headerlink" title="try 语句常用知识"></a>try 语句常用知识</h3><p>Python 的内置异常类之间存在许多继承关系，比如 BaseException -&gt; Exception -&gt; LookupError -&gt; KeyError，要把更精确的 except 语句放在前面。</p>
+<p>异常捕获语句里的 else 表示：仅当 try 语句块里<strong>没有抛出任何异常</strong>时，才执行 else 分支下的内容，效果就像在 try 最后增加一个标记变量一样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sync_user_profile</span><span class="params">(user)</span>:</span></span><br><span class="line">    sync_succeeded = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        sync_profile(user.profile, to_external=<span class="literal">True</span>)</span><br><span class="line">        sync_succeeded = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">"Error while syncing user profile"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> sync_succeeded:</span><br><span class="line">        send_notification(user, <span class="string">'profile sync succeeded'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sync_user_profile</span><span class="params">(user)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        sync_profile(user.profile, to_external=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">"Error while syncing user profile"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        send_notification(user, <span class="string">'profile sync succeeded'</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>和 finally 语句不同，假如程序在执行 try 代码块时碰到了 return 或 break 等跳转语句，中断了本次异常捕获，那么即便代码没抛出任何异常，else 分支内的逻辑也<strong>不会</strong>被执行。</p>
+</blockquote>
+<p>如果仅仅想记录下某个异常，然后把它重新抛出，交由上层处理。这时，不带任何参数的 raise 语句可以派上用场：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">incr_by_key</span><span class="params">(d, key)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        d[key] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">except</span> KeyError:</span><br><span class="line">        print(<span class="string">f'key <span class="subst">&#123;key&#125;</span> does not exists, re-raise the exception'</span>)</span><br><span class="line">        <span class="keyword">raise</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="抛出异常而不是返回错误"><a href="#抛出异常而不是返回错误" class="headerlink" title="抛出异常而不是返回错误"></a>抛出异常而不是返回错误</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_item</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(name) &gt; MAX_LENGTH_OF_NAME:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, <span class="string">'name of item is too long'</span></span><br><span class="line">    <span class="keyword">if</span> len(get_current_items()) &gt; MAX_ITEMS_QUOTA:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, <span class="string">'items is full'</span></span><br><span class="line">    <span class="keyword">return</span> Item(name=name), <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_from_input</span><span class="params">()</span>:</span></span><br><span class="line">    name = input()</span><br><span class="line">    _, err_msg = create_item(name)</span><br><span class="line">    <span class="keyword">if</span> err_msg:</span><br><span class="line">        print(<span class="string">f'create item failed: <span class="subst">&#123;err_msg&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'item&lt;&#123;name&#125;&gt; created'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateItemError</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">"""创建 Item 失败"""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_item</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(name) &gt; MAX_LENGTH_OF_NAME:</span><br><span class="line">        <span class="keyword">raise</span> CreateItemError(<span class="string">'name of item is too long'</span>)</span><br><span class="line">    <span class="keyword">if</span> len(get_current_items()) &gt; MAX_ITEMS_QUOTA:</span><br><span class="line">        <span class="keyword">raise</span> CreateItemError(<span class="string">'items is full'</span>)</span><br><span class="line">    <span class="keyword">return</span> Item(name=name)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_from_input</span><span class="params">()</span>:</span></span><br><span class="line">    name = input()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        _ = create_item(name)</span><br><span class="line">    <span class="keyword">except</span> CreateItemError <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">f'create item failed: <span class="subst">&#123;e&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">f'item&lt;<span class="subst">&#123;name&#125;</span>&gt; created'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>用抛出异常替代返回错误后，整个代码结构乍看上去变化不大，但细节上的改变其实非常多：</p>
+<ul>
+<li>新函数拥有更稳定的返回值类型，它永远只会返回 Item 类型或是抛出异常；</li>
+<li>最好在函数文档里说明可能抛出的异常类型；</li>
+<li>不同于返回值，异常在被捕获前会不断往调用栈上层汇报。但假如程序缺少一个顶级的统一异常处理逻辑，那么某个被所有人忽视了的异常可能会层层上报，最终<strong>弄垮整个程序</strong>；</li>
+</ul>
+<h3 id="使用上下文管理器"><a href="#使用上下文管理器" class="headerlink" title="使用上下文管理器"></a>使用上下文管理器</h3><p>with 是一个神奇的关键字，它可以在代码中开辟一段由它管理的上下文，并控制程序在进入和退出这段上下文时的行为。只有满足上下文管理器（Context Manager）协议的对象才可以配合 with 使用，要创建一个上下文管理器只要实现 __enter__ 和 __exit__ 两个魔法方法即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DummyContext</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>-<span class="subst">&#123;random.random()&#125;</span>'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_type, exc_value, traceback)</span>:</span></span><br><span class="line">        print(<span class="string">'Exiting DummyContext'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>上下文管理器用于替代 finally 语句清理资源：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conn = create_conn(host, port, timeout=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    conn.send_text(<span class="string">'Hello, world!'</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    print(<span class="string">f'Unable to use connection: <span class="subst">&#123;e&#125;</span>'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">create_conn_obj</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, host, port, timeout=None)</span>:</span></span><br><span class="line">        self.conn = create_conn(host, port, timeout=timeout)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.conn</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_type, exc_val, exc_tb)</span>:</span></span><br><span class="line">        self.conn.close()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> create_conn_obj(host, port, timeout=<span class="literal">None</span>) <span class="keyword">as</span> conn:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        conn.send_text(<span class="string">'Hello, world!'</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">f'Unable to use connection: <span class="subst">&#123;e&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>程序的行为取决于 __exit__ 方法的返回值：</p>
+<ul>
+<li>__exit__ 返回了 True，那么这个异常就会被当前的 with 语句压制住，不再继续抛出，达到忽略异常的效果；</li>
+<li>__exit__ 返回了 False，那这个异常就会被正常抛出，交由调用方处理；</li>
+</ul>
+<p>使用上下文管理器，我们可以很方便地实现可复用的忽略异常功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ignore_closed</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_type, exc_value, traceback)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> exc_type == AlreadyClosedError:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>__exit__ 接收的三个参数：</p>
+<ul>
+<li>exc_type：异常类型；</li>
+<li>exc_value：异常对象；</li>
+<li>traceback：错误的堆栈对象；</li>
+</ul>
+<p>在日常工作中，我们用到的大多数上下文管理器，可以直接通过<strong>生成器函数 + @contextmanager</strong> 的方式来定义，这比创建一个符合协议的类要简单得多：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_conn_obj</span><span class="params">(host, port, timeout=None)</span>:</span></span><br><span class="line">    conn = create_conn(host, port, timeout=timeout)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">yield</span> conn</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
+
+<p>以 yield 关键字为界，yield 前的逻辑会进入管理器时执行（类似于 __enter__），yield 后的逻辑会在退出管理器时执行（类似于 __exit__）。</p>
+<h3 id="编程建议-1"><a href="#编程建议-1" class="headerlink" title="编程建议"></a>编程建议</h3><p>在代码中捕获异常，表面上是避免程序因为异常而直接崩溃，但它的核心，其实是编码者对处于程序主流程之外的、已知或未知情况的一种<strong>妥当</strong>处置：</p>
+<ul>
+<li>永远只捕获那些可能会抛出异常的语句块；</li>
+<li>尽量只捕获精确的异常类型，而不是模糊的 Exception；</li>
+<li>如果出现了预期外的异常，让程序早点儿崩溃也未必是件坏事；</li>
+</ul>
+<p>避免抛出抽象级别高于当前模块的异常：</p>
+<ul>
+<li>让模块只抛出与当前抽象级别一致的异常；</li>
+<li>在必要的地方进行异常包装与转换；</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_image</span><span class="params">(fp)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        image = Image.open(fp)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">raise</span> error_codes.INVALID_IMAGE_UPLOADED</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageOpenError</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, exc)</span>:</span></span><br><span class="line">        self.exc = exc</span><br><span class="line">        super().__init__(<span class="string">f'Image open error: <span class="subst">&#123;self.exc&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_image</span><span class="params">(fp)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        image = Image.open(fp)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">raise</span> ImageOpenError(exc=e)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们同样应该避免泄漏低于当前抽象级别的异常，比如 urllib3 模块是 requests 依赖的低层实现细节。</p>
+</blockquote>
+<p>除了极少数情况外，不要直接忽略异常，通过日志记录下这个异常总会更好。面对异常，调用方可以：</p>
+<ul>
+<li>在 except 语句里捕获并处理它，继续执行后面的代码；</li>
+<li>在 except 语句里捕获它，将错误通知给终端用户，中断执行；</li>
+<li>不捕获异常，让异常继续往堆栈上层走，最终可能导致程序崩溃；</li>
+</ul>
+<p>当开发者编写自定义异常类时，遵循的常见原则：</p>
+<ul>
+<li>要继承 Exception 而不是 BaseException；</li>
+<li>异常类名最好以 Error 或 Exception 结尾；</li>
+<li>调用方是否能清晰区分各种异常；</li>
+</ul>
+<p>我们可以利用异常间的继承关系，设计一些更精准的异常子类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateItemError</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="string">"""创建 Item 失败"""</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateErrorItemsFull</span><span class="params">(CreateItemError)</span>:</span></span><br><span class="line">    <span class="string">"""当前的 Item 容器已满"""</span></span><br></pre></td></tr></table></figure>
+
+<p>还可以创建一些包含额外属性的异常类，比如包含错误代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateItemError</span><span class="params">(Exception)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, error_code, message)</span>:</span></span><br><span class="line">        self.error_code = error_code</span><br><span class="line">        self.message = message</span><br><span class="line">        super().__init__(<span class="string">f'<span class="subst">&#123;self.error_code&#125;</span> - <span class="subst">&#123;self.message&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>assert 是一个专供开发者调试程序的关键字，它所提供的断言检查，可以在执行 Python 时使用 -O 选项直接跳过。请不要拿 assert 来做参数校验，用 raise 语句来替代它吧。</p>
+<p>对于所有编写代码的程序员来说，错误处理永远是一种在代码主流程之外的额外负担。空对象模式（Null Object Pattern）在本该返回 None 值或抛出异常时，返回一个符合正确结果接口的特制空类型对象来代替，以此免去调用方的错误处理工作。</p>
+<h2 id="循环与可迭代对象"><a href="#循环与可迭代对象" class="headerlink" title="循环与可迭代对象"></a>循环与可迭代对象</h2><p>对于一些常见的循环任务，使用 for 比 while 要方便得多。要把循环代码写得漂亮，有时关键不在循环结构自身，而在于另一个用来配合循环的主角：可迭代对象。</p>
+<h3 id="迭代器与可迭代对象"><a href="#迭代器与可迭代对象" class="headerlink" title="迭代器与可迭代对象"></a>迭代器与可迭代对象</h3><p>iter() 函数和 bool() 很像，调用 iter() 会尝试返回一个迭代器对象。迭代器最鲜明的特征是：</p>
+<ul>
+<li>不断执行 next() 函数会返回下一次迭代结果，当迭代器没有更多值可以返回时，便会抛出 StopIteration 异常；</li>
+<li>对迭代器执行 iter() 函数，尝试获取迭代器的迭代器对象时，返回的结果一定是迭代器本身；</li>
+</ul>
+<p>下面这两段循环代码是等价的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names:</span><br><span class="line">    print(name)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">iterator = iter(names)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        name = next(iterator)</span><br><span class="line">        print(name)</span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>要定义一个迭代器类型，关键在于实现 __iter__ 和 __next__ 两个魔法方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Range7</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, start, end)</span>:</span></span><br><span class="line">        self.start = start</span><br><span class="line">        self.end = end</span><br><span class="line">        self.current = start</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">if</span> self.current &gt;= self.end:</span><br><span class="line">                <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> self.num_is_valid(self.current):</span><br><span class="line">                ret = self.current</span><br><span class="line">                self.current += <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> ret</span><br><span class="line">            self.current += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>迭代器是可迭代对象的一种，它最常出现的场景是在迭代其他对象时，作为一种介质或工具对象存在。每个迭代器都<strong>对应一次完整的迭代过程</strong>，因此它自身必须保存与当前迭代相关的状态——迭代位置。如果想让 Range7 对象在每次迭代时都返回完整的结果，我们必须把现在的代码拆成两部分：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Range7</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, start, end)</span>:</span></span><br><span class="line">        self.start = start</span><br><span class="line">        self.end = end</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> Range7Iterator(self)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Range7Iterator</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, range_obj)</span>:</span></span><br><span class="line">        self.range_obj = range_obj</span><br><span class="line">        self.current = range_obj.start</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">if</span> self.current &gt;= self.range_obj.end:</span><br><span class="line">                <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> self.num_is_valid(self.current):</span><br><span class="line">                ret = self.current</span><br><span class="line">                self.current += <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> ret</span><br><span class="line">            self.current += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>迭代器与迭代对象的区别：</p>
+<ul>
+<li>可迭代对象不一定是迭代器，但迭代器一定是可迭代对象；</li>
+<li>对可迭代对象使用 iter() 会返回迭代器，迭代器则会返回其自身；</li>
+<li>每个迭代器的被迭代过程是一次性的，可迭代对象则不一定；</li>
+<li>可迭代对象只需要实现 __iter__ 方法，而迭代器要额外实现 __next__ 方法；</li>
+</ul>
+<p>生成器是一种<strong>懒惰的</strong>可迭代对象，使用它来替代传统列表可以节约内存，提升执行效率。生成器还是一种简化的迭代器实现，使用它可以大大降低实现传统迭代器的编码成本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">range_7_gen</span><span class="params">(start, end)</span>:</span></span><br><span class="line">    num = start</span><br><span class="line">    <span class="keyword">while</span> num &lt; end:</span><br><span class="line">        <span class="keyword">if</span> num != <span class="number">0</span> <span class="keyword">and</span> (num % <span class="number">7</span> == <span class="number">0</span> <span class="keyword">or</span> <span class="string">'7'</span> <span class="keyword">in</span> str(num)):</span><br><span class="line">            <span class="keyword">yield</span> num</span><br><span class="line">        num += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以用 iter() 和 next() 函数来验证<strong>生成器就是迭代器</strong>这个事实：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; nums = range_7_gen(0, 20)</span><br><span class="line">&gt;&gt;&gt; iter(nums)</span><br><span class="line">&lt;generator object range_7_gen at 0x10a0b84a0&gt;</span><br><span class="line">&gt;&gt;&gt; iter(nums) is nums</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; next(nums)</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; next(nums)</span><br><span class="line">14</span><br></pre></td></tr></table></figure>
+
+<h3 id="修饰可迭代对象优化循环"><a href="#修饰可迭代对象优化循环" class="headerlink" title="修饰可迭代对象优化循环"></a>修饰可迭代对象优化循环</h3><p>虽然 enumerate() 函数很简单，但它其实代表了一种循环代码优化思路：<strong>通过修饰可迭代对象来优化循环</strong>。用生成器（或普通的迭代器）在循环外部包装原本的循环主体，完成一些原本必须在循环内部执行的工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_even_only</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> numbers:</span><br><span class="line">        <span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            result += num</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">even_only</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> numbers:</span><br><span class="line">        <span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">yield</span> num</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_even_only</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> even_only(numbers):</span><br><span class="line">        result += num</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-itertools-模块优化循环"><a href="#使用-itertools-模块优化循环" class="headerlink" title="使用 itertools 模块优化循环"></a>使用 itertools 模块优化循环</h3><p>使用 product() 扁平化多层嵌套循环，product() 接收多个可迭代对象作为参数，然后根据它们的笛卡尔积不断生成结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_twelve</span><span class="params">(num_list1, num_list2, num_list3)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> num1 <span class="keyword">in</span> num_list1:</span><br><span class="line">        <span class="keyword">for</span> num2 <span class="keyword">in</span> num_list2:</span><br><span class="line">            <span class="keyword">for</span> num3 <span class="keyword">in</span> num_list3:</span><br><span class="line">                <span class="keyword">if</span> num1 + num2 + num3 == <span class="number">12</span>:</span><br><span class="line">                    <span class="keyword">return</span> num1, num2, num3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> product</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_twelve</span><span class="params">(num_list1, num_list2, num_list3)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> num1, num2, num3 <span class="keyword">in</span> product(num_list1, num_list2, num_list3):</span><br><span class="line">        <span class="keyword">if</span> num1 + num2 + num3 == <span class="number">12</span>:</span><br><span class="line">            <span class="keyword">return</span> num1, num2, num3</span><br></pre></td></tr></table></figure>
+
+<p>使用 islice() 实现循环内隔行处理，islice(seq, start, end, step) 函数和数组切片操作接收的参数几乎完全一致：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_titles</span><span class="params">(filename)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        <span class="keyword">for</span> i, line <span class="keyword">in</span> enumerate(fp):</span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">yield</span> line.strip()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> islice</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_titles</span><span class="params">(filename)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> islice(fp, <span class="number">0</span>, <span class="literal">None</span>, <span class="number">2</span>):</span><br><span class="line">            <span class="keyword">yield</span> line.strip()</span><br></pre></td></tr></table></figure>
+
+<p>使用 takewhile() 替代 break 语句，takewhile(predicate, iterable) 会在迭代第二个参数 iterable 的过程中，不断使用当前值作为参数调用 predicate() 函数，并对返回结果进行真值测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> is_qualified(user):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> 进行处理</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> takewhile</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> takewhile(is_qualified, users):</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> 进行处理</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="循环语句的-else-关键字"><a href="#循环语句的-else-关键字" class="headerlink" title="循环语句的 else 关键字"></a>循环语句的 else 关键字</h3><p>for 循环（和 while 循环）后的 else 关键字，代表如果循环没有碰到任何 break，便执行该分支内的语句。因此，老式的“循环 + 标记变量”代码，就可以简写为“循环 + else 分支”：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_tasks</span><span class="params">(tasks)</span>:</span></span><br><span class="line">    non_pending_found = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> task <span class="keyword">in</span> tasks:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> task.is_pending():</span><br><span class="line">            non_pending_found = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        process(task)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> non_pending_found:</span><br><span class="line">        notify_admin(<span class="string">'Found non-pending task, processing aborted.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        notify_admin(<span class="string">'All tasks was processed.'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_tasks</span><span class="params">(tasks)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> task <span class="keyword">in</span> tasks:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> task.is_pending():</span><br><span class="line">            notify_admin(<span class="string">'Found non-pending task, processing aborted.'</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        process(task)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        notify_admin(<span class="string">'All tasks was processed.'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="编程建议-2"><a href="#编程建议-2" class="headerlink" title="编程建议"></a>编程建议</h3><p>Python 语言不支持带标签的 break 语句，无法用一个 break 跳出多层循环。如果想快速从嵌套循环里跳出，需要把循环代码拆分成一个新函数，然后直接使用 return：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_first_word</span><span class="params">(fp, prefix)</span>:</span></span><br><span class="line">    first_word = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> line.split():</span><br><span class="line">            <span class="keyword">if</span> word.startswith(prefix):</span><br><span class="line">                first_word = word</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> first_word:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> first_word:</span><br><span class="line">        print(<span class="string">f'Found the first word startswith <span class="subst">&#123;prefix&#125;</span>: <span class="subst">&#123;first_word&#125;</span>.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">f'Word starts with <span class="subst">&#123;prefix&#125;</span> was not found.'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_first_word</span><span class="params">(fp, prefix)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> line.split():</span><br><span class="line">            <span class="keyword">if</span> word.startswith(prefix):</span><br><span class="line">                <span class="keyword">return</span> word</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_first_word</span><span class="params">(fp, prefix)</span>:</span></span><br><span class="line">    first_word = find_first_word(fp, prefix)</span><br><span class="line">    <span class="keyword">if</span> first_word:</span><br><span class="line">        print(<span class="string">f'Found the first word startswith <span class="subst">&#123;prefix&#125;</span>: <span class="subst">&#123;first_word&#125;</span>.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">f'Word starts with <span class="subst">&#123;prefix&#125;</span> was not found.'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>拿到字典 d 的第一个 key，先用 iter() 获取一个 d.keys() 的迭代器，再对它调用 next()：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d = &#123;&apos;foo&apos;: 1, &apos;bar&apos;: 2&#125;</span><br><span class="line">&gt;&gt;&gt; next(iter(d.keys()))</span><br><span class="line">&apos;foo&apos;</span><br></pre></td></tr></table></figure>
+
+<p>找到列表 nums 里面第一个可以被 7 整除的数字，直接用 next() 配合生成器表达式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; nums = [3, 6, 8, 2, 21, 30, 42]</span><br><span class="line">&gt;&gt;&gt; next(i for i in nums if i % 7 == 0)</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+
+<p>你需要将生成器（迭代器）<strong>可被一次性耗尽</strong>的特点铭记于心，避免写出由它所导致的 bug。假如要重复使用一个生成器，可以调用 list() 函数将它转成列表后再使用。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2925783580.html" rel="next" title="蟒蛇军火库">
+                <i class="fa fa-chevron-left"></i> 蟒蛇军火库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/1690741888.html" rel="prev" title="场景：消除条件分支">
+                场景：消除条件分支 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#条件分支控制流"><span class="nav-number">1.</span> <span class="nav-text">条件分支控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支惯用写法"><span class="nav-number">1.1.</span> <span class="nav-text">分支惯用写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改对象的布尔值"><span class="nav-number">1.2.</span> <span class="nav-text">修改对象的布尔值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-None-比较时使用-is-运算符"><span class="nav-number">1.3.</span> <span class="nav-text">与 None 比较时使用 is 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议"><span class="nav-number">1.4.</span> <span class="nav-text">编程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常与错误处理"><span class="nav-number">2.</span> <span class="nav-text">异常与错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优先使用异常捕获"><span class="nav-number">2.1.</span> <span class="nav-text">优先使用异常捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#try-语句常用知识"><span class="nav-number">2.2.</span> <span class="nav-text">try 语句常用知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抛出异常而不是返回错误"><span class="nav-number">2.3.</span> <span class="nav-text">抛出异常而不是返回错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用上下文管理器"><span class="nav-number">2.4.</span> <span class="nav-text">使用上下文管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议-1"><span class="nav-number">2.5.</span> <span class="nav-text">编程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环与可迭代对象"><span class="nav-number">3.</span> <span class="nav-text">循环与可迭代对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器与可迭代对象"><span class="nav-number">3.1.</span> <span class="nav-text">迭代器与可迭代对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰可迭代对象优化循环"><span class="nav-number">3.2.</span> <span class="nav-text">修饰可迭代对象优化循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-itertools-模块优化循环"><span class="nav-number">3.3.</span> <span class="nav-text">使用 itertools 模块优化循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句的-else-关键字"><span class="nav-number">3.4.</span> <span class="nav-text">循环语句的 else 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议-2"><span class="nav-number">3.5.</span> <span class="nav-text">编程建议</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

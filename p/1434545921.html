@@ -1,0 +1,920 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Azure,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="Overview of Azure subscriptions, management groups, and resourcesYou need to learn the organizing structure for resources in Azure, which has four levels: Management Groups, Subscriptions, Resource Gr">
+<meta name="keywords" content="Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Describe Core Azure Architectural Components">
+<meta property="og:url" content="https://necusjz.github.io/p/1434545921.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="Overview of Azure subscriptions, management groups, and resourcesYou need to learn the organizing structure for resources in Azure, which has four levels: Management Groups, Subscriptions, Resource Gr">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/05.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/06.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/07.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/08.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/09.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/13.png">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Describe Core Azure Architectural Components">
+<meta name="twitter:description" content="Overview of Azure subscriptions, management groups, and resourcesYou need to learn the organizing structure for resources in Azure, which has four levels: Management Groups, Subscriptions, Resource Gr">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/05.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/1434545921.html">
+
+
+
+
+
+  <title> Describe Core Azure Architectural Components | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1434545921.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Describe Core Azure Architectural Components
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-30T20:31:53+08:00">
+                2022-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Overview-of-Azure-subscriptions-management-groups-and-resources"><a href="#Overview-of-Azure-subscriptions-management-groups-and-resources" class="headerlink" title="Overview of Azure subscriptions, management groups, and resources"></a>Overview of Azure subscriptions, management groups, and resources</h2><p>You need to learn the organizing structure for resources in Azure, which has four levels: <em>Management Groups</em>, <em>Subscriptions</em>, <em>Resource Groups</em>, and <em>Resources</em>. The following image shows <strong>the top-down hierarchy of organization for these levels</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/05.png" alt></p>
+<p>Having seen the top-down hierarchy of organization, let’s <strong>describe each of those levels from the bottom up</strong>:</p>
+<ul>
+<li><strong>Resources</strong>: Resources are instances of services that you create, like VMs, storage, or SQL databases;</li>
+<li><strong>Resource groups</strong>: Resources are combined into resource groups, which act as a logical container into which Azure resources like web apps, databases, and storage accounts are deployed and managed;</li>
+<li><strong>Subscriptions</strong>: A subscription groups together user accounts and the resources that have been created by those user accounts. For each subscription, there are limits or quotas on the amount of resources that you can create and use. Organizations can use subscriptions to manage costs and the resources that are created by users, teams, or projects;</li>
+<li><strong>Management groups</strong>: They help you manage access, policy, and compliance for multiple subscriptions. All subscriptions in a management group automatically inherit the conditions applied to the management group;</li>
+</ul>
+<a id="more"></a>
+<h2 id="Azure-regions-availability-zones-and-region-pairs"><a href="#Azure-regions-availability-zones-and-region-pairs" class="headerlink" title="Azure regions, availability zones, and region pairs"></a>Azure regions, availability zones, and region pairs</h2><p>Resources are created in regions, which are different geographical locations around the globe that contain Azure datacenters. Azure is made up of datacenters located around the globe. When you use a service or create a resource such as a SQL database or VM, you’re using physical equipment in one or more of these locations. These specific <strong>datacenters aren’t exposed to users directly, instead, Azure organizes them into regions</strong>. Some of these regions offer availability zones, which are different Azure datacenters within that region.</p>
+<h3 id="Azure-regions"><a href="#Azure-regions" class="headerlink" title="Azure regions"></a>Azure regions</h3><p>A <em>Region</em> is a geographical area on the planet that <strong>contains at least one but potentially multiple datacenters that are nearby and networked together with a low-latency network</strong>. Azure intelligently assigns and controls the resources within each region to ensure workloads are appropriately balanced. When you deploy a resource in Azure, you’ll often need to choose the region where you want your resource deployed.</p>
+<blockquote>
+<p>Some services or VM features are only available in certain regions, such as specific VM sizes or storage types. There are also some global Azure services that don’t require you to select a particular region, such as <em>Azure Active Directory</em>, <em>Azure Traffic Manager</em>, and <em>Azure DNS</em>.</p>
+</blockquote>
+<p>A few examples of regions are West US, Canada Central, West Europe, Australia East, and Japan West. Here’s <strong>a view of all the available regions</strong> as of June 2020:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/06.png" alt></p>
+<h4 id="Why-are-regions-important"><a href="#Why-are-regions-important" class="headerlink" title="Why are regions important?"></a>Why are regions important?</h4><p>Azure has more global regions than any other cloud provider. These regions give you the flexibility to bring applications closer to your users no matter where they are. Global regions <strong>provide better scalability and redundancy, also preserve data residency for your services</strong>.</p>
+<h4 id="Special-Azure-regions"><a href="#Special-Azure-regions" class="headerlink" title="Special Azure regions"></a>Special Azure regions</h4><p>Azure has specialized regions that you might want to use when you <strong>build out your applications for compliance or legal purposes</strong>. A few examples include:</p>
+<ul>
+<li><strong>US DoD Central, US Gov Virginia, US Gov Iowa and more</strong>: These regions are physical and logical network-isolated instances of Azure for U.S. government agencies and partners. These datacenters are operated by screened U.S. personnel and include additional compliance certifications;</li>
+<li><strong>China East, China North, and more</strong>: These regions are available through a unique partnership between Microsoft and 21Vianet, whereby Microsoft doesn’t directly maintain the datacenters;</li>
+</ul>
+<h3 id="Azure-availability-zones"><a href="#Azure-availability-zones" class="headerlink" title="Azure availability zones"></a>Azure availability zones</h3><p>You want to ensure your services and data are redundant so you can protect your information in case of failure. When you host your infrastructure, setting up your own redundancy requires that you create duplicate hardware environments. <strong>Azure can help make your app highly available</strong> through <em>Availability Zone</em>.</p>
+<h4 id="What-is-an-availability-zone"><a href="#What-is-an-availability-zone" class="headerlink" title="What is an availability zone?"></a>What is an availability zone?</h4><p>Availability zones are physically separate datacenters within an Azure region. Each availability zone is made up of one or more datacenters equipped with independent power, cooling, and networking. An availability zone is set up to be an <em>Isolation Boundary</em>. <strong>If one zone goes down, the other continues working</strong>. Availability zones are connected through high-speed, private fiber-optic networks:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/07.png" alt></p>
+<h4 id="Supported-regions"><a href="#Supported-regions" class="headerlink" title="Supported regions"></a>Supported regions</h4><p><strong>Not every region has support for availability zones</strong>. For an updated list, see <a href="https://docs.microsoft.com/en-us/azure/availability-zones/az-region" target="_blank" rel="noopener">Regions that support availability zones in Azure</a>.</p>
+<h4 id="Use-availability-zones-in-your-apps"><a href="#Use-availability-zones-in-your-apps" class="headerlink" title="Use availability zones in your apps"></a>Use availability zones in your apps</h4><p>You can use availability zones to run mission-critical applications and build high-availability into your application architecture by co-locating your compute, storage, networking, and data resources within a zone and replicating in other zones. Keep in mind that <strong>there could be a cost to duplicating your services and transferring data between zones</strong>.</p>
+<p>Availability zones are primarily for VMs, managed disks, load balancers, and SQL databases. Azure services that <strong>support availability zones fall into three categories</strong>:</p>
+<ul>
+<li><strong>Zonal services</strong>: You pin the resource to a specific zone (for example, VMs, managed disks, IP addresses);</li>
+<li><strong>Zone-redundant services</strong>: The platform replicates automatically across zones (for example, zone-redundant storage, SQL Database);</li>
+<li><strong>Non-regional services</strong>: Services are always available from Azure geographies and are resilient to zone-wide outages as well as region-wide outages;</li>
+</ul>
+<h3 id="Azure-region-pairs"><a href="#Azure-region-pairs" class="headerlink" title="Azure region pairs"></a>Azure region pairs</h3><p>Availability zones are created by using one or more datacenters. There’s <strong>a minimum of three zones within a single region</strong>. It’s possible that a large disaster could cause an outage big enough to affect even two datacenters. That’s why Azure also creates <em>Region Pair</em>.</p>
+<h4 id="What-is-a-region-pair"><a href="#What-is-a-region-pair" class="headerlink" title="What is a region pair?"></a>What is a region pair?</h4><p>Each Azure region is always <strong>paired with another region within the same geography (such as US, Europe, or Asia) at least 300 miles away</strong>. This approach allows for the replication of resources (such as VM storage) across a geography that helps reduce the likelihood of interruptions because of events such as natural disasters, civil unrest, power outages, or physical network outages that affect both regions at once. If a region in a pair was affected by a natural disaster, for instance, services would automatically failover to the other region in its region pair. Examples of region pairs in Azure are West US paired with East US and SouthEast Asia paired with East Asia:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/08.png" alt></p>
+<p>Because the pair of regions is directly connected and far enough apart to be isolated from regional disasters, you can use them to provide reliable services and data redundancy. <strong>Some services offer automatic geo-redundant storage by using region pairs</strong>.</p>
+<p><strong>Additional advantages of region pairs</strong>:</p>
+<ul>
+<li>If an extensive Azure outage occurs, one region out of every pair is prioritized to make sure at least one is restored as quickly as possible for applications hosted in that region pair;</li>
+<li>Planned Azure updates are rolled out to paired regions one region at a time to minimize downtime and risk of application outage;</li>
+<li>Data continues to reside within the same geography as its pair (except for Brazil South) for tax- and law-enforcement jurisdiction purposes;</li>
+</ul>
+<h2 id="Azure-resources-and-Azure-Resource-Manager"><a href="#Azure-resources-and-Azure-Resource-Manager" class="headerlink" title="Azure resources and Azure Resource Manager"></a>Azure resources and Azure Resource Manager</h2><p>Before you create a subscription for your service, you will need to <strong>be ready to start creating resources and storing them in resource groups</strong>. With that in mind, it’s important to define those terms:</p>
+<ul>
+<li><strong>Resource</strong>: A manageable item that’s available through Azure. VMs, storage accounts, web apps, databases, and VNets are examples of resources;</li>
+<li><strong>Resource group</strong>: A container that holds related resources for an Azure solution. The resource group includes resources that you want to manage as a group. You decide which resources belong in a resource group based on what makes the most sense for your organization;</li>
+</ul>
+<h3 id="Azure-resource-groups"><a href="#Azure-resource-groups" class="headerlink" title="Azure resource groups"></a>Azure resource groups</h3><p>Resource groups are a fundamental element of the Azure platform. A resource group is <strong>a logical container for resources deployed on Azure</strong>. These resources are anything you create in an Azure subscription like VMs, Azure Application Gateway instances, and Azure Cosmos DB instances. All resources must be in a resource group, and a resource can only be a member of a single resource group. Many resources can be moved between resource groups with some services having specific limitations or requirements to move. Resource groups can’t be nested. Before any resource can be provisioned, you need a resource group for it to be placed in.</p>
+<h4 id="Logical-grouping"><a href="#Logical-grouping" class="headerlink" title="Logical grouping"></a>Logical grouping</h4><p>Resource groups exist to help manage and organize your Azure resources. By placing resources of similar usage, type, or location in a resource group, you can provide order and organization to resources you create in Azure. Logical grouping is the aspect that you’re most interested in here, because <strong>there’s a lot of disorder among our resources</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/09.png" alt></p>
+<h4 id="Life-cycle"><a href="#Life-cycle" class="headerlink" title="Life cycle"></a>Life cycle</h4><p>If you delete a resource group, all resources contained within it are also deleted. Organizing resources by life cycle can be useful in nonproduction environments, where you might try an experiment and then dispose of it. Resource groups <strong>make it easy to remove a set of resources all at once</strong>.</p>
+<h4 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h4><p>Resource groups are also a scope for applying <em>Role-Based Access Control</em> (RBAC) permissions. By applying RBAC permissions to a resource group, you can <strong>ease administration and limit access to allow only what’s needed</strong>.</p>
+<h3 id="Azure-resource-manager"><a href="#Azure-resource-manager" class="headerlink" title="Azure resource manager"></a>Azure resource manager</h3><p><em>Azure Resource Manager</em> is the deployment and management service for Azure. It <strong>provides a management layer that enables you to create, update, and delete resources in your Azure account</strong>. You use management features like access control, locks, and tags to secure and organize your resources after deployment.</p>
+<p>When a user sends a request from any of the Azure tools, APIs, or SDKs, ARM receives the request. It <strong>authenticates and authorizes the request, then sends the request to the Azure service</strong>, which takes the requested action. Because all requests are handled through the same API, you see consistent results and capabilities in all the different tools.</p>
+<p>The following image <strong>shows the role ARM plays in handling Azure requests</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/10.png" alt></p>
+<p>All capabilities that are available in the Azure Portal are <strong>also available through PowerShell, the Azure CLI, REST APIs, and client SDKs</strong>. Functionality initially released through APIs will be represented in the portal within 180 days of initial release.</p>
+<p><strong>The benefits of using ARM</strong>:</p>
+<ul>
+<li>Manage your infrastructure through declarative templates rather than scripts. An ARM template is a JSON file that defines what you want to deploy to Azure;</li>
+<li>Deploy, manage, and monitor all the resources for your solution as a group, rather than handling these resources individually;</li>
+<li>Redeploy your solution throughout the development life cycle and have confidence your resources are deployed in a consistent state;</li>
+<li>Define the dependencies between resources so they’re deployed in the correct order;</li>
+<li>Apply access control to all services because RBAC is natively integrated into the management platform;</li>
+<li>Apply tags to resources to logically organize all the resources in your subscription;</li>
+<li>Clarify your organization’s billing by viewing costs for a group of resources that share the same tag;</li>
+</ul>
+<h2 id="Azure-subscriptions-and-management-groups"><a href="#Azure-subscriptions-and-management-groups" class="headerlink" title="Azure subscriptions and management groups"></a>Azure subscriptions and management groups</h2><p>As your service gets started with Azure, one of your first steps will be to <strong>create at least one Azure subscription</strong>. You’ll use it to create your cloud-based resources in Azure.</p>
+<h3 id="Azure-subscriptions"><a href="#Azure-subscriptions" class="headerlink" title="Azure subscriptions"></a>Azure subscriptions</h3><p>Using Azure requires an Azure subscription. A subscription provides you with authenticated and authorized access to Azure products and services. It also allows you to provision resources. An Azure subscription is a logical unit of Azure services that links to an Azure account, which is <strong>an identity in Azure AD or in a directory that Azure AD trusts</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/11.png" alt></p>
+<p>An account can have one subscription or multiple subscriptions that have different billing models and to which you apply different access-management policies. You can use Azure subscriptions to define boundaries around Azure products, services, and resources. There are <strong>two types of subscription boundaries that you can use</strong>:</p>
+<ul>
+<li><strong>Billing boundary</strong>: This subscription type determines how an Azure account is billed for using Azure. You can create multiple subscriptions for different types of billing requirements. Azure generates separate billing reports and invoices for each subscription so that you can organize and manage costs;</li>
+<li><strong>Access control boundary</strong>: Azure applies access-management policies at the subscription level, and you can create separate subscriptions to reflect different organizational structures. An example is that within a business, you have different departments to which you apply distinct Azure subscription policies. This billing model allows you to manage and control access to the resources that users provision with specific subscriptions;</li>
+</ul>
+<h4 id="Create-additional-Azure-subscriptions"><a href="#Create-additional-Azure-subscriptions" class="headerlink" title="Create additional Azure subscriptions"></a>Create additional Azure subscriptions</h4><p>You might want to <strong>create additional subscriptions for resource or billing management purposes</strong>. For example, you might choose to create additional subscriptions to separate:</p>
+<ul>
+<li><strong>Environments</strong>: When managing your resources, you can choose to create subscriptions to set up separate environments for development and testing, security, or to isolate data for compliance reasons. This design is particularly useful because resource access control occurs at the subscription level;</li>
+<li><strong>Organizational structures</strong>: You can create subscriptions to reflect different organizational structures. For example, you could limit a team to lower-cost resources, while allowing the IT department a full range. This design allows you to manage and control access to the resources that users provision within each subscription;</li>
+<li><strong>Billing</strong>: You might want to also create additional subscriptions for billing purposes. Because costs are first aggregated at the subscription level, you might want to create subscriptions to manage and track costs based on your needs. For instance, you might want to create one subscription for your production workloads and another subscription for your development and testing workloads;</li>
+</ul>
+<p>You might also <strong>need additional subscriptions because of the limitation</strong>:</p>
+<ul>
+<li><strong>Subscription limits</strong>: Subscriptions are bound to some hard limitations. For example, the maximum number of Azure ExpressRoute circuits per subscription is 10. Those limits should be considered as you create subscriptions on your account. If there’s a need to go over those limits in particular scenarios, you might need additional subscriptions;</li>
+</ul>
+<h4 id="Customize-billing-to-meet-your-needs"><a href="#Customize-billing-to-meet-your-needs" class="headerlink" title="Customize billing to meet your needs"></a>Customize billing to meet your needs</h4><p><strong>If you have multiple subscriptions, you can organize them into invoice sections</strong>. Each invoice section is a line item on the invoice that shows the charges incurred that month. For example, you might need a single invoice for your organization but want to organize charges by department, team, or project.</p>
+<p>Depending on your needs, you can set up multiple invoices within the same billing account. To do this, create additional billing profiles. <strong>Each billing profile has its own monthly invoice and payment method</strong>. The following diagram shows an overview of how billing is structured. If you’ve previously signed up for Azure or if your organization has an <em>Enterprise Agreement</em>, your billing might be set up differently:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/12.png" alt></p>
+<h3 id="Azure-management-groups"><a href="#Azure-management-groups" class="headerlink" title="Azure management groups"></a>Azure management groups</h3><p>If your organization has many subscriptions, you might need a way to efficiently manage access, policies, and compliance for those subscriptions. Azure management groups provide a level of scope above subscriptions. You organize subscriptions into containers called management groups and apply your governance conditions to the management groups. <strong>All subscriptions within a management group automatically inherit the conditions applied to the management group</strong>.</p>
+<p>Management groups give you enterprise-grade management at a large scale no matter what type of subscriptions you might have. <strong>All subscriptions within a single management group must trust the same Azure AD tenant</strong>. For example, you can apply policies to a management group that limits the regions available for VM creation. This policy would be applied to all management groups, subscriptions, and resources under that management group by only allowing VMs to be created in that region.</p>
+<h4 id="Hierarchy-of-management-groups-and-subscriptions"><a href="#Hierarchy-of-management-groups-and-subscriptions" class="headerlink" title="Hierarchy of management groups and subscriptions"></a>Hierarchy of management groups and subscriptions</h4><p>You can <strong>build a flexible structure of management groups and subscriptions to organize your resources into a hierarchy for unified policy and access management</strong>. The following diagram shows an example of creating a hierarchy for governance by using management groups:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/13.png" alt></p>
+<p>You can create a hierarchy that applies a policy. For example, you could limit VM locations to the US West in a group called Production. This policy will inherit onto all the Enterprise Agreement subscriptions that are descendants of that management group and will apply to all VMs under those subscriptions. <strong>This security policy can’t be altered by the resource or subscription owner</strong>, which allows for improved governance.</p>
+<p>Another scenario where you would use management groups is to provide user access to multiple subscriptions. By moving multiple subscriptions under that management group, you can <strong>create one RBAC assignment on the management group, which will inherit that access to all the subscriptions</strong>. One assignment on the management group can enable users to have access to everything they need instead of scripting RBAC over different subscriptions.</p>
+<p><strong>Important facts about management groups</strong>:</p>
+<ul>
+<li>10,000 management groups can be supported in a single directory;</li>
+<li>A management group tree can support up to six levels of depth. This limit doesn’t include the root level or the subscription level;</li>
+<li>Each management group and subscription can support only one parent;</li>
+<li>Each management group can have many children;</li>
+<li>All subscriptions and management groups are within a single hierarchy in each directory;</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/641155808.html" rel="next" title="Discuss Azure Fundamental Concepts">
+                <i class="fa fa-chevron-left"></i> Discuss Azure Fundamental Concepts
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/1106653324.html" rel="prev" title="最易懂的贪心算法">
+                最易懂的贪心算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview-of-Azure-subscriptions-management-groups-and-resources"><span class="nav-number">1.</span> <span class="nav-text">Overview of Azure subscriptions, management groups, and resources</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Azure-regions-availability-zones-and-region-pairs"><span class="nav-number">2.</span> <span class="nav-text">Azure regions, availability zones, and region pairs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-regions"><span class="nav-number">2.1.</span> <span class="nav-text">Azure regions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-are-regions-important"><span class="nav-number">2.1.1.</span> <span class="nav-text">Why are regions important?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Special-Azure-regions"><span class="nav-number">2.1.2.</span> <span class="nav-text">Special Azure regions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-availability-zones"><span class="nav-number">2.2.</span> <span class="nav-text">Azure availability zones</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-an-availability-zone"><span class="nav-number">2.2.1.</span> <span class="nav-text">What is an availability zone?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Supported-regions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Supported regions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-availability-zones-in-your-apps"><span class="nav-number">2.2.3.</span> <span class="nav-text">Use availability zones in your apps</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-region-pairs"><span class="nav-number">2.3.</span> <span class="nav-text">Azure region pairs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-region-pair"><span class="nav-number">2.3.1.</span> <span class="nav-text">What is a region pair?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Azure-resources-and-Azure-Resource-Manager"><span class="nav-number">3.</span> <span class="nav-text">Azure resources and Azure Resource Manager</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-resource-groups"><span class="nav-number">3.1.</span> <span class="nav-text">Azure resource groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logical-grouping"><span class="nav-number">3.1.1.</span> <span class="nav-text">Logical grouping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Life-cycle"><span class="nav-number">3.1.2.</span> <span class="nav-text">Life cycle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Authorization"><span class="nav-number">3.1.3.</span> <span class="nav-text">Authorization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-resource-manager"><span class="nav-number">3.2.</span> <span class="nav-text">Azure resource manager</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Azure-subscriptions-and-management-groups"><span class="nav-number">4.</span> <span class="nav-text">Azure subscriptions and management groups</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-subscriptions"><span class="nav-number">4.1.</span> <span class="nav-text">Azure subscriptions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-additional-Azure-subscriptions"><span class="nav-number">4.1.1.</span> <span class="nav-text">Create additional Azure subscriptions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Customize-billing-to-meet-your-needs"><span class="nav-number">4.1.2.</span> <span class="nav-text">Customize billing to meet your needs</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-management-groups"><span class="nav-number">4.2.</span> <span class="nav-text">Azure management groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hierarchy-of-management-groups-and-subscriptions"><span class="nav-number">4.2.1.</span> <span class="nav-text">Hierarchy of management groups and subscriptions</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

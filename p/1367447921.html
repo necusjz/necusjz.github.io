@@ -1,0 +1,1015 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="变量与注释当我们看到一段代码时，最先注意到的，不是代码有几层循环，用了什么模式，而是变量与注释，因为它们是代码里最接近自然语言的东西，最容易被大脑消化、理解。 变量常见用法Python 支持灵活的动态解包语法，只要用星号表达式（*variables）作为变量名，它便会贪婪地捕获多个值对象，并将捕获到的内容作为列表赋值给 variables： 1234&amp;gt;&amp;gt;&amp;gt; data = [&amp;ap">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量与基础类型">
+<meta property="og:url" content="https://necusjz.github.io/p/1367447921.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="变量与注释当我们看到一段代码时，最先注意到的，不是代码有几层循环，用了什么模式，而是变量与注释，因为它们是代码里最接近自然语言的东西，最容易被大脑消化、理解。 变量常见用法Python 支持灵活的动态解包语法，只要用星号表达式（*variables）作为变量名，它便会贪婪地捕获多个值对象，并将捕获到的内容作为列表赋值给 variables： 1234&amp;gt;&amp;gt;&amp;gt; data = [&amp;ap">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="变量与基础类型">
+<meta name="twitter:description" content="变量与注释当我们看到一段代码时，最先注意到的，不是代码有几层循环，用了什么模式，而是变量与注释，因为它们是代码里最接近自然语言的东西，最容易被大脑消化、理解。 变量常见用法Python 支持灵活的动态解包语法，只要用星号表达式（*variables）作为变量名，它便会贪婪地捕获多个值对象，并将捕获到的内容作为列表赋值给 variables： 1234&amp;gt;&amp;gt;&amp;gt; data = [&amp;ap">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/1367447921.html">
+
+
+
+
+
+  <title> 变量与基础类型 | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1367447921.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                变量与基础类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-04T20:23:54+08:00">
+                2022-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="变量与注释"><a href="#变量与注释" class="headerlink" title="变量与注释"></a>变量与注释</h2><p>当我们看到一段代码时，最先注意到的，不是代码有几层循环，用了什么模式，而是<strong>变量与注释</strong>，因为它们是代码里最接近自然语言的东西，最容易被大脑消化、理解。</p>
+<h3 id="变量常见用法"><a href="#变量常见用法" class="headerlink" title="变量常见用法"></a>变量常见用法</h3><p>Python 支持灵活的动态解包语法，只要用星号表达式（*variables）作为变量名，它便会<strong>贪婪</strong>地捕获多个值对象，并将捕获到的内容作为列表赋值给 variables：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = [&apos;ethan&apos;, &apos;apple&apos;, &apos;orange&apos;, &apos;banana&apos;, 100]</span><br><span class="line">&gt;&gt;&gt; username, *fruits, score = data</span><br><span class="line">&gt;&gt;&gt; fruits</span><br><span class="line">[&apos;apple&apos;, &apos;orange&apos;, &apos;banana&apos;, 100]</span><br></pre></td></tr></table></figure>
+
+<p>在 Python 交互式命令行里，_ 变量还有一层特殊含义——默认保存我们输入的上个表达式的返回值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &apos;foo&apos;.upper()</span><br><span class="line">&apos;FOO&apos;</span><br><span class="line">&gt;&gt;&gt; print(_)</span><br><span class="line">FOO</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="给变量注明类型"><a href="#给变量注明类型" class="headerlink" title="给变量注明类型"></a>给变量注明类型</h3><p>相比编写 Sphinx 格式文档，类型注解更推荐使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_invalid</span><span class="params">(items)</span>:</span></span><br><span class="line">    <span class="string">""" 剔除 items 里面无效的元素</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param items: 待剔除对象</span></span><br><span class="line"><span class="string">    :type items: 包含整数的列表，[int, ...]</span></span><br><span class="line"><span class="string">    """</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> List</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_invalid</span><span class="params">(items: List[int])</span>:</span></span><br><span class="line">    <span class="string">""" 剔除 items 里面无效的元素</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param items: 待剔除对象</span></span><br><span class="line"><span class="string">    """</span></span><br></pre></td></tr></table></figure>
+
+<p>typing 是类型注解用到的主要模块，除了 List 外，该模块内还有许多与类型有关的特殊对象：</p>
+<ul>
+<li>Dict：字典类型，例如 Dict[str, int] 代表键为字符串，值为整型的字典；</li>
+<li>Callable：可调用对象，例如 Callable[[str, str], List[str]] 表示接收两个字符串作为参数，返回字符串列表的可调用对象；</li>
+<li>TextIO：使用文本协议的类文件类型，相应地，还有二进制类型 BinaryIO；</li>
+<li>Any：代表任何类型；</li>
+</ul>
+<blockquote>
+<p><strong>类型注解</strong>只是一种有关类型的注释，不提供任何校验功能。要校验类型正确性，需要使用其他静态类型检查工具（如 mypy 等）。</p>
+</blockquote>
+<h3 id="变量命名原则"><a href="#变量命名原则" class="headerlink" title="变量命名原则"></a>变量命名原则</h3><blockquote>
+<p>There are only two hard things in Computer Science: cache invalidation and naming things.<br>-- <em>Phil Karlton</em></p>
+</blockquote>
+<p>PEP 8 是 Python 编码风格的事实标准：</p>
+<ul>
+<li>对于普通变量，使用蛇形命名法，比如 max_value；</li>
+<li>对于常量，采用全大写字母，使用下划线连接，比如 MAX_VALUE；</li>
+<li>如果变量标记为仅内部使用，为其增加下划线前缀，比如 _local_val；</li>
+<li>当名字与 Python 关键字冲突时，在变量末尾追加下划线，比如 class_；</li>
+</ul>
+<p>为变量命名要结合代码情境和上下文，尽量不要超过 4 个单词。一些约定俗成的短名字：</p>
+<ul>
+<li>数组索引三剑客 i、j、k；</li>
+<li>某个整数 n；</li>
+<li>某个字符串 s；</li>
+<li>某个异常 e；</li>
+<li>文件对象 fp；</li>
+</ul>
+<p>如果项目中有一些长名字反复出现，可以为它们设置一些短名字作为别名：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.translation <span class="keyword">import</span> gettext <span class="keyword">as</span> _</span><br><span class="line"></span><br><span class="line">print(_(<span class="string">'text'</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="注释基础知识"><a href="#注释基础知识" class="headerlink" title="注释基础知识"></a>注释基础知识</h3><p>函数（类）文档（Docstring）也被称为<strong>接口注释</strong>（Interface Comment），注释作为代码之外的说明性文字，应该尽量提供无法从代码里读出来的信息。在编写接口文档时，我们应该站在函数设计者的角度，着重描述函数的功能、参数说明等，而函数自身的实现细节，无须放在接口文档里。</p>
+<h3 id="编程建议"><a href="#编程建议" class="headerlink" title="编程建议"></a>编程建议</h3><p>在组织代码时，我们应该谨记：<strong>总是从代码的职责出发，而不是其他东西</strong>。通过把变量定义移动到每段各司其职的代码头部，可以大大缩短变量从初始化到被使用的距离。</p>
+<p>直接翻译业务逻辑的代码，大多不是好代码。优秀的程序设计需要在理解原需求的基础上，恰到好处地<strong>抽象</strong>，只有这样才能同时满足可读性和可扩展性方面的需求。通过增加数据类，可以更有逻辑地组织函数内的局部变量，减少数量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">import_users_from_file</span><span class="params">(fp)</span>:</span></span><br><span class="line">    duplicated_users, banned_users, normal_users = [], [], []</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        parsed_user = parse_user(line)</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 进行判断处理，修改前面定义的 xx_users</span></span><br><span class="line">    succeeded_count, failed_count = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> 读取 xx_users，写入数据库并修改成功与失败的数量</span></span><br><span class="line">    <span class="keyword">return</span> succeeded_count, failed_count</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImportedSummary</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.succeeded_count = <span class="number">0</span></span><br><span class="line">        self.failed_count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImportingUserGroup</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.duplicated = []</span><br><span class="line">        self.banned = []</span><br><span class="line">        self.normal = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">import_users_from_file</span><span class="params">(fp)</span>:</span></span><br><span class="line">    importing_user_group = ImportingUserGroup()</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        parsed_user = parse_user(line)</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 进行判断处理，修改前面定义的 importing_user_group</span></span><br><span class="line">    summary = ImportedSummary()</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> 读取 importing_user_group，写入数据库并修改成功与失败的数量</span></span><br><span class="line">    <span class="keyword">return</span> summary.succeeded_count, summary.failed_count</span><br></pre></td></tr></table></figure>
+
+<p>每个函数的名称与接口注释，其实是一种比函数内部代码更为抽象的东西，<strong>在写出一句有说服力的接口注释前，别写任何函数代码</strong>。</p>
+<h2 id="数值与字符串"><a href="#数值与字符串" class="headerlink" title="数值与字符串"></a>数值与字符串</h2><p>我们离不开数字和文字，正如同编程语言离不开数值与字符串，两者几乎是所有编程语言里最基本的数据类型，也是我们通过代码连接现实世界的基础。</p>
+<h3 id="数值基础"><a href="#数值基础" class="headerlink" title="数值基础"></a>数值基础</h3><p>在定义数值字面量时，如果数字特别长，可以通过插入 _ 分隔符来让它变得更易读：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; n = 1_000_000</span><br><span class="line">&gt;&gt;&gt; i + 10</span><br><span class="line">1000010</span><br></pre></td></tr></table></figure>
+
+<p>通过 0 和 1 模拟表示浮点数时，计算机做不到绝对的精准，Python 使用符合 IEEE-754 规范的双精度尽力而为。</p>
+<h3 id="布尔值其实也是数字"><a href="#布尔值其实也是数字" class="headerlink" title="布尔值其实也是数字"></a>布尔值其实也是数字</h3><p>在绝大数情况下，True 和 False 这两个布尔值可以直接当作 1 和 0 来使用，常用来简化统计总数操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count = sum(i % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> numbers)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串常用操作"><a href="#字符串常用操作" class="headerlink" title="字符串常用操作"></a>字符串常用操作</h3><p>假如你想反转一个字符串，可以使用切片操作或者 reversed 内置方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = &apos;Hello, world!&apos;</span><br><span class="line">&gt;&gt;&gt; s[::-1]</span><br><span class="line">&apos;!dlrow ,olleH&apos;</span><br><span class="line">&gt;&gt;&gt; &apos;&apos;.join(reversed(s))</span><br><span class="line">&apos;!dlrow ,olleH&apos;</span><br></pre></td></tr></table></figure>
+
+<p>三种主流的字符串格式化方式：</p>
+<ul>
+<li>C 语言风格的基于百分号 % 的格式化语句；</li>
+<li>str.format 字符串格式化方式；</li>
+<li>f-string 字符串字面量格式化表达式；</li>
+</ul>
+<p>日常编码中推荐使用 f-string，并搭配 str.format 作为补充。它们共享了同一种复杂的字符串格式化微语言，通过这种微语言，我们可以方便地对字符串进行二次加工。str.format 支持用位置参数来格式化字符串，实现对参数的重复使用。</p>
+<h3 id="不常用但特别好用的字符串方法"><a href="#不常用但特别好用的字符串方法" class="headerlink" title="不常用但特别好用的字符串方法"></a>不常用但特别好用的字符串方法</h3><p>使用 partition 函数代替 split，原本的分支判断逻辑可以消失：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_value</span><span class="params">(s)</span>:</span></span><br><span class="line">    items = s.split(<span class="string">':'</span>)</span><br><span class="line">    <span class="keyword">if</span> len(items) == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> items[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_value</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s.partition(<span class="string">':'</span>)[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>str.translate(table) 方法可以按规则一次性替换多个字符，使用它比调用多次 replace 方法更快也更简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = &apos;明明是中文,却使用了英文标点.&apos;</span><br><span class="line">&gt;&gt;&gt; table = s.maketrans(&apos;,.&apos;, &apos;，。&apos;)</span><br><span class="line">&gt;&gt;&gt; s.translate(table)</span><br><span class="line">&apos;明明是中文，却使用了英文标点。&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串与字节串"><a href="#字符串与字节串" class="headerlink" title="字符串与字节串"></a>字符串与字节串</h3><p>广义上的字符串概念可以分为两类：</p>
+<ul>
+<li>字符串：我们最常挂在嘴边的普通字符串，是给人看的，对应 Python 中的 str 类型。str 使用 Unicode 标准，可通过 .encode() 编码为字节串；</li>
+<li>字节串：有时也称为二进制字符串，是给计算机看的，对应 Python 中的 bytes 类型。bytes 一定包含某种真正的字符串编码格式（默认为 UTF-8），可通过 .decode() 解码为字符串；</li>
+</ul>
+<p>Python 里的字符串处理其实很简单，关键在于：<strong>用一个边缘转换层把人类和计算机的世界隔开</strong>：</p>
+<ul>
+<li>程序从文件或其他外部存储读取字节串内容，将其解码为字符串，然后再在内部使用；</li>
+<li>程序完成处理，要把字符串写入文件或其他外部存储，将其编码为字节串，然后继续执行其他操作；</li>
+</ul>
+<h3 id="编程建议-1"><a href="#编程建议-1" class="headerlink" title="编程建议"></a>编程建议</h3><p>使用常量和<strong>枚举类型</strong>来代替字面量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_daily_points</span><span class="params">(user)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> user.type == <span class="number">13</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> user.type == <span class="number">3</span>:</span><br><span class="line">        user.points += <span class="number">120</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    user.points += <span class="number">100</span></span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line">DAILY_POINTS_REWARDS = <span class="number">100</span></span><br><span class="line">VIP_EXTRA_POINTS = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserType</span><span class="params">(int, Enum)</span>:</span></span><br><span class="line">    VIP = <span class="number">3</span></span><br><span class="line">    BANNED = <span class="number">13</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_daily_points</span><span class="params">(user)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> user.type == UserType.BANNED:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> user.type == UserType.VIP:</span><br><span class="line">        user.points += DAILY_POINTS_REWARDS + VIP_EXTRA_POINTS</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    user.points += DAILY_POINTS_REWARDS</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<p>当代码里出现复杂的裸字符串处理逻辑时：</p>
+<ul>
+<li>结构化字符串：寻找是否有对应的开源专有模块，比如处理 SQL 语句的 SQLAlchemy、处理 XML 的 lxml 模块等；</li>
+<li>非结构化字符串：请考虑使用 Jinja2 等模版引擎，而不是手动拼接；</li>
+</ul>
+<p>别轻易成为 SQL 语句大师，对于 SQL 语句这种结构化、有规则的特殊字符串，用<strong>对象化</strong>的方式构建和编辑才是更好的做法。不光更短、更好维护，而且根本不需要担心 SQL 注入问题。</p>
+<blockquote>
+<p>对象关系映射（ORM）指一种把数据库中的数据自动映射为程序内对象的技术</p>
+</blockquote>
+<p>除了用反斜杠 \ 和加号 + 将长字符串拆分为几段，还有一种更简单的办法，那就是拿括号将长字符串包起来，之后就可以随意折行了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = (<span class="string">'This is the first line of a long string, '</span></span><br><span class="line">     <span class="string">'this is the second line.'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器类型"><a href="#容器类型" class="headerlink" title="容器类型"></a>容器类型</h2><p>代码里的容器，泛指那些专门用来装其他对象的特殊数据类型。</p>
+<h3 id="列表常用操作"><a href="#列表常用操作" class="headerlink" title="列表常用操作"></a>列表常用操作</h3><p>内置函数 list(iterable) 可以把任何一个可迭代对象转换为列表，比如字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; list(&apos;foo&apos;)</span><br><span class="line">[&apos;f&apos;, &apos;o&apos;, &apos;o&apos;]</span><br></pre></td></tr></table></figure>
+
+<p>enumerate() 适用于任何可迭代对象，因此它不光可以用于列表，还可以用于元组、字典、字符串等其他对象。</p>
+<h3 id="理解列表的可变性"><a href="#理解列表的可变性" class="headerlink" title="理解列表的可变性"></a>理解列表的可变性</h3><p>Python 里的内置数据类型，大致上可以分为两种：</p>
+<ul>
+<li>可变：列表、字典、集合；</li>
+<li>不可变：整数、浮点数、字符串、字节串、元组；</li>
+</ul>
+<p>两种函数参数传递机制：</p>
+<ul>
+<li>值传递（Pass by Value）：调用函数时，传过去的是<strong>变量所指向对象值的拷贝</strong>，因此对函数内变量的任何修改，都不会影响原始变量；</li>
+<li>引用传递（Pass by Reference）：调用函数时，传过去的是<strong>变量自身的内存地址</strong>，因此修改函数内的变量会直接影响原始变量；</li>
+</ul>
+<p>Python 在进行函数调用传参时，采用的既不是值传递，也不是引用传递，而是传递了<strong>变量所指对象的引用</strong>（Pass by Object Reference），一切行为取决于对象的可变性。</p>
+<h3 id="常用元组操作"><a href="#常用元组操作" class="headerlink" title="常用元组操作"></a>常用元组操作</h3><p>没有元组推导式，只有生成器推导式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; results = (n * 100 for n in range(10) if n % 2 == 0)</span><br><span class="line">&gt;&gt;&gt; results</span><br><span class="line">&lt;generator object &lt;genexpr&gt; at 0x109fd03c0&gt;</span><br></pre></td></tr></table></figure>
+
+<p>元组经常用来存放结构化数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; user_info = (&apos;ethan&apos;, &apos;MALE&apos;, 30, True)</span><br><span class="line">&gt;&gt;&gt; user_info[2]</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+
+<h3 id="具名元组"><a href="#具名元组" class="headerlink" title="具名元组"></a>具名元组</h3><p>具名元组（Namedtuple）在保留普通元组功能的基础上，允许为元组的每个成员命名，这样你便能通过名称而不止是数字索引访问成员。使用 typing.NamedTuple 和类型注解语法来定义具名元组类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> NamedTuple</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span><span class="params">(NamedTuple)</span>:</span></span><br><span class="line">    width: int</span><br><span class="line">    height: int</span><br><span class="line"></span><br><span class="line">rect = Rectangle(<span class="number">100</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(rect[0])</span><br><span class="line">100</span><br><span class="line">&gt;&gt;&gt; print(rect.width)</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+<h3 id="字典常用操作"><a href="#字典常用操作" class="headerlink" title="字典常用操作"></a>字典常用操作</h3><p>当用不存在的键访问字典内容时，程序会抛出 KeyError 异常，我们通常称之为程序里的<strong>边界情况</strong>（Edge Case）。针对这种边界情况，比较常见的处理方式有两种：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'rating'</span> <span class="keyword">in</span> movie:</span><br><span class="line">    rating = movie[<span class="string">'rating'</span>]</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    rating = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    rating = movie[<span class="string">'rating'</span>]</span><br><span class="line"><span class="keyword">except</span> KeyError:</span><br><span class="line">    rating = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>Python 中更推崇第二种写法，因为它看起来更简洁，执行效率也更高。不过，如果只是提供默认值的读取操作，其实可以直接使用字典的 .get() 方法。</p>
+<p>有时，我们需要修改字典中某个可能不存在的键，使用 setdefault 取值并修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d = &#123;&apos;title&apos;: &apos;foobar&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; d.setdefault(&apos;items&apos;, []).append(&apos;foo&apos;)</span><br><span class="line">&gt;&gt;&gt; d</span><br><span class="line">&#123;&apos;title&apos;: &apos;foobar&apos;, &apos;items&apos;: [&apos;foo&apos;]&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="认识字典的有序性和无序性"><a href="#认识字典的有序性和无序性" class="headerlink" title="认识字典的有序性和无序性"></a>认识字典的有序性和无序性</h3><p>Python 里的字典在底层使用了<strong>哈希表</strong>（Hash Table）数据结构。当你往字典里存放一对 key:value 时，解释器会先通过哈希算法计算出 key 的哈希值，然后根据这个哈希值，决定数据在表里的具体位置。</p>
+<p>OrderedDict 与字典其实有着一些细微区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d1 = &#123;&apos;name&apos;: &apos;ethan&apos;, &apos;fruit&apos;: &apos;apple&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; d2 = &#123;&apos;fruit&apos;: &apos;apple&apos;, &apos;name&apos;: &apos;ethan&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; d1 == d2</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d1 = OrderedDict(&apos;name&apos;: &apos;ethan&apos;, &apos;fruit&apos;: &apos;apple&apos;)</span><br><span class="line">&gt;&gt;&gt; d2 = OrderedDict(&apos;fruit&apos;: &apos;apple&apos;, &apos;name&apos;: &apos;ethan&apos;)</span><br><span class="line">&gt;&gt;&gt; d1 == d2</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<h3 id="集合常用操作"><a href="#集合常用操作" class="headerlink" title="集合常用操作"></a>集合常用操作</h3><p>集合的所有操作都可以用方法和运算符两种方式来进行：</p>
+<table>
+<thead>
+<tr>
+<th align="center">&amp;</th>
+<th align="center">|</th>
+<th align="center">-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">intersection</td>
+<td align="center">union</td>
+<td align="center">difference</td>
+</tr>
+</tbody></table>
+<p>集合里只能存放可哈希（Hashable）的对象，假如把不可哈希的对象放入集合，程序就会抛出 TypeError 异常：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; invalid_set = &#123;&apos;foo&apos;, [1, 2, 3]&#125;</span><br><span class="line">TypeError: unhashable type: &apos;list&apos;</span><br></pre></td></tr></table></figure>
+
+<h3 id="了解对象的可哈希性"><a href="#了解对象的可哈希性" class="headerlink" title="了解对象的可哈希性"></a>了解对象的可哈希性</h3><p>某种类型是否可哈希遵循下面的规则：</p>
+<ul>
+<li>所有的不可变内置类型，都是可哈希的，比如 str、int 等；</li>
+<li>所有的可变内置类型，都不是可哈希的，比如 dict、list 等；</li>
+<li>对于不可变容器类型，仅当它的所有成员都不可变时，它自身才是可哈希的，比如 tuple、frozenset 等；</li>
+<li>用户定义的类型默认都是可哈希的；</li>
+</ul>
+<h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><p>实现浅拷贝的方式：</p>
+<ul>
+<li>使用 copy 模块下的 copy() 方法；</li>
+<li>推导式也可以产生一个浅拷贝对象；</li>
+<li>使用各容器类型的内置构造函数；</li>
+<li>全切片也可以实现浅拷贝效果；</li>
+<li>有些类型自身提供了浅拷贝方法；</li>
+</ul>
+<p>对于一些层层嵌套的复杂数据来说，浅拷贝仍然无法解决嵌套对象被修改的问题。要解决这个问题，可以用 copy.deepcopy() 函数来进行深拷贝操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; items = [1, [&apos;foo&apos;, &apos;bar&apos;], 2, 3]</span><br><span class="line">&gt;&gt;&gt; import copy</span><br><span class="line">&gt;&gt;&gt; items_deep = copy.deepcopy(items)</span><br><span class="line">&gt;&gt;&gt; id(items[1]), id(items_deep[1])</span><br><span class="line">(4463367680, 4462513856)</span><br></pre></td></tr></table></figure>
+
+<h3 id="编程建议-2"><a href="#编程建议-2" class="headerlink" title="编程建议"></a>编程建议</h3><p>如果你想创建一个自定义字典，继承 collections.abc 下的 MutableMapping 抽象类是个更好的选择。自定义字典和普通字典很像，但它可以给字典的默认行为加上一些变化，<strong>将分散的代码逻辑封装到自定义字典的内部逻辑</strong>。</p>
+<p>用按需返回替代容器，比如 range() 函数不会一次性耗费大量内存和时间，生成一个巨大的列表，而是仅在被迭代时按需返回数字。range() 的进化过程虽然简单，但它其实代表了一种重要的编程思维：<strong>按需生成，而不是一次性返回</strong>。</p>
+<p>Python 在实现列表时，底层使用了<strong>数组</strong>（Array）数据结构，所以要判断某个成员是否存在，唯一的办法是从前往后遍历所有成员，执行该操作的时间复杂度是 O(n)。如果代码需要进行 in 判断，可以考虑将目标容器转换成集合类型，作为查找时的索引使用。</p>
+<p>除了使用 ** 解包字典，你还可以使用 * 运算符来解包任何可迭代对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; d1 = &#123;&apos;name&apos;: &apos;apple&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; &#123;&apos;foo&apos;: &apos;bar&apos;, **d&#125;</span><br><span class="line">&#123;&apos;foo&apos;: &apos;bar&apos;, &apos;name&apos;: &apos;apple&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; l1 = [1, 2]</span><br><span class="line">&gt;&gt;&gt; l2 = [3, 4]</span><br><span class="line">&gt;&gt;&gt; [*l1, *l2]</span><br><span class="line">[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<p>集合里的成员不会重复，因此它经常用来去重。但是，使用集合去重有一个很大的缺点——得到的结果会丢失集合内成员原有的顺序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; nums = [10, 2, 3, 21, 10, 3]</span><br><span class="line">&gt;&gt;&gt; set(nums)</span><br><span class="line">&#123;3, 10, 2, 21&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时，可以使用 OrderedDict 来完成这件事：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from collections import OrderedDict</span><br><span class="line">&gt;&gt;&gt; list(OrderedDict.fromkeys(nums).keys())</span><br><span class="line">[10, 2, 3, 21]</span><br></pre></td></tr></table></figure>
+
+<p>推导式的核心意义在于它<strong>会返回值</strong>，如果你不需要这个新的返回值，就失去了使用表达式的意义。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/122526936.html" rel="next" title="重新认识 Docker 容器">
+                <i class="fa fa-chevron-left"></i> 重新认识 Docker 容器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/2925783580.html" rel="prev" title="蟒蛇军火库">
+                蟒蛇军火库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量与注释"><span class="nav-number">1.</span> <span class="nav-text">变量与注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量常见用法"><span class="nav-number">1.1.</span> <span class="nav-text">变量常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给变量注明类型"><span class="nav-number">1.2.</span> <span class="nav-text">给变量注明类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量命名原则"><span class="nav-number">1.3.</span> <span class="nav-text">变量命名原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释基础知识"><span class="nav-number">1.4.</span> <span class="nav-text">注释基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议"><span class="nav-number">1.5.</span> <span class="nav-text">编程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值与字符串"><span class="nav-number">2.</span> <span class="nav-text">数值与字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值基础"><span class="nav-number">2.1.</span> <span class="nav-text">数值基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔值其实也是数字"><span class="nav-number">2.2.</span> <span class="nav-text">布尔值其实也是数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串常用操作"><span class="nav-number">2.3.</span> <span class="nav-text">字符串常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不常用但特别好用的字符串方法"><span class="nav-number">2.4.</span> <span class="nav-text">不常用但特别好用的字符串方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串与字节串"><span class="nav-number">2.5.</span> <span class="nav-text">字符串与字节串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议-1"><span class="nav-number">2.6.</span> <span class="nav-text">编程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器类型"><span class="nav-number">3.</span> <span class="nav-text">容器类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表常用操作"><span class="nav-number">3.1.</span> <span class="nav-text">列表常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解列表的可变性"><span class="nav-number">3.2.</span> <span class="nav-text">理解列表的可变性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用元组操作"><span class="nav-number">3.3.</span> <span class="nav-text">常用元组操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具名元组"><span class="nav-number">3.4.</span> <span class="nav-text">具名元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典常用操作"><span class="nav-number">3.5.</span> <span class="nav-text">字典常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#认识字典的有序性和无序性"><span class="nav-number">3.6.</span> <span class="nav-text">认识字典的有序性和无序性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合常用操作"><span class="nav-number">3.7.</span> <span class="nav-text">集合常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解对象的可哈希性"><span class="nav-number">3.8.</span> <span class="nav-text">了解对象的可哈希性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深拷贝与浅拷贝"><span class="nav-number">3.9.</span> <span class="nav-text">深拷贝与浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议-2"><span class="nav-number">3.10.</span> <span class="nav-text">编程建议</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

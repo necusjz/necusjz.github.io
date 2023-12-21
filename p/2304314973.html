@@ -1,0 +1,1203 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Azure,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="What is cloud computing?Have you ever wondered what cloud computing is? It’s the delivery of computing services over the internet, which is otherwise known as the cloud. These services include servers">
+<meta name="keywords" content="Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Azure Fundamentals">
+<meta property="og:url" content="https://necusjz.github.io/p/2304314973.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="What is cloud computing?Have you ever wondered what cloud computing is? It’s the delivery of computing services over the internet, which is otherwise known as the cloud. These services include servers">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/02.png">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introduction to Azure Fundamentals">
+<meta name="twitter:description" content="What is cloud computing?Have you ever wondered what cloud computing is? It’s the delivery of computing services over the internet, which is otherwise known as the cloud. These services include servers">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/Azure/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/2304314973.html">
+
+
+
+
+
+  <title> Introduction to Azure Fundamentals | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2304314973.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Introduction to Azure Fundamentals
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-26T00:16:19+08:00">
+                2022-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="What-is-cloud-computing"><a href="#What-is-cloud-computing" class="headerlink" title="What is cloud computing?"></a>What is cloud computing?</h2><p>Have you ever wondered what cloud computing is? It’s <strong>the delivery of computing services over the internet</strong>, which is otherwise known as the cloud. These services include servers, storage, databases, networking, software, analytics, and intelligence. Cloud computing offers faster innovation, flexible resources, and economies of scale.</p>
+<h3 id="Why-is-cloud-computing-typically-cheaper-to-use"><a href="#Why-is-cloud-computing-typically-cheaper-to-use" class="headerlink" title="Why is cloud computing typically cheaper to use?"></a>Why is cloud computing typically cheaper to use?</h3><p>Cloud computing is the delivery of computing services over the internet by using a pay-as-you-go pricing model. You typically <strong>pay only for the cloud services you use</strong>, which helps you:</p>
+<ul>
+<li>Lower your operating costs;</li>
+<li>Run your infrastructure more efficiently;</li>
+<li>Scale as your business needs change;</li>
+</ul>
+<p>To put it another way, cloud computing is a way to <strong>rent compute power and storage from someone else’s datacenter</strong>. You can treat cloud resources like you would resources in your own datacenter. When you’re done using them, you give them back. You’re billed only for what you use.</p>
+<p><strong>Instead of maintaining CPUs and storage in your datacenter</strong>, you rent them for the time that you need them. The cloud provider takes care of maintaining the underlying infrastructure for you. The cloud enables you to quickly solve your toughest business challenges, and bring cutting-edge solutions to your users.</p>
+<a id="more"></a>
+<h3 id="Why-should-I-move-to-the-cloud"><a href="#Why-should-I-move-to-the-cloud" class="headerlink" title="Why should I move to the cloud?"></a>Why should I move to the cloud?</h3><p>The cloud helps you <strong>move faster and innovate in ways that were once nearly impossible</strong>. In our ever-changing digital world, two trends emerge:</p>
+<ul>
+<li>Teams deliver new features to their users at record speeds;</li>
+<li>Users expect an increasingly rich and immersive experience with their devices and with software;</li>
+</ul>
+<p>Software releases were once scheduled in terms of months or even years. Today, teams <strong>release features in smaller batches that are often scheduled in days or weeks</strong>. Some teams even deliver software updates continuously—sometimes with multiple releases within the same day.</p>
+<p>Think of all the ways you <strong>interact with devices that you couldn’t do a few years ago</strong>. Many devices can recognize your face and respond to voice commands. Augmented reality changes the way you interact with the physical world. Household appliances are even beginning to act intelligently. These technologies are only a few examples, and many of them are powered by the cloud.</p>
+<p>To <strong>power your services and deliver innovative and novel user experiences more quickly</strong>, the cloud provides on-demand access to:</p>
+<ul>
+<li>A nearly limitless pool of raw compute, storage, and networking components;</li>
+<li>Speech recognition and other cognitive services that help make your application stand out from the crowd;</li>
+<li>Analytics services that deliver telemetry data from your software and devices;</li>
+</ul>
+<h2 id="What-is-Azure"><a href="#What-is-Azure" class="headerlink" title="What is Azure?"></a>What is Azure?</h2><p>Azure is <strong>a continually expanding set of cloud services that help your organization meet your current and future business challenges</strong>. Azure gives you the freedom to build, manage, and deploy applications on a massive global network using your favorite tools and frameworks.</p>
+<h3 id="What-does-Azure-offer"><a href="#What-does-Azure-offer" class="headerlink" title="What does Azure offer?"></a>What does Azure offer?</h3><p>With help from Azure, you have everything you need to build your next great solution. The following lists <strong>several of the benefits that Azure provides</strong>, so you can easily invent with purpose:</p>
+<ul>
+<li><strong>Be ready for the future</strong>: Continuous innovation from Microsoft supports your development today and your product visions for tomorrow;</li>
+<li><strong>Build on your terms</strong>: You have choices. With a commitment to open source, and support for all languages and frameworks, you can build how you want and deploy where you want to;</li>
+<li><strong>Operate hybrid seamlessly</strong>: On-premises, in the cloud, and at the edge—we’ll meet you where you are. Integrate and manage your environments with tools and services designed for a hybrid cloud solution;</li>
+<li><strong>Trust your cloud</strong>: Get security from the ground up, backed by a team of experts, and proactive compliance trusted by enterprises, governments, and startups;</li>
+</ul>
+<h3 id="What-can-I-do-with-Azure"><a href="#What-can-I-do-with-Azure" class="headerlink" title="What can I do with Azure?"></a>What can I do with Azure?</h3><p>Azure provides <strong>more than 100 services that enable you to do everything from running your existing applications on virtual machines</strong>, to exploring new software paradigms, such as intelligent bots and mixed reality.</p>
+<p>Many teams start exploring the cloud by moving their existing applications to virtual machines that run in Azure. <strong>Migrating your existing apps to virtual machines is a good start</strong>, but the cloud is much more than a different place to run your virtual machines.</p>
+<p>For example, Azure provides AI and machine-learning services that can naturally communicate with your users through vision, hearing, and speech. It also provides storage solutions that dynamically grow to accommodate massive amounts of data. Azure services <strong>enable solutions that aren’t feasible without the power of the cloud</strong>.</p>
+<h3 id="What-is-the-Azure-Portal"><a href="#What-is-the-Azure-Portal" class="headerlink" title="What is the Azure Portal?"></a>What is the Azure Portal?</h3><p>The <em>Azure Portal</em> is <strong>a web-based, unified console that provides an alternative to command-line tools</strong>. With the Azure Portal, you can manage your Azure subscription by using a graphical user interface. You can:</p>
+<ul>
+<li>Build, manage, and monitor everything from simple web apps to complex cloud deployments;</li>
+<li>Create custom dashboards for an organized view of resources;</li>
+<li>Configure accessibility options for an optimal experience;</li>
+</ul>
+<p>The Azure Portal is <strong>designed for resiliency and continuous availability</strong>. It maintains a presence in every Azure datacenter. This configuration makes the Azure Portal resilient to individual datacenter failures and avoids network slowdowns by being close to users. The Azure Portal updates continuously and requires no downtime for maintenance activities.</p>
+<h3 id="What-is-Azure-Marketplace"><a href="#What-is-Azure-Marketplace" class="headerlink" title="What is Azure Marketplace?"></a>What is Azure Marketplace?</h3><p><em>Azure Marketplace</em> helps connect users with Microsoft partners, independent software vendors, and startups that are offering their solutions and services, which are optimized to run on Azure. Azure Marketplace customers can <strong>find, try, purchase, and provision applications and services from hundreds of leading service providers</strong>. All solutions and services are certified to run on Azure.</p>
+<p>The solution catalog spans several industry categories such as open-source container platforms, virtual machine images, databases, application build and deployment software, developer tools, threat detection, and blockchain. Using Azure Marketplace, you can <strong>provision end-to-end solutions quickly and reliably, hosted in your own Azure environment</strong>. At the time of writing, there are more than 8,000 listings.</p>
+<p>Azure Marketplace is <strong>designed for IT pros and cloud developers interested in commercial and IT software</strong>. Microsoft partners also use it as a launch point for all joint go-to-market activities.</p>
+<h2 id="Tour-of-Azure-services"><a href="#Tour-of-Azure-services" class="headerlink" title="Tour of Azure services"></a>Tour of Azure services</h2><p>Azure can help you tackle tough business challenges. You bring your requirements, creativity, and favorite software development tools. <strong>Azure brings a massive global infrastructure that’s always available for you to build your applications on</strong>.</p>
+<h3 id="Azure-services"><a href="#Azure-services" class="headerlink" title="Azure services"></a>Azure services</h3><p>Here’s a big-picture view of <strong>the available services and features in Azure</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/01.png" alt></p>
+<h3 id="Compute"><a href="#Compute" class="headerlink" title="Compute"></a>Compute</h3><p>Compute services are often <strong>one of the primary reasons why companies move to the Azure platform</strong>. Azure provides a range of options for hosting applications and services. Here are some examples of compute services in Azure:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure Virtual Machines</td>
+<td align="left">Windows or Linux virtual machines (VMs) hosted in Azure.</td>
+</tr>
+<tr>
+<td align="left">Azure Virtual Machine Scale Sets</td>
+<td align="left">Scaling for Windows or Linux VMs hosted in Azure.</td>
+</tr>
+<tr>
+<td align="left">Azure Kubernetes Service</td>
+<td align="left">Cluster management for VMs that run containerized services.</td>
+</tr>
+<tr>
+<td align="left">Azure Service Fabric</td>
+<td align="left">Distributed systems platform that runs in Azure or on-premises.</td>
+</tr>
+<tr>
+<td align="left">Azure Batch</td>
+<td align="left">Managed service for parallel and high-performance computing applications.</td>
+</tr>
+<tr>
+<td align="left">Azure Container Instances</td>
+<td align="left">Containerized apps run on Azure without provisioning servers or VMs.</td>
+</tr>
+<tr>
+<td align="left">Azure Functions</td>
+<td align="left">An event-driven, serverless compute service.</td>
+</tr>
+</tbody></table>
+<h3 id="Networking"><a href="#Networking" class="headerlink" title="Networking"></a>Networking</h3><p><strong>Linking compute resources and providing access to applications</strong> is the key function of Azure networking. Networking functionality in Azure includes a range of options to connect the outside world to services and features in the global Azure datacenters. Here are some examples of networking services in Azure:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure Virtual Network</td>
+<td align="left">Connects VMs to incoming virtual private network (VPN) connections.</td>
+</tr>
+<tr>
+<td align="left">Azure Load Balancer</td>
+<td align="left">Balances inbound and outbound connections to applications or service endpoints.</td>
+</tr>
+<tr>
+<td align="left">Azure Application Gateway</td>
+<td align="left">Optimizes app server farm delivery while increasing application security.</td>
+</tr>
+<tr>
+<td align="left">Azure VPN Gateway</td>
+<td align="left">Accesses Azure Virtual Networks through high-performance VPN gateways.</td>
+</tr>
+<tr>
+<td align="left">Azure DNS</td>
+<td align="left">Provides ultra-fast DNS responses and ultra-high domain availability.</td>
+</tr>
+<tr>
+<td align="left">Azure Content Delivery Network</td>
+<td align="left">Delivers high-bandwidth content to customers globally.</td>
+</tr>
+<tr>
+<td align="left">Azure DDoS Protection</td>
+<td align="left">Protects Azure-hosted applications from distributed denial of service (DDOS) attacks.</td>
+</tr>
+<tr>
+<td align="left">Azure Traffic Manager</td>
+<td align="left">Distributes network traffic across Azure regions worldwide.</td>
+</tr>
+<tr>
+<td align="left">Azure ExpressRoute</td>
+<td align="left">Connects to Azure over high-bandwidth dedicated secure connections.</td>
+</tr>
+<tr>
+<td align="left">Azure Network Watcher</td>
+<td align="left">Monitors and diagnoses network issues by using scenario-based analysis.</td>
+</tr>
+<tr>
+<td align="left">Azure Firewall</td>
+<td align="left">Implements high-security, high-availability firewall with unlimited scalability.</td>
+</tr>
+<tr>
+<td align="left">Azure Virtual WAN</td>
+<td align="left">Creates a unified wide area network (WAN) that connects local and remote sites.</td>
+</tr>
+</tbody></table>
+<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3><p>Azure provides <strong>four main types of storage services</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure Blob Storage</td>
+<td align="left">Storage service for very large objects, such as video files or bitmaps.</td>
+</tr>
+<tr>
+<td align="left">Azure File Storage</td>
+<td align="left">File shares that can be accessed and managed like a file server.</td>
+</tr>
+<tr>
+<td align="left">Azure Queue Storage</td>
+<td align="left">A data store for queuing and reliably delivering messages between applications.</td>
+</tr>
+<tr>
+<td align="left">Azure Table Storage</td>
+<td align="left">Table storage is a service that stores non-relational structured data (also known as structured NoSQL data) in the cloud, providing a key/attribute store with a schemaless design.</td>
+</tr>
+</tbody></table>
+<p>These services all <strong>share several common characteristics</strong>:</p>
+<ul>
+<li><strong>Durable</strong> and highly available with redundancy and replication;</li>
+<li><strong>Secure</strong> through automatic encryption and role-based access control;</li>
+<li><strong>Scalable</strong> with virtually unlimited storage;</li>
+<li><strong>Managed</strong>, handling maintenance and any critical problems for you;</li>
+<li><strong>Accessible</strong> from anywhere in the world over HTTP or HTTPS;</li>
+</ul>
+<h3 id="Mobile"><a href="#Mobile" class="headerlink" title="Mobile"></a>Mobile</h3><p>With Azure, developers can <strong>create mobile backend services for iOS, Android, and Windows apps quickly and easily</strong>. Features that used to take time and increase project risks, such as adding corporate sign-in and then connecting to on-premises resources such as SAP, Oracle, SQL Server, and SharePoint, are now simple to include. Other features of this service include:</p>
+<ul>
+<li>Offline data synchronization;</li>
+<li>Connectivity to on-premises data;</li>
+<li>Broadcasting push notifications;</li>
+<li>Autoscaling to match business needs;</li>
+</ul>
+<h3 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h3><p>Azure provides multiple database services to <strong>store a wide variety of data types and volumes</strong>. And with global connectivity, this data is available to users instantly:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure Cosmos DB</td>
+<td align="left">Globally distributed database that supports NoSQL options.</td>
+</tr>
+<tr>
+<td align="left">Azure SQL Database</td>
+<td align="left">Fully managed relational database with auto-scale, integral intelligence, and robust security.</td>
+</tr>
+<tr>
+<td align="left">Azure Database for MySQL</td>
+<td align="left">Fully managed and scalable MySQL relational database with high availability and security.</td>
+</tr>
+<tr>
+<td align="left">Azure Database for PostgreSQL</td>
+<td align="left">Fully managed and scalable PostgreSQL relational database with high availability and security.</td>
+</tr>
+<tr>
+<td align="left">SQL Server on Azure Virtual Machines</td>
+<td align="left">Service that hosts enterprise SQL Server apps in the cloud.</td>
+</tr>
+<tr>
+<td align="left">Azure Synapse Analytics</td>
+<td align="left">Fully managed data warehouse with integral security at every level of scale at no extra cost.</td>
+</tr>
+<tr>
+<td align="left">Azure Database Migration Service</td>
+<td align="left">Service that migrates databases to the cloud with no application code changes.</td>
+</tr>
+<tr>
+<td align="left">Azure Cache for Redis</td>
+<td align="left">Fully managed service caches frequently used and static data to reduce data and application latency.</td>
+</tr>
+<tr>
+<td align="left">Azure Database for MariaDB</td>
+<td align="left">Fully managed and scalable MariaDB relational database with high availability and security.</td>
+</tr>
+</tbody></table>
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><p>Having a great web experience is critical in today’s business world. Azure <strong>includes first-class support to build and host web apps and HTTP-based web services</strong>. The following Azure services are focused on web hosting:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure App Service</td>
+<td align="left">Quickly create powerful cloud web-based apps.</td>
+</tr>
+<tr>
+<td align="left">Azure Notification Hubs</td>
+<td align="left">Send push notifications to any platform from any backend.</td>
+</tr>
+<tr>
+<td align="left">Azure API Management</td>
+<td align="left">Publish APIs to developers, partners, and employees securely and at scale.</td>
+</tr>
+<tr>
+<td align="left">Azure Cognitive Search</td>
+<td align="left">Deploy this fully managed search as a service.</td>
+</tr>
+<tr>
+<td align="left">Web Apps Feature of Azure App Service</td>
+<td align="left">Create and deploy mission-critical web apps at scale.</td>
+</tr>
+<tr>
+<td align="left">Azure SignalR Service</td>
+<td align="left">Add real-time web functionalities easily.</td>
+</tr>
+</tbody></table>
+<h3 id="IoT"><a href="#IoT" class="headerlink" title="IoT"></a>IoT</h3><p>People are able to access more information than ever before. Personal digital assistants led to smartphones, and now there are smart watches, smart thermostats, and even smart refrigerators. Personal computers used to be the norm. Now <strong>the internet allows any item that’s online-capable to access valuable information</strong>. This ability for devices to garner and then relay information for data analysis is referred to as IoT. Many services can assist and drive end-to-end solutions for IoT on Azure:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">IoT Central</td>
+<td align="left">Fully managed global IoT software as a service (SaaS) solution that makes it easy to connect, monitor, and manage IoT assets at scale.</td>
+</tr>
+<tr>
+<td align="left">Azure IoT Hub</td>
+<td align="left">Messaging hub that provides secure communications between and monitoring of millions of IoT devices.</td>
+</tr>
+<tr>
+<td align="left">IoT Edge</td>
+<td align="left">Fully managed service that allows data analysis models to be pushed directly onto IoT devices, which allows them to react quickly to state changes without needing to consult cloud-based AI models.</td>
+</tr>
+</tbody></table>
+<h3 id="Big-data"><a href="#Big-data" class="headerlink" title="Big data"></a>Big data</h3><p>Data comes in all formats and sizes. When we talk about big data, we’re referring to large volumes of data. Data from weather systems, communications systems, genomic research, imaging platforms, and many other scenarios generate hundreds of gigabytes of data. This amount of data makes it hard to analyze and make decisions. It’s often <strong>so large that traditional forms of processing and analysis are no longer appropriate</strong>. Open-source cluster technologies have been developed to deal with these large data sets. Azure supports a broad range of technologies and services to provide big data and analytic solutions:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure Synapse Analytics</td>
+<td align="left">Run analytics at a massive scale by using a cloud-based enterprise data warehouse that takes advantage of massively parallel processing to run complex queries quickly across petabytes of data.</td>
+</tr>
+<tr>
+<td align="left">Azure HDInsight</td>
+<td align="left">Process massive amounts of data with managed clusters of Hadoop clusters in the cloud.</td>
+</tr>
+<tr>
+<td align="left">Azure Databricks</td>
+<td align="left">Integrate this collaborative Apache Spark-based analytics service with other big data services in Azure.</td>
+</tr>
+</tbody></table>
+<h3 id="AI"><a href="#AI" class="headerlink" title="AI"></a>AI</h3><p>AI, in the context of cloud computing, is based around a broad range of services, the core of which is machine learning. Machine learning is a data science technique that allows computers to use existing data to forecast future behaviors, outcomes, and trends. Using machine learning, <strong>computers learn without being explicitly programmed</strong>.</p>
+<p><strong>Forecasts or predictions from machine learning can make apps and devices smarter</strong>. For example, when you shop online, machine learning helps recommend other products you might like based on what you’ve purchased. Or when your credit card is swiped, machine learning compares the transaction to a database of transactions and helps detect fraud. And when your robot vacuum cleaner vacuums a room, machine learning helps it decide whether the job is done. Here are some of the most common AI and machine learning service types in Azure:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure Machine Learning Service</td>
+<td align="left">Cloud-based environment you can use to develop, train, test, deploy, manage, and track machine learning models. It can auto-generate a model and auto-tune it for you. It will let you start training on your local machine, and then scale out to the cloud.</td>
+</tr>
+<tr>
+<td align="left">Azure ML Studio</td>
+<td align="left">Collaborative visual workspace where you can build, test, and deploy machine learning solutions by using prebuilt machine learning algorithms and data-handling modules.</td>
+</tr>
+</tbody></table>
+<p>A closely related set of products are the <em>Cognitive Services</em>. You can <strong>use these prebuilt APIs in your applications to solve complex problems</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Vision</td>
+<td align="left">Use image-processing algorithms to smartly identify, caption, index, and moderate your pictures and videos.</td>
+</tr>
+<tr>
+<td align="left">Speech</td>
+<td align="left">Convert spoken audio into text, use voice for verification, or add speaker recognition to your app.</td>
+</tr>
+<tr>
+<td align="left">Knowledge Mapping</td>
+<td align="left">Map complex information and data to solve tasks such as intelligent recommendations and semantic search.</td>
+</tr>
+<tr>
+<td align="left">Bing Search</td>
+<td align="left">Add Bing Search APIs to your apps and harness the ability to comb billions of webpages, images, videos, and news with a single API call.</td>
+</tr>
+<tr>
+<td align="left">Natural Language Processing</td>
+<td align="left">Allow your apps to process natural language with prebuilt scripts, evaluate sentiment, and learn how to recognize what users want.</td>
+</tr>
+</tbody></table>
+<h3 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h3><p>DevOps brings together people, processes, and technology by <strong>automating software delivery to provide continuous value to your users</strong>. With Azure DevOps, you can create build and release pipelines that provide continuous integration, delivery, and deployment for your applications. You can integrate repositories and application tests, perform application monitoring, and work with build artifacts.</p>
+<p>You can also work with and backlog items for tracking, automate infrastructure deployment, and integrate a range of third-party tools and services such as Jenkins and Chef. All of these functions and many more are <strong>closely integrated with Azure to allow for consistent, repeatable deployments</strong> for your applications to provide streamlined build and release processes:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Service Name</th>
+<th align="left">Service Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Azure DevOps</td>
+<td align="left">Use development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and cloud-based load testing. Formerly known as Visual Studio Team Services.</td>
+</tr>
+<tr>
+<td align="left">Azure DevTest Labs</td>
+<td align="left">Quickly create on-demand Windows and Linux environments to test or demo applications directly from deployment pipelines.</td>
+</tr>
+</tbody></table>
+<h2 id="Get-started-with-Azure-accounts"><a href="#Get-started-with-Azure-accounts" class="headerlink" title="Get started with Azure accounts"></a>Get started with Azure accounts</h2><p>To create and use Azure services, you need an Azure subscription. When you’re completing Learn modules, most of the time a temporary subscription is created for you, which runs in an environment called the Learn sandbox. When you’re working with your own applications and business needs, you need to create an Azure account, and a subscription will be created for you. <strong>After you’ve created an Azure account, you’re free to create additional subscriptions</strong>.</p>
+<p>For example, your company might use a single Azure account for your business and separate subscriptions for development, marketing, and sales departments. <strong>After you’ve created an Azure subscription, you can start creating Azure resources within each subscription</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/02.png" alt></p>
+<p>If you’re new to Azure, you can sign up for a free account on the Azure website to start exploring at no cost to you. <strong>When you’re ready, you can choose to upgrade your free account</strong>. You can create a new subscription that enables you to start paying for Azure services you need to use that are beyond the limits of a free account.</p>
+<h3 id="Create-an-Azure-account"><a href="#Create-an-Azure-account" class="headerlink" title="Create an Azure account"></a>Create an Azure account</h3><p>You can purchase Azure access directly from Microsoft by signing up on the <a href="https://azure.microsoft.com/" target="_blank" rel="noopener">Azure website</a> or through a Microsoft representative. <strong>You can also purchase Azure access through a Microsoft partner</strong>. Cloud Solution Provider partners offer a range of complete managed-cloud solutions for Azure.</p>
+<h3 id="What-is-the-Azure-free-account"><a href="#What-is-the-Azure-free-account" class="headerlink" title="What is the Azure free account?"></a>What is the Azure free account?</h3><p>The Azure <strong>free account includes</strong>:</p>
+<ul>
+<li>Free access to popular Azure products for 12 months;</li>
+<li>A credit to spend for the first 30 days;</li>
+<li>Access to more than 25 products that are always free;</li>
+</ul>
+<p>The Azure free account is an excellent way for new users to get started and explore. To sign up, you need a phone number, a credit card, and a Microsoft or GitHub account. <strong>The credit card information is used for identity verification only</strong>. You won’t be charged for any services until you upgrade to a paid subscription.</p>
+<h3 id="What-is-the-Azure-free-student-account"><a href="#What-is-the-Azure-free-student-account" class="headerlink" title="What is the Azure free student account?"></a>What is the Azure free student account?</h3><p>The Azure <strong>free student account offer includes</strong>:</p>
+<ul>
+<li>Free access to certain Azure services for 12 months;</li>
+<li>A credit to use in the first 12 months;</li>
+<li>Free access to certain software developer tools;</li>
+</ul>
+<p>The <a href="https://azure.microsoft.com/free/students/" target="_blank" rel="noopener">Azure free student account</a> is an offer for students that gives $100 credit and free developer tools. Also, you can <strong>sign up without a credit card</strong>.</p>
+<h3 id="What-is-the-Learn-sandbox"><a href="#What-is-the-Learn-sandbox" class="headerlink" title="What is the Learn sandbox?"></a>What is the Learn sandbox?</h3><p>Many of the Learn exercises use a technology called the sandbox, which creates a temporary subscription that’s added to your Azure account. This temporary subscription allows you to <strong>create Azure resources for the duration of a Learn module</strong>. Learn automatically cleans up the temporary resources for you after you’ve completed the module.</p>
+<p>When you’re completing a Learn module, you’re welcome to use your personal subscription to complete the exercises in a module. The sandbox is the preferred method to use though, because it allows you to <strong>create and test Azure resources at no cost to you</strong>.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2503986917.html" rel="next" title="Azure Front Door and Azure CDN">
+                <i class="fa fa-chevron-left"></i> Azure Front Door and Azure CDN
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/641155808.html" rel="prev" title="Discuss Azure Fundamental Concepts">
+                Discuss Azure Fundamental Concepts <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-cloud-computing"><span class="nav-number">1.</span> <span class="nav-text">What is cloud computing?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-is-cloud-computing-typically-cheaper-to-use"><span class="nav-number">1.1.</span> <span class="nav-text">Why is cloud computing typically cheaper to use?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-should-I-move-to-the-cloud"><span class="nav-number">1.2.</span> <span class="nav-text">Why should I move to the cloud?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Azure"><span class="nav-number">2.</span> <span class="nav-text">What is Azure?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-does-Azure-offer"><span class="nav-number">2.1.</span> <span class="nav-text">What does Azure offer?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-can-I-do-with-Azure"><span class="nav-number">2.2.</span> <span class="nav-text">What can I do with Azure?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-Azure-Portal"><span class="nav-number">2.3.</span> <span class="nav-text">What is the Azure Portal?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Azure-Marketplace"><span class="nav-number">2.4.</span> <span class="nav-text">What is Azure Marketplace?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tour-of-Azure-services"><span class="nav-number">3.</span> <span class="nav-text">Tour of Azure services</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-services"><span class="nav-number">3.1.</span> <span class="nav-text">Azure services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compute"><span class="nav-number">3.2.</span> <span class="nav-text">Compute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Networking"><span class="nav-number">3.3.</span> <span class="nav-text">Networking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Storage"><span class="nav-number">3.4.</span> <span class="nav-text">Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mobile"><span class="nav-number">3.5.</span> <span class="nav-text">Mobile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Databases"><span class="nav-number">3.6.</span> <span class="nav-text">Databases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web"><span class="nav-number">3.7.</span> <span class="nav-text">Web</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IoT"><span class="nav-number">3.8.</span> <span class="nav-text">IoT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Big-data"><span class="nav-number">3.9.</span> <span class="nav-text">Big data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AI"><span class="nav-number">3.10.</span> <span class="nav-text">AI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DevOps"><span class="nav-number">3.11.</span> <span class="nav-text">DevOps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Get-started-with-Azure-accounts"><span class="nav-number">4.</span> <span class="nav-text">Get started with Azure accounts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-an-Azure-account"><span class="nav-number">4.1.</span> <span class="nav-text">Create an Azure account</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-Azure-free-account"><span class="nav-number">4.2.</span> <span class="nav-text">What is the Azure free account?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-Azure-free-student-account"><span class="nav-number">4.3.</span> <span class="nav-text">What is the Azure free student account?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-the-Learn-sandbox"><span class="nav-number">4.4.</span> <span class="nav-text">What is the Learn sandbox?</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

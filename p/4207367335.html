@@ -1,0 +1,1069 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="面向对象编程几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。在 Python 里，万物皆对象，最基础的浮点数也是一个对象。 类常用知识通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。封装（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象编程">
+<meta property="og:url" content="https://necusjz.github.io/p/4207367335.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="面向对象编程几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。在 Python 里，万物皆对象，最基础的浮点数也是一个对象。 类常用知识通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。封装（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象编程">
+<meta name="twitter:description" content="面向对象编程几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。在 Python 里，万物皆对象，最基础的浮点数也是一个对象。 类常用知识通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。封装（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/4207367335.html">
+
+
+
+
+
+  <title> 面向对象编程 | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4207367335.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面向对象编程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T16:39:34+08:00">
+                2022-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。<strong>在 Python 里，万物皆对象</strong>，最基础的浮点数也是一个对象。</p>
+<h3 id="类常用知识"><a href="#类常用知识" class="headerlink" title="类常用知识"></a>类常用知识</h3><p>通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。<strong>封装</strong>（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。</p>
+<p>当你使用 __{var} 的方式定义一个私有属性时，Python 解释器只是重新给了它一个包含当前类名的别名 <strong>_{class}__{var}</strong>，因此你仍然可以在外部用这个别名来访问和修改它。</p>
+<blockquote>
+<p>设计哲学：期望程序员做正确的事，而不是在语言上增加太多条条框框。</p>
+</blockquote>
+<p>在某些特殊场景下，合理利用 __dict__ 可以帮你完成常规做法难以做到的一些事情：</p>
+<ul>
+<li>实例的 __dict__ 里，保存着当前实例的所有数据；</li>
+<li>类的 __dict__ 里，保存着类的文档、方法等所有数据；</li>
+</ul>
+<a id="more"></a>
+<h3 id="内置类方法装饰器"><a href="#内置类方法装饰器" class="headerlink" title="内置类方法装饰器"></a>内置类方法装饰器</h3><p>在创建类时，你除了可以定义普通方法外，还可以通过装饰器定义许多特殊对象，这些对象在各自的适宜场景下可以发挥重要作用。</p>
+<h4 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h4><p>当你用 def 在类里定义一个函数时，这个函数通常称作方法，调用方法需要先创建一个类实例。虽然普通方法无法通过类来调用，但你可以用 <strong>@classmethod</strong> 装饰器定义一种特殊的方法：类方法，它属于类但是无须实例化也可调用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, color)</span>:</span></span><br><span class="line">        self.color = color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">quack</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">f"Hi, I'm a <span class="subst">&#123;self.color&#125;</span> duck!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_random</span><span class="params">(cls)</span>:</span></span><br><span class="line">        color = random.choice([<span class="string">'yellow'</span>, <span class="string">'white'</span>, <span class="string">'gray'</span>])</span><br><span class="line">        <span class="keyword">return</span> cls(color=color)</span><br></pre></td></tr></table></figure>
+
+<p>类方法最常见的使用场景，就是像上面一样<strong>定义工厂方法来生成新实例</strong>。类方法的主角是类型本身，当你发现某个行为不属于实例，而是属于整个类型时，可以考虑使用类方法。</p>
+<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><p>如果你发现某个方法不需要使用当前实例里的任何内容，那就可以使用 <strong>@staticmethod</strong> 来定义一个静态方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self)</span>:</span></span><br><span class="line">        sound = self.get_sound()</span><br><span class="line">        print(<span class="string">f'<span class="subst">&#123;self.name&#125;</span>: <span class="subst">&#123;sound&#125;</span>...'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_sound</span><span class="params">()</span>:</span></span><br><span class="line">        repeats = random.randrange(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">' '</span>.join([<span class="string">'Meow'</span>] * repeats)</span><br></pre></td></tr></table></figure>
+
+<p>和普通方法相比，静态方法不需要访问实例的任何状态，是一种状态无关的方法，因此静态方法其实可以改写成脱离于类的外部普通函数：</p>
+<ul>
+<li>如果静态方法特别通用，与类关系不大，那么把它改成普通函数可能会更好；</li>
+<li>如果静态方法与类关系密切，那么用静态方法更好；</li>
+<li>相比函数，静态方法有一些先天优势，比如能被子类继承和重写等；</li>
+</ul>
+<h4 id="属性装饰器"><a href="#属性装饰器" class="headerlink" title="属性装饰器"></a>属性装饰器</h4><p>在一个类里，属性和方法有着不同的职责：<strong>属性代表状态，方法代表行为</strong>：</p>
+<ul>
+<li>属性可以通过 inst.attr 的方式直接访问；</li>
+<li>方法需要通过 inst.method() 来调用；</li>
+</ul>
+<p><strong>@property</strong> 是个非常有用的装饰器，它让我们可以基于方法定义类属性，精确地控制属性的读取、赋值和删除行为，灵活地实现动态属性等功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilePath</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, path)</span>:</span></span><br><span class="line">        self.path = path</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">basename</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.path.rsplit(os.sep, <span class="number">1</span>)[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @basename.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">basename</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        new_path = self.path.rsplit(os.sep, <span class="number">1</span>)[:<span class="number">-1</span>] + [name]</span><br><span class="line">        self.path = os.sep.join(new_path)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @basename.deleter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">basename</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">'Can not delete basename!'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>人们在读取属性时，总是期望能迅速拿到结果，调用方法则不一样——快点儿慢点儿都无所谓。让自己设计的接口符合他人的使用预期，也是写代码时很重要的一环。</p>
+<h3 id="鸭子类型及其局限性"><a href="#鸭子类型及其局限性" class="headerlink" title="鸭子类型及其局限性"></a>鸭子类型及其局限性</h3><blockquote>
+<p>If it walks like a duck and it quacks like a duck, then it must be a duck.<br>-- <em>Wikipedia</em></p>
+</blockquote>
+<p>鸭子类型（Duck Typing）不是什么真正的类型系统，而是一种特殊的<strong>编程风格</strong>。如果想操作某个对象，你不会去判断它是否属于某种类型，而会直接判断它是不是有你需要的方法（或属性）。这大大提高了代码的灵活性，但也有其局限性：</p>
+<ul>
+<li><strong>缺乏标准</strong>：虽然我们不需要做严格的类型校验，但是仍然需要频繁判断对象是否支持某个行为，而这方面并没有统一的标准；</li>
+<li><strong>过于隐式</strong>：对象的真实类型变得不再重要，取而代之的是对象所提供的接口（或协议）变得非常重要，但它们都是隐式的，零碎地分布在代码的各个角落；</li>
+</ul>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>鸭子类型只关心行为，不关心类型，所以 isinstance() 函数天生和鸭子类型的理念相悖。但是有了抽象类以后，我们便可以使用 isinstance(obj, type) 来进行鸭子类型编程风格的类型校验了。只要待匹配类型 type 是抽象类，类型检查就符合鸭子类型编程风格——<strong>只校验行为，不校验类型</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Validator</span><span class="params">(ABC)</span>:</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__subclasshook__</span><span class="params">(cls, C)</span>:</span></span><br><span class="line">        <span class="comment"># 所有实现了 validate 方法的类都是我的子类</span></span><br><span class="line">        <span class="keyword">if</span> any(<span class="string">"validate"</span> <span class="keyword">in</span> B.__dict__ <span class="keyword">for</span> B <span class="keyword">in</span> C.__mro__):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">NotImplemented</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError</span><br></pre></td></tr></table></figure>
+
+<p>__subclasshook__ 类方法是抽象类的一个特殊方法，当你使用 isinstance 检查对象是否属于某个抽象类时，如果后者定义了这个方法，那么该方法就会被触发：</p>
+<ul>
+<li>实例所属类型会作为参数传入该方法；</li>
+<li>如果方法返回了布尔值，该值表示实例类型是否属于抽象类的子类；</li>
+<li>如果方法返回 NotImplemented，本次调用会被忽略，继续进行正常的子类判断逻辑；</li>
+</ul>
+<p>通过 __subclasshook__ 钩子和 .register() 方法，实现了一种比继承更灵活、更松散的子类化机制——<strong>结构化子类</strong>，并以此改变了 isinstance() 的行为。</p>
+<p>利用 abc 模块的 @abstractmethod 装饰器，你可以把某个方法标记为抽象方法，假如抽象类的子类在继承时，没有重写所有抽象方法，那么它就无法被正常实例化，这个机制可以帮我们更好地控制子类的继承行为，强制要求其重写某些方法；collectioins.abc 模块里的许多抽象类（如 Set、Mapping 等）像普通基类一样实现了一些公用方法，降低了子类的实现成本。</p>
+<h3 id="多重继承与-MRO"><a href="#多重继承与-MRO" class="headerlink" title="多重继承与 MRO"></a>多重继承与 MRO</h3><p>许多编程语言在处理继承关系时，只允许子类继承一个父类，而 Python 里的一个类可以同时继承多个父类。在解决多重继承的方法优先级问题时，Python 使用了一种名为 MRO（Method Resolution Order）的算法，该算法会遍历类的所有基类，并将它们按优先级从高到底排好序。</p>
+<p>super() 使用的不是当前类的父类，而是它在 MRO 链条里的上一个类，因此你在方法中调用 super() 时，其实无法确定它会定位到哪一个类。在大多数情况下，你需要的并不是多重继承，而也许只是一个更准确的抽象模型，在该模型下，最普通的继承关系就能完美解决问题。</p>
+<h3 id="编程建议"><a href="#编程建议" class="headerlink" title="编程建议"></a>编程建议</h3><p>Mixin 是一种把额外功能混入某个类的技术，在 Python 中，我们可以用多重继承来实现 Mixin 模式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InfoDumperMixin</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dump_info</span><span class="params">(self)</span>:</span></span><br><span class="line">        d = self.__dict__</span><br><span class="line">        print(<span class="string">"Number of members: &#123;&#125;"</span>.format(len(d)))</span><br><span class="line">        print(<span class="string">"Details:"</span>)</span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> d.items():</span><br><span class="line">            print(<span class="string">f'  - <span class="subst">&#123;key&#125;</span>: <span class="subst">&#123;value&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(InfoDumperMixin)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br></pre></td></tr></table></figure>
+
+<p>不过，虽然 Mixin 是一种行之有效的编程模式，但不假思索地使用它仍然可能会带来麻烦，你需要精心设计 Mixin 类的职责，让它们和普通类有所区分，这样才能让 Mixin 模式发挥最大的潜力。</p>
+<p>继承是一种类与类之间紧密的耦合关系，让子类继承父类，虽然看上去毫无成本地获取了父类的全部能力，但同时也意味着，从此以后父类的所有改动都可能影响子类：</p>
+<ul>
+<li>我要让 B 类继承 A 类，但 B 和 A 真的代表同一种东西吗？如果它俩不是同类，为什么要继承？</li>
+<li>即使 B 和 A 是同类，但它们真的需要继承来表明类型关系吗？要知道，Python 是鸭子类型的，你不需要继承也能实现多态；</li>
+<li>如果继承只是为了让 B 类复用 A 类的几个方法，那么用组合来替代继承会不会更好？</li>
+</ul>
+<p><strong>针对事物的行为建模，而不是对事物本身建模</strong>。同样是复用代码，组合产生的耦合关系比继承松散得多——多用组合，少用继承。但这并不代表我们应该完全弃用继承，继承所提供的强大复用能力，仍然是组合所无法替代的，许多设计模式（比如模版方法模式）都是依托继承来实现的。</p>
+<p>在组织类方法时，我们应该关注使用者的诉求，把他们最想知道的内容放在前面，把他们不那么关心的内容放在后面。下面是一些关于组织方法顺序的建议：</p>
+<ul>
+<li>作为惯例，__init__ 实例化方法应该总是放在类的最前面，__new__ 方法同理；</li>
+<li>公有方法应该放在类的前面，因为它们是其他模块调用类的入口，是类的门面，也是所有人最关心的内容；</li>
+<li>以 _ 开头的私有方法，大部分是类自身的实现细节，应该放在靠后的位置；</li>
+<li>以 __ 开头的魔法方法比较特殊，通常会按照方法的重要程度来决定它们的位置；</li>
+<li>当你从上往下阅读类时，所有方法的抽象级别应该是不断降低的；</li>
+</ul>
+<p>在写代码时，如果你在原有的面向对象代码上，撒上一点儿函数作为调味品，就会发生奇妙的化学反应。下面是最常见的单例模式实现，当 __new__ 方法被重写后，类的每次实例化返回的不再是新实例，而是同一个已经初始化的旧实例 cls._instance：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span>:</span></span><br><span class="line">    _instance = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            inst = super().__new__(cls)</span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> 从外部配置文件读取配置</span></span><br><span class="line">            cls._instance = inst</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_database</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 读取数据库配置</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reload</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 重新读取配置文件，刷新配置</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>预绑定方法模式</strong>（Prebound Method Pattern）是一种将对象方法绑定为函数的模式，在 Python 里，实现单例压根儿不用这么麻烦，我们有一个随手可得的单例对象——模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 从外部配置文件读取配置</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_database</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 读取数据库配置</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reload</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 重新读取配置文件，刷新配置</span></span><br><span class="line"></span><br><span class="line">_config = AppConfig()</span><br><span class="line">get_database_conf = _config.get_database</span><br><span class="line">reload_config = _config.reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="面向对象设计原则"><a href="#面向对象设计原则" class="headerlink" title="面向对象设计原则"></a>面向对象设计原则</h2><p><em>Design Patterns: Elements of Reusable Object-Oriented Software</em> 中的大部分设计模式是作者用静态编程语言，在一个有着诸多限制的面向对象环境里创造出来的。而 Python 是一门动态到骨子里的编程语言，它有着一等函数对象、鸭子类型、可自定义的数据模型等各种灵活特性。因此，我们极少会用 Python 来一比一还原经典设计模式，而几乎总是会为每种设计模式找到更适合 Python 的表现形式。</p>
+<p>在面向对象领域，除了 23 种经典的设计模式外，还有许多经典的设计原则。同具体的设计模式相比，原则通常更抽象、适用性更广，更适合融入 Python 编程中。</p>
+<h3 id="SRP：单一职责原则"><a href="#SRP：单一职责原则" class="headerlink" title="SRP：单一职责原则"></a>SRP：单一职责原则</h3><blockquote>
+<p>A class or module should have a single responsibility.</p>
+</blockquote>
+<p>Hacker News 是一个知名的国外科技类资讯站点，在程序员圈子内很受欢迎。为了让浏览 Hacker News 变得更方便，我想写个程序，它能自动获取首页最热门的条目标题和链接，把它们保存到普通文件里。利用 requests、lxml 等模块提供的强大功能，不到半小时，我就把程序写好了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, title: str, link: str, points: str, comments_cnt: str)</span>:</span></span><br><span class="line">        self.title = title</span><br><span class="line">        self.link = link</span><br><span class="line">        self.points = int(points)</span><br><span class="line">        self.comments_cnt = int(comments_cnt)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HNTopPostsSpider</span>:</span></span><br><span class="line">    items_url = <span class="string">'https://news.ycombinator.com/'</span></span><br><span class="line">    file_title = <span class="string">'Top news on HN'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, fp: TextIO, limit: int = <span class="number">5</span>)</span>:</span></span><br><span class="line">        self.fp = fp</span><br><span class="line">        self.limit = limit</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_to_file</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.fp.write(<span class="string">f'# <span class="subst">&#123;self.file_title&#125;</span>\n\n'</span>)</span><br><span class="line">        <span class="keyword">for</span> i, post <span class="keyword">in</span> enumerate(self.fetch(), <span class="number">1</span>):</span><br><span class="line">            self.fp.write(<span class="string">f'&gt; TOP <span class="subst">&#123;i&#125;</span>: <span class="subst">&#123;post.title&#125;</span>\n'</span>)</span><br><span class="line">            self.fp.write(<span class="string">f'&gt; 分数：<span class="subst">&#123;post.points&#125;</span> 评论数：<span class="subst">&#123;post.comments_cnt&#125;</span>\n'</span>)</span><br><span class="line">            self.fp.write(<span class="string">f'&gt; 地址：<span class="subst">&#123;post.link&#125;</span>\n'</span>)</span><br><span class="line">            self.fp.write(<span class="string">'------\n'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(self)</span> -&gt; Iterable[Post]:</span></span><br><span class="line">        resp = requests.get(self.items_url)</span><br><span class="line">        html = etree.HTML(resp.text)</span><br><span class="line">        items = html.xpath(<span class="string">'//table[@class="itemlist"]/tr[@class="athing"]'</span>)</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> items[: self.limit]:</span><br><span class="line">            node_title = item.xpath(<span class="string">'./td[@class="title"]/a'</span>)[<span class="number">0</span>]</span><br><span class="line">            node_detail = item.getnext()</span><br><span class="line">            points_text = node_detail.xpath(<span class="string">'.//span[@class="score"]/text()'</span>)</span><br><span class="line">            comments_text = node_detail.xpath(<span class="string">'.//td/a[last()]/text()'</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">yield</span> Post(</span><br><span class="line">                title=node_title.text,</span><br><span class="line">                link=node_title.get(<span class="string">'href'</span>),</span><br><span class="line">                points=points_text[<span class="number">0</span>].split()[<span class="number">0</span>] <span class="keyword">if</span> points_text <span class="keyword">else</span> <span class="string">'0'</span>,</span><br><span class="line">                comments_cnt=comments_text.split()[<span class="number">0</span>],</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    crawler = HNTopPostsSpider(sys.stdout)</span><br><span class="line">    crawler.write_to_file()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码是面向对象风格的，代码里定义了如下两个类：</p>
+<ul>
+<li>Post：代表一个 Hacker News 内容条目，包含标题、链接等字段，是一个典型的数据类，主要用来衔接程序的数据抓取与文件写入行为；</li>
+<li>HNTopPostsSpider：抓取 Hacker News 内容的爬虫类，包含抓取页面、解析、写入结果等行为，是完成主要工作的类；</li>
+</ul>
+<p>SRP 认为：<strong>一个类应该仅有一个被修改的理由</strong>，换句话说，每个类都应该只承担一种职责。在上面的爬虫脚本里，你可以轻易找到两个需要修改 HNTopPostsSpider 类的理由：</p>
+<ul>
+<li>Hacker News 网站的程序员突然更新了页面样式，旧 XPath 解析算法无法正常解析新页面，因此需要修改 fetch() 方法里的解析逻辑；</li>
+<li>程序的用户觉得纯文本格式不好看，想要改成 Markdown 样式，因此需要修改 write_to_file() 方法里的输出逻辑；</li>
+</ul>
+<p>违反 SRP 的坏处：</p>
+<ul>
+<li>假如某个类违反了 SRP，我们就会经常出于某种原因去修改它，而这很可能会导致不同功能之间相互影响；</li>
+<li>单个类承担的职责越多，就意味着这个类越复杂、越难维护；</li>
+<li>违反 SRP 的类也很难复用；</li>
+</ul>
+<p>解决办法有很多，其中最传统的就是<strong>把大类拆分为小类</strong>。为了让 HNTopPostsSpider 类的职责变得更纯粹，我把其中与写入文件相关的内容拆了出去，形成了一个新的类 PostsWriter：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostsWriter</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, fp: TextIO, title: str)</span>:</span></span><br><span class="line">        self.fp = fp</span><br><span class="line">        self.title = title</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(self, posts: List[Post])</span>:</span></span><br><span class="line">        self.fp.write(<span class="string">f'# <span class="subst">&#123;self.title&#125;</span>\n\n'</span>)</span><br><span class="line">        <span class="keyword">for</span> i, post <span class="keyword">in</span> enumerate(posts, <span class="number">1</span>):</span><br><span class="line">            self.fp.write(<span class="string">f'&gt; TOP <span class="subst">&#123;i&#125;</span>: <span class="subst">&#123;post.title&#125;</span>\n'</span>)</span><br><span class="line">            self.fp.write(<span class="string">f'&gt; 分数：<span class="subst">&#123;post.points&#125;</span> 评论数：<span class="subst">&#123;post.comments_cnt&#125;</span>\n'</span>)</span><br><span class="line">            self.fp.write(<span class="string">f'&gt; 地址：<span class="subst">&#123;post.link&#125;</span>\n'</span>)</span><br><span class="line">            self.fp.write(<span class="string">'------\n'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后，对于 HNTopPostsSpider 类，我直接删掉 write_to_file() 方法，让它只保留 fetch() 方法。这样修改以后，HNTopPostsSpider 类和 PostsWriter 类都符合了 SRP，由于现在两个类各自只负责一件事，需要一个新角色把它们的工作串联起来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_hn_top_posts</span><span class="params">(fp: Optional[TextIO] = None)</span>:</span></span><br><span class="line">    dest_fp = fp <span class="keyword">or</span> sys.stdout</span><br><span class="line">    crawler = HNTopPostsSpider()</span><br><span class="line">    writer = PostsWriter(dest_fp, title=<span class="string">'Top news on HN'</span>)</span><br><span class="line">    writer.write(list(crawler.fetch()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>SRP 是面向对象领域的设计原则，通常用来形容类。而在 Python 中，单一职责的适用范围不限于类——通过定义函数，我们同样能让上面的代码符合单一职责原则。</p>
+</blockquote>
+<h3 id="OCP：开放关闭原则"><a href="#OCP：开放关闭原则" class="headerlink" title="OCP：开放关闭原则"></a>OCP：开放关闭原则</h3><blockquote>
+<p>Software entities (modules, classes, functions, etc.) should be open for extension, but closed for modification.</p>
+</blockquote>
+<p>当前版本的脚本会不分来源地把热门条目都抓取回来，但其实我只对那些来自特定站点（比如 GitHub、Bloomberg）的内容感兴趣。因此，我需要修改 HNTopPostsSpider 类的代码来对结果进行过滤：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(self)</span> -&gt; Iterable[Post]:</span></span><br><span class="line">    ...</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> counter &gt;= self.limit:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        ...</span><br><span class="line">        link = node_title.get(<span class="string">'href'</span>)</span><br><span class="line">        parsed_link = parse.urlparse(link)</span><br><span class="line">        <span class="keyword">if</span> parsed_link.netloc <span class="keyword">in</span> (<span class="string">'github.com'</span>, <span class="string">'bloomberg.com'</span>):</span><br><span class="line">            counter += <span class="number">1</span></span><br><span class="line">            <span class="keyword">yield</span> Post(...)</span><br></pre></td></tr></table></figure>
+
+<p>OCP 认为：<strong>类应该对扩展开放，对修改关闭</strong>。现在的代码明显违反了 OCP，因为我必须修改类代码，才能调整域名过滤条件，第一个解决办法是<strong>使用继承</strong>。要做到有效地扩展，关键点在于找到父类中不稳定、会变动的内容，只有将这部分变化封装成方法（或属性），子类才能通过继承重写这部分行为。</p>
+<p>在目前的需求场景下，HNTopPostsSpider 类里会变动的不稳定逻辑，其实就是“用户对条目是否感兴趣”部分，我们可以将这部分逻辑抽出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(self)</span> -&gt; Iterable[Post]:</span></span><br><span class="line">    ...</span><br><span class="line">    counter = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> counter &gt;= self.limit:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        ...</span><br><span class="line">        link = node_title.get(<span class="string">'href'</span>)</span><br><span class="line">        post = Post(...)</span><br><span class="line">        <span class="keyword">if</span> self.interested_in_post(post):</span><br><span class="line">            counter += <span class="number">1</span></span><br><span class="line">            <span class="keyword">yield</span> post</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">interested_in_post</span><span class="params">(self, post: Post)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>有了这样的结构后，假如某天我的兴趣发生了变化，也没关系，不用修改旧代码，只要增加新子类就行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GithubNBloombergHNTopPostsSpider</span><span class="params">(HNTopPostsSpider)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">interested_in_post</span><span class="params">(self, post: Post)</span> -&gt; bool:</span></span><br><span class="line">        parsed_link = parse.urlparse(post.link)</span><br><span class="line">        <span class="keyword">return</span> parsed_link.netloc <span class="keyword">in</span> (<span class="string">'github.com'</span>, <span class="string">'bloomberg.com'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>除了继承外，我们还可以<strong>采用组合</strong>（Composition），更具体地说，使用基于组合思想的依赖注入（Dependency Injection）技术。与继承不同，依赖注入允许我们在创建对象时，将业务逻辑中易变的部分（常被称为算法），通过初始化参数注入对象里，最终利用多态特性达到不改代码来扩展类的效果。</p>
+<p>在这个脚本里，“条件过滤算法”是业务逻辑里的易变部分，要实现依赖注入，我们需要先对过滤算法建模：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostFilter</span><span class="params">(ABC)</span>:</span></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate</span><span class="params">(self, post: Post)</span> -&gt; bool:</span></span><br><span class="line">        <span class="string">"""判断帖子是否应该被保留"""</span></span><br></pre></td></tr></table></figure>
+
+<p>随后，为了实现脚本的原始逻辑：不过滤任何条目，我们创建一个继承该抽象类的默认算法类 DefaultPostFilter；要实现依赖注入，HNTopPostsSpider 类也需要做一些调整，它必须在初始化时接收一个名为 post_filter 的结果过滤器对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DefaultPostFilter</span><span class="params">(PostFilter)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate</span><span class="params">(self, post: Post)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HNTopPostsSpider</span>:</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, limit: int = <span class="number">5</span>, post_filter: Optional[PostFilter] = None)</span>:</span></span><br><span class="line">        self.limit = limit</span><br><span class="line">        self.post_filter = post_filter <span class="keyword">or</span> DefaultPostFilter()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(self)</span> -&gt; Iterable[Post]:</span></span><br><span class="line">        ...</span><br><span class="line">        counter = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">            <span class="keyword">if</span> counter &gt;= self.limit:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            ...</span><br><span class="line">            post = Post(...)</span><br><span class="line">            <span class="keyword">if</span> self.post_filter.validate(post):</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">                <span class="keyword">yield</span> post</span><br></pre></td></tr></table></figure>
+
+<p>假如需求发生了变化，需要修改当前的过滤逻辑，那么我只要创建一个新的 PostFilter 类即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GithubNBloombergPostFilter</span><span class="params">(PostFilter)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate</span><span class="params">(self, post: Post)</span> -&gt; bool:</span></span><br><span class="line">        parsed_link = parse.urlparse(post.link)</span><br><span class="line">        <span class="keyword">return</span> parsed_link.netloc <span class="keyword">in</span> (<span class="string">'github.com'</span>, <span class="string">'bloomberg.com'</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们必须编写一个抽象类，以此满足类型注解的需求，类型注解会让 Python 更接近静态语言。启用类型注解，你就必须时刻寻找那些能作为注解的实体类型，类型注解会强制我们把大脑里的隐式接口和协议显式地表达出来。</p>
+</blockquote>
+<p>在实现 OCP 的众多手法中，除了继承与依赖注入外，还有另一种常用方式：<strong>数据驱动</strong>。它的核心思想是：将经常变动的部分以数据的方式抽离出来，当需求变化时，只改动数据，代码逻辑可以保持不动。依赖注入抽离的通常是类，而数据驱动抽离的是纯粹的数据。</p>
+<p>改造成数据驱动的第一步是定义数据的格式。在这个需求中，变动的部分是“我感兴趣的站点地址”，因此我可以简单地用一个字符串列表 filter_by_hosts 来指代这个地址：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HNTopPostsSpider</span>:</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, limit: int = <span class="number">5</span>, filter_by_hosts: Optional[List[str]] = None)</span>:</span></span><br><span class="line">        self.limit = limit</span><br><span class="line">        self.filter_by_hosts = filter_by_hosts</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(self)</span> -&gt; Iterable[Post]:</span></span><br><span class="line">        ...</span><br><span class="line">        counter = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">            <span class="keyword">if</span> counter &gt;= self.limit:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            ...</span><br><span class="line">            post = Post(...)</span><br><span class="line">            <span class="keyword">if</span> self._check_link_from_hosts(post.link):</span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line">                <span class="keyword">yield</span> post</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_check_link_from_hosts</span><span class="params">(self, link: str)</span> -&gt; True:</span></span><br><span class="line">        <span class="keyword">if</span> self.filter_by_hosts <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        parsed_link = parse.urlparse(link)</span><br><span class="line">        <span class="keyword">return</span> parsed_link.netloc <span class="keyword">in</span> self.filter_by_hosts</span><br></pre></td></tr></table></figure>
+
+<p>之后，每当我要调整过滤站点时，只要修改 hosts 列表即可。同前面的继承与依赖注入相比，使用数据驱动的代码明显更简洁，因为它不需要定义任何额外的类。但数据驱动也有一个缺点：它的可定制性不如其他两种方式，比如，假如我想以链接是否以某个字符串结尾来进行过滤，现在的代码就做不到。</p>
+<p><strong>影响每种方案可定制性的根本原因在于，各方案所处的抽象级别不一样</strong>。比如，在依赖注入方案下，我们选择抽象的内容是“条目过滤行为”；而在数据驱动方案下，抽象内容则是“条目过滤行为的有效站点地址”。很明显，后者的抽象级别更低，关注的内容更具体，所以灵活性不如前者。</p>
+<h3 id="LSP：里式替换原则"><a href="#LSP：里式替换原则" class="headerlink" title="LSP：里式替换原则"></a>LSP：里式替换原则</h3><blockquote>
+<p>If S is a subtype of T, then objects of type T may be replaced with objects of type S, without breaking the program.</p>
+</blockquote>
+<p>LSP 认为：<strong>所有子类（派生类）对象应该可以任意替代父类（基类）对象使用，且不会破坏程序原本的功能</strong>。假设我在开发一个简单的网站，网站支持用户注册与登录功能，并且支持批量停用用户：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deactivate</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.is_active = <span class="literal">False</span></span><br><span class="line">        self.save()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deactivate_users</span><span class="params">(users: Iterable[User])</span>:</span></span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">        user.deactivate()</span><br></pre></td></tr></table></figure>
+
+<p>随着网站的功能变得越来越丰富，我需要给系统增加一些新的用户类型：站点管理员。这是一类特殊的用户，比普通用户多一些额外的管理类属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span><span class="params">(User)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deactivate</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">'admin can not be deactivated!'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由于<strong>子类抛出了父类所不认识的异常类型</strong>，现在的代码并不满足 LSP，因为在 deactive_users() 函数看来，子类 Admin 对象根本无法替代父类 User 对象。一个常见但错误的解决办法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deactivate_users</span><span class="params">(users: Iterable[User])</span>:</span></span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">        <span class="keyword">if</span> isinstance(user, Admin):</span><br><span class="line">            logger.info(<span class="string">f'skip deactivating admin user <span class="subst">&#123;user.username&#125;</span>'</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        user.deactivate()</span><br></pre></td></tr></table></figure>
+
+<p>假如以后网站有了更多继承 User 类的新用户类型，比如 VIP 用户、员工用户等，而它们也都不支持停用操作，那在现在的代码结构下，我就得不断调整 deactive_users() 函数，来适配这些新的用户类型。“子类对象可以替换父类”的“子类”指的<strong>并不是某个具体的子类，而是未来可能出现的任意一个子类</strong>。因此，通过增加一些针对性的类型判断，试图让程序符合 LSP 的做法完全行不通。</p>
+<p>要让子类符合 LSP，我们必须让用户类 User 的“不支持停用”特性变得更显式，最好将其设计到父类协议里去，而不是让子类随心所欲地抛出异常。为此，我们至少可以做两件事：</p>
+<ul>
+<li><p>创建自定义异常类：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeactivationNotSupported</span><span class="params">(Exception)</span>:</span></span><br><span class="line"><span class="string">"""当用户不支持停用时抛出"""</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在父类 User 和子类 Admin 的方法文档里，增加与抛出异常相关的说明：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deactivate</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""停用当前用户</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        :raises: 当用户不支持被停用时，抛出 DeactivationNotSupported 异常</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span><span class="params">(User)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deactivate</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""停用当前用户</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        :raises: 当用户不支持被停用时，抛出 DeactivationNotSupported 异常</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">raise</span> DeactivationNotSupported(<span class="string">'admin can not be deactivated'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这样调整后，当其他人要编写任何使用 User 的代码时，都可以针对这个异常进行恰当的处理。比如，我可以调整 deactive_users() 方法，让它在每次调用 deactive() 时都显式地捕获异常：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deactivate_users</span><span class="params">(users: Iterable[User])</span>:</span></span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            user.deactivate()</span><br><span class="line">        <span class="keyword">except</span> DeactivationNotSupported:</span><br><span class="line">            logger.info(</span><br><span class="line">                <span class="string">f'user <span class="subst">&#123;user.username&#125;</span> does not allow deactivating, skip.'</span></span><br><span class="line">            )</span><br></pre></td></tr></table></figure>
+
+<p>现在，我在类上添加一个新的操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            post.id</span><br><span class="line">            <span class="keyword">for</span> post <span class="keyword">in</span> session.query(Post).filter(username=self.username)</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span><span class="params">(User)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self)</span> -&gt; Iterable[int]:</span></span><br><span class="line">        <span class="keyword">for</span> post <span class="keyword">in</span> session.query(Post).all():</span><br><span class="line">            <span class="keyword">yield</span> post.id</span><br></pre></td></tr></table></figure>
+
+<p>由于<strong>子类的方法返回值类型与父类不同，并且该类型不是父类返回值类型的子类</strong>，上面的代码违反了 LSP。假如我把之前两个类的方法返回值调换一下，这样的设计就完全符合里氏替换原则。</p>
+<p>除此之外，方法参数也会违反 LSP——<strong>子类的方法参数与父类不同，并且参数要求没有变得更宽松（可选参数），同名参数没有更抽象</strong>。以下是一个错误示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self, type: int)</span> -&gt; List[int]:</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span><span class="params">(User)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self, include_hidden: bool)</span> -&gt; List[int]:</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+
+<p>当子类方法参数与父类不一致时，有些特殊情况其实仍然可以满足 LSP：</p>
+<ul>
+<li><p>子类方法可以接收比父类更多的参数，只要保证这些新增参数是可选的：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self)</span> -&gt; List[int]:</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span><span class="params">(User)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self, include_hidden: bool = False)</span> -&gt; List[int]:</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类与父类参数一致，但子类的参数类型比父类的更抽象：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self, titles=List[str])</span> -&gt; List[int]:</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span><span class="params">(User)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">list_related_posts</span><span class="params">(self, titles=Iterable[str])</span> -&gt; List[int]:</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>在面向对象领域，当我们针对某个类型编写代码时，其实并不知道这个类型未来会派生出多少千奇百怪的子类型，我们只能根据当前看到的基类，尝试编写适合于未来子类的代码。LSP 能促使我们<strong>设计出更合理的继承关系，将多态的潜能更好地激发出来</strong>。</p>
+<h3 id="DIP：依赖倒置原则"><a href="#DIP：依赖倒置原则" class="headerlink" title="DIP：依赖倒置原则"></a>DIP：依赖倒置原则</h3><blockquote>
+<p>High-level modules shouldn’t depend on low-level modules. Both modules should depend on abstractions. In addition, abstractions shouldn’t depend on details. Details depend on abstractions.</p>
+</blockquote>
+<p>不论多复杂的程序，都是由一个个模块组合而成的。当你告诉别人你正在写一个很复杂的程序时，你其实并不是直接在写那个程序，而是在逐个完成它的模块，最后用这些模块组成程序。在用模块组成程序的过程中，模块间自然产生了依赖关系，DIP 认为：<strong>高层模块不应该依赖底层模块，二者都应该依赖抽象</strong>。</p>
+<p>在 Hacker News 上，每个由用户提交的条目后面都跟着它的来源域名。为了统计哪些站点在 Hacker News 上最受欢迎，我想编写一个脚本，用它来分组统计每个来源站点的条目数量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SiteSourceGrouper</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, url: str)</span>:</span></span><br><span class="line">        self.url = url</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_groups</span><span class="params">(self)</span> -&gt; Dict[str, int]:</span></span><br><span class="line">        resp = requests.get(self.url)</span><br><span class="line">        html = etree.HTML(resp.text)</span><br><span class="line">        elems = html.xpath(<span class="string">'//table[@class="itemlist"]//span[@class="sitestr"]'</span>)</span><br><span class="line"></span><br><span class="line">        groups = Counter()</span><br><span class="line">        <span class="keyword">for</span> elem <span class="keyword">in</span> elems:</span><br><span class="line">            groups.update([elem.text])</span><br><span class="line">        <span class="keyword">return</span> groups</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    groups = SiteSourceGrouper(<span class="string">"https://news.ycombinator.com/"</span>).get_groups()</span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> groups.most_common(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">f'Site: <span class="subst">&#123;key&#125;</span> | Count: <span class="subst">&#123;value&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>从层级上来说，SiteSourceGrouper 是高层模块，requests 和 lxml 是低层模块，依赖关系是正向的。为了测试程序的正确性，我为脚本写了一些单元测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_grouper_returning_valid_type</span><span class="params">()</span>:</span></span><br><span class="line">    grouper = SiteSourceGrouperO(<span class="string">'https://news.ycombinator.com/'</span>)</span><br><span class="line">    result = grouper.get_groups()</span><br><span class="line">    <span class="keyword">assert</span> isinstance(result, Counter), <span class="string">"groups should be Counter instance"</span></span><br></pre></td></tr></table></figure>
+
+<p>在本地开发时，这个测试用例可以正常执行，没有任何问题。但当我提交了测试代码，想在 CI 服务器上自动执行测试时，却发现根本无法完成测试。这是因为 SiteSourceGrouper 的执行链路依赖 requests 模块和网络条件，这严格限制了单元测试的执行环境，而 CI 环境根本就不能访问外网。</p>
+<p>mock 是测试领域的一个专有名词，代表一类特殊的测试假对象。在 Python 里，单元测试模块 unittest 为我们提供了强大的 mock 子模块，里面有许多和 mock 技术有关的工具，如下所示：</p>
+<ul>
+<li>Mock: mock 主类型，Mock() 对象被调用后不执行任何逻辑，但是会记录被调用的情况——包括次数、参数等；</li>
+<li>MagicMock: 在 Mock 类的基础上追加了对魔法方法的支持，是 patch() 函数所使用的默认类型；</li>
+<li>path(): 补丁函数，使用时需要指定待替换的对象，默认使用一个 MagicMock() 替换原始对象，可当作上下文管理器或装饰器使用；</li>
+</ul>
+<p>通过 mock 技术，我们最终让单元测试不再依赖网络环境，可以成功地在 CI 环境中执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> unittest <span class="keyword">import</span> mock</span><br><span class="line"></span><br><span class="line"><span class="meta">@mock.patch('hn_site_grouper.requests.get')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_grouper_returning_valid_type</span><span class="params">(mocked_get)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'static_hn.html'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        mocked_get.return_value.text = fp.read()</span><br><span class="line"></span><br><span class="line">    grouper = SiteSourceGrouperO(<span class="string">'https://news.ycombinator.com/'</span>)</span><br><span class="line">    result = grouper.get_groups()</span><br><span class="line">    <span class="keyword">assert</span> isinstance(result, Counter), <span class="string">"groups should be Counter instance"</span></span><br></pre></td></tr></table></figure>
+
+<p>当我们编写单元测试时，有一条非常重要的指导原则：<strong>测试程序的行为，而不是测试具体实现</strong>。它的意思是，好的单元测试应该只关心被测试对象功能是否正常，是否能做好它所宣称的事情，而不应该关心被测试对象内部的具体实现是什么样的。正因为如此，mock 应该总是被当作一种应急的技术，而不是一种低成本、让单元测试能快速开展的手段。大多数情况下，假如你的单元测试代码里有太多 mock，往往代表你的程序设计得不够合理，需要改进。</p>
+<p>DIP 里的抽象特指编程语言的一类特殊对象，这类对象只声明一些公开的 API，并不提供任何具体实现。比如，在 Java 中，接口就是一种抽象；而在 Python 里，有一个和接口非常类似的东西——抽象类。设计抽象是 DIP 里最重要的一步，其主要任务是确定这个抽象的职责与边界，在上面的脚本里，高层模块主要依赖 requests 模块做了两件事：</p>
+<ul>
+<li>通过 requests.get() 获取响应 response 对象；</li>
+<li>利用 response.text 获取响应文本；</li>
+</ul>
+<p>可以看出，这个依赖关系的主要目的是获取 Hacker News 的页面文本。因此，我可以创建一个名为 HNWebPage 的抽象，让它承担“提供页面文本”的职责：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HNWebPage</span><span class="params">(ABC)</span>:</span></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_text</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br></pre></td></tr></table></figure>
+
+<p>定义好抽象后，接下来分别让高层模块和低层模块与抽象产生依赖关系。低层模块与抽象间的依赖关系表现为，它会提供抽象的具体实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RemoteHNWebPage</span><span class="params">(HNWebPage)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, url: str)</span>:</span></span><br><span class="line">        self.url = url</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_text</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        resp = requests.get(self.url)</span><br><span class="line">        <span class="keyword">return</span> resp.text</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要调整高层模块 SiteSourceGrouper 类的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SiteSourceGrouper</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, page: HNWebPage)</span>:</span></span><br><span class="line">        self.page = page</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_groups</span><span class="params">(self)</span> -&gt; Dict[str, int]:</span></span><br><span class="line">        html = etree.HTML(self.page.get_text())</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+
+<p>为了满足单元测试的无网络需求，基于 HNWebPage 抽象类，我可以实现一个不依赖网络的新类型 LocalHNWebPage：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalHNWebPage</span><span class="params">(HNWebPage)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, path: str)</span>:</span></span><br><span class="line">        self.path = path</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_text</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">with</span> open(self.path, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">            <span class="keyword">return</span> fp.read()</span><br></pre></td></tr></table></figure>
+
+<p>单元测试代码也可以进行相应的调整：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_grouper_from_local</span><span class="params">()</span>:</span></span><br><span class="line">    page = LocalHNWebPage(path=<span class="string">"./static_hn.html"</span>)</span><br><span class="line">    grouper = SiteSourceGrouper(page)</span><br><span class="line">    result = grouper.get_groups()</span><br><span class="line">    <span class="keyword">assert</span> isinstance(result, Counter), <span class="string">"groups should be Counter instance"</span></span><br></pre></td></tr></table></figure>
+
+<p>抽象的好处显而易见：它<strong>解耦了模块间的依赖关系，让代码变得更灵活</strong>。但抽象同时也带来了额外的编码与理解成本，所以，了解何时不抽象与何时抽象同样重要。只有对代码中那些容易变化的部分进行抽象，才能获得最大收益。</p>
+<h3 id="ISP：接口隔离原则"><a href="#ISP：接口隔离原则" class="headerlink" title="ISP：接口隔离原则"></a>ISP：接口隔离原则</h3><blockquote>
+<p>Clients should not be forced to depend upon interfaces that they do not use.</p>
+</blockquote>
+<p>接口是编程语言里的一类特殊对象，它包含一些公开的抽象协议，可以用来构建模块间的依赖关系。在不同的编程语言里，接口有不同的表现形态，在 Python 中，接口可以是抽象类、Protocal，也可以是鸭子类型里的某个隐式概念。</p>
+<p>ISP 认为：<strong>调用方不应该依赖任何它不使用的方法</strong>。以统计 Hacker News 页面条目为例：</p>
+<ul>
+<li>调用方：SiteSourceGrouper；</li>
+<li>接口：HNWebPage；</li>
+<li>依赖关系：调用接口方法 get_text() 获取页面文本；</li>
+</ul>
+<p>现在，我想开发一个新功能：定期对 Hacker News 首页内容进行归档，观察热点新闻在不同时间点的变化规律。因此，除了页面文本内容外，我还需要获取页面大小、生成时间等额外信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> abstractmethod, ABC</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HNWebPage</span><span class="params">(ABC)</span>:</span></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_text</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_size</span><span class="params">(self)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_generated_at</span><span class="params">(self)</span> -&gt; datetime.datetime:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br></pre></td></tr></table></figure>
+
+<p>对 HNWebPage 接口的盲目扩展暴露出一个问题：<strong>更丰富的接口协议，意味着更高的实现成本</strong>，也更容易给实现方带来麻烦：</p>
+<ul>
+<li>SiteSourceGrouper 类依赖了 HNWebPage，但是并不使用后者的 get_size()、get_generated_at() 方法；</li>
+<li>LocalHNWebPage 类为了实现 HNWebPage 抽象，需要退化 get_generated_at() 方法；</li>
+</ul>
+<p>在设计接口时有一个简单的技巧：<strong>让调用方来驱动协议设计</strong>。在现在的程序里，根据这两个调用方的需求，我可以把 HNWebPage 分离成两个不同的抽象类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContentOnlyHNWebPage</span><span class="params">(ABC)</span>:</span></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_text</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HNWebPage</span><span class="params">(ABC)</span>:</span></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_text</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_size</span><span class="params">(self)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_generated_at</span><span class="params">(self)</span> -&gt; datetime.datetime:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError()</span><br></pre></td></tr></table></figure>
+
+<p>当你认识到 ISP 带来的种种好处后，很自然地会养成写小类、小接口的习惯。在现实世界里，其实已经有很多小而精的接口设计可供参考，比如，Python 的 collections.abc 模块里面有非常多的小接口；Go 语言标准库里的 Reader 和 Writer 接口。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/4159641954.html" rel="next" title="场景：查找第一张专辑">
+                <i class="fa fa-chevron-left"></i> 场景：查找第一张专辑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/3290605089.html" rel="prev" title="场景：寻找元类替代品">
+                场景：寻找元类替代品 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程"><span class="nav-number">1.</span> <span class="nav-text">面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类常用知识"><span class="nav-number">1.1.</span> <span class="nav-text">类常用知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置类方法装饰器"><span class="nav-number">1.2.</span> <span class="nav-text">内置类方法装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">类方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性装饰器"><span class="nav-number">1.2.3.</span> <span class="nav-text">属性装饰器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鸭子类型及其局限性"><span class="nav-number">1.3.</span> <span class="nav-text">鸭子类型及其局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类"><span class="nav-number">1.4.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多重继承与-MRO"><span class="nav-number">1.5.</span> <span class="nav-text">多重继承与 MRO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程建议"><span class="nav-number">1.6.</span> <span class="nav-text">编程建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象设计原则"><span class="nav-number">2.</span> <span class="nav-text">面向对象设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SRP：单一职责原则"><span class="nav-number">2.1.</span> <span class="nav-text">SRP：单一职责原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OCP：开放关闭原则"><span class="nav-number">2.2.</span> <span class="nav-text">OCP：开放关闭原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSP：里式替换原则"><span class="nav-number">2.3.</span> <span class="nav-text">LSP：里式替换原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DIP：依赖倒置原则"><span class="nav-number">2.4.</span> <span class="nav-text">DIP：依赖倒置原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISP：接口隔离原则"><span class="nav-number">2.5.</span> <span class="nav-text">ISP：接口隔离原则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

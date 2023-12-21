@@ -1,0 +1,1024 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="SystemDesign,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="In this chapter, we will tackle an interesting and classic system design interview question: Designing a URL shortening service like TinyURL. Step 1 - Understand the problem and establish design scope">
+<meta name="keywords" content="SystemDesign">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design a URL Shortener">
+<meta property="og:url" content="https://necusjz.github.io/p/3500128686.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="In this chapter, we will tackle an interesting and classic system design interview question: Designing a URL shortening service like TinyURL. Step 1 - Understand the problem and establish design scope">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/02.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/00.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/01.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/03.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/04.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/05.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/06.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/07.webp">
+<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design a URL Shortener">
+<meta name="twitter:description" content="In this chapter, we will tackle an interesting and classic system design interview question: Designing a URL shortening service like TinyURL. Step 1 - Understand the problem and establish design scope">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/02.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/3500128686.html">
+
+
+
+
+
+  <title> Design a URL Shortener | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3500128686.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Design a URL Shortener
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-07T23:26:18+08:00">
+                2023-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this chapter, we will tackle an interesting and classic system design interview question: Designing a URL shortening service like TinyURL.</p>
+<h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>System design interview questions are intentionally left open-ended. To design a well-crafted system, it is critical to ask clarification questions.</p>
+<p>Candidate: Can you give an example of how a URL shortener work?<br>Interviewer: Assume URL <a href="https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long" target="_blank" rel="noopener">https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long</a> is the original URL. Your service creates an alias with shorter length: <a href="https://tinyurl.com/y7keocwj" target="_blank" rel="noopener">https://tinyurl.com/y7keocwj</a>. If you click the alias, it redirects you to the original URL.<br>C: What is the traffic volume?<br>I: 100 million URLs are generated per day.<br>C: How long is the shortened URL?<br>I: As short as possible.<br>C: What characters are allowed in the shortened URL?<br>I: Shortened URL can be a combination of numbers (0-9) and characters (a-z, A-Z).<br>C: Can shortened URLs be deleted or updated?<br>I: For simplicity, let us assume shortened URLs cannot be deleted or updated.</p>
+<p>Here are the basic use cases:</p>
+<ol>
+<li>URL shortening: Given a long URL -&gt; Return a much shorter URL.</li>
+<li>URL redirecting: Given a shorter URL -&gt; Redirect to the original URL.</li>
+<li>High availability, scalability, and fault tolerance considerations.</li>
+</ol>
+<a id="more"></a>
+<h3 id="Back-of-the-envelope-estimation"><a href="#Back-of-the-envelope-estimation" class="headerlink" title="Back of the envelope estimation"></a>Back of the envelope estimation</h3><ul>
+<li>Write operation: 100 million URLs are generated per day.</li>
+<li>Write operation per second: 100 million / 24 /3600 = 1160.</li>
+<li>Read operation: Assuming ratio of read operation to write operation is 10:1, read operation per second: 1160 * 10 = 11,600.</li>
+<li>Assuming the URL shortener service will run for 10 years, this means we must support 100 million * 365 * 10 = 365 billion records.</li>
+<li>Assume average URL length is 100.</li>
+<li>Storage requirement over 10 years: 365 billion * 100 bytes = 36.5 TB.</li>
+</ul>
+<p>It is important for you to walk through the assumptions and calculations with your interviewer so that both of you are on the same page.</p>
+<h2 id="Step-2-Propose-high-level-design-and-get-buy-in"><a href="#Step-2-Propose-high-level-design-and-get-buy-in" class="headerlink" title="Step 2 - Propose high-level design and get buy-in"></a>Step 2 - Propose high-level design and get buy-in</h2><p>In this section, we discuss the API endpoints, URL redirecting, and URL shortening flows.</p>
+<h3 id="API-endpoints"><a href="#API-endpoints" class="headerlink" title="API endpoints"></a>API endpoints</h3><p>API endpoints facilitate the communication between clients and servers. We will design the APIs REST-style. If you are unfamiliar with RESTful API, you can consult external materials, such as the one in the reference material [1]. A URL shortener primary needs two API endpoints:</p>
+<ul>
+<li>URL shortening. To create a new short URL, a client sends a POST request, which contains one parameter: the original long URL. The API looks like this:<br><em>POST api/v1/data/shorten</em><ul>
+<li>Request parameter: {longUrl: longURLString}</li>
+<li>Return shortURL</li>
+</ul>
+</li>
+<li>URL redirecting. To redirect a short URL to the corresponding long URL, a client sends a GET request. The API looks like this:<br><em>GET api/v1/shortUrl</em><ul>
+<li>Return longURL for HTTP redirection</li>
+</ul>
+</li>
+</ul>
+<h3 id="URL-shortening"><a href="#URL-shortening" class="headerlink" title="URL shortening"></a>URL shortening</h3><p>Let us assume the short URL looks like this: <a href="http://www.tinyurl.com/{hashValue}" target="_blank" rel="noopener">www.tinyurl.com/{hashValue}</a>. To support the URL shortening use case, we must find a hash function fx that maps a long URL to the hashValue, as shown in Figure 1.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/02.svg" alt></p>
+<p>The hash function must satisfy the following requirements:</p>
+<ul>
+<li>Each longURL must be hashed to one hashValue.</li>
+<li>Each hashValue can be mapped back to the longURL.</li>
+</ul>
+<p>Detailed design for the hash function is discussed in deep dive.</p>
+<h3 id="URL-redirecting"><a href="#URL-redirecting" class="headerlink" title="URL redirecting"></a>URL redirecting</h3><p>Figure 2 shows what happens when you enter a tinyurl onto the browser. Once the server receives a tinyurl request, it changes the short URL to the long URL with 301 redirect.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/00.svg" alt></p>
+<p>The detailed communication between clients and servers is shown in Figure 3.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/01.webp" alt></p>
+<p>One thing worth discussing here is 301 redirect vs. 302 redirect:</p>
+<ul>
+<li>301 redirect: A 301 redirect shows that the requested URL is <strong>permanently</strong> moved to the long URL. Since it is permanently redirected, the browser caches the response, and subsequent requests for the same URL will not be sent to the URL shortening service. Instead, requests are redirected to the long URL server directly.</li>
+<li>302 redirect: A 302 redirect means that the URL is <strong>temporarily</strong> moved to the long URL, meaning that subsequent requests for the same URL will be sent to the URL shortening service first. Then, they are redirected to the long URL server.</li>
+</ul>
+<p>Each redirection method has its Pros and Cons. If the priority is to reduce the server load, using 301 redirect makes sense as only the first request of the same URL is sent to URL shortening servers. However, if analytics is important, 302 redirect is a better choice as it can track click rate and source of the click more easily.</p>
+<p>The most intuitive way to implement URL redirecting is to use hash tables. Assuming the hash table stores &lt;shortURL, longURL&gt; pairs, URL redirecting can be implemented by the following:</p>
+<ul>
+<li>Get longURL: longURL = hashTable.get(shortURL)</li>
+<li>Once you get the longURL, perform the URL redirect.</li>
+</ul>
+<h2 id="Step-3-Design-deep-dive"><a href="#Step-3-Design-deep-dive" class="headerlink" title="Step 3 - Design deep dive"></a>Step 3 - Design deep dive</h2><p>Up until now, we have discussed the high-level design of URL shortening and URL redirecting. In this section, we dive deep into the following: Data model, hash function, URL shortening and URL redirecting.</p>
+<h3 id="Data-model"><a href="#Data-model" class="headerlink" title="Data model"></a>Data model</h3><p>In the high-level design, everything is stored in a hash table. This is a good starting point; however, this approach is not feasible for real-world systems as memory resources are limited and expensive. A better option is to store &lt;shortURL, longURL&gt; mapping in a relational database. Figure 4 shows a simple database table design. The simplified version of the table contains 3 columns: id, shortURL, longURL.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/03.svg" alt></p>
+<h3 id="Hash-function"><a href="#Hash-function" class="headerlink" title="Hash function"></a>Hash function</h3><p>Hash function is used to hash a long URL to a short URL, also known as hashValue.</p>
+<h4 id="Hash-value-length"><a href="#Hash-value-length" class="headerlink" title="Hash value length"></a>Hash value length</h4><p>The hashValue consists of characters from [0-9, a-z, A-Z], containing 10 + 26 + 26 = 62 possible characters. To figure out the length of hashValue, find the smallest n such that 62^n &gt;= 365 billion. The system must support up to 365 billion URLs based on the back of the envelope estimation. Table 1 shows the length of hashValue and the corresponding maximal number of URLs it can support:</p>
+<table>
+<thead>
+<tr>
+<th align="left">n</th>
+<th align="left">Maximal number of URLs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">62^1 = 62</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">62^2 = 3,844</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">62^3 = 238,328</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">62^4 = 14,776,336</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">62^5 = 916,132,832</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">62^6 = 56,800,235,584</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left"><strong>62^7 = 3,521,614,606,208 = ~3.5 trillion</strong></td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">62^8 = 218,340,105,584,896</td>
+</tr>
+</tbody></table>
+<p>When n = 7, 62^n = ~3.5 trillion, 3.5 trillion is more than enough to hold 365 billion URLs, so the length of hashValue is 7.</p>
+<p>We will explore two types of hash functions for a URL shortener. The first one is “hash + collision resolution”, and the second one is “base 62 conversion”. Let us look at them one by one.</p>
+<h4 id="Hash-collision-resolution"><a href="#Hash-collision-resolution" class="headerlink" title="Hash + collision resolution"></a>Hash + collision resolution</h4><p>To shorten a long URL, we should implement a hash function that hashes a long URL to a 7-character string. A straightforward solution is to use well-known hash functions like CRC32, MD5, or SHA-1. The following table compares the hash results after applying different hash functions on <a href="https://en.wikipedia.org/wiki/Systems_design" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Systems_design</a>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Hash function</th>
+<th align="left">Hash value (Hexadecimal)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CRC32</td>
+<td align="left">5cb54054</td>
+</tr>
+<tr>
+<td align="left">MD5</td>
+<td align="left">5a62509a84df9ee03fe1230b9df8b84e</td>
+</tr>
+<tr>
+<td align="left">SHA-1</td>
+<td align="left">0eeae7916c06853901d9ccbefbfcaf4de57ed85b</td>
+</tr>
+</tbody></table>
+<p>As shown in Table 2, even the shortest hash value (from CRC32) is too long (more than 7 characters). How can we make it shorter?</p>
+<p>The first approach is to collect the first 7 characters of a hash value; however, this method can lead to hash collisions. To resolve hash collisions, we can recursively append a new predefined string until no more collision is discovered. This process is explained in Figure 5.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/04.svg" alt></p>
+<p>This method can eliminate collision; however, it is expensive to query the database to check if a shortURL exists for every request. A technique called bloom filters [2] can improve performance. A bloom filter is a space-efficient probabilistic technique to test if an element is a member of a set. Refer to the reference material [2] for more details.</p>
+<h4 id="Base-62-conversion"><a href="#Base-62-conversion" class="headerlink" title="Base 62 conversion"></a>Base 62 conversion</h4><p>Base conversion is another approach commonly used for URL shorteners. Base conversion helps to convert the same number between its different number representation systems. Base 62 conversion is used as there are 62 possible characters for hashValue. Let us use an example to explain how the conversion works: Convert 11157(10) to base 62 representation:</p>
+<ul>
+<li>From its name, base 62 is a way of using 62 characters for encoding. The mappings are: 0-0, …, 9-9, 10-a, 11-b, …, 35-z, 36-A, …, 61-Z, where “a” stands for 10, “Z” stands for 61, etc.</li>
+<li>11157(10) = 62^2 * 2 + 62^1 * 55 + 62^0 * 59 = [2, 55, 59] -&gt; [2, T, X] in base 62 representation. Figure 6 shows the conversation process:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/05.svg" alt></li>
+<li>Thus, the short URL is <a href="https://tinyurl.com/2TX" target="_blank" rel="noopener">https://tinyurl.com/2TX</a></li>
+</ul>
+<h4 id="Comparison-of-the-two-approaches"><a href="#Comparison-of-the-two-approaches" class="headerlink" title="Comparison of the two approaches"></a>Comparison of the two approaches</h4><p>Table 3 shows the differences of the two approaches:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Hash + collision resolution</th>
+<th align="left">Base 62 conversion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Fixed short URL length.</td>
+<td align="left">Short URL length is not fixed. It goes up with the ID.</td>
+</tr>
+<tr>
+<td align="left">Does not need a unique ID generator.</td>
+<td align="left">This option depends on a unique ID generator.</td>
+</tr>
+<tr>
+<td align="left">Collision is possible and needs to be resolved.</td>
+<td align="left">Collision is not possible because ID is unique.</td>
+</tr>
+<tr>
+<td align="left">It’s not possible to figure out the next available short URL because it doesn’t depend on ID.</td>
+<td align="left">It is easy to figure out what is the next available short URL if ID increments by 1 for a new entry. This can be a security concern.</td>
+</tr>
+</tbody></table>
+<h3 id="URL-shortening-deep-dive"><a href="#URL-shortening-deep-dive" class="headerlink" title="URL shortening deep dive"></a>URL shortening deep dive</h3><p>As one of the core pieces of the system, we want the URL shortening flow to be logically simple and functional. Base 62 conversion is used in our design. We build the following diagram (Figure 7) to demonstrate the flow:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/06.svg" alt></p>
+<ol>
+<li>longURL is the input.</li>
+<li>The system checks if the longURL is in the database.</li>
+<li>If it is, it means the longURL was converted to shortURL before. In this case, fetch the shortURL from the database and return it to the client.</li>
+<li>If not, the longURL is new. A new unique ID (primary key) is generated by the unique ID generator.</li>
+<li>Convert the ID to shortURL with base 62 conversion.</li>
+<li>Create a new database row with the ID, shortURL, and longURL.</li>
+</ol>
+<p>To make the flow easier to understand, let us look at a concrete example:</p>
+<ul>
+<li>Assuming the input longURL is: <a href="https://en.wikipedia.org/wiki/Systems_design" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Systems_design</a>.</li>
+<li>Unique ID generator returns ID: 2009215674938.</li>
+<li>Convert the ID to shortURL using the base 62 conversion. 2009215674938 is converted to “zn9edcu”.</li>
+<li>Save ID, shortURL, and longURL to the database as shown in Table 4:<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">shortURL</th>
+<th align="left">longURL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">2009215674938</td>
+<td align="left">zn9edcu</td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Systems_design" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Systems_design</a></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>The distributed unique ID generator is worth mentioning. Its primary function is to generate globally unique IDs, which are used for creating shortURLs. In a highly distributed environment, implementing a unique ID generator is challenging. Luckily, we have already discussed a few solutions in the “Design A Unique ID Generator in Distributed Systems” chapter. You can refer back to it to refresh your memory.</p>
+<h3 id="URL-redirecting-deep-dive"><a href="#URL-redirecting-deep-dive" class="headerlink" title="URL redirecting deep dive"></a>URL redirecting deep dive</h3><p>Figure 8 shows the detailed design of the URL redirecting. As there are more reads than writes, &lt;shortURL, longURL&gt; mapping is stored in a cache to improve performance.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/07.webp" alt></p>
+<p>The flow of URL redirecting is summarized as follows:</p>
+<ol>
+<li>A user clicks a short URL link: <a href="https://tinyurl.com/zn9edcu" target="_blank" rel="noopener">https://tinyurl.com/zn9edcu</a></li>
+<li>The load balancer forwards the request to web servers.</li>
+<li>If a shortURL is already in the cache, return the longURL directly.</li>
+<li>If a shortURL is not in the cache, fetch the longURL from the database. If it is not in the database, it is likely a user entered an invalid shortURL.</li>
+<li>The longURL is returned to the user.</li>
+</ol>
+<h2 id="Wrap-up"><a href="#Wrap-up" class="headerlink" title="Wrap up"></a>Wrap up</h2><p>In this chapter, we talked about the API design, data model, hash function, URL shortening, and URL redirecting.</p>
+<p>If there is extra time at the end of the interview, here are a few additional talking points:</p>
+<ul>
+<li>Rate limiter: A potential security problem we could face is that malicious users send an overwhelmingly large number of URL shortening requests. Rate limiter helps to filter out requests based on IP address or other filtering rules. If you want to refresh your memory about rate limiting, refer to the “Design a rate limiter” chapter.</li>
+<li>Web server scaling: Since the web tier is stateless, it is easy to scale the web tier by adding or removing web servers.</li>
+<li>Database scaling: Database replication and sharding are common techniques.</li>
+<li>Analytics: Data is increasingly important for business success. Integrating an analytics solution to the URL shortener could help to answer important questions like how many people click on a link? When do they click the link? etc.</li>
+<li>Availability, consistency, and reliability. These concepts are at the core of any large system’s success. We discussed them in detail in the “Scale From Zero To Millions Of Users” chapter, please refresh your memory on these topics.</li>
+</ul>
+<p>Congratulations on getting this far! Now give yourself a pat on the back. Good job!</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] A RESTful Tutorial: <a href="https://www.restapitutorial.com/index.html" target="_blank" rel="noopener">https://www.restapitutorial.com/index.html</a><br>[2] Bloom filter: <a href="https://en.wikipedia.org/wiki/Bloom_filter" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Bloom_filter</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SystemDesign/" rel="tag"># SystemDesign</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2993337315.html" rel="next" title="Design a Unique ID Generator in Distributed Systems">
+                <i class="fa fa-chevron-left"></i> Design a Unique ID Generator in Distributed Systems
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">266</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Understand-the-problem-and-establish-design-scope"><span class="nav-number">1.</span> <span class="nav-text">Step 1 - Understand the problem and establish design scope</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-of-the-envelope-estimation"><span class="nav-number">1.1.</span> <span class="nav-text">Back of the envelope estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Propose-high-level-design-and-get-buy-in"><span class="nav-number">2.</span> <span class="nav-text">Step 2 - Propose high-level design and get buy-in</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API-endpoints"><span class="nav-number">2.1.</span> <span class="nav-text">API endpoints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-shortening"><span class="nav-number">2.2.</span> <span class="nav-text">URL shortening</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-redirecting"><span class="nav-number">2.3.</span> <span class="nav-text">URL redirecting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Design-deep-dive"><span class="nav-number">3.</span> <span class="nav-text">Step 3 - Design deep dive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-model"><span class="nav-number">3.1.</span> <span class="nav-text">Data model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-function"><span class="nav-number">3.2.</span> <span class="nav-text">Hash function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash-value-length"><span class="nav-number">3.2.1.</span> <span class="nav-text">Hash value length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash-collision-resolution"><span class="nav-number">3.2.2.</span> <span class="nav-text">Hash + collision resolution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Base-62-conversion"><span class="nav-number">3.2.3.</span> <span class="nav-text">Base 62 conversion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Comparison-of-the-two-approaches"><span class="nav-number">3.2.4.</span> <span class="nav-text">Comparison of the two approaches</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-shortening-deep-dive"><span class="nav-number">3.3.</span> <span class="nav-text">URL shortening deep dive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-redirecting-deep-dive"><span class="nav-number">3.4.</span> <span class="nav-text">URL redirecting deep dive</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wrap-up"><span class="nav-number">4.</span> <span class="nav-text">Wrap up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
