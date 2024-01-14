@@ -1,0 +1,958 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="SystemDesign,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="A notification system has already become a very popular feature for many applications in recent years. A notification alerts a user with important information like breaking news, product updates, even">
+<meta name="keywords" content="SystemDesign">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design a Notification System">
+<meta property="og:url" content="https://necusjz.github.io/p/3940693378.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="A notification system has already become a very popular feature for many applications in recent years. A notification alerts a user with important information like breaking news, product updates, even">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/00.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/01.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/02.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/03.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/04.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/05.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/06.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/07.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/08.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/09.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/10.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/11.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/12.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/13.webp">
+<meta property="og:updated_time" content="2024-01-13T06:12:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design a Notification System">
+<meta name="twitter:description" content="A notification system has already become a very popular feature for many applications in recent years. A notification alerts a user with important information like breaking news, product updates, even">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/00.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/3940693378.html">
+
+
+
+
+
+  <title> Design a Notification System | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3940693378.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Design a Notification System
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-01-09T20:27:08+08:00">
+                2024-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>A notification system has already become a very popular feature for many applications in recent years. A notification alerts a user with important information like breaking news, product updates, events, offerings, etc. It has become an indispensable part of our daily life. In this chapter, you are asked to design a notification system.</p>
+<p>A notification is more than just mobile push notification. Three types of notification formats are: mobile push notification, SMS message, and Email. Figure 1 shows an example of each of these notifications.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/00.svg" alt></p>
+<a id="more"></a>
+
+<h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>Building a scalable system that sends out millions of notifications a day is not an easy task. It requires a deep understanding of the notification ecosystem. The interview question is purposely designed to be open-ended and ambiguous, and it is your responsibility to ask questions to clarify the requirements.</p>
+<p>Candidate: What types of notifications does the system support?<br>Interviewer: Push notification, SMS message, and email.<br>C: Is it a real-time system?<br>I: Let us say it is a soft real-time system. We want a user to receive notifications as soon as possible. However, if the system is under a high workload, a slight delay is acceptable.<br>C: What are the supported devices?<br>I: iOS devices, Android devices, and laptop/desktop.<br>C: What triggers notifications?<br>I: Notifications can be triggered by client applications. They can also be scheduled on the server-side.<br>C: Will users be able to opt-out?<br>I: Yes, users who choose to opt-out will no longer receive notifications.<br>C: How many notifications are sent out each day?<br>I: 10 million mobile push notifications, 1 million SMS messages, and 5 million emails.</p>
+<h2 id="Step-2-Propose-high-level-design-and-get-buy-in"><a href="#Step-2-Propose-high-level-design-and-get-buy-in" class="headerlink" title="Step 2 - Propose high-level design and get buy-in"></a>Step 2 - Propose high-level design and get buy-in</h2><p>This section shows the high-level design that supports various notification types: iOS push notification, Android push notification, SMS message, and Email. It is structured as follows:</p>
+<ul>
+<li>Different types of notifications.</li>
+<li>Contact info gathering flow.</li>
+<li>Notification sending/receiving flow.</li>
+</ul>
+<h3 id="Different-types-of-notifications"><a href="#Different-types-of-notifications" class="headerlink" title="Different types of notifications"></a>Different types of notifications</h3><p>We start by looking at how each notification type works at a high level.</p>
+<h4 id="iOS-push-notification"><a href="#iOS-push-notification" class="headerlink" title="iOS push notification"></a>iOS push notification</h4><p><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/01.webp" alt></p>
+<p>We primary need three components to send an iOS push notification:</p>
+<ul>
+<li><p>Provider. A provider builds and sends notification requests to Apple Push Notification service (APNs). To construct a push notification, the provider provides the following data:</p>
+<ul>
+<li>Device token: This is a unique identifier used for sending push notifications.</li>
+<li>Payload: This is a JSON dictionary that contains a notification’s payload. Here is an example:<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"aps"</span>: &#123;</span><br><span class="line">        <span class="attr">"alert"</span>: &#123;</span><br><span class="line">            <span class="attr">"title"</span>: <span class="string">"Game Request"</span>,</span><br><span class="line">            <span class="attr">"body"</span>: <span class="string">"Bob wants to play chess"</span>,</span><br><span class="line">            <span class="attr">"action-loc-key"</span>: <span class="string">"PLAY"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"badge"</span>: <span class="number">5</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>APNs: This is a remote service provided by Apple to propagate push notifications to iOS devices.</p>
+</li>
+<li><p>iOS Device: It is the end client, which receives push notifications.</p>
+</li>
+</ul>
+<h4 id="Android-push-notification"><a href="#Android-push-notification" class="headerlink" title="Android push notification"></a>Android push notification</h4><p>Android adopts a similar notification flow. Instead of using APNs, Firebase Cloud Messaging (FCM) is commonly used to send push notifications to android devices.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/02.webp" alt></p>
+<h4 id="SMS-message"><a href="#SMS-message" class="headerlink" title="SMS message"></a>SMS message</h4><p>For SMS messages, third-party SMS services like Twilio [1], Nexmo [2], and many others are commonly used. Most of them are commercial services.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/03.webp" alt></p>
+<h4 id="Email"><a href="#Email" class="headerlink" title="Email"></a>Email</h4><p>Although companies can set up their own email servers, many of them opt for commercial email services. Sendgrid [3] and Mailchimp [4] are among the most popular email services, which offer a better delivery rate and data analytics.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/04.webp" alt></p>
+<p>Figure 6 shows the design after including all the third-party services.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/05.webp" alt></p>
+<h3 id="Contact-info-gathering-flow"><a href="#Contact-info-gathering-flow" class="headerlink" title="Contact info gathering flow"></a>Contact info gathering flow</h3><p>To send notifications, we need to gather mobile device tokens, phone numbers, or email addresses. As shown in Figure 7, when a user installs our app or signs up for the first time, API servers collect user contact info and store it in the database.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/06.webp" alt></p>
+<p>Figure 8 shows simplified database tables to store contact info. Email addresses and phone numbers are stored in <em>user</em> table, whereas device tokens are stored in <em>device</em> table. A user can have multiple devices, indicating that a push notification can be sent to all the user devices.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/07.svg" alt></p>
+<h3 id="Notification-sending-receiving-flow"><a href="#Notification-sending-receiving-flow" class="headerlink" title="Notification sending/receiving flow"></a>Notification sending/receiving flow</h3><p>We will first present the initial design; then, propose some optimizations.</p>
+<h4 id="High-level-design"><a href="#High-level-design" class="headerlink" title="High-level design"></a>High-level design</h4><p>Figure 9 shows the design, and each system component is explained below:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/08.webp" alt></p>
+<ul>
+<li><strong>Service 1 to N</strong>: A service can be a micro-service, a cron job, or a distributed system that triggers notification sending events. For example, a billing service sends emails to remind customers of their due payment or a shopping website tells customers that their packages will be delivered tomorrow via SMS messages.</li>
+<li><strong>Notification system</strong>: The notification system is the centerpiece of sending/receiving notifications. Starting with something simple, only one notification server is used. It provides APIs for services 1 to N, and builds notification payloads for third-party services.</li>
+<li><strong>Third-party services</strong>: Third-party services are responsible for delivering notifications to users. While integrating with third-party services, we need to pay extra attention to extensibility. Good extensibility means a flexible system that can easily plugging or unplugging of a third-party service. Another important consideration is that a third-party service might be unavailable in new markets or in the future. For instance, FCM is unavailable in China. Thus, alternative third-party services such as JPush, Pushy, etc are used there.</li>
+<li><strong>iOS, Android, SMS, Email</strong>: Users receive notifications on their devices.</li>
+</ul>
+<p>Three problems are identified in this design:</p>
+<ul>
+<li>Single Point of Failure (SPoF): A single notification server means SPoF.</li>
+<li>Hard to scale: The notification system handles everything related to push notifications in one server. It is challenging to scale databases, caches, and different notification processing components independently.</li>
+<li>Performance bottleneck: Processing and sending notifications can be resource intensive. For example, constructing HTML pages and waiting for responses from third-party services could take time. Handling everything in one system can result in the system overload, especially during peak hours.</li>
+</ul>
+<h4 id="High-level-design-improved"><a href="#High-level-design-improved" class="headerlink" title="High-level design (improved)"></a>High-level design (improved)</h4><p>After enumerating challenges in the initial design, we improve the design as listed below:</p>
+<ul>
+<li>Move the database and cache out of the notification server.</li>
+<li>Add more notification servers and set up automatic horizontal scaling.</li>
+<li>Introduce message queues to decouple the system components.</li>
+</ul>
+<p>Figure 10 shows the improved high-level design.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/09.webp" alt></p>
+<p>The best way to go through the above diagram is from left to right:</p>
+<ul>
+<li><strong>Service 1 to N</strong>: They represent different services that send notifications via APIs provided by notification servers.</li>
+<li><strong>Notification servers</strong>: They provide the following functionalities:<ul>
+<li>Provide APIs for services to send notifications. Those APIs are only accessible internally or by verified clients to prevent spams.</li>
+<li>Carry out basic validations to verify emails, phone numbers, etc.</li>
+<li>Query the database or cache to fetch data needed to render a notification.</li>
+<li>Put notification data to message queues for parallel processing.</li>
+</ul>
+</li>
+<li><strong>Cache</strong>: User info, device info, notification templates are cached.</li>
+<li><strong>DB</strong>: It stores data about user, notification, settings, etc.</li>
+<li><strong>Message queues</strong>: They remove dependencies between components. Message queues serve as buffers when high volumes of notifications are to be sent out. Each notification type is assigned with a distinct message queue so an outage in one third-party service will not affect other notification types.</li>
+<li><strong>Workers</strong>: Workers are a list of servers that pull notification events from message queues and send them to the corresponding third-party services.</li>
+<li><strong>Third-party services</strong>: Already explained in the initial design.</li>
+<li><strong>iOS, Android, SMS, Email</strong>: Already explained in the initial design.</li>
+</ul>
+<p>Here is an example of the API to send an email:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">POST https://api.example.com/v/sms/send</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"to"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"user_id"</span>: <span class="number">123456</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"from"</span>: &#123;</span><br><span class="line">        <span class="attr">"email"</span>: <span class="string">"from_address@example.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"subject"</span>: <span class="string">"Hello World!"</span>,</span><br><span class="line">    <span class="attr">"content"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"text/plain"</span>,</span><br><span class="line">            <span class="attr">"value"</span>: <span class="string">"Hello, World!"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Next, let us examine how every component works together to send a notification:</p>
+<ol>
+<li>A service calls APIs provided by notification servers to send notifications.</li>
+<li>Notification servers fetch metadata such as user info, device token, and notification setting from the cache or database.</li>
+<li>A notification event is sent to the corresponding queue for processing. For instance, an iOS push notification event is sent to the iOS PN queue.</li>
+<li>Workers pull notification events from message queues.</li>
+<li>Workers send notifications to third-party services.</li>
+<li>Third-party services send notifications to user devices.</li>
+</ol>
+<h2 id="Step-3-Design-deep-dive"><a href="#Step-3-Design-deep-dive" class="headerlink" title="Step 3 - Design deep dive"></a>Step 3 - Design deep dive</h2><p>In the high-level design, we discussed different types of notifications, contact info gathering flow, and notification sending/receiving flow. We will explore the following in deep dive:</p>
+<ul>
+<li>Reliability.</li>
+<li>Additional component and considerations: Notification template, notification settings, rate limiting, retry mechanism, security in push notifications, monitor queued notifications and event tracking.</li>
+<li>Updated design.</li>
+</ul>
+<h3 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h3><p>We must answer a few important reliability questions when designing a notification system in distributed environments.</p>
+<p><strong>How to prevent data loss?</strong></p>
+<p>One of the most important requirements in a notification system is that it cannot lose data. Notifications can usually be delayed or re-ordered, but never lost. To satisfy this requirement, the notification system persists notification data in a database and implements a retry mechanism. The notification log database is included for data persistence, as shown in Figure 11.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/10.svg" alt></p>
+<p><strong>Will recipients receive a notification exactly once?</strong></p>
+<p>The short answer is no. Although notification is delivered exactly once most of the time, the distributed nature could result in duplicate notifications. To reduce the duplication occurrence, we introduce a dedupe mechanism and handle each failure case carefully. Here is a simple dedupe logic:<br>When a notification event first arrives, we check if it is seen before by checking the event ID. If it is seen before, it is discarded. Otherwise, we will send out the notification. For interested readers to explore why we cannot have exactly once delivery, refer to the reference material [5].</p>
+<h3 id="Additional-components-and-considerations"><a href="#Additional-components-and-considerations" class="headerlink" title="Additional components and considerations"></a>Additional components and considerations</h3><p>We have discussed how to collect user contact info, send, and receive a notification. A notification system is a lot more than that. Here we discuss additional components including template reusing, notification settings, event tracking, system monitoring, rate limiting, etc.</p>
+<h4 id="Notification-template"><a href="#Notification-template" class="headerlink" title="Notification template"></a>Notification template</h4><p>A large notification system sends out millions of notifications per day, and many of these notifications follow a similar format. Notification templates are introduced to avoid building every notification from scratch. A notification template is a preformatted notification to create your unique notification by customizing parameters, styling, tracking links, etc. Here is an example template of push notifications:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BODY:</span><br><span class="line">You dreamed of it. We dared it. [ITEM NAME] is back — only until [DATE].</span><br><span class="line"></span><br><span class="line">CTA:</span><br><span class="line">Order Now. Or, Save My [ITEM NAME]</span><br></pre></td></tr></table></figure>
+
+<p>The benefits of using notification templates include maintaining a consistent format, reducing the margin error, and saving time.</p>
+<h4 id="Notification-setting"><a href="#Notification-setting" class="headerlink" title="Notification setting"></a>Notification setting</h4><p>Users generally receive way too many notifications daily and they can easily feel overwhelmed. Thus, many websites and apps give users fine-grained control over notification settings. This information is stored in the notification setting table, with the following fields:</p>
+<ul>
+<li>user_id bigInt</li>
+<li>channel varchar  # push notification, email or SMS</li>
+<li>opt_in boolean  # opt-in to receive notification</li>
+</ul>
+<p>Before any notification is sent to a user, we first check if a user is opted-in to receive this type of notification.</p>
+<h4 id="Rate-limiting"><a href="#Rate-limiting" class="headerlink" title="Rate limiting"></a>Rate limiting</h4><p>To avoid overwhelming users with too many notifications, we can limit the number of notifications a user can receive. This is important because receivers could turn off notifications completely if we send too often.</p>
+<h4 id="Retry-mechanism"><a href="#Retry-mechanism" class="headerlink" title="Retry mechanism"></a>Retry mechanism</h4><p>When a third-party service fails to send a notification, the notification will be added to the message queue for retrying. If the problem persists, an alert will be sent out to developers.</p>
+<h4 id="Security-in-push-notifications"><a href="#Security-in-push-notifications" class="headerlink" title="Security in push notifications"></a>Security in push notifications</h4><p>For iOS or Android apps, appKey and appSecret are used to secure push notification APIs [6]. Only authenticated or verified clients are allowed to send push notifications using our APIs. Interested users should refer to the reference material [6].</p>
+<h4 id="Monitor-queued-notifications"><a href="#Monitor-queued-notifications" class="headerlink" title="Monitor queued notifications"></a>Monitor queued notifications</h4><p>A key metric to monitor is the total number of queued notifications. If the number is large, the notification events are not processed fast enough by workers. To avoid delay in the notification delivery, more workers are needed. Figure 12 (credit to [7]) shows an example of queued messages to be processed.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/11.svg" alt></p>
+<h4 id="Events-tracking"><a href="#Events-tracking" class="headerlink" title="Events tracking"></a>Events tracking</h4><p>Notification metrics, such as open rate, click rate, and engagement are important in understanding customer behaviors. Analytics service implements events tracking. Integration between the notification system and the analytics service is usually required. Figure 13 shows an example of events that might be tracked for analytics purposes.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/12.svg" alt></p>
+<h4 id="Updated-design"><a href="#Updated-design" class="headerlink" title="Updated design"></a>Updated design</h4><p>Putting everything together, Figure 14 shows the updated notification system design.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/11/13.webp" alt></p>
+<p>In this design, many new components are added in comparison with the previous design:</p>
+<ul>
+<li>The notification servers are equipped with two more critical features: authentication and rate-limiting.</li>
+<li>We also add a retry mechanism to handle notification failures. If the system fails to send notifications, they are put back in the messaging queue and the workers will retry for a predefined number of times.</li>
+<li>Furthermore, notification templates provide a consistent and efficient notification creation process.</li>
+<li>Finally, monitoring and tracking systems are added for system health checks and future improvements.</li>
+</ul>
+<h2 id="Step-4-Wrap-up"><a href="#Step-4-Wrap-up" class="headerlink" title="Step 4 - Wrap up"></a>Step 4 - Wrap up</h2><p>Notifications are indispensable because they keep us posted with important information. It could be a push notification about your favorite movie on Netflix, an email about discounts on new products, or a message about your online shopping payment confirmation.</p>
+<p>In this chapter, we described the design of a scalable notification system that supports multiple notification formats: push notification, SMS message, and email. We adopted message queues to decouple system components.</p>
+<p>Besides the high-level design, we dug deep into more components and optimizations:</p>
+<ul>
+<li>Reliability: We proposed a robust retry mechanism to minimize the failure rate.</li>
+<li>Security: AppKey/appSecret pair is used to ensure only verified clients can send notifications.</li>
+<li>Tracking and monitoring: These are implemented in any stage of a notification flow to capture important stats.</li>
+<li>Respect user settings: Users may opt-out of receiving notifications. Our system checks user settings first before sending notifications.</li>
+<li>Rate limiting: Users will appreciate a frequency capping on the number of notifications they receive.</li>
+</ul>
+<p>Congratulations on getting this far! Now give yourself a pat on the back. Good job!</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] Twilio SMS: <a href="https://www.twilio.com/sms" target="_blank" rel="noopener">https://www.twilio.com/sms</a><br>[2] Nexmo SMS: <a href="https://www.nexmo.com/products/sms" target="_blank" rel="noopener">https://www.nexmo.com/products/sms</a><br>[3] Sendgrid: <a href="https://sendgrid.com/" target="_blank" rel="noopener">https://sendgrid.com/</a><br>[4] Mailchimp: <a href="https://mailchimp.com/" target="_blank" rel="noopener">https://mailchimp.com/</a><br>[5] You Cannot Have Exactly-Once Delivery:<br><a href="https://bravenewgeek.com/you-cannot-have-exactly-once-delivery/" target="_blank" rel="noopener">https://bravenewgeek.com/you-cannot-have-exactly-once-delivery/</a><br>[6] Security in Push Notifications:<br><a href="https://cloud.ibm.com/docs/services/mobilepush?topic=mobile-pushnotification-security-in-push-notifications" target="_blank" rel="noopener">https://cloud.ibm.com/docs/services/mobilepush?topic=mobile-pushnotification-security-in-push-notifications</a><br>[7] Key metrics for RabbitMQ monitoring:<br><a href="http://www.datadoghq.com/blog/rabbitmq-monitoring" target="_blank" rel="noopener">www.datadoghq.com/blog/rabbitmq-monitoring</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SystemDesign/" rel="tag"># SystemDesign</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/384409989.html" rel="next" title="Design a Web Crawler">
+                <i class="fa fa-chevron-left"></i> Design a Web Crawler
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">268</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Understand-the-problem-and-establish-design-scope"><span class="nav-number">1.</span> <span class="nav-text">Step 1 - Understand the problem and establish design scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Propose-high-level-design-and-get-buy-in"><span class="nav-number">2.</span> <span class="nav-text">Step 2 - Propose high-level design and get buy-in</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Different-types-of-notifications"><span class="nav-number">2.1.</span> <span class="nav-text">Different types of notifications</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS-push-notification"><span class="nav-number">2.1.1.</span> <span class="nav-text">iOS push notification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-push-notification"><span class="nav-number">2.1.2.</span> <span class="nav-text">Android push notification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SMS-message"><span class="nav-number">2.1.3.</span> <span class="nav-text">SMS message</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Email"><span class="nav-number">2.1.4.</span> <span class="nav-text">Email</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contact-info-gathering-flow"><span class="nav-number">2.2.</span> <span class="nav-text">Contact info gathering flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notification-sending-receiving-flow"><span class="nav-number">2.3.</span> <span class="nav-text">Notification sending/receiving flow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#High-level-design"><span class="nav-number">2.3.1.</span> <span class="nav-text">High-level design</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#High-level-design-improved"><span class="nav-number">2.3.2.</span> <span class="nav-text">High-level design (improved)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Design-deep-dive"><span class="nav-number">3.</span> <span class="nav-text">Step 3 - Design deep dive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reliability"><span class="nav-number">3.1.</span> <span class="nav-text">Reliability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Additional-components-and-considerations"><span class="nav-number">3.2.</span> <span class="nav-text">Additional components and considerations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Notification-template"><span class="nav-number">3.2.1.</span> <span class="nav-text">Notification template</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Notification-setting"><span class="nav-number">3.2.2.</span> <span class="nav-text">Notification setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Rate-limiting"><span class="nav-number">3.2.3.</span> <span class="nav-text">Rate limiting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Retry-mechanism"><span class="nav-number">3.2.4.</span> <span class="nav-text">Retry mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-in-push-notifications"><span class="nav-number">3.2.5.</span> <span class="nav-text">Security in push notifications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Monitor-queued-notifications"><span class="nav-number">3.2.6.</span> <span class="nav-text">Monitor queued notifications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Events-tracking"><span class="nav-number">3.2.7.</span> <span class="nav-text">Events tracking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Updated-design"><span class="nav-number">3.2.8.</span> <span class="nav-text">Updated design</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Wrap-up"><span class="nav-number">4.</span> <span class="nav-text">Step 4 - Wrap up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

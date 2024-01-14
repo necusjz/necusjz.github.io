@@ -280,6 +280,135 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1989037369.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1989037369.html" itemprop="url">
+                  函数与装饰器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-12T21:17:54+08:00">
+                2022-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>Python 是一门支持面向对象的编程语言，但除此之外，Python 对函数的支持也毫不逊色。函数在 Python 中是一等对象，这意味着我们可以把函数自身作为函数参数来使用。</p>
+<h3 id="函数参数的常用技巧"><a href="#函数参数的常用技巧" class="headerlink" title="函数参数的常用技巧"></a>函数参数的常用技巧</h3><p>参数（Parameter）是函数的重要组成部分，它是函数最主要的输入源，决定了调用方使用函数时的体验。Python 函数的参数默认值只会在函数定义阶段被创建一次，别将可变类型作为参数默认值，使用 None 来替代：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=[])</span>:</span></span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=None)</span>:</span></span><br><span class="line">    <span class="comment"># 在函数内部进行判断，保证参数默认每次都使用一个新的空列表</span></span><br><span class="line">    <span class="keyword">if</span> items <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        items = []</span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
+
+<p>定义一个特殊对象（标记变量）作为参数默认值，严格区分调用方是不是<strong>真的</strong>提供了这个默认参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># object 通常不会单独使用，但是拿来做这种标记变量刚刚好</span></span><br><span class="line">_not_set = object()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dump_value</span><span class="params">(value, extra=_not_set)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> extra <span class="keyword">is</span> _not_set:</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 调用方没有传递 extra 参数</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1989037369.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3014737985.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -775,133 +904,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1367447921.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1367447921.html" itemprop="url">
-                  变量与基础类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-04T20:23:54+08:00">
-                2022-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="变量与注释"><a href="#变量与注释" class="headerlink" title="变量与注释"></a>变量与注释</h2><p>当我们看到一段代码时，最先注意到的，不是代码有几层循环，用了什么模式，而是<strong>变量与注释</strong>，因为它们是代码里最接近自然语言的东西，最容易被大脑消化、理解。</p>
-<h3 id="变量常见用法"><a href="#变量常见用法" class="headerlink" title="变量常见用法"></a>变量常见用法</h3><p>Python 支持灵活的动态解包语法，只要用星号表达式（*variables）作为变量名，它便会<strong>贪婪</strong>地捕获多个值对象，并将捕获到的内容作为列表赋值给 variables：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = [&apos;ethan&apos;, &apos;apple&apos;, &apos;orange&apos;, &apos;banana&apos;, 100]</span><br><span class="line">&gt;&gt;&gt; username, *fruits, score = data</span><br><span class="line">&gt;&gt;&gt; fruits</span><br><span class="line">[&apos;apple&apos;, &apos;orange&apos;, &apos;banana&apos;, 100]</span><br></pre></td></tr></table></figure>
-
-<p>在 Python 交互式命令行里，_ 变量还有一层特殊含义——默认保存我们输入的上个表达式的返回值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &apos;foo&apos;.upper()</span><br><span class="line">&apos;FOO&apos;</span><br><span class="line">&gt;&gt;&gt; print(_)</span><br><span class="line">FOO</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1367447921.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -949,7 +951,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">267</span>
+                <span class="site-state-item-count">268</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1002,7 +1004,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

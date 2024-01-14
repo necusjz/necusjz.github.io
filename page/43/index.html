@@ -280,6 +280,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/559995679.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/559995679.html" itemprop="url">
+                  Scalability for Dummies
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T22:54:52+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/01/00.jpg" alt><br>Just recently I was asked what it would take to <strong>make a web service massively scalable</strong>. My answer was lengthy and maybe it is also for other people interesting. So I share it with you here in my blog and split it into parts to make it easier to read. New parts are released on a regular basis. Have fun and your comments are always welcomed!</p>
+<h2 id="Clones"><a href="#Clones" class="headerlink" title="Clones"></a>Clones</h2><p>Public servers of a scalable web service are hidden <strong>behind a load balancer</strong>. This load balancer <strong>evenly distributes</strong> load (requests from your users) onto your group/cluster of application servers. That means that if, for example, user Steve interacts with your service, he may be served at his first request by server 2, then with his second request by server 9 and then maybe again by server 2 on his third request. </p>
+<p>Steve should always get the same results of his request back, independent what server he “landed on”. That leads to the first golden rule for scalability: every server contains exactly the same codebase and <strong>does not store any user-related data</strong>, like sessions or profile pictures, on local disc or memory. </p>
+<p>Sessions need to be stored in a centralized data store which is accessible to all your application servers. It can be an <code>external database</code> or an <code>external persistent cache</code>, like Redis. An external persistent cache will have better performance than an external database. By external I mean that the data store does not reside on the application servers. Instead, it is somewhere in or <strong>near the data center</strong> of your application servers.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/559995679.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3572802795.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -406,138 +531,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/294155228.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/294155228.html" itemprop="url">
-                  Telephoning
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-05T00:48:12+08:00">
-                2019-12-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Cold-calling"><a href="#Cold-calling" class="headerlink" title="Cold calling"></a>Cold calling</h2><blockquote>
-<p>Do you have a moment to speak to me?</p>
-</blockquote>
-<h3 id="USEFUL-TIPS"><a href="#USEFUL-TIPS" class="headerlink" title="USEFUL TIPS"></a>USEFUL TIPS</h3><p>When cold calling (approaching <strong>prospective clients or customers</strong> for the first time), keep the following points in mind:</p>
-<ul>
-<li><strong>Be clear and concise</strong> about who you are and the purpose of the call;</li>
-<li><strong>Use questions</strong> to help and guide the person you are calling;</li>
-<li><strong>Always use titles</strong> (such as Dr., Mr., and Ms.) and never first names;</li>
-<li><strong>Don’t be offended by hostile behavior.</strong> It’s not personal;</li>
-</ul>
-<h3 id="Track-24"><a href="#Track-24" class="headerlink" title="Track 24"></a>Track 24</h3><p>Macey C: This is Macey Chance from Turner &amp; Young Consultants. Am I speaking to Mr. Given?<br>Speaker 1: No.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/294155228.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1965565266.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -617,14 +610,14 @@
           <h2 id="The-successful-job-interviewer"><a href="#The-successful-job-interviewer" class="headerlink" title="The successful job interviewer"></a>The successful job interviewer</h2><blockquote>
 <p>What makes you suitable for this job, do you think?</p>
 </blockquote>
-<h3 id="USEFUL-TIPS"><a href="#USEFUL-TIPS" class="headerlink" title="USEFUL TIPS"></a>USEFUL TIPS</h3><p>When interviewing for a job, there are <code>4 main areas</code> to ask about:</p>
+<h3 id="Useful-Tips"><a href="#Useful-Tips" class="headerlink" title="Useful Tips"></a>Useful Tips</h3><p>When interviewing for a job, there are <strong>4 main areas</strong> to ask about:</p>
 <ul>
-<li>work history;</li>
-<li>personality;</li>
-<li>suitability for the company and the specific job;</li>
-<li>goals and ambitions;</li>
+<li>Work history.</li>
+<li>Personality.</li>
+<li>Suitability for the company and the specific job.</li>
+<li>Goals and ambitions.</li>
 </ul>
-<p>Note that it is not appropriate to ask the candidate questions about <strong>race, age, marital status, or sexual preferences</strong>. These questions are potentially discriminatory.</p>
+<p>Note that it is not appropriate to ask the candidate questions about race, age, marital status, or sexual preferences. These questions are potentially discriminatory.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/p/1965565266.html#more" rel="contents">
@@ -749,17 +742,18 @@
           <h2 id="Presenting-a-product-or-service"><a href="#Presenting-a-product-or-service" class="headerlink" title="Presenting a product or service"></a>Presenting a product or service</h2><blockquote>
 <p>I want to tell you today about…</p>
 </blockquote>
-<h3 id="USEFUL-TIPS"><a href="#USEFUL-TIPS" class="headerlink" title="USEFUL TIPS"></a>USEFUL TIPS</h3><p>When presenting a product or service, an effective way to convince your audience is to follow the <code>FAB</code> approach:</p>
+<h3 id="Useful-Tips"><a href="#Useful-Tips" class="headerlink" title="Useful Tips"></a>Useful Tips</h3><p>When presenting a product or service, an effective way to convince your audience is to follow the <strong>FAB</strong> approach:</p>
 <ul>
-<li><strong>Feature:</strong> highlight the features of the product or service you want the audience to focus on;</li>
-<li><strong>Advantage:</strong> show how these features make the product or service better than its predecessors or competitors;</li>
-<li><strong>Benefit:</strong> show how this product or service will improve the user’s life;</li>
+<li><strong>F</strong>eature: Highlight the features of the product or service you want the audience to focus on.</li>
+<li><strong>A</strong>dvantage: Show how these features make the product or service better than its predecessors or competitors.</li>
+<li><strong>B</strong>enefit: Show how this product or service will improve the user’s life.</li>
 </ul>
-<p>This approach can be grouped into a 3-step presentation structure:</p>
+<p>This approach can be grouped into a <em>3-step</em> presentation structure:</p>
 <ol>
-<li><strong>Introduction:</strong> summarize what you are going to tell the audience;</li>
-<li><strong>Main body:</strong> tell them;</li>
-<li><strong>Conclusion:</strong> tell them what they should do next;
+<li>Introduction: Summarize what you are going to tell the audience.</li>
+<li>Main body: Tell them.</li>
+<li>Conclusion: Tell them what they should do next.</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/p/336071984.html#more" rel="contents">
@@ -769,7 +763,7 @@
           <!--/noindex-->
         
       
-    </li></ol></div>
+    </div>
 
     <div>
       
@@ -975,7 +969,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">267</span>
+                <span class="site-state-item-count">268</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1028,7 +1022,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
