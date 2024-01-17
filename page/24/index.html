@@ -280,6 +280,137 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1858691252.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1858691252.html" itemprop="url">
+                  Two Pointers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T15:49:52+08:00">
+                2021-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>In problems where we deal with sorted arrays (or linked lists) and need to find a set of elements that fulfill certain constraints, the <em>Two Pointers</em> approach becomes quite useful. The set of elements could be a pair, a triplet or even a subarray. For example, take a look at the following problem:</p>
+<blockquote>
+<p>Given an array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target.</p>
+</blockquote>
+<p>To solve this problem, we can consider each element one by one (pointed out by the first pointer) and iterate through the remaining elements (pointed out by the second pointer) to find a pair with the given sum. The time complexity of this algorithm will be O(N^2) where “N” is the number of elements in the input array.</p>
+<p>Given that the input array is <strong>sorted</strong>, an efficient way would be to start with one pointer in the beginning and another pointer at the end. At every step, we will see if the numbers pointed by the two pointers add up to the target sum. If they do not, we will do one of two things:</p>
+<ul>
+<li>If the sum of the two numbers pointed by the two pointers is greater than the target sum, this means that we need a pair with a less sum. So, to try more pairs, we can decrement the end-pointer;</li>
+<li>If the sum of the two numbers pointed by the two pointers is less than the target sum, this means that we need a pair with a greater sum. So, to try more pairs, we can increment the start-pointer;</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1858691252.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3659857917.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -788,134 +919,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2723260666.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2723260666.html" itemprop="url">
-                  并行算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-29T01:04:14+08:00">
-                2021-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>时间复杂度是衡量算法执行效率的一种标准。但是，时间复杂度并不能跟性能划等号。在真实的软件开发中，<strong>即便在不降低时间复杂度的情况下，也可以通过一些优化手段，提升代码的执行效率</strong>。毕竟，对于实际的软件开发来说，即便是像 10%, 20% 这样微小的性能提升，也是非常可观的。算法的目的就是为了提高代码执行的效率，那当算法无法再继续优化的情况下，我们该如何来进一步提高执行效率呢？我们今天就讲一种非常简单但又非常好用的优化方法，那就是并行计算。</p>
-<h2 id="并行排序"><a href="#并行排序" class="headerlink" title="并行排序"></a>并行排序</h2><p>假设我们要给大小为 8GB 的数据进行排序，并且，我们机器的内存可以一次性容纳这么多数据。<strong>对于排序来说，最常用的就是时间复杂度为 O(nlogn) 的三种排序算法：归并排序、快速排序、堆排序</strong>。从理论上讲，这个排序问题，已经很难再从算法层面优化了。而利用并行的处理思想，我们可以很轻松地将这个给 8GB 数据排序问题的执行效率提高很多倍。具体的实现思路有下面两种：</p>
-<ol>
-<li>对归并排序并行化处理：<br>我们可以<strong>将这 8GB 的数据划分成 16 个小的数据集合</strong>，每个集合包含 500MB 的数据。我们用 16 个线程，并行地对这 16 个 500MB 的数据集合进行排序。这 16 个小集合分别排序完成之后，我们再将这 16 个有序集合合并；</li>
-<li>对快速排序并行化处理：<br>我们通过扫描一遍数据，找到数据所处的范围区间。我们<strong>把这个区间从小到大划分成 16 个小区间</strong>。我们将 8GB 的数据划分到对应的区间中。针对这 16 个小区间的数据，我们启动 16 个线程，并行地进行排序。等到 16 个线程都执行结束之后，得到的数据就是有序数据了；</li>
-</ol>
-<p>对比这两种处理思路，它们利用的都是分治的思想，对数据进行分片，然后并行处理。它们的区别在于，第一种处理思路是，先随意地对数据分片，排序之后再合并；第二种处理思路是，先对数据按照大小划分区间，然后再排序，排完序就不需要再处理了。这个跟归并和快排的区别如出一辙。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2723260666.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -963,7 +966,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">268</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

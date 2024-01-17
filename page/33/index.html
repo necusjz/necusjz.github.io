@@ -280,6 +280,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/938376309.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/938376309.html" itemprop="url">
+                  Iterator Design Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-23T13:58:38+08:00">
+                2020-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="迭代器模式的原理和实现"><a href="#迭代器模式的原理和实现" class="headerlink" title="迭代器模式的原理和实现"></a>迭代器模式的原理和实现</h2><p><code>迭代器模式</code>（Iterator Design Pattern），也叫作游标模式（Cursor Design Pattern）。它用来遍历集合对象，这里说的“集合对象”也可以叫“容器”、“聚合对象”，实际上就是包含一组对象的对象，比如数组、链表、树、图、跳表。<strong>迭代器模式将集合对象的遍历操作从集合类中拆分出来，放到迭代器类中，让两者的职责更加单一</strong>。</p>
+<p>迭代器是用来遍历容器的，所以，一个完整的迭代器模式一般会涉及<code>容器</code>和<code>容器迭代器</code>两部分内容。为了达到基于接口而非实现编程的目的，容器又包含容器接口、容器实现类，迭代器又包含迭代器接口、迭代器实现类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/25.png" alt></p>
+<p>大部分编程语言都提供了遍历容器的迭代器类，我们在平时开发中，直接拿来用即可，几乎不大可能从零编写一个迭代器。不过，这里为了讲解迭代器的实现原理，我们<strong>假设某个新的编程语言的基础类库中，还没有提供线性容器对应的迭代器，需要我们从零开始开发</strong>。线性数据结构包括数组和链表，假设在这种新的编程语言中，这两个数据结构分别对应 ArrayList 和 LinkedList 两个类。除此之外，我们<strong>从两个类中抽象出公共的接口，定义为 List 接口，以方便开发者基于接口而非实现编程</strong>，编写的代码能在两种数据存储结构之间灵活切换。</p>
+<p>现在，我们针对 ArrayList 和 LinkedList 两个线性容器，设计实现对应的迭代器。按照之前给出的迭代器模式的类图，我们<strong>定义一个迭代器接口 Iterator，以及针对两种容器的具体的迭代器实现类 ArrayIterator 和 ListIterator</strong>。我们先来看下 Iterator 接口的定义：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/938376309.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2887344057.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -778,134 +903,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/982846763.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/982846763.html" itemprop="url">
-                  Observer Design Pattern
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-13T17:59:38+08:00">
-                2020-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="原理及应用场景剖析"><a href="#原理及应用场景剖析" class="headerlink" title="原理及应用场景剖析"></a>原理及应用场景剖析</h2><p><code>观察者模式</code>（Observer Design Pattern）的定义是这样的：</p>
-<blockquote>
-<p>Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.</p>
-</blockquote>
-<p>翻译成中文就是：在对象之间定义一个一对多的依赖，<strong>当一个对象状态改变的时候，所有依赖的对象都会自动收到通知</strong>。</p>
-<p>一般情况下，被依赖的对象叫作<code>被观察者</code>（Observable），依赖的对象叫作<code>观察者</code>（Observer）。不过，在实际的项目开发中，这两种对象的称呼是比较灵活的，有各种不同的叫法，比如：Subject-Observer、Publisher-Subscriber、Producer-Consumer、EventEmitter-EventListener、Dispatcher-Listener。不管怎么称呼，只要应用场景符合刚刚给出的定义，都可以看作观察者模式。</p>
-<p>实际上，观察者模式是一个比较抽象的模式，根据不同的应用场景和需求，有完全不同的实现方式。现在，我们先来看其中最经典的一种实现方式：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/982846763.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -953,7 +950,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">268</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

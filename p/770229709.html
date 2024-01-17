@@ -1,0 +1,956 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="SystemDesign,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="In this chapter, you are asked to design a news feed system. What is news feed? According to the Facebook help page, “News feed is the constantly updating list of stories in the middle of your home pa">
+<meta name="keywords" content="SystemDesign">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design a News Feed System">
+<meta property="og:url" content="https://necusjz.github.io/p/770229709.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="In this chapter, you are asked to design a news feed system. What is news feed? According to the Facebook help page, “News feed is the constantly updating list of stories in the middle of your home pa">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/00.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/01.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/02.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/03.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/04.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/05.webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/06.svg">
+<meta property="og:updated_time" content="2024-01-16T14:30:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design a News Feed System">
+<meta name="twitter:description" content="In this chapter, you are asked to design a news feed system. What is news feed? According to the Facebook help page, “News feed is the constantly updating list of stories in the middle of your home pa">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/00.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/770229709.html">
+
+
+
+
+
+  <title> Design a News Feed System | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/770229709.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Design a News Feed System
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-01-15T22:21:32+08:00">
+                2024-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this chapter, you are asked to design a news feed system. What is news feed? According to the Facebook help page, “News feed is the constantly updating list of stories in the middle of your home page. News Feed includes status updates, photos, videos, links, app activity, and likes from people, pages, and groups that you follow on Facebook” [1]. This is a popular interview question. Similar questions commonly asked are to: Design Facebook news feed, Instagram feed, Twitter timeline, etc.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/00.svg" alt></p>
+<a id="more"></a>
+
+<h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>The first set of clarification questions are to understand what the interviewer has in mind when she asks you to design a news feed system. At the very least, you should figure out what features to support. Here is an example of candidate-interviewer interaction:</p>
+<p>Candidate: Is this a mobile app? Or a web app? Or both?<br>Interviewer: Both.<br>C: What are the important features?<br>I: A user can publish a post and see her friends posts on the news feed page.<br>C: Is the news feed sorted by reverse chronological order or any particular order such as topic scores? For instance, posts from your close friends have higher scores.<br>I: To keep things simple, let us assume the feed is sorted by reverse chronological order.<br>C: How many friends can a user have?<br>I: 5000.<br>C: What is the traffic volume?<br>I: 10 million DAU.<br>C: Can feed contain images, videos, or just text?<br>I: It can contain media files, including both images and videos.</p>
+<p>Now you have gathered the requirements, we focus on designing the system.</p>
+<h2 id="Step-2-Propose-high-level-design-and-get-buy-in"><a href="#Step-2-Propose-high-level-design-and-get-buy-in" class="headerlink" title="Step 2 - Propose high-level design and get buy-in"></a>Step 2 - Propose high-level design and get buy-in</h2><p>The design is divided into two flows: feed publishing and newsfeed retrieval:</p>
+<ul>
+<li>Feed publishing: When a user publishes a post, corresponding data is written into cache and database. A post is populated to her friends’ news feed.</li>
+<li>Newsfeed retrieval: For simplicity, let us assume the news feed is built by aggregating friends’ posts in reverse chronological order.</li>
+</ul>
+<h3 id="Newsfeed-APIs"><a href="#Newsfeed-APIs" class="headerlink" title="Newsfeed APIs"></a>Newsfeed APIs</h3><p>The news feed APIs are the primary ways for clients to communicate with servers. Those APIs are HTTP based that allow clients to perform actions, which include posting a status, retrieving news feed, adding friends, etc. We discuss two most important APIs: feed publishing API and newsfeed retrieval API.</p>
+<h4 id="Feed-publishing-API"><a href="#Feed-publishing-API" class="headerlink" title="Feed publishing API"></a>Feed publishing API</h4><p>To publish a post, a HTTP POST request will be sent to the server. The API is shown below:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST /v1/me/feed</span><br><span class="line"></span><br><span class="line">Params:</span><br><span class="line">  - content: text of the post</span><br><span class="line">  - auth_token: authenticate API requests</span><br></pre></td></tr></table></figure>
+
+<h4 id="Newsfeed-retrieval-API"><a href="#Newsfeed-retrieval-API" class="headerlink" title="Newsfeed retrieval API"></a>Newsfeed retrieval API</h4><p>The API to retrieve news feed is shown below:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /v1/me/feed</span><br><span class="line"></span><br><span class="line">Params:</span><br><span class="line">  - auth_token: authenticate API requests</span><br></pre></td></tr></table></figure>
+
+<h3 id="Feed-publishing"><a href="#Feed-publishing" class="headerlink" title="Feed publishing"></a>Feed publishing</h3><p>Figure 2 shows the high-level design of the feed publishing flow:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/01.webp" alt></p>
+<ul>
+<li>User: A user can view news feeds on a browser or mobile app. A user makes a post with content “Hello” through API: /v1/me/feed?content=Hello&amp;auth_token={auth_token}</li>
+<li>Load balancer: Distribute traffic to web servers.</li>
+<li>Web servers: Web servers redirect traffic to different internal services.</li>
+<li>Post service: Persist post in the database and cache.</li>
+<li>Fanout service: Push new content to friends’ news feed. Newsfeed data is stored in the cache for fast retrieval.</li>
+<li>Notification service: Inform friends that new content is available and send out push notifications.</li>
+</ul>
+<h3 id="Newsfeed-retrieval"><a href="#Newsfeed-retrieval" class="headerlink" title="Newsfeed retrieval"></a>Newsfeed retrieval</h3><p>In this section, we discuss how news feed is built behind the scenes. Figure 3 shows the high-level design:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/02.webp" alt></p>
+<ul>
+<li>User: A user sends a request to retrieve her newsfeed. The request looks like this: /v1/me/feed</li>
+<li>Load balancer: Load balancer redirects traffic to web servers.</li>
+<li>Web servers: Web servers route requests to newsfeed service.</li>
+<li>Newsfeed service: News feed service fetches news feed from the cache.</li>
+<li>Newsfeed cache: Store news feed IDs needed to render the news feed.</li>
+</ul>
+<h2 id="Step-3-Design-deep-dive"><a href="#Step-3-Design-deep-dive" class="headerlink" title="Step 3 - Design deep dive"></a>Step 3 - Design deep dive</h2><p>The high-level design briefly covered two flows: feed publishing and newsfeed retrieval. Here, we discuss those topics in more depth.</p>
+<h3 id="Feed-publishing-deep-dive"><a href="#Feed-publishing-deep-dive" class="headerlink" title="Feed publishing deep dive"></a>Feed publishing deep dive</h3><p>Figure 4 outlines the detailed design for feed publishing. We have discussed most of components in high-level design, and we will focus on two components: web servers and fanout service.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/03.webp" alt></p>
+<h4 id="Web-servers"><a href="#Web-servers" class="headerlink" title="Web servers"></a>Web servers</h4><p>Besides communicating with clients, web servers enforce authentication and rate-limiting. Only users signed in with valid auth_token are allowed to make posts. The system limits the number of posts a user can make within a certain period, vital to prevent spam and abusive content.</p>
+<h4 id="Fanout-service"><a href="#Fanout-service" class="headerlink" title="Fanout service"></a>Fanout service</h4><p>Fanout is the process of delivering a post to all friends. Two types of fanout models are: fanout on write (also called push model) and fanout on read (also called pull model). Both models have Pros and Cons. We explain their workflows and explore the best approach to support our system.</p>
+<h5 id="Fanout-on-write"><a href="#Fanout-on-write" class="headerlink" title="Fanout on write"></a>Fanout on write</h5><p>With this approach, news feed is pre-computed during write time. A new post is delivered to friends’ cache immediately after it is published:</p>
+<ul>
+<li>Pros:<ul>
+<li>The news feed is generated in real-time and can be pushed to friends immediately.</li>
+<li>Fetching news feed is fast because the news feed is pre-computed during write time.</li>
+</ul>
+</li>
+<li>Cons:<ul>
+<li>If a user has many friends, fetching the friend list and generating news feeds for all of them are slow and time consuming. It is called hotkey problem.</li>
+<li>For inactive users or those rarely log in, pre-computing news feeds waste computing resources.</li>
+</ul>
+</li>
+</ul>
+<h5 id="Fanout-on-read"><a href="#Fanout-on-read" class="headerlink" title="Fanout on read"></a>Fanout on read</h5><p>The news feed is generated during read time. This is an on-demand model. Recent posts are pulled when a user loads her home page:</p>
+<ul>
+<li>Pros:<ul>
+<li>For inactive users or those who rarely log in, fanout on read works better because it will not waste computing resources on them.</li>
+<li>Data is not pushed to friends so there is no hotkey problem.</li>
+</ul>
+</li>
+<li>Cons:<ul>
+<li>Fetching the news feed is slow as the news feed is not pre-computed.</li>
+</ul>
+</li>
+</ul>
+<p>We adopt a hybrid approach to get benefits of both approaches and avoid pitfalls in them. Since fetching the news feed fast is crucial, we use a push model for the majority of users. For celebrities or users who have many friends/followers, we let followers pull news content on-demand to avoid system overload. Consistent hashing is a useful technique to mitigate the hotkey problem as it helps to distribute requests/data more evenly.</p>
+<p>Let us take a close look at the fanout service as shown in Figure 5.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/04.svg" alt></p>
+<p>The fanout service works as follows:</p>
+<ol>
+<li>Fetch friend IDs from the graph database. Graph databases are suited for managing friend relationship and friend recommendations. Interested readers wishing to learn more about this concept should refer to the reference material [2].</li>
+<li>Get friends info from the user cache. The system then filters out friends based on user settings. For example, if you mute someone, her posts will not show up on your news feed even though you are still friends. Another reason why posts may not show is that a user could selectively share information with specific friends or hide it from other people.</li>
+<li>Send friends list and new post ID to the message queue.</li>
+<li>Fanout workers fetch data from the message queue and store news feed data in the news feed cache. You can think of the news feed cache as a &lt;post_id, user_id&gt; mapping table. Whenever a new post is made, it will be appended to the news feed table as shown in Figure 6. The memory consumption can become very large if we store the entire user and post objects in the cache. Thus, only IDs are stored. To keep the memory size small, we set a configurable limit. The chance of a user scrolling through thousands of posts in news feed is slim. Most users are only interested in the latest content, so the cache miss rate is low.</li>
+<li>Store &lt;post_id, user_id&gt; in news feed cache. Figure 6 shows an example of what the news feed looks like in cache:<table>
+<thead>
+<tr>
+<th align="left">Post ID</th>
+<th align="left">User ID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">post_id</td>
+<td align="left">user_id</td>
+</tr>
+<tr>
+<td align="left">post_id</td>
+<td align="left">user_id</td>
+</tr>
+<tr>
+<td align="left">post_id</td>
+<td align="left">user_id</td>
+</tr>
+<tr>
+<td align="left">post_id</td>
+<td align="left">user_id</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="Newsfeed-retrieval-deep-dive"><a href="#Newsfeed-retrieval-deep-dive" class="headerlink" title="Newsfeed retrieval deep dive"></a>Newsfeed retrieval deep dive</h3><p>Figure 7 illustrates the detailed design for newsfeed retrieval.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/05.webp" alt></p>
+<p>As shown in Figure 7, media content (images, videos, etc.) are stored in CDN for fast retrieval. Let us look at how a client retrieves news feed:</p>
+<ol>
+<li>A user sends a request to retrieve her news feed. The request looks like this: /v1/me/feed</li>
+<li>The load balancer redistributes requests to web servers.</li>
+<li>Web servers call the news feed service to fetch news feeds.</li>
+<li>News feed service gets a list post IDs from the news feed cache.</li>
+<li>A user’s news feed is more than just a list of feed IDs. It contains username, profile picture, post content, post image, etc. Thus, the news feed service fetches the complete user and post objects from caches (user cache and post cache) to construct the fully hydrated news feed.</li>
+<li>The fully hydrated news feed is returned in JSON format back to the client for rendering.</li>
+</ol>
+<h3 id="Cache-architecture"><a href="#Cache-architecture" class="headerlink" title="Cache architecture"></a>Cache architecture</h3><p>Cache is extremely important for a news feed system. We divide the cache tier into 5 layers as shown in Figure 8:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/12/06.svg" alt></p>
+<ul>
+<li>News Feed: It stores IDs of news feeds.</li>
+<li>Content: It stores every post data. Popular content is stored in hot cache.</li>
+<li>Social Graph: It stores user relationship data.</li>
+<li>Action: It stores info about whether a user liked a post, replied a post, or took other actions on a post.</li>
+<li>Counters: It stores counters for like, reply, follower, following, etc.</li>
+</ul>
+<h2 id="Step-4-Wrap-up"><a href="#Step-4-Wrap-up" class="headerlink" title="Step 4 - Wrap up"></a>Step 4 - Wrap up</h2><p>In this chapter, we designed a news feed system. Our design contains two flows: feed publishing and newsfeed retrieval.</p>
+<p>Like any system design interview questions, there is no perfect way to design a system. Every company has its unique constraints, and you must design a system to fit those constraints. Understanding the tradeoffs of your design and technology choices are important. If there are a few minutes left, you can talk about scalability issues. To avoid duplicated discussion, only high-level talking points are listed below.</p>
+<p>Scaling the database:</p>
+<ul>
+<li>Vertical scaling vs. Horizontal scaling</li>
+<li>SQL vs. NoSQL</li>
+<li>Master-slave replication</li>
+<li>Read replicas</li>
+<li>Consistency models</li>
+<li>Database sharding</li>
+</ul>
+<p>Other talking points:</p>
+<ul>
+<li>Keep web tier stateless.</li>
+<li>Cache data as much as you can.</li>
+<li>Support multiple data centers.</li>
+<li>Lose couple components with message queues.</li>
+<li>Monitor key metrics. For instance, QPS during peak hours and latency while users refreshing their news feed are interesting to monitor.</li>
+</ul>
+<p>Congratulations on getting this far! Now give yourself a pat on the back. Good job!</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] How News Feed Works:<br><a href="https://www.facebook.com/help/327131014036297/" target="_blank" rel="noopener">https://www.facebook.com/help/327131014036297/</a><br>[2] Friend of Friend recommendations Neo4j and SQL Sever:<br><a href="http://geekswithblogs.net/brendonpage/archive/2015/10/26/friend-of-friend-recommendations-with-neo4j.aspx" target="_blank" rel="noopener">http://geekswithblogs.net/brendonpage/archive/2015/10/26/friend-of-friend-recommendations-with-neo4j.aspx</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SystemDesign/" rel="tag"># SystemDesign</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/3940693378.html" rel="next" title="Design a Notification System">
+                <i class="fa fa-chevron-left"></i> Design a Notification System
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Understand-the-problem-and-establish-design-scope"><span class="nav-number">1.</span> <span class="nav-text">Step 1 - Understand the problem and establish design scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Propose-high-level-design-and-get-buy-in"><span class="nav-number">2.</span> <span class="nav-text">Step 2 - Propose high-level design and get buy-in</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Newsfeed-APIs"><span class="nav-number">2.1.</span> <span class="nav-text">Newsfeed APIs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Feed-publishing-API"><span class="nav-number">2.1.1.</span> <span class="nav-text">Feed publishing API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Newsfeed-retrieval-API"><span class="nav-number">2.1.2.</span> <span class="nav-text">Newsfeed retrieval API</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feed-publishing"><span class="nav-number">2.2.</span> <span class="nav-text">Feed publishing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Newsfeed-retrieval"><span class="nav-number">2.3.</span> <span class="nav-text">Newsfeed retrieval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Design-deep-dive"><span class="nav-number">3.</span> <span class="nav-text">Step 3 - Design deep dive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Feed-publishing-deep-dive"><span class="nav-number">3.1.</span> <span class="nav-text">Feed publishing deep dive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-servers"><span class="nav-number">3.1.1.</span> <span class="nav-text">Web servers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fanout-service"><span class="nav-number">3.1.2.</span> <span class="nav-text">Fanout service</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Fanout-on-write"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">Fanout on write</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fanout-on-read"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">Fanout on read</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Newsfeed-retrieval-deep-dive"><span class="nav-number">3.2.</span> <span class="nav-text">Newsfeed retrieval deep dive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cache-architecture"><span class="nav-number">3.3.</span> <span class="nav-text">Cache architecture</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Wrap-up"><span class="nav-number">4.</span> <span class="nav-text">Step 4 - Wrap up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

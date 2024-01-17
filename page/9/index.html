@@ -280,6 +280,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/743133161.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/743133161.html" itemprop="url">
+                  Virtual Machine Networking
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:39:24+08:00">
+                2022-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><em>Azure Virtual Machine</em> depends on virtual networking, and <strong>during the creation process, we need to define the network settings</strong>.</p>
+<h2 id="Create-VMs"><a href="#Create-VMs" class="headerlink" title="Create VMs"></a>Create VMs</h2><p>When a VM is created, a <em>Network Interface Card</em> (NIC) is created in the process. <strong>An NIC is used as a sort of interconnection between the VM and the VNet</strong>. A NIC is assigned a private IP address by the network. As an NIC is associated with both the VM and the VNet, the IP address is used by the VM. Using this IP address, the VM can communicate over a private network with other VMs (or other Azure resources) on the same network.</p>
+<p>Additionally, <strong>NICs and VMs can be assigned public IP addresses as well</strong>. A public address can be used to communicate with the VM over the internet, either to access services or to manage the VM.</p>
+<h2 id="View-VM-network-settings"><a href="#View-VM-network-settings" class="headerlink" title="View VM network settings"></a>View VM network settings</h2><p>After an Azure VM is created, we can review the network settings in the VM pane. Networking information is displayed in several places, including in the VM’s network settings. Additionally, each Azure resource has a separate pane and exists as an individual resource, so we can view these settings in multiple places. However, <strong>the most complete picture of VM network settings can be found in the VM pane and the NIC pane</strong>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/743133161.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/457978096.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -821,129 +946,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2165241535.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2165241535.html" itemprop="url">
-                  场景：处理旅游数据
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-26T18:50:45+08:00">
-                2022-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Ethan 打开笔记本电脑，从电脑桌面上的文件夹里翻出两个 Excel 表格文件，在这两个文件里，分别存着最近去过普吉岛和新西兰旅游的旅客信息，需要从这两份数据里，找出那些<strong>去过普吉岛但没去过新西兰的人</strong>，再让销售人员向他们推销一些新西兰精品旅游路线。将文件转换为 JSON 格式后，里面的内容大致如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 去过普吉岛的人员数据</span><br><span class="line">users_visited_phuket = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"first_name"</span>: <span class="string">"Sirena"</span>,</span><br><span class="line">        <span class="attr">"last_name"</span>: <span class="string">"Gross"</span>,</span><br><span class="line">        <span class="attr">"phone_number"</span>: <span class="string">"650-568-0388"</span>,</span><br><span class="line">        <span class="attr">"date_visited"</span>: <span class="string">"2018-03-14"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 去过新西兰的人员数据</span><br><span class="line">users_visited_nz = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"first_name"</span>: <span class="string">"Justin"</span>,</span><br><span class="line">        <span class="attr">"last_name"</span>: <span class="string">"Malcom"</span>,</span><br><span class="line">        <span class="attr">"phone_number"</span>: <span class="string">"267-282-1964"</span>,</span><br><span class="line">        <span class="attr">"date_visited"</span>: <span class="string">"2011-03-13"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2165241535.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -991,7 +993,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">268</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

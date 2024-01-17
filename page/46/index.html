@@ -280,6 +280,128 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2587689479.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2587689479.html" itemprop="url">
+                  The Programmer's View of SAP HANA
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-09T21:44:58+08:00">
+                2019-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>This chapter presents the application developer’s view of SAP HANA. It gives an overview of both the <strong>programming languages</strong> for writing code that runs inside SAP HANA, and the <strong>client libraries</strong> used by client applications to connect to SAP HANA.<br>Database applications use well-defined interfaces to communicate with the database management system functioning as a <strong>data source</strong>, usually over a network connection.<br>The application, often running in the context of an application server, takes the role of <strong>a client</strong>, while the database system plays the role of <strong>a server</strong>. Client applications typically use vendor-supplied client libraries which implement part of the API and encapsulates the communication details.<br>The leading programming language for database application is the <code>SQL</code>. SQL provides <strong>functional capabilities</strong> for creating, accessing, maintaining, controlling, and protecting relational data.<br>SAP HANA greatly <strong>extends SQL</strong>. This includes <strong>SAP HANA-specific</strong> SQL statements, views, data types, and the possibility to write <code>Procedures</code> in several languages, such as SQLScript, L, C++ and R.<br><code>Modeled Views</code> are <strong>design-time abstractions</strong> that allow developers to work efficiently with SAP HANA’s extended views on a higher level of abstraction.<br>An alternative query language for clients is <code>MDX</code>. Pioneered by Microsoft, MDX is used by applications to <strong>query OLAP</strong> (OnLine Analytical Processing) data models. Applications can <strong>query graph data</strong> with the <code>openCypher</code> query language and implement custom graph algorithms as graph stored procedures.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2587689479.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4217441451.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -778,137 +900,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/449939361.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/449939361.html" itemprop="url">
-                  Docker 数据管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T18:03:26+08:00">
-                2019-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在生产环境中使用 Docker，往往需要对数据进行<code>持久化</code>，或者需要在多个容器之间进行<code>数据共享</code>，这必然涉及容器的数据管理操作。<br>容器中管理数据主要有两种方式：</p>
-<ul>
-<li>数据卷（Data Volumes）：宿主机目录直接映射进容器。</li>
-<li>数据卷容器（Data Volumes Containers）：使用特定容器维护数据卷。</li>
-</ul>
-<p>通过这些机制，即使容器在运行中出现故障，用户也不必担心数据发生丢失，只需要快速的重新创建容器即可。</p>
-<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p><strong>数据卷</strong>是一个可供容器使用的特殊目录，类似于 Linux 中的 <code>mount</code> 行为。</p>
-<blockquote>
-<p>对数据卷的更新不会影响镜像，解耦开应用和数据。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/449939361.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -956,7 +947,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">268</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

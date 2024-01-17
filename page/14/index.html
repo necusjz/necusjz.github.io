@@ -280,6 +280,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1967124294.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1967124294.html" itemprop="url">
+                  Unix
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-25T15:05:00+08:00">
+                2021-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="封装与抽象"><a href="#封装与抽象" class="headerlink" title="封装与抽象"></a>封装与抽象</h2><p>在 Unix、Linux 系统中，有一句经典的话：“Everything is a file”，翻译成中文就是：“一切皆文件”。这句话的意思就是，在 Unix、Linux 系统中，很多东西都被抽象成<code>文件</code>这样一个概念，比如 Socket、驱动、硬盘、系统信息等。它们使用文件系统的路径作为统一的命名空间（namespace），使用统一的 read、write 标准函数来访问。比如，我们要查看 CPU 的信息，在 Linux 系统中，我们只需要使用编辑器像打开其他文件一样，打开 /proc/cpuinfo，就能查看到相应的信息。除此之外，我们还可以通过查看 /proc/uptime 文件，了解系统运行了多久，查看 /proc/version 了解系统的内核版本等。</p>
+<p>封装了不同类型设备的访问细节，抽象为统一的文件访问方式，更高层的代码就能基于统一的访问方式，来访问底层不同类型的设备。这样做的好处是，隔离底层设备访问的复杂性，统一的访问方式能够简化上层代码的编写，并且代码更容易复用。除此之外，<strong>抽象和封装还能有效控制代码复杂性的蔓延，将复杂性封装在局部代码中</strong>，隔离实现的易变性，提供简单、统一的访问接口让其他模块来使用。其他模块基于抽象的接口而非具体的实现编程，代码会更加稳定。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1967124294.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/247514921.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -761,137 +884,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3247778254.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3247778254.html" itemprop="url">
-                  搜索引擎背后的数据结构和算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T13:19:37+08:00">
-                2021-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="整体系统介绍"><a href="#整体系统介绍" class="headerlink" title="整体系统介绍"></a>整体系统介绍</h2><p>搜索引擎大致可以分为四个部分：<strong>搜集、分析、索引、查询</strong>：</p>
-<ol>
-<li>搜集，就是我们常说的利用爬虫爬取网页；</li>
-<li>分析，主要负责网页内容抽取、分词，构建临时索引，计算 PageRank 值这几部分工作；</li>
-<li>索引，主要负责通过分析阶段得到的临时索引，构建倒排索引；</li>
-<li>查询，主要负责响应用户的请求，根据倒排索引获取相关网页，计算网页排名，返回查询结果给用户；</li>
-</ol>
-<h2 id="搜集"><a href="#搜集" class="headerlink" title="搜集"></a>搜集</h2><p>搜索引擎<strong>把整个互联网看作数据结构中的有向图</strong>，把每个页面看作一个顶点。如果某个页面中包含另外一个页面的链接，那我们就在两个顶点之间连一条有向边。我们可以利用图的遍历搜索算法，来遍历整个互联网中的网页。我们前面介绍过两种图的遍历方法，深度优先和广度优先。<strong>搜索引擎采用的是广度优先搜索策略</strong>。具体点讲的话，那就是，我们先找一些比较知名的网页（专业的叫法是权重比较高）的链接（比如新浪主页网址、腾讯主页网址等），作为种子网页链接，放入到队列中。爬虫按照广度优先的策略，不停地从队列中取出链接，然后去爬取对应的网页，解析出网页里包含的其他网页链接，再将解析出来的链接添加到队列中。</p>
-<p>爬虫在爬取网页的过程中，涉及的四个重要的文件。其中，links.bin 和 bloom_filter.bin 这两个文件是爬虫自身所用的；另外的两个 doc_raw.bin 和 doc_id.bin 是作为搜集阶段的成果，供后面的分析、索引、查询用的。</p>
-<h3 id="待爬取网页链接文件：links-bin"><a href="#待爬取网页链接文件：links-bin" class="headerlink" title="待爬取网页链接文件：links.bin"></a>待爬取网页链接文件：links.bin</h3><p>我们可以把整个页面看作一个大的字符串，然后利用字符串匹配算法，在这个大字符串中，搜索这样一个网页标签，然后顺序读取之间的字符串 – 这其实就是网页链接。在广度优先搜索爬取页面的过程中，爬虫会不停地解析页面链接，将其放到队列中。于是，队列中的链接就会越来越多，可能会多到内存放不下。所以，我们用一个存储在磁盘中的文件（links.bin）来作为广度优先搜索中的队列。爬虫从 links.bin 文件中，取出链接去爬取对应的页面。等爬取到网页之后，将解析出来的链接，直接存储到 links.bin 文件中。这样用文件来存储网页链接的方式，还有其他好处。比如，<strong>支持断点续爬</strong>。也就是说，当机器断电之后，网页链接不会丢失；当机器重启之后，还可以从之前爬取到的位置继续爬取。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3247778254.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -939,7 +931,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">268</span>
+                <span class="site-state-item-count">269</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
