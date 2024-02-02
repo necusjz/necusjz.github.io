@@ -280,6 +280,130 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3597318647.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3597318647.html" itemprop="url">
+                  Create Hybrid Connections
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T18:24:27+08:00">
+                2022-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><em>Hybrid Connection</em> allows us to create secure connections with VNets. These connections can either be from on-premises or from other VNets. Establishing connections to VNets enables the exchange of secure network traffic with other services that are located in different VNets, different subscriptions, or outside Azure (in different clouds or on-premises). Using secure connections <strong>removes the need for publicly exposed endpoints that present a potential security risk</strong>. This is especially important when we consider management, where opening public endpoints creates a security risk and presents a major issue.</p>
+<p>For example, if we consider managing VMs, it’s a common practice to use either <em>Remote Desktop Protocol</em> (RDP) or PowerShell for management. Exposing these ports to public access presents a great risk. A best practice is to <strong>disable any kind of public access to such ports and use only access from an internal network for management</strong>. In this case, we use either a Site-to-Site or a Point-to-Site connection to enable secure management.</p>
+<p>In another scenario, we might need the ability to <strong>access a service or a database on another network, either on-premises or via another VNet</strong>. Again, exposing these services might present a risk, and we use either Site-to-Site, VNet-to-VNet, or VNet peering to enable such a connection in a secure way.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3597318647.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4134241250.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -770,130 +894,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/907302273.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/907302273.html" itemprop="url">
-                  Network Security Groups
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T13:03:11+08:00">
-                2022-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><em>Network Security Group</em> (NSG) is a built-in tool for network control that allow us to <strong>control incoming and outgoing traffic on an NIC or at the subnet level</strong>. They contain sets of rules that allow or deny specific traffic to specific resources or subnets in Azure. An NSG can be associated with either a subnet (by applying security rules to all resources associated with the subnet) or an NIC, which is done by applying security rules to the VM associated with the NIC.</p>
-<h2 id="Create-an-NSG"><a href="#Create-an-NSG" class="headerlink" title="Create an NSG"></a>Create an NSG</h2><p>As a first step to more effectively control network traffic, we are going to create a new NSG. <strong>The NSG deployment can be initiated during a VM deployment</strong>. This will associate the NSG to the NIC associated with the deployed VM. In this case, the NSG is already associated with the resource, and rules defined in the NSG will apply only to the associated VM.</p>
-<p>If the NSG is deployed separately, it is not associated and <strong>the rules that are created within it are not applied until an association has been created with the NIC or the subnet</strong>. When it is associated with a subnet, the NSG rules will apply to all resources on the subnet.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/907302273.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -941,7 +941,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -952,7 +952,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

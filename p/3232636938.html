@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this in-place, i.e., using the existing node objects and wi">
+<meta name="description" content="除了掌握反转链表的写法外，设置哨兵节点（前一个节点）、由远及近地处理 next pointer 也很重要。  In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do thi">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="In-Place Reversal of a Linked List">
 <meta property="og:url" content="https://necusjz.github.io/p/3232636938.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this in-place, i.e., using the existing node objects and wi">
+<meta property="og:description" content="除了掌握反转链表的写法外，设置哨兵节点（前一个节点）、由远及近地处理 next pointer 也很重要。  In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do thi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-29T15:18:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="In-Place Reversal of a Linked List">
-<meta name="twitter:description" content="In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this in-place, i.e., using the existing node objects and wi">
+<meta name="twitter:description" content="除了掌握反转链表的写法外，设置哨兵节点（前一个节点）、由远及近地处理 next pointer 也很重要。  In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do thi">
 
 
 
@@ -355,7 +355,10 @@
       
 
       
-        <p>In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this <strong>in-place</strong>, i.e., using the existing node objects and without using extra memory.</p>
+        <blockquote>
+<p>除了掌握反转链表的写法外，设置哨兵节点（前一个节点）、由远及近地处理 next pointer 也很重要。</p>
+</blockquote>
+<p>In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this <strong>in-place</strong>, i.e., using the existing node objects and without using extra memory.</p>
 <p><em>In-Place Reversal of a Linked List</em> pattern describes an efficient way to solve the above problem.</p>
 <h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dummy, dummy.next = ListNode(), head  <span class="comment"># set sentinel</span></span><br><span class="line">ptr = dummy</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(left - <span class="number">1</span>):</span><br><span class="line">    ptr = ptr.next</span><br><span class="line"></span><br><span class="line">prev, curr = <span class="literal">None</span>, ptr.next</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(right - left + <span class="number">1</span>):</span><br><span class="line">    curr.next, prev, curr = prev, curr, curr.next</span><br><span class="line"></span><br><span class="line"><span class="comment"># link</span></span><br><span class="line">ptr.next.next = curr</span><br><span class="line">ptr.next = prev</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> dummy.next</span><br></pre></td></tr></table></figure>
 
@@ -478,7 +481,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -489,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

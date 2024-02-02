@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="This pattern describes an interesting approach to deal with problems involving arrays containing numbers in a given range. For example, take the following problem:  You are given an unsorted array con">
+<meta name="description" content="常用但鲜为人知的循环排序。核心理念是：将元素交换到正确的位置，继而获取某个 range 内缺失的数字。其中，缺失数字为索引值，已有数字为元素值。警惕 desired index 可能造成的数组越界。  This pattern describes an interesting approach to deal with problems involving arrays containing n">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cyclic Sort">
 <meta property="og:url" content="https://necusjz.github.io/p/1292284163.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="This pattern describes an interesting approach to deal with problems involving arrays containing numbers in a given range. For example, take the following problem:  You are given an unsorted array con">
+<meta property="og:description" content="常用但鲜为人知的循环排序。核心理念是：将元素交换到正确的位置，继而获取某个 range 内缺失的数字。其中，缺失数字为索引值，已有数字为元素值。警惕 desired index 可能造成的数组越界。  This pattern describes an interesting approach to deal with problems involving arrays containing n">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-29T15:23:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cyclic Sort">
-<meta name="twitter:description" content="This pattern describes an interesting approach to deal with problems involving arrays containing numbers in a given range. For example, take the following problem:  You are given an unsorted array con">
+<meta name="twitter:description" content="常用但鲜为人知的循环排序。核心理念是：将元素交换到正确的位置，继而获取某个 range 内缺失的数字。其中，缺失数字为索引值，已有数字为元素值。警惕 desired index 可能造成的数组越界。  This pattern describes an interesting approach to deal with problems involving arrays containing n">
 
 
 
@@ -355,12 +355,15 @@
       
 
       
-        <p>This pattern describes an interesting approach to deal with problems involving arrays <strong>containing numbers in a given range</strong>. For example, take the following problem:</p>
+        <blockquote>
+<p>常用但鲜为人知的循环排序。核心理念是：将元素交换到正确的位置，继而获取某个 range 内缺失的数字。其中，缺失数字为索引值，已有数字为元素值。警惕 desired index 可能造成的数组越界。</p>
+</blockquote>
+<p>This pattern describes an interesting approach to deal with problems involving arrays <strong>containing numbers in a given range</strong>. For example, take the following problem:</p>
 <blockquote>
 <p>You are given an unsorted array containing numbers taken from the range “1” to “n”. The array can have duplicates, which means that some numbers will be missing. Find all the missing numbers.</p>
 </blockquote>
 <p>To efficiently solve this problem, we can use the fact that the input array contains numbers in the range of “1” to “n”. For example, to efficiently sort the array, we can try placing each number in its correct place, i.e., placing “1” at index “0”, placing “2” at index “1”, and so on. Once we are done with the sorting, we can iterate the array to find all indices that are missing the correct numbers. These will be our required numbers.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">n = len(nums)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; n:</span><br><span class="line">    j = nums[i] - <span class="number">1</span></span><br><span class="line">    <span class="comment"># avoid index out of bounds</span></span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> &lt;= j &lt; n <span class="keyword">and</span> nums[i] != nums[j]:</span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> range(n):</span><br><span class="line">    <span class="keyword">if</span> nums[idx] != idx + <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> idx + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> n + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">n = len(nums)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; n:</span><br><span class="line">    j = nums[i] - <span class="number">1</span></span><br><span class="line">    <span class="comment"># avoid index out of bounds</span></span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> &lt;= j &lt; n <span class="keyword">and</span> nums[i] != nums[j]:</span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    <span class="keyword">if</span> nums[i] != i + <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> n + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/couples-holding-hands/" target="_blank" rel="noopener">765. Couples Holding Hands</a><br><a href="https://leetcode.com/problems/missing-number/" target="_blank" rel="noopener">268. Missing Number</a><br><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/" target="_blank" rel="noopener">448. Find All Numbers Disappeared in an Array</a><br><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">287. Find the Duplicate Number</a><br><a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/" target="_blank" rel="noopener">442. Find All Duplicates in an Array</a><br><a href="https://leetcode.com/problems/set-mismatch/" target="_blank" rel="noopener">645. Set Mismatch</a><br><a href="https://leetcode.com/problems/first-missing-positive/" target="_blank" rel="noopener">41. First Missing Positive</a><br><a href="https://leetcode.com/problems/kth-missing-positive-number/" target="_blank" rel="noopener">1539. Kth Missing Positive Number</a></p>
 
@@ -481,7 +484,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -492,7 +495,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

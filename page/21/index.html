@@ -280,6 +280,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3678059815.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3678059815.html" itemprop="url">
+                  Proxies
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-04T20:12:13+08:00">
+                2021-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>A <code>Proxy Server</code> is an intermediate server between the client and the back-end server. Clients connect to proxy servers to make a request for a service like a web page, file, connection, etc. In short, a proxy server is a piece of software or hardware that acts as an intermediary for requests from clients seeking resources from other servers:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/educative/05.png" alt></p>
+<p>Typically, proxies are used to filter requests, log requests, or sometimes transform requests (by adding/removing headers, encrypting/decrypting, or compressing a resource). Another advantage of a proxy server is that its cache can serve a lot of requests. If multiple clients access a particular resource, the proxy server can cache it and serve it to all the clients without going to the remote server.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3678059815.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2502939086.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -734,133 +857,14 @@
       
         
           
-            <p>This pattern helps us solve problems that involve a list of sorted arrays.</p>
+            <blockquote>
+<p>min_heap 的应用，特别之处在于借助 index 对元素进行 track。</p>
+</blockquote>
+<p>This pattern helps us solve problems that involve a list of sorted arrays.</p>
 <p>Whenever we are given “K” sorted arrays, we can use a <strong>min heap</strong> to efficiently perform a sorted traversal of all the elements of all arrays. We can push the smallest (first) element of each sorted array in a min heap to get the overall minimum. While inserting elements to the min heap we <strong>keep track of which array the element came from</strong>. We can, then, remove the top element from the heap to get the smallest element and push the next element from the same array, to which this smallest element belonged, to the heap. We can repeat this process to make a sorted traversal of all elements.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">min_heap = []</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> matrix:</span><br><span class="line">    heappush(min_heap, (row[<span class="number">0</span>], <span class="number">0</span>, row))  <span class="comment"># keep track by index</span></span><br><span class="line"></span><br><span class="line">n = len(matrix)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(k - <span class="number">1</span>):</span><br><span class="line">    _, idx, row = heappop(min_heap)</span><br><span class="line">    <span class="keyword">if</span> idx + <span class="number">1</span> &lt; n:</span><br><span class="line">        heappush(min_heap, (row[idx+<span class="number">1</span>], idx + <span class="number">1</span>, row))</span><br><span class="line"><span class="keyword">return</span> min_heap[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">min_heap = []</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> matrix:</span><br><span class="line">    heappush(min_heap, (row[<span class="number">0</span>], <span class="number">0</span>, row))  <span class="comment"># keep track by index</span></span><br><span class="line"></span><br><span class="line">n = len(matrix)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(k - <span class="number">1</span>):</span><br><span class="line">    _, idx, row = heappop(min_heap)</span><br><span class="line">    <span class="keyword">if</span> idx + <span class="number">1</span> &lt; n:</span><br><span class="line">        heappush(min_heap, (row[idx+<span class="number">1</span>], idx + <span class="number">1</span>, row))</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> min_heap[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a><br><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. Median of Two Sorted Arrays</a><br><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/" target="_blank" rel="noopener">378. Kth Smallest Element in a Sorted Matrix</a><br><a href="https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/" target="_blank" rel="noopener">632. Smallest Range Covering Elements from K Lists</a><br><a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/" target="_blank" rel="noopener">373. Find K Pairs with Smallest Sums</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1492973727.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1492973727.html" itemprop="url">
-                  Top K Elements
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T22:56:12+08:00">
-                2021-01-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Any problem that asks us to find the <em>Top K Elements</em> among a given set falls under this pattern.</p>
-<p>The best data structure that comes to mind to keep track of “K” elements is <strong>heap</strong>. This pattern will make use of the heap to solve multiple problems dealing with “K” elements at a time from a set of given elements.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">freq = dict()</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> s:</span><br><span class="line">    freq[char] = freq.get(char, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">max_heap = []</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> freq:</span><br><span class="line">    heappush(max_heap, (-freq[char], char))</span><br><span class="line"></span><br><span class="line">ans = <span class="string">""</span></span><br><span class="line"><span class="keyword">while</span> max_heap:</span><br><span class="line">    queue, k = [], <span class="number">2</span>  <span class="comment"># store pop-up items</span></span><br><span class="line">    <span class="keyword">while</span> max_heap <span class="keyword">and</span> k &gt; <span class="number">0</span>:</span><br><span class="line">        count, char = heappop(max_heap)</span><br><span class="line">        ans += char</span><br><span class="line">        <span class="keyword">if</span> -count - <span class="number">1</span> &gt; <span class="number">0</span>:</span><br><span class="line">            queue.append((count + <span class="number">1</span>, char))</span><br><span class="line">        k -= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> k != <span class="number">0</span> <span class="keyword">and</span> queue:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    <span class="comment"># push back</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> queue:</span><br><span class="line">        heappush(max_heap, item)</span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/top-k-frequent-words/" target="_blank" rel="noopener">692. Top K Frequent Words</a><br><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a><br><a href="https://leetcode.com/problems/k-closest-points-to-origin/" target="_blank" rel="noopener">973. K Closest Points to Origin</a><br><a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/" target="_blank" rel="noopener">1167. Minimum Cost to Connect Sticks</a><br><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a><br><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank" rel="noopener">451. Sort Characters By Frequency</a><br><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/" target="_blank" rel="noopener">703. Kth Largest Element in a Stream</a><br><a href="https://leetcode.com/problems/find-k-closest-elements/" target="_blank" rel="noopener">658. Find K Closest Elements</a><br><a href="https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/" target="_blank" rel="noopener">1481. Least Number of Unique Integers after K Removals</a><br><a href="https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/" target="_blank" rel="noopener">1508. Range Sum of Sorted Subarray Sums</a><br><a href="https://leetcode.com/problems/reorganize-string/" target="_blank" rel="noopener">767. Reorganize String</a><br><a href="https://leetcode.com/problems/rearrange-string-k-distance-apart/" target="_blank" rel="noopener">358. Rearrange String k Distance Apart</a><br><a href="https://leetcode.com/problems/task-scheduler/" target="_blank" rel="noopener">621. Task Scheduler</a><br><a href="https://leetcode.com/problems/maximum-frequency-stack/" target="_blank" rel="noopener">895. Maximum Frequency Stack</a></p>
 
           
         
@@ -939,7 +943,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -950,7 +954,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

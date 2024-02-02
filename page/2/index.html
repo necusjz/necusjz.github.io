@@ -280,6 +280,130 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2993337315.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2993337315.html" itemprop="url">
+                  Design a Unique ID Generator in Distributed Systems
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-02T23:57:06+08:00">
+                2023-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the auto_increment attribute in a traditional database. However, auto_increment does not work in a distributed environment because a single database server is not large enough and generating unique IDs across multiple databases with minimal delay is challenging.</p>
+<p>Here are a few examples of unique IDs:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/00.svg" alt></p>
+<h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>Asking clarification questions is the first step to tackle any system design interview question. Here is an example of candidate-interviewer interaction:<br>Candidate: What are the characteristics of unique IDs?<br>Interviewer: IDs must be unique and sortable.<br>C: For each new record, does ID increment by 1?<br>I: The ID increments by time but not necessarily only increments by 1. IDs created in the evening are larger than those created in the morning on the same day.<br>C: Do IDs only contain numerical values?<br>I: Yes, that is correct.<br>C: What is the ID length requirement?<br>I: IDs should fit into 64-bit.<br>C: What is the scale of the system?<br>I: The system should be able to generate 10,000 IDs per second.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2993337315.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/58895832.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -856,170 +980,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1174292260.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1174292260.html" itemprop="url">
-                  Back-of-the-envelope Estimation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-14T15:21:21+08:00">
-                2023-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, “back-of-the-envelope calculations are estimates you create using a combination of thought experiments and common performance numbers to get a good feel for which designs will meet your requirements” [1].</p>
-<p>You need to have a good sense of scalability basics to effectively carry out back-of-the-envelope estimation. The following concepts should be well understood: power of two [2], latency numbers every programmer should know, and availability numbers.</p>
-<h2 id="Power-of-two"><a href="#Power-of-two" class="headerlink" title="Power of two"></a>Power of two</h2><p>Although data volume can become enormous when dealing with distributed systems, calculation all boils down to the basics. To obtain correct calculations, it is critical to know the data volume unit using the power of 2. A byte is a sequence of 8 bits. An ASCII character uses one byte of memory (8 bits). Below is a table explaining the data volume unit (Table 1):</p>
-<table>
-<thead>
-<tr>
-<th align="left">Power</th>
-<th align="left">Approximate value</th>
-<th align="left">Full name</th>
-<th align="left">Short name</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">10</td>
-<td align="left">1 Thousand</td>
-<td align="left">1 Kilobyte</td>
-<td align="left">1 KB</td>
-</tr>
-<tr>
-<td align="left">20</td>
-<td align="left">1 Million</td>
-<td align="left">1 Megabyte</td>
-<td align="left">1 MB</td>
-</tr>
-<tr>
-<td align="left">30</td>
-<td align="left">1 Billion</td>
-<td align="left">1 Gigabyte</td>
-<td align="left">1 GB</td>
-</tr>
-<tr>
-<td align="left">40</td>
-<td align="left">1 Trillion</td>
-<td align="left">1 Terabyte</td>
-<td align="left">1 TB</td>
-</tr>
-<tr>
-<td align="left">50</td>
-<td align="left">1 Quadrillion</td>
-<td align="left">1 Petabyte</td>
-<td align="left">1 PB</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1174292260.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1067,7 +1027,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1078,7 +1038,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

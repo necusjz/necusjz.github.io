@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="As we know, whenever we are given a sorted array or linked list or matrix, and we are asked to find a certain element, the best algorithm we can use is Binary Search. This pattern describes an efficie">
+<meta name="description" content="无处不在的二分思想。往往通过外部变量 track 中间结果，元素不是 distinct 时需要单独处理。有时仅为解法的一小步，bisect_left 第一个大于等于；bisect_right 第一个大于。  As we know, whenever we are given a sorted array or linked list or matrix, and we are asked to">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Modified Binary Search">
 <meta property="og:url" content="https://necusjz.github.io/p/581537989.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="As we know, whenever we are given a sorted array or linked list or matrix, and we are asked to find a certain element, the best algorithm we can use is Binary Search. This pattern describes an efficie">
+<meta property="og:description" content="无处不在的二分思想。往往通过外部变量 track 中间结果，元素不是 distinct 时需要单独处理。有时仅为解法的一小步，bisect_left 第一个大于等于；bisect_right 第一个大于。  As we know, whenever we are given a sorted array or linked list or matrix, and we are asked to">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-30T15:39:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Modified Binary Search">
-<meta name="twitter:description" content="As we know, whenever we are given a sorted array or linked list or matrix, and we are asked to find a certain element, the best algorithm we can use is Binary Search. This pattern describes an efficie">
+<meta name="twitter:description" content="无处不在的二分思想。往往通过外部变量 track 中间结果，元素不是 distinct 时需要单独处理。有时仅为解法的一小步，bisect_left 第一个大于等于；bisect_right 第一个大于。  As we know, whenever we are given a sorted array or linked list or matrix, and we are asked to">
 
 
 
@@ -355,7 +355,10 @@
       
 
       
-        <p>As we know, whenever we are given <strong>a sorted array or linked list or matrix</strong>, and we are asked to find a certain element, the best algorithm we can use is <em>Binary Search</em>.</p>
+        <blockquote>
+<p>无处不在的二分思想。往往通过外部变量 track 中间结果，元素不是 distinct 时需要单独处理。有时仅为解法的一小步，bisect_left 第一个大于等于；bisect_right 第一个大于。</p>
+</blockquote>
+<p>As we know, whenever we are given <strong>a sorted array or linked list or matrix</strong>, and we are asked to find a certain element, the best algorithm we can use is binary search.</p>
 <p>This pattern describes an efficient way to handle all problems involving <em>Binary Search</em>. We will go through a set of problems that will help us build an understanding of this pattern so that we can apply this technique to other problems we might come across in the interviews.</p>
 <h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">lo, hi = <span class="number">0</span>, len(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> lo &lt;= hi:</span><br><span class="line">    mid = lo + ((hi - lo) &gt;&gt; <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> nums[mid] &gt;= target:</span><br><span class="line">        <span class="comment"># find leftmost element</span></span><br><span class="line">        <span class="keyword">if</span> mid == <span class="number">0</span> <span class="keyword">or</span> nums[mid<span class="number">-1</span>] &lt; target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        </span><br><span class="line">        hi = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        lo = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> len(nums)</span><br></pre></td></tr></table></figure>
 
@@ -478,7 +481,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -489,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

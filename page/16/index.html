@@ -280,6 +280,134 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3299276735.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3299276735.html" itemprop="url">
+                  Interval Merging
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:48:39+08:00">
+                2021-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a set of numbers find an optimal solution for a problem considering the current number and the best you can get from the left and right sides.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Find all optimal solutions for every interval and return the best possible answer:</p>
+<blockquote>
+<p>dp[i][j] = dp[i][k] + result[k] + dp[k+1][j]</p>
+</blockquote>
+<p>Get the best from the left and right sides and add a solution for the current position:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; n; ++l) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt; j; ++k) &#123;</span><br><span class="line">            dp[i][j] = max(dp[i][j], dp[i][k] + result[k] + dp[k+<span class="number">1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[<span class="number">0</span>][n<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3299276735.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2842312158.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -798,142 +926,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2387701916.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2387701916.html" itemprop="url">
-                  Designing Uber backend
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-27T22:10:31+08:00">
-                2021-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="What-is-Uber"><a href="#What-is-Uber" class="headerlink" title="What is Uber?"></a>What is Uber?</h2><p>Uber enables its customers to book drivers for taxi rides. Uber drivers use their personal cars to drive customers around. Both customers and drivers communicate with each other through their smartphones using the Uber app.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s start with building a simpler version of Uber.<br>There are two types of users (Drivers, Customers) in our system:</p>
-<ul>
-<li>Drivers need to regularly notify the service about their current location and their availability to pick passengers;</li>
-<li>Passengers get to see all the nearby available drivers;</li>
-<li>Customer can request a ride; nearby drivers are notified that a customer is ready to be picked up;</li>
-<li>Once a driver and a customer accept a ride, they can constantly see each other’s current location until the trip finishes;</li>
-<li>Upon reaching the destination, the driver marks the journey complete to become available for the next ride;</li>
-</ul>
-<h2 id="Capacity-Estimation-and-Constraints"><a href="#Capacity-Estimation-and-Constraints" class="headerlink" title="Capacity Estimation and Constraints"></a>Capacity Estimation and Constraints</h2><ul>
-<li>Let’s assume we have 300M customers and 1M drivers with 1M daily active customers and 500K daily active drivers;</li>
-<li>Let’s assume 1M daily rides;</li>
-<li>Let’s assume that all active drivers notify their current location every three seconds;</li>
-<li>Once a customer puts in a request for a ride, the system should be able to contact drivers in real-time;</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2387701916.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -981,7 +973,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -992,7 +984,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

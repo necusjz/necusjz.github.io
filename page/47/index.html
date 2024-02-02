@@ -280,6 +280,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3631972620.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3631972620.html" itemprop="url">
+                  端口映射与容器互联
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T22:23:38+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在实践中，经常会碰到多个服务组件容器共同协作的情况，这往往需要多个容器之间，能够互相访问到对方的服务。<br>Docker 除了通过网络访问外，还提供了两个很方便的功能，来满足服务访问的基本需求：</p>
+<ul>
+<li>允许映射容器内应用的服务端口到宿主机。</li>
+<li>互联机制实现多个容器间，通过容器名来快速访问。</li>
+</ul>
+<h2 id="端口映射实现容器访问"><a href="#端口映射实现容器访问" class="headerlink" title="端口映射实现容器访问"></a>端口映射实现容器访问</h2><h3 id="从外部访问容器应用"><a href="#从外部访问容器应用" class="headerlink" title="从外部访问容器应用"></a>从外部访问容器应用</h3><p>当容器中运行一些网络应用，要让外部访问这些应用时，可以通过 <strong>-P</strong> 或 <strong>-p</strong> 参数来指定端口映射。<br>当使用 -P 参数时，Docker 会随机映射一个端口到内部容器开放的网络端口：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="keyword">run</span><span class="bash"> -d -P training/webapp python app.py</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当使用 -p 参数时，可以指定要映射的端口，并且在一个指定端口上，只可以绑定一个容器。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3631972620.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/449939361.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -791,133 +923,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/774590565.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/774590565.html" itemprop="url">
-                  核心概念与安装配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T21:39:19+08:00">
-                2019-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>镜像</strong>（image）、<strong>容器</strong>（container）、<strong>仓库</strong>（repository），只有理解了这三个核心概念，才能顺利的理解 Docker 容器的整个生命周期。</p>
-<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="Docker-镜像"><a href="#Docker-镜像" class="headerlink" title="Docker 镜像"></a>Docker 镜像</h3><p>Docker 镜像类似于虚拟机镜像，可以将他理解为一个只读的模版。<br>通过<code>版本管理</code>和<code>增量的文件系统</code>，Docker 提供了一套十分简单的机制来创建和更新现有的镜像，用户甚至可以从网上下载一个已经做好的应用镜像，并直接使用。</p>
-<h3 id="Docker-容器"><a href="#Docker-容器" class="headerlink" title="Docker 容器"></a>Docker 容器</h3><p>Docker 容器类似于一个轻量级的沙箱，Docker 利用容器来运行和隔离应用。</p>
-<blockquote>
-<p>镜像自身是只读的。容器从镜像启动的时候，会在镜像的最上层创建一个可写层。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/774590565.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -965,7 +970,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -976,7 +981,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

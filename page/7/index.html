@@ -280,6 +280,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2503986917.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2503986917.html" itemprop="url">
+                  Azure Front Door and Azure CDN
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-25T00:32:07+08:00">
+                2022-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Several networking services in Azure are dedicated to application delivery. <em>Azure Front Door</em> and <em>Azure CDN</em> are services that allow us to create applications for global delivery and take advantage of the global network of Azure data centers. Leveraging this capability, we can <strong>provide the same experience to our users, irrespective of their physical location</strong>.</p>
+<h2 id="Create-a-front-door-instance"><a href="#Create-a-front-door-instance" class="headerlink" title="Create a front door instance"></a>Create a front door instance</h2><p><em>Azure Front Door</em> is used for the global routing of web traffic for applications distributed across different Azure regions. With front door, we can <strong>define, manage, and monitor the routing of our web traffic and enable quick global failover</strong>. It enables us to deliver our applications with the best performance and high availability.</p>
+<p>Front door is an L7 load balancer, similar to application gateway. However, there is a difference as regards global distribution. In terms of global distribution, it is similar to another service—traffic manager. Essentially, front door <strong>combines the best features of application gateway and traffic manager</strong>—the security of application gateway and the distribution capability of traffic manager.</p>
+<p>The successful sample rate ensures that endpoints in the backend are available and determines how many samples are sent at a time. <em>Successful Sample</em> <strong>defines how many requests need to be successful in order for an endpoint to be considered healthy</strong>.</p>
+<p><em>Latency Sensitivity</em> <strong>sets the tolerance between the endpoint with the lowest latency and the rest of the endpoints</strong>. For example, let’s say the latency sensitivity setting is 30ms, while the latency of endpoint A is 15ms, that of endpoint B is 30ms, and that of endpoint C is 90ms. Endpoints A and B will be placed in the fastest pool as the difference in latency is lower than the sensitivity threshold, and endpoint C is out as it’s above the threshold.</p>
+<p><em>Routing Rule</em> <strong>defines how traffic is handled and whether specific traffic needs to be redirected or forwarded</strong>. If URL rewrite is enabled, we can construct a URL that will be forwarded to a backend. If caching is enabled, front door will cache static content for faster delivery. Front door also includes a number of configurable options and rules that can help your web applications deliver a customer- and brand-centric service.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2503986917.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3697556407.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -771,130 +898,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3597318647.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3597318647.html" itemprop="url">
-                  Create Hybrid Connections
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T18:24:27+08:00">
-                2022-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><em>Hybrid Connection</em> allows us to create secure connections with VNets. These connections can either be from on-premises or from other VNets. Establishing connections to VNets enables the exchange of secure network traffic with other services that are located in different VNets, different subscriptions, or outside Azure (in different clouds or on-premises). Using secure connections <strong>removes the need for publicly exposed endpoints that present a potential security risk</strong>. This is especially important when we consider management, where opening public endpoints creates a security risk and presents a major issue.</p>
-<p>For example, if we consider managing VMs, it’s a common practice to use either <em>Remote Desktop Protocol</em> (RDP) or PowerShell for management. Exposing these ports to public access presents a great risk. A best practice is to <strong>disable any kind of public access to such ports and use only access from an internal network for management</strong>. In this case, we use either a Site-to-Site or a Point-to-Site connection to enable secure management.</p>
-<p>In another scenario, we might need the ability to <strong>access a service or a database on another network, either on-premises or via another VNet</strong>. Again, exposing these services might present a risk, and we use either Site-to-Site, VNet-to-VNet, or VNet peering to enable such a connection in a secure way.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3597318647.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -942,7 +945,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -953,7 +956,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

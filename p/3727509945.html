@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the largest element in one part and the smallest">
+<meta name="description" content="大多是 max_heap 和 min_heap 的配合使用。在用索引获取堆顶元素时，注意保证 heap 非空。  In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Two Heaps">
 <meta property="og:url" content="https://necusjz.github.io/p/3727509945.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the largest element in one part and the smallest">
+<meta property="og:description" content="大多是 max_heap 和 min_heap 的配合使用。在用索引获取堆顶元素时，注意保证 heap 非空。  In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-30T14:44:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Two Heaps">
-<meta name="twitter:description" content="In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the largest element in one part and the smallest">
+<meta name="twitter:description" content="大多是 max_heap 和 min_heap 的配合使用。在用索引获取堆顶元素时，注意保证 heap 非空。  In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in">
 
 
 
@@ -355,9 +355,12 @@
       
 
       
-        <p>In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the largest element in one part and the smallest element in the other part. This pattern is an efficient approach to solve such problems.</p>
+        <blockquote>
+<p>大多是 max_heap 和 min_heap 的配合使用。在用索引获取堆顶元素时，注意保证 heap 非空。</p>
+</blockquote>
+<p>In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the largest element in one part and the smallest element in the other part. This pattern is an efficient approach to solve such problems.</p>
 <p>This pattern uses <em>Two Heaps</em> to solve these problems; A <strong>max heap</strong> to find the largest element and a <strong>min heap</strong> to find the smallest element.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.max_heap = []</span><br><span class="line">        self.min_heap = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(self, num: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.max_heap <span class="keyword">or</span> num &lt;= -self.max_heap[<span class="number">0</span>]:</span><br><span class="line">            heappush(self.max_heap, -num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            heappush(self.min_heap, num)</span><br><span class="line">        <span class="comment"># re-balance</span></span><br><span class="line">        <span class="keyword">if</span> len(self.max_heap) &gt; len(self.min_heap) + <span class="number">1</span>:</span><br><span class="line">            heappush(self.min_heap, -heappop(self.max_heap))</span><br><span class="line">        <span class="keyword">if</span> len(self.min_heap) &gt; len(self.max_heap):</span><br><span class="line">            heappush(self.max_heap, -heappop(self.min_heap))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_median</span><span class="params">(self)</span> -&gt; float:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.max_heap) == len(self.min_heap):</span><br><span class="line">            <span class="keyword">return</span> (-self.max_heap[<span class="number">0</span>] + self.min_heap[<span class="number">0</span>]) / <span class="number">2</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> -self.max_heap[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.max_heap = []</span><br><span class="line">        self.min_heap = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(self, num: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.max_heap <span class="keyword">or</span> num &lt;= -self.max_heap[<span class="number">0</span>]:</span><br><span class="line">            heappush(self.max_heap, -num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            heappush(self.min_heap, num)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># rebalance</span></span><br><span class="line">        <span class="keyword">if</span> len(self.max_heap) &gt; len(self.min_heap) + <span class="number">1</span>:</span><br><span class="line">            heappush(self.min_heap, -heappop(self.max_heap))</span><br><span class="line">        <span class="keyword">if</span> len(self.min_heap) &gt; len(self.max_heap):</span><br><span class="line">            heappush(self.max_heap, -heappop(self.min_heap))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_median</span><span class="params">(self)</span> -&gt; float:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.max_heap) == len(self.min_heap):</span><br><span class="line">            <span class="keyword">return</span> (-self.max_heap[<span class="number">0</span>] + self.min_heap[<span class="number">0</span>]) / <span class="number">2</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> -self.max_heap[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener">295. Find Median from Data Stream</a><br><a href="https://leetcode.com/problems/sliding-window-median/" target="_blank" rel="noopener">480. Sliding Window Median</a><br><a href="https://leetcode.com/problems/ipo/" target="_blank" rel="noopener">502. IPO</a><br><a href="https://leetcode.com/problems/find-right-interval/" target="_blank" rel="noopener">436. Find Right Interval</a></p>
 
@@ -478,7 +481,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -489,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

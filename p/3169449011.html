@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="This pattern helps us solve problems that involve a list of sorted arrays. Whenever we are given “K” sorted arrays, we can use a min heap to efficiently perform a sorted traversal of all the elements">
+<meta name="description" content="min_heap 的应用，特别之处在于借助 index 对元素进行 track。  This pattern helps us solve problems that involve a list of sorted arrays. Whenever we are given “K” sorted arrays, we can use a min heap to efficiently perf">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K-Way Merge">
 <meta property="og:url" content="https://necusjz.github.io/p/3169449011.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="This pattern helps us solve problems that involve a list of sorted arrays. Whenever we are given “K” sorted arrays, we can use a min heap to efficiently perform a sorted traversal of all the elements">
+<meta property="og:description" content="min_heap 的应用，特别之处在于借助 index 对元素进行 track。  This pattern helps us solve problems that involve a list of sorted arrays. Whenever we are given “K” sorted arrays, we can use a min heap to efficiently perf">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-30T16:35:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K-Way Merge">
-<meta name="twitter:description" content="This pattern helps us solve problems that involve a list of sorted arrays. Whenever we are given “K” sorted arrays, we can use a min heap to efficiently perform a sorted traversal of all the elements">
+<meta name="twitter:description" content="min_heap 的应用，特别之处在于借助 index 对元素进行 track。  This pattern helps us solve problems that involve a list of sorted arrays. Whenever we are given “K” sorted arrays, we can use a min heap to efficiently perf">
 
 
 
@@ -355,9 +355,12 @@
       
 
       
-        <p>This pattern helps us solve problems that involve a list of sorted arrays.</p>
+        <blockquote>
+<p>min_heap 的应用，特别之处在于借助 index 对元素进行 track。</p>
+</blockquote>
+<p>This pattern helps us solve problems that involve a list of sorted arrays.</p>
 <p>Whenever we are given “K” sorted arrays, we can use a <strong>min heap</strong> to efficiently perform a sorted traversal of all the elements of all arrays. We can push the smallest (first) element of each sorted array in a min heap to get the overall minimum. While inserting elements to the min heap we <strong>keep track of which array the element came from</strong>. We can, then, remove the top element from the heap to get the smallest element and push the next element from the same array, to which this smallest element belonged, to the heap. We can repeat this process to make a sorted traversal of all elements.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">min_heap = []</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> matrix:</span><br><span class="line">    heappush(min_heap, (row[<span class="number">0</span>], <span class="number">0</span>, row))  <span class="comment"># keep track by index</span></span><br><span class="line"></span><br><span class="line">n = len(matrix)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(k - <span class="number">1</span>):</span><br><span class="line">    _, idx, row = heappop(min_heap)</span><br><span class="line">    <span class="keyword">if</span> idx + <span class="number">1</span> &lt; n:</span><br><span class="line">        heappush(min_heap, (row[idx+<span class="number">1</span>], idx + <span class="number">1</span>, row))</span><br><span class="line"><span class="keyword">return</span> min_heap[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">min_heap = []</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> matrix:</span><br><span class="line">    heappush(min_heap, (row[<span class="number">0</span>], <span class="number">0</span>, row))  <span class="comment"># keep track by index</span></span><br><span class="line"></span><br><span class="line">n = len(matrix)</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(k - <span class="number">1</span>):</span><br><span class="line">    _, idx, row = heappop(min_heap)</span><br><span class="line">    <span class="keyword">if</span> idx + <span class="number">1</span> &lt; n:</span><br><span class="line">        heappush(min_heap, (row[idx+<span class="number">1</span>], idx + <span class="number">1</span>, row))</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> min_heap[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a><br><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. Median of Two Sorted Arrays</a><br><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/" target="_blank" rel="noopener">378. Kth Smallest Element in a Sorted Matrix</a><br><a href="https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/" target="_blank" rel="noopener">632. Smallest Range Covering Elements from K Lists</a><br><a href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/" target="_blank" rel="noopener">373. Find K Pairs with Smallest Sums</a></p>
 
@@ -478,7 +481,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -489,7 +492,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

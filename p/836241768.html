@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="Bitwise XOR returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison: It is surpri">
+<meta name="description" content="四两拨千斤的位运算，比如：剥离最右边的 1、将最右边的 1 置 0 等等。更多技巧可以参考 Low Level Bit Hacks。  Bitwise XOR returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactl">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bitwise XOR">
 <meta property="og:url" content="https://necusjz.github.io/p/836241768.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="Bitwise XOR returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison: It is surpri">
+<meta property="og:description" content="四两拨千斤的位运算，比如：剥离最右边的 1、将最右边的 1 置 0 等等。更多技巧可以参考 Low Level Bit Hacks。  Bitwise XOR returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactl">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/04.png">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-30T16:34:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bitwise XOR">
-<meta name="twitter:description" content="Bitwise XOR returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison: It is surpri">
+<meta name="twitter:description" content="四两拨千斤的位运算，比如：剥离最右边的 1、将最右边的 1 置 0 等等。更多技巧可以参考 Low Level Bit Hacks。  Bitwise XOR returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactl">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/04.png">
 
 
@@ -357,7 +357,10 @@
       
 
       
-        <p><em>Bitwise XOR</em> returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/04.png" alt></p>
+        <blockquote>
+<p>四两拨千斤的位运算，比如：剥离最右边的 1、将最右边的 1 置 0 等等。更多技巧可以参考 <a href="https://catonmat.net/low-level-bit-hacks" target="_blank" rel="noopener">Low Level Bit Hacks</a>。</p>
+</blockquote>
+<p><em>Bitwise XOR</em> returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/04.png" alt></p>
 <p>It is surprising to know the approaches that the XOR operator enables us to solve certain problems. For example, let’s take a look at the following problem:</p>
 <blockquote>
 <p>Given an array of n-1 integers in the range from 1 to n, find the one number that is missing from the array.</p>
@@ -372,7 +375,7 @@
 </ol>
 <a id="more"></a>
 <p>This is what the algorithm will look like:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_missing_number</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums) + <span class="number">1</span></span><br><span class="line">    <span class="comment"># find sum of all numbers from 1 to n</span></span><br><span class="line">    s1 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        s1 += num</span><br><span class="line">    <span class="comment"># subtract all numbers in input from sum</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        s1 -= num</span><br><span class="line">    <span class="comment"># s1, now, is the missing number</span></span><br><span class="line">    <span class="keyword">return</span> s1</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_missing_number</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># find sum of all numbers from 1 to n</span></span><br><span class="line">    s1 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        s1 += num</span><br><span class="line"></span><br><span class="line">    <span class="comment"># subtract all numbers in input from sum</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        s1 -= num</span><br><span class="line"></span><br><span class="line">    <span class="comment"># s1, now, is the missing number</span></span><br><span class="line">    <span class="keyword">return</span> s1</span><br></pre></td></tr></table></figure>
 
 <p><strong>Time &amp; Space Complexity</strong>: The time complexity of the above algorithm is O(n) and the space complexity is O(1).</p>
 <blockquote>
@@ -385,9 +388,9 @@
 <li>The missing number can be found by x1 XOR x2.</li>
 </ol>
 <p>Here is what the algorithm will look like:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_missing_number</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums) + <span class="number">1</span></span><br><span class="line">    <span class="comment"># x1 represents XOR of all values from 1 to n</span></span><br><span class="line">    x1 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        x1 = x1 ^ num</span><br><span class="line">    <span class="comment"># x2 represents XOR of all values in array</span></span><br><span class="line">    x2 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        x2 = x2 ^ num</span><br><span class="line">    <span class="comment"># missing number is the XOR of x1 and x2</span></span><br><span class="line">    <span class="keyword">return</span> x1 ^ x2</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_missing_number</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># x1 represents XOR of all values from 1 to n</span></span><br><span class="line">    x1 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        x1 = x1 ^ num</span><br><span class="line"></span><br><span class="line">    <span class="comment"># x2 represents XOR of all values in array</span></span><br><span class="line">    x2 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        x2 = x2 ^ num</span><br><span class="line"></span><br><span class="line">    <span class="comment"># missing number is the XOR of x1 and x2</span></span><br><span class="line">    <span class="keyword">return</span> x1 ^ x2</span><br></pre></td></tr></table></figure>
 
-<p><strong>Time &amp; Space Complexity</strong>: The time complexity of the above algorithm is O(n) and the space complexity is O(1). The time and space complexities are the same as that of the previous solution but, in this algorithm, we will not have any integer overflow problem.</p>
+<p><strong>Time &amp; Space Complexity</strong>: The time complexity of the above algorithm is O(n) and the space complexity is O(1). The time and space complexities are the same as that of the previous solution, but, in this algorithm, we will not have any integer overflow problem.</p>
 <p>Following are some important properties of XOR to remember:</p>
 <ul>
 <li>Taking XOR of a number with itself returns 0, e.g.,<ul>
@@ -406,7 +409,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">n1xn2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">    n1xn2 ^= num</span><br><span class="line">low_bit = n1xn2 &amp; -n1xn2  <span class="comment"># isolate rightmost 1-bit</span></span><br><span class="line"></span><br><span class="line">n1, n2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">    <span class="keyword">if</span> num &amp; low_bit:</span><br><span class="line">        n1 ^= num</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        n2 ^= num</span><br><span class="line"><span class="keyword">return</span> [n1, n2]</span><br></pre></td></tr></table></figure>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">n1xn2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">    n1xn2 ^= num</span><br><span class="line"></span><br><span class="line">low_bit = n1xn2 &amp; -n1xn2  <span class="comment"># isolate rightmost 1-bit</span></span><br><span class="line"></span><br><span class="line">n1, n2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">    <span class="keyword">if</span> num &amp; low_bit:</span><br><span class="line">        n1 ^= num</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        n2 ^= num</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> [n1, n2]</span><br></pre></td></tr></table></figure>
 
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a><br><a href="https://leetcode.com/problems/single-number-iii/" target="_blank" rel="noopener">260. Single Number III</a><br><a href="https://leetcode.com/problems/number-complement/" target="_blank" rel="noopener">476. Number Complement</a><br><a href="https://leetcode.com/problems/flipping-an-image/" target="_blank" rel="noopener">832. Flipping an Image</a></p>
 
@@ -527,7 +530,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -538,7 +541,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

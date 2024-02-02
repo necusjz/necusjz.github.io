@@ -280,6 +280,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2450189022.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2450189022.html" itemprop="url">
+                  Builder Design Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-29T00:07:47+08:00">
+                2020-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="为什么需要建造者模式？"><a href="#为什么需要建造者模式？" class="headerlink" title="为什么需要建造者模式？"></a>为什么需要建造者模式？</h2><p>假设有这样一道设计面试题：我们需要定义一个资源池配置类 ResourcePoolConfig。这里的资源池，你可以简单理解为<strong>线程池、连接池、对象池等</strong>。在这个资源池配置类中，有以下几个成员变量，也就是可配置项。现在，请你编写代码实现这个 ResourcePoolConfig 类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/03.png" alt></p>
+<p>只要你稍微有点开发经验，那实现这样一个类对你来说并不是件难事。因为 maxTotal、maxIdle、minIdle 不是必填变量，所以在创建 ResourcePoolConfig 对象的时候，我们<strong>通过往构造函数中，给这几个参数传递 null 值，来表示使用默认值</strong>：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2450189022.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1250907357.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -766,132 +889,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/270478817.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/270478817.html" itemprop="url">
-                  命名与注释
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T20:33:40+08:00">
-                2020-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><p>大到项目名、模块名、包名、对外暴露的接口，小到类名、函数名、变量名、参数名，只要是做开发，我们就逃不过“起名字”这一关。命名的好坏，对于代码的可读性来说非常重要，甚至可以说是起决定性作用的。除此之外，<strong>命名能力也体现了一个程序员的基本编程素养</strong>。这也是我把“命名”放到第一个来讲解的原因。</p>
-<p>实际上，命名这件事说难也不难，关键还是看你重不重视，愿不愿意花时间。对于影响范围比较大的命名，比如包名、接口、类名，我们一定<strong>要反复斟酌、推敲</strong>。实在想不到好名字的时候，可以去 GitHub 上用相关的关键词联想搜索一下，看看类似的代码是怎么命名的。</p>
-<h3 id="命名多长最合适？"><a href="#命名多长最合适？" class="headerlink" title="命名多长最合适？"></a>命名多长最合适？</h3><p>尽管长的命名可以包含更多的信息，更能准确直观地表达意图，但是，如果函数、变量的命名很长，那由它们组成的语句就会很长。在代码列长度有限制的情况下，就会<strong>经常出现一条语句被分割成两行的情况</strong>，这其实会影响代码可读性。</p>
-<p>实际上，<strong>在足够表达其含义的情况下，命名当然是越短越好</strong>。但是，大部分情况下，短的命名都没有长的命名更能达意。所以，很多书籍或者文章都不推荐在命名时使用缩写。对于一些默认的、大家都比较熟知的词，我比较推荐用缩写。这样一方面能让命名短一些，另一方面又不影响阅读理解，比如，sec 表示 second、str 表示 string、num 表示 number、doc 表示 document。除此之外，对于作用域比较小的变量，我们可以使用相对短的命名，比如一些函数内的临时变量。相反，<strong>对于类名这种作用域比较大的，我更推荐用长的命名方式</strong>。</p>
-<p>总之，命名的一个原则就是以能准确达意为目标。不过，对于代码的编写者来说，自己对代码的逻辑很清楚，总感觉用什么样的命名都可以达意，实际上，对于不熟悉你代码的同事来讲，可能就不这么认为了。所以，命名的时候，我们一定<strong>要学会换位思考</strong>，假设自己不熟悉这块代码，从代码阅读者的角度去考量命名是否足够直观。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/270478817.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -939,7 +936,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -950,7 +947,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

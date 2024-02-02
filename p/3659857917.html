@@ -87,20 +87,20 @@
 
 
 
-<meta name="description" content="In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contiguous subarrays (or sublists) of a given size. For example, take a look at thi">
+<meta name="description" content="难点大概是 shrink 的时机。窗口大小固定时，借助 end - start + 1；不固定时，借助基于 matched 的 while 循环。  In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contigu">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sliding Window">
 <meta property="og:url" content="https://necusjz.github.io/p/3659857917.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contiguous subarrays (or sublists) of a given size. For example, take a look at thi">
+<meta property="og:description" content="难点大概是 shrink 的时机。窗口大小固定时，借助 end - start + 1；不固定时，借助基于 matched 的 while 循环。  In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contigu">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/00.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/01.png">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-01-29T14:44:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sliding Window">
-<meta name="twitter:description" content="In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contiguous subarrays (or sublists) of a given size. For example, take a look at thi">
+<meta name="twitter:description" content="难点大概是 shrink 的时机。窗口大小固定时，借助 end - start + 1；不固定时，借助基于 matched 的 while 循环。  In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contigu">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/00.png">
 
 
@@ -358,7 +358,10 @@
       
 
       
-        <p>In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contiguous subarrays (or sublists) of a given size. For example, take a look at this problem:</p>
+        <blockquote>
+<p>难点大概是 shrink 的时机。窗口大小固定时，借助 end - start + 1；不固定时，借助基于 matched 的 while 循环。</p>
+</blockquote>
+<p>In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contiguous subarrays (or sublists) of a given size. For example, take a look at this problem:</p>
 <blockquote>
 <p>Given an array, find the average of all contiguous subarrays of size “K” in it.</p>
 </blockquote>
@@ -384,7 +387,7 @@
 <p>As you can see, there are four overlapping elements between the subarray (indexed from 0~4) and the subarray (indexed from 1~5). Can we somehow reuse the sum we have calculated for the overlapping elements?</p>
 <p>The efficient way to solve this problem would be to visualize each contiguous subarray as a sliding window of “5” elements. This means that we will slide the window by one element when we move on to the next subarray. To reuse the sum from the previous subarray, we will subtract the element going out of the window and add the element now being included in the sliding window. This will save us from going through the whole subarray to find the sum and, as a result, the algorithm complexity will reduce to O(N):<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/01.png" alt></p>
 <p>Here is the algorithm for the <em>Sliding Window</em> approach:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_average_of_subarrays</span><span class="params">(k, arr)</span>:</span></span><br><span class="line">    ans = []</span><br><span class="line">    window_sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> end <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        window_sum += arr[end]</span><br><span class="line">        <span class="comment"># shrink</span></span><br><span class="line">        <span class="keyword">if</span> end &gt;= k - <span class="number">1</span>:</span><br><span class="line">            ans.append(window_sum / k)</span><br><span class="line">            window_sum -= arr[start]</span><br><span class="line">            start += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_average_of_subarrays</span><span class="params">(k, arr)</span>:</span></span><br><span class="line">    ans = []</span><br><span class="line">    window_sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> end <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        window_sum += arr[end]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># shrink</span></span><br><span class="line">        <span class="keyword">if</span> end &gt;= k - <span class="number">1</span>:</span><br><span class="line">            ans.append(window_sum / k)</span><br><span class="line">            window_sum -= arr[start]</span><br><span class="line">            start += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 
 <p>In some problems, the size of the sliding window is not fixed. We have to <strong>expand or shrink the window based on the problem constraints</strong>.</p>
 <h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">freq = dict()</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> t:</span><br><span class="line">    freq[char] = freq.get(char, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">ans = <span class="string">""</span></span><br><span class="line">matched = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">start = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> end <span class="keyword">in</span> range(len(s)):</span><br><span class="line">    <span class="keyword">if</span> s[end] <span class="keyword">in</span> freq:</span><br><span class="line">        freq[s[end]] -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> freq[s[end]] == <span class="number">0</span>:</span><br><span class="line">            matched += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># shrink</span></span><br><span class="line">    <span class="keyword">while</span> matched == len(freq):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ans <span class="keyword">or</span> end - start + <span class="number">1</span> &lt; len(ans):</span><br><span class="line">            ans = s[start:end+<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s[start] <span class="keyword">in</span> freq:</span><br><span class="line">            <span class="keyword">if</span> freq[s[start]] == <span class="number">0</span>:</span><br><span class="line">                matched -= <span class="number">1</span></span><br><span class="line">            freq[s[start]] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        start += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
@@ -508,7 +511,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">269</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -519,7 +522,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
