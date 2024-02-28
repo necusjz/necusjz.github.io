@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2450189022.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/982846763.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2450189022.html" itemprop="url">
-                  Builder Design Pattern
+                <a class="post-title-link" href="/p/982846763.html" itemprop="url">
+                  Observer Design Pattern
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-29T00:07:47+08:00">
-                2020-11-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-13T17:59:38+08:00">
+                2020-12-13
               </time>
             
 
@@ -356,11 +356,16 @@
 
       
         
-          <h2 id="为什么需要建造者模式？"><a href="#为什么需要建造者模式？" class="headerlink" title="为什么需要建造者模式？"></a>为什么需要建造者模式？</h2><p>假设有这样一道设计面试题：我们需要定义一个资源池配置类 ResourcePoolConfig。这里的资源池，你可以简单理解为<strong>线程池、连接池、对象池等</strong>。在这个资源池配置类中，有以下几个成员变量，也就是可配置项。现在，请你编写代码实现这个 ResourcePoolConfig 类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/03.png" alt></p>
-<p>只要你稍微有点开发经验，那实现这样一个类对你来说并不是件难事。因为 maxTotal、maxIdle、minIdle 不是必填变量，所以在创建 ResourcePoolConfig 对象的时候，我们<strong>通过往构造函数中，给这几个参数传递 null 值，来表示使用默认值</strong>：</p>
+          <h2 id="原理及应用场景剖析"><a href="#原理及应用场景剖析" class="headerlink" title="原理及应用场景剖析"></a>原理及应用场景剖析</h2><p><code>观察者模式</code>（Observer Design Pattern）的定义是这样的：</p>
+<blockquote>
+<p>Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.</p>
+</blockquote>
+<p>翻译成中文就是：在对象之间定义一个一对多的依赖，<strong>当一个对象状态改变的时候，所有依赖的对象都会自动收到通知</strong>。</p>
+<p>一般情况下，被依赖的对象叫作<code>被观察者</code>（Observable），依赖的对象叫作<code>观察者</code>（Observer）。不过，在实际的项目开发中，这两种对象的称呼是比较灵活的，有各种不同的叫法，比如：Subject-Observer、Publisher-Subscriber、Producer-Consumer、EventEmitter-EventListener、Dispatcher-Listener。不管怎么称呼，只要应用场景符合刚刚给出的定义，都可以看作观察者模式。</p>
+<p>实际上，观察者模式是一个比较抽象的模式，根据不同的应用场景和需求，有完全不同的实现方式。现在，我们先来看其中最经典的一种实现方式：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2450189022.html#more" rel="contents">
+            <a class="btn" href="/p/982846763.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -403,7 +408,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1250907357.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/189479836.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -425,8 +430,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1250907357.html" itemprop="url">
-                  Factory Design Pattern
+                <a class="post-title-link" href="/p/189479836.html" itemprop="url">
+                  Flyweight Design Pattern
                 </a>
               
             
@@ -442,8 +447,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-22T16:32:49+08:00">
-                2020-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-09T23:16:07+08:00">
+                2020-12-09
               </time>
             
 
@@ -479,11 +484,13 @@
 
       
         
-          <h2 id="简单工厂（Simple-Factory）"><a href="#简单工厂（Simple-Factory）" class="headerlink" title="简单工厂（Simple Factory）"></a>简单工厂（Simple Factory）</h2><p>在下面这段代码中，我们根据配置文件的后缀（json、xml…），选择不同的解析器（JsonRuleConfigParser、XmlRuleConfigParser…），将存储在文件中的配置解析成内存对象 RuleConfig：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RuleConfigSource</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RuleConfig <span class="title">load</span><span class="params">(String ruleConfigFilePath)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);</span><br><span class="line">        IRuleConfigParser parser = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"json"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> JsonRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"xml"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> XmlRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"yaml"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> YamlRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"properties"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> PropertiesRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InvalidRuleConfigException(<span class="string">"Rule config file format is not supported: "</span> + ruleConfigFilePath);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String configText = <span class="string">""</span>;</span><br><span class="line">        <span class="comment">// 从 ruleConfigFilePath 文件中读取配置文本到 configText 中</span></span><br><span class="line">        RuleConfig ruleConfig = parser.parse(configText);</span><br><span class="line">        <span class="keyword">return</span> ruleConfig;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getFileExtension</span><span class="params">(String filePath)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//...解析文件名获取扩展名，比如 rule.json，返回 json</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"json"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="享元模式原理与实现"><a href="#享元模式原理与实现" class="headerlink" title="享元模式原理与实现"></a>享元模式原理与实现</h2><p>所谓<code>享元</code>，顾名思义就是被共享的单元。享元模式的意图是<strong>复用对象，节省内存，前提是享元对象是不可变对象</strong>。</p>
+<p>具体来讲，当一个系统中存在大量重复对象的时候，如果这些重复的对象是不可变对象，我们就可以利用享元模式将对象设计成享元，在内存中只保留一份实例，供多处代码引用。这样可以减少内存中对象的数量，起到节省内存的目的。实际上，不仅仅相同对象可以设计成享元，<strong>对于相似对象，我们也可以将这些对象中相同的部分（字段）提取出来，设计成享元</strong>，让这些大量相似对象引用这些享元。</p>
+<p>这里我稍微解释一下，定义中的<code>不可变对象</code>指的是，一旦通过构造函数初始化完成之后，它的状态（对象的成员变量或者属性）就不会再被修改了。所以，<strong>不可变对象不能暴露任何 set() 等修改内部状态的方法</strong>。之所以要求享元是不可变对象，那是因为它会被多处代码共享使用，避免一处代码对享元进行了修改，影响到其他使用它的代码。</p>
+<p>假设我们在开发一个棋牌游戏（比如象棋）。一个游戏厅中有成千上万个“房间”，每个房间对应一个棋局。棋局要保存每个棋子的数据，比如：棋子类型（将、相、士、炮等）、棋子颜色（红方、黑方）、棋子在棋局中的位置。利用这些数据，我们就能显示一个完整的棋盘给玩家。其中，ChessPiece 类表示棋子，ChessBoard 类表示一个棋局，里面保存了象棋中 30 个棋子的信息：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1250907357.html#more" rel="contents">
+            <a class="btn" href="/p/189479836.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -526,7 +533,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1857033827.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3814025770.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -548,8 +555,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1857033827.html" itemprop="url">
-                  Singleton Design Pattern
+                <a class="post-title-link" href="/p/3814025770.html" itemprop="url">
+                  Composite Design Pattern
                 </a>
               
             
@@ -565,8 +572,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-21T14:32:44+08:00">
-                2020-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-08T23:17:46+08:00">
+                2020-12-08
               </time>
             
 
@@ -602,12 +609,21 @@
 
       
         
-          <h2 id="为什么要使用单例？"><a href="#为什么要使用单例？" class="headerlink" title="为什么要使用单例？"></a>为什么要使用单例？</h2><p>单例设计模式（Singleton Design Pattern）理解起来非常简单。<strong>一个类只允许创建一个对象（或者实例）</strong>，那这个类就是一个单例类，这种设计模式就叫作单例设计模式，简称单例模式。</p>
-<h3 id="实战案例一：处理资源访问冲突"><a href="#实战案例一：处理资源访问冲突" class="headerlink" title="实战案例一：处理资源访问冲突"></a>实战案例一：处理资源访问冲突</h3><p>在这个例子中，我们自定义实现了一个往文件中打印日志的 Logger 类。具体的代码实现如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> FileWriter writer;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Logger</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"/Users/wangzheng/log.txt"</span>);</span><br><span class="line">        writer = <span class="keyword">new</span> FileWriter(file, <span class="keyword">true</span>); <span class="comment">// true 表示追加写入</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        writer.write(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Logger 类的应用示例：</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = <span class="keyword">new</span> Logger();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String username, String password)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//...省略业务逻辑代码...</span></span><br><span class="line">        logger.log(username + <span class="string">" logged-in!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = <span class="keyword">new</span> Logger();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">(OrderVo order)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//...省略业务逻辑代码...</span></span><br><span class="line">        logger.log(<span class="string">"Created an order: "</span> + order.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="组合模式的原理与实现"><a href="#组合模式的原理与实现" class="headerlink" title="组合模式的原理与实现"></a>组合模式的原理与实现</h2><p><code>组合模式</code>（Composite Design Pattern）是这样定义的：</p>
+<blockquote>
+<p>Compose objects into tree structure to represent part-whole hierarchies. Composite lets client treat individual objects and compositions of objects uniformly.</p>
+</blockquote>
+<p>翻译成中文就是：<strong>将一组对象组织（Compose）成树形结构，以表示一种“部分-整体”的层次结构</strong>。组合让客户端可以统一单个对象和组合对象的处理逻辑。</p>
+<p>假设我们有这样一个需求：设计一个类来表示文件系统中的目录，能方便地实现下面这些功能：</p>
+<ul>
+<li>动态地添加、删除某个目录下的子目录或文件；</li>
+<li>统计指定目录下的文件个数；</li>
+<li>统计指定目录下的文件总大小；</li>
+</ul>
+<p>我们把文件和目录统一用 FileSystemNode 类来表示，并且通过 isFile 属性来区分。我这里给出了这个类的骨架代码，如下所示：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1857033827.html#more" rel="contents">
+            <a class="btn" href="/p/3814025770.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -650,7 +666,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3911150617.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2664295702.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -672,8 +688,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3911150617.html" itemprop="url">
-                  编程技巧
+                <a class="post-title-link" href="/p/2664295702.html" itemprop="url">
+                  Facade Design Pattern
                 </a>
               
             
@@ -689,8 +705,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T22:34:06+08:00">
-                2020-11-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-07T22:53:33+08:00">
+                2020-12-07
               </time>
             
 
@@ -726,11 +742,18 @@
 
       
         
-          <h2 id="把代码分割成更小的单元块"><a href="#把代码分割成更小的单元块" class="headerlink" title="把代码分割成更小的单元块"></a>把代码分割成更小的单元块</h2><p>大部分人阅读代码的习惯都是，<strong>先看整体再看细节</strong>。所以，我们要有模块化和抽象思维，善于将大块的复杂逻辑提炼成类或者函数，屏蔽掉细节，让阅读代码的人不至于迷失在细节中，这样能极大地提高代码的可读性。不过，<strong>只有代码逻辑比较复杂的时候，我们其实才建议提炼类或者函数</strong>。毕竟如果提炼出的函数只包含两三行代码，在阅读代码的时候，还得跳过去看一下，这样反倒增加了阅读成本。</p>
-<p>这里我举一个例子来进一步解释一下。重构前，在 invest() 函数中，最开始的那段关于时间处理的代码，是不是很难看懂？重构之后，我们将这部分逻辑抽象成一个函数，并且命名为 isLastDayOfMonth，从名字就能清晰地了解它的功能，判断今天是不是当月的最后一天。这里，我们就是通过将复杂的逻辑代码提炼成函数，<strong>大大提高了代码的可读性</strong>。代码具体如下所示：</p>
+          <h2 id="门面模式的原理与实现"><a href="#门面模式的原理与实现" class="headerlink" title="门面模式的原理与实现"></a>门面模式的原理与实现</h2><p><code>门面模式</code>（Facade Design Pattern）是这样定义的：</p>
+<blockquote>
+<p>Provide a unified interface to a set of interfaces in a subsystem. Facade Pattern defines a higher-level interface that makes the subsystem easier to use.</p>
+</blockquote>
+<p>翻译成中文就是：门面模式为子系统提供一组统一的接口，<strong>定义一组高层接口让子系统更易用</strong>。除此之外，我还要强调一下，门面模式定义中的“子系统（subsystem）”也可以有多种理解方式。它<strong>既可以是一个完整的系统，也可以是更细粒度的类或者模块</strong>。</p>
+<h2 id="门面模式的应用场景举例"><a href="#门面模式的应用场景举例" class="headerlink" title="门面模式的应用场景举例"></a>门面模式的应用场景举例</h2><p>实际上，它除了解决易用性问题之外，还能解决其他很多方面的问题。</p>
+<h3 id="解决易用性问题"><a href="#解决易用性问题" class="headerlink" title="解决易用性问题"></a>解决易用性问题</h3><p>门面模式可以用来<strong>封装系统的底层实现，隐藏系统的复杂性</strong>，提供一组更加简单易用、更高层的接口。比如，Linux <code>系统调用函数</code>就可以看作一种“门面”。它是 Linux 操作系统暴露给开发者的一组“特殊”的编程接口，它封装了底层更基础的 Linux 内核调用。再比如，Linux 的 <code>Shell 命令</code>，实际上也可以看作一种门面模式的应用。它继续封装系统调用，提供更加友好、简单的命令，让我们可以直接通过执行命令来跟操作系统交互。</p>
+<p>我们知道，类、模块、系统之间的“通信”，一般都是通过接口调用来完成的。接口设计的好坏，直接影响到类、模块、系统是否好用。所以，我们要多花点心思在接口设计上。我经常说，<strong>完成接口设计，就相当于完成了一半的开发任务</strong>。只要接口设计得好，那代码就差不到哪里去。</p>
+<p>接口粒度设计得太大，太小都不好。太大会导致接口不可复用，太小会导致接口不易用。在实际的开发中，<strong>接口的可复用性和易用性需要微妙的权衡</strong>。针对这个问题，我的一个基本的处理原则是，尽量保持接口的可复用性，但针对特殊情况，允许提供冗余的门面接口，来提供更易用的接口。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3911150617.html#more" rel="contents">
+            <a class="btn" href="/p/2664295702.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -773,7 +796,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/504225117.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1069512491.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -795,8 +818,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/504225117.html" itemprop="url">
-                  代码风格
+                <a class="post-title-link" href="/p/1069512491.html" itemprop="url">
+                  Adapter Design Pattern
                 </a>
               
             
@@ -812,8 +835,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T21:52:36+08:00">
-                2020-11-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-05T21:30:34+08:00">
+                2020-12-05
               </time>
             
 
@@ -849,13 +872,11 @@
 
       
         
-          <h2 id="类、函数多大才合适？"><a href="#类、函数多大才合适？" class="headerlink" title="类、函数多大才合适？"></a>类、函数多大才合适？</h2><p>总体上来讲，<strong>类或函数的代码行数不能太多，但也不能太少</strong>。类或函数的代码行数太多，一个类上千行，一个函数几百行，逻辑过于繁杂，阅读代码的时候，很容易就会看了后面忘了前面。相反，类或函数的代码行数太少，在代码总量相同的情况下，被分割成的类和函数就会相应增多，调用关系就会变得更复杂，阅读某个代码逻辑的时候，需要频繁地在 n 多类或者 n 多函数之间跳来跳去，阅读体验也不好。</p>
-<p>对于函数代码行数的最大限制，网上有一种说法，那就是<strong>不要超过一个显示屏的垂直高度</strong>。比如，在我的电脑上，如果要让一个函数的代码完整地显示在 IDE 中，那最大代码行数不能超过 50。这个说法我觉得挺有道理的。因为超过一屏之后，在阅读代码的时候，为了串联前后的代码逻辑，就可能需要频繁地上下滚动屏幕，阅读体验不好不说，还容易出错。</p>
-<p>对于类的代码行数的最大限制，这个就更难给出一个确切的值了。有一个间接的判断标准 – 当一个类的代码读起来让你感觉头大了，实现某个功能时不知道该用哪个函数了，想用哪个函数翻半天都找不到了，只用到一个小功能要引入整个类（<strong>类中包含很多无关此功能实现的函数</strong>）的时候，这就说明类的行数过多了。</p>
-<h2 id="一行代码多长最合适？"><a href="#一行代码多长最合适？" class="headerlink" title="一行代码多长最合适？"></a>一行代码多长最合适？</h2><p>不同的编程语言、不同的规范、不同的项目团队，对此的限制可能都不相同。不管这个限制是多少，总体上来讲我们要遵循的一个原则是：<strong>一行代码最长不能超过 IDE 显示的宽度</strong>。需要滚动鼠标才能查看一行的全部代码，显然不利于代码的阅读。当然，这个限制也不能太小，太小会导致很多稍长点的语句被折成两行，也会影响到代码的整洁，不利于阅读。</p>
+          <h2 id="适配器模式的原理与实现"><a href="#适配器模式的原理与实现" class="headerlink" title="适配器模式的原理与实现"></a>适配器模式的原理与实现</h2><p><code>适配器模式</code>（Adapter Design Pattern）是用来做适配的，它将不兼容的接口转换为可兼容的接口，<strong>让原本由于接口不兼容而不能一起工作的类可以一起工作</strong>。对于这个模式，有一个经常被拿来解释它的例子，就是 USB 转接头充当适配器，把两种不兼容的接口，通过转接变得可以一起工作。</p>
+<p>适配器模式有两种实现方式：类适配器和对象适配器。其中，<strong>类适配器使用继承关系来实现，对象适配器使用组合关系来实现</strong>。具体的代码实现如下所示。其中，ITarget 表示要转化成的接口定义。Adaptee 是一组不兼容 ITarget 接口定义的接口，Adaptor 将 Adaptee 转化成一组符合 ITarget 接口定义的接口：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/504225117.html#more" rel="contents">
+            <a class="btn" href="/p/1069512491.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -893,7 +914,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/35/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/37/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/35/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/37/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -936,7 +957,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

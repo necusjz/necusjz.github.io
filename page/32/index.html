@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/872565161.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/773139030.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/872565161.html" itemprop="url">
-                  数组
+                <a class="post-title-link" href="/p/773139030.html" itemprop="url">
+                  跳表
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-25T22:36:57+08:00">
-                2020-12-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-31T23:55:38+08:00">
+                2020-12-31
               </time>
             
 
@@ -356,12 +356,13 @@
 
       
         
-          <p>在大部分编程语言中，数组都是从 0 开始编号的，但你是否下意识地想过，为什么数组要从 0 开始编号，而不是从 1 开始呢？ 从 1 开始不是更符合人类的思维习惯吗？</p>
-<h2 id="如何实现随机访问？"><a href="#如何实现随机访问？" class="headerlink" title="如何实现随机访问？"></a>如何实现随机访问？</h2><p><code>数组</code>（Array）是一种线性表数据结构。它<strong>用一组连续的内存空间，来存储一组具有相同类型的数据</strong>。</p>
-<p>顾名思义，<code>线性表</code>（Linear List）就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。其实除了数组，链表、队列、栈等也是线性表结构：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/05.png" alt></p>
+          <p>我们只需要对链表稍加改造，就可以支持类似“二分”的查找算法。我们把改造之后的数据结构叫做<code>跳表</code>（Skip List）。它是一种<strong>各方面性能都比较优秀的动态数据结构</strong>，可以支持快速地插入、删除、查找操作，写起来也不复杂，甚至可以替代红黑树。</p>
+<h2 id="如何理解“跳表”？"><a href="#如何理解“跳表”？" class="headerlink" title="如何理解“跳表”？"></a>如何理解“跳表”？</h2><p>对于一个单链表来讲，即便链表中存储的数据是有序的，如果我们要想在其中查找某个数据，也只能从头到尾遍历链表。这样查找效率就会很低，时间复杂度会很高，是 O(n)：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/72.png" alt></p>
+<p>如果像图中那样，对链表建立一级“索引”，每两个结点提取一个结点到上一级，我们把抽出来的那一级叫做<code>索引层</code>。图中的 down 表示 down 指针，指向下一级结点：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/73.png" alt></p>
+<p>如果我们现在要查找某个结点，比如 16。我们可以先在索引层遍历，当遍历到索引层中值为 13 的结点时，我们发现下一个结点是 17，那要查找的结点 16 肯定就在这两个结点之间。然后我们通过索引层结点的 down 指针，下降到原始链表这一层，继续遍历。这个时候，我们只需要再遍历 2 个结点，就可以找到值等于 16 的这个结点了。这样，<strong>原来如果要查找 16，需要遍历 10 个结点，现在只需要遍历 7 个结点</strong>。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/872565161.html#more" rel="contents">
+            <a class="btn" href="/p/773139030.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -404,7 +405,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3288547492.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3907716225.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -426,8 +427,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3288547492.html" itemprop="url">
-                  Mediator Design Pattern
+                <a class="post-title-link" href="/p/3907716225.html" itemprop="url">
+                  二分查找
                 </a>
               
             
@@ -443,8 +444,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-24T18:29:49+08:00">
-                2020-12-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-31T00:19:36+08:00">
+                2020-12-31
               </time>
             
 
@@ -480,15 +481,11 @@
 
       
         
-          <h2 id="中介模式的原理和实现"><a href="#中介模式的原理和实现" class="headerlink" title="中介模式的原理和实现"></a>中介模式的原理和实现</h2><p><code>中介模式</code>的英文翻译是 Mediator Design Pattern。它是这样定义的：</p>
-<blockquote>
-<p>Mediator pattern defines a separate (mediator) object that encapsulates the interaction between a set of objects and the objects delegate their interaction to a mediator object instead of interacting with each other directly.</p>
-</blockquote>
-<p>翻译成中文就是：中介模式定义了一个单独的（中介）对象，来封装一组对象之间的交互。<strong>将这组对象之间的交互委派给与中介对象交互，来避免对象之间的直接交互</strong>。实际上，中介模式的设计思想跟中间层很像，通过引入中介这个中间层，将一组对象之间的交互关系（或者说依赖关系）从多对多（网状关系）转换为一对多（星状关系）。原来一个对象要跟 n 个对象交互，现在只需要跟一个中介对象交互，从而<strong>最小化对象之间的交互关系，降低了代码的复杂度，提高了代码的可读性和可维护性</strong>。</p>
-<p>这里我画了一张对象交互关系的对比图。其中，右边的交互图是利用中介模式对左边交互关系优化之后的结果，从图中我们可以很直观地看出，右边的交互关系更加清晰、简洁：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/30.png" alt></p>
+          <p><code>二分查找</code>（Binary Search）算法，也叫折半查找算法。二分查找的思想非常简单，很多非计算机专业的同学很容易就能理解，但是看似越简单的东西往往越难掌握好，想要灵活应用就更加困难。</p>
+<h2 id="无处不在的二分思想"><a href="#无处不在的二分思想" class="headerlink" title="无处不在的二分思想"></a>无处不在的二分思想</h2><p>我们现在来做一个猜字游戏：我随机写一个 0 到 99 之间的数字，然后你来猜我写的是什么。猜的过程中，你每猜一次，我就会告诉你猜的大了还是小了，直到猜中为止。假设我写的数字是 23，你可以按照下面的步骤来试一试：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/68.png" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3288547492.html#more" rel="contents">
+            <a class="btn" href="/p/3907716225.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -531,7 +528,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1938437709.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1947743309.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -553,8 +550,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1938437709.html" itemprop="url">
-                  Interpreter Design Pattern
+                <a class="post-title-link" href="/p/1947743309.html" itemprop="url">
+                  排序优化
                 </a>
               
             
@@ -570,8 +567,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-24T17:45:49+08:00">
-                2020-12-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-30T23:43:52+08:00">
+                2020-12-30
               </time>
             
 
@@ -607,20 +604,12 @@
 
       
         
-          <h2 id="解释器模式的原理和实现"><a href="#解释器模式的原理和实现" class="headerlink" title="解释器模式的原理和实现"></a>解释器模式的原理和实现</h2><p><code>解释器模式</code>的英文翻译是 Interpreter Design Pattern。它是这样定义的：</p>
-<blockquote>
-<p>Interpreter pattern is used to defines a grammatical representation for a language and provides an interpreter to deal with this grammar.</p>
-</blockquote>
-<p>翻译成中文就是：解释器模式<strong>为某个语言定义它的语法表示，并定义一个解释器用来处理这个语法</strong>。要想了解“语言”表达的信息，我们就必须定义相应的语法规则。这样，书写者就可以根据语法规则来书写“表达式”，阅读者根据语法规则来阅读“表达式”，这样才能做到信息的正确传递。而我们要讲的解释器模式，其实就是用来实现根据语法规则解读“表达式”的解释器。假设我们定义了一个新的加减乘除计算“语言”，语法规则如下：</p>
-<ul>
-<li>运算符只包含加、减、乘、除，并且没有优先级的概念；</li>
-<li>表达式中，先书写数字，后书写运算符，空格隔开；</li>
-<li>按照先后顺序，取出两个数字和一个运算符计算结果，结果重新放入数字的最头部位置，循环上述过程，直到只剩下一个数字，这个数字就是表达式最终的计算结果；</li>
-</ul>
-<p>看懂了上面的语法规则，我们将它用代码实现出来。代码非常简单，<strong>用户按照上面的规则书写表达式，传递给 interpret() 函数</strong>，就可以得到最终的计算结果：</p>
+          <p>几乎所有的编程语言都会提供排序函数，比如 C 语言中 qsort()，C++ STL 中的 sort()、stable_sort()，还有 Java 语言中的 Collections.sort()。在平时的开发中，我们也都是直接使用这些现成的函数来实现业务逻辑中的排序功能。那你知道这些排序函数是如何实现的吗？</p>
+<h2 id="如何选择合适的排序算法？"><a href="#如何选择合适的排序算法？" class="headerlink" title="如何选择合适的排序算法？"></a>如何选择合适的排序算法？</h2><p>如果要实现一个通用的、高效率的排序函数，我们应该选择哪种排序算法？我们先回顾一下前面讲过的几种排序算法：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/67.png" alt></p>
+<p>我们前面讲过，线性排序算法的时间复杂度比较低，适用场景比较特殊。所以如果要写一个通用的排序函数，<strong>不能选择线性排序算法</strong>。如果对小规模数据进行排序，可以选择时间复杂度是 O(n^2) 的算法；如果对大规模数据进行排序，时间复杂度是 O(nlogn) 的算法更加高效。所以，为了兼顾任意规模数据的排序，一般都会<strong>首选时间复杂度是 O(nlogn) 的排序算法来实现排序函数</strong>。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1938437709.html#more" rel="contents">
+            <a class="btn" href="/p/1947743309.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -663,7 +652,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1916394879.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/144465771.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -685,8 +674,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1916394879.html" itemprop="url">
-                  Command Design Pattern
+                <a class="post-title-link" href="/p/144465771.html" itemprop="url">
+                  线性排序
                 </a>
               
             
@@ -702,8 +691,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-24T14:58:54+08:00">
-                2020-12-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-30T17:57:19+08:00">
+                2020-12-30
               </time>
             
 
@@ -739,16 +728,12 @@
 
       
         
-          <h2 id="命令模式的原理解读"><a href="#命令模式的原理解读" class="headerlink" title="命令模式的原理解读"></a>命令模式的原理解读</h2><p><code>命令模式</code>的英文翻译是 Command Design Pattern。它是这么定义的：</p>
-<blockquote>
-<p>The command pattern encapsulates a request as an object, thereby letting us parameterize other objects with different requests, queue or log requests, and support undoable operations.</p>
-</blockquote>
-<p>翻译成中文就是：<strong>命令模式将请求（命令）封装为一个对象，这样可以使用不同的请求参数化其他对象（将不同请求依赖注入到其他对象）</strong>，并且能够支持请求（命令）的排队执行、记录日志、撤销等（附加控制）功能。落实到编码实现，命令模式用的最核心的实现手段，是<strong>将函数封装成对象</strong>。</p>
-<p>我们知道，C 语言支持函数指针，我们可以把函数当作变量传递来传递去。但是，在大部分编程语言中，函数没法儿作为参数传递给其他函数，也没法儿赋值给变量。借助命令模式，我们可以将函数封装成对象。具体来说就是，<strong>设计一个包含这个函数的类，实例化一个对象传来传去</strong>，这样就可以实现把函数像对象一样使用。从实现的角度来说，它类似我们之前讲过的<code>回调</code>。</p>
-<p>当我们把函数封装成对象之后，对象就可以存储下来，方便控制执行。所以，<strong>命令模式的主要作用和应用场景，是用来控制命令的执行</strong>，比如，异步、延迟、排队执行命令、撤销重做命令、存储命令、给命令记录日志等等。</p>
+          <p>时间复杂度是线性的排序算法叫作<code>线性排序</code>（Linear Sort）。之所以能做到线性的时间复杂度，主要原因是它们<strong>不涉及元素之间的比较操作，但是对要排序的数据要求很苛刻</strong>，应用不是非常广泛。学习重点是掌握这些排序算法的适用场景。</p>
+<h2 id="桶排序（Bucket-Sort）"><a href="#桶排序（Bucket-Sort）" class="headerlink" title="桶排序（Bucket Sort）"></a>桶排序（Bucket Sort）</h2><p>桶排序，顾名思义，会用到“桶”，核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。桶内排完序之后，再<strong>把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/61.png" alt></p>
+<p>如果要排序的数据有 n 个，我们把它们均匀地划分到 m 个桶内，每个桶里就有 k=n/m 个元素。每个桶内部使用快速排序，时间复杂度为 O(k * logk)。m 个桶排序的时间复杂度就是 O(m * k * logk)，因为 k=n/m，所以整个桶排序的时间复杂度就是 O(n*log(n/m))。当桶的个数 m 接近数据个数 n 时，log(n/m) 就是一个非常小的常量，这个时候桶排序的时间复杂度接近 O(n)。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1916394879.html#more" rel="contents">
+            <a class="btn" href="/p/144465771.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -791,7 +776,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4173692288.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2755965992.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -813,8 +798,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4173692288.html" itemprop="url">
-                  Memento Design Pattern
+                <a class="post-title-link" href="/p/2755965992.html" itemprop="url">
+                  排序
                 </a>
               
             
@@ -830,8 +815,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-24T14:25:27+08:00">
-                2020-12-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-29T22:36:10+08:00">
+                2020-12-29
               </time>
             
 
@@ -867,22 +852,10 @@
 
       
         
-          <h2 id="备忘录模式的原理与实现"><a href="#备忘录模式的原理与实现" class="headerlink" title="备忘录模式的原理与实现"></a>备忘录模式的原理与实现</h2><p><code>备忘录模式</code>，也叫快照（Snapshot）模式，英文翻译是 Memento Design Pattern。它是这么定义的：</p>
-<blockquote>
-<p>Captures and externalizes an object’s internal state so that it can be restored later, all without violating encapsulation.</p>
-</blockquote>
-<p>翻译成中文就是：<strong>在不违背封装原则的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，以便之后恢复对象为先前的状态</strong>。在我看来，这个模式的定义主要表达了两部分内容：一部分是，存储副本以便后期恢复；另一部分是，要在不违背封装原则的前提下，进行对象的备份和恢复。接下来，我就结合一个例子来解释一下，带你搞清楚这两个问题：</p>
-<ul>
-<li>为什么存储和恢复副本会违背封装原则？</li>
-<li>备忘录模式是如何做到不违背封装原则的？</li>
-</ul>
-<p>假设有这样一道面试题，希望你编写一个小程序，可以接收命令行的输入。用户输入文本时，程序将其追加存储在内存文本中；用户输入“:list”，程序在命令行中输出内存文本的内容；用户输入“:undo”，程序会撤销上一次输入的文本，也就是从内存文本中将上次输入的文本删除掉。如下所示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">hello</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">:list</span></span><br><span class="line">hello</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">world</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">:list</span></span><br><span class="line">helloworld</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">:undo</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">:list</span></span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-
-<p>整体上来讲，这个小程序实现起来并不复杂：</p>
+          <p>最经典的、最常用的排序算法：冒泡排序、插入排序、选择排序、归并排序、快速排序、计数排序、基数排序、桶排序。我<strong>按照时间复杂度</strong>把它们分成了三类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/41.png" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/4173692288.html#more" rel="contents">
+            <a class="btn" href="/p/2755965992.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -920,7 +893,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/31/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/33/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/31/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/33/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -963,7 +936,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

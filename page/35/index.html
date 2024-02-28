@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1069512491.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/938376309.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1069512491.html" itemprop="url">
-                  Adapter Design Pattern
+                <a class="post-title-link" href="/p/938376309.html" itemprop="url">
+                  Iterator Design Pattern
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-05T21:30:34+08:00">
-                2020-12-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-23T13:58:38+08:00">
+                2020-12-23
               </time>
             
 
@@ -356,11 +356,13 @@
 
       
         
-          <h2 id="适配器模式的原理与实现"><a href="#适配器模式的原理与实现" class="headerlink" title="适配器模式的原理与实现"></a>适配器模式的原理与实现</h2><p><code>适配器模式</code>（Adapter Design Pattern）是用来做适配的，它将不兼容的接口转换为可兼容的接口，<strong>让原本由于接口不兼容而不能一起工作的类可以一起工作</strong>。对于这个模式，有一个经常被拿来解释它的例子，就是 USB 转接头充当适配器，把两种不兼容的接口，通过转接变得可以一起工作。</p>
-<p>适配器模式有两种实现方式：类适配器和对象适配器。其中，<strong>类适配器使用继承关系来实现，对象适配器使用组合关系来实现</strong>。具体的代码实现如下所示。其中，ITarget 表示要转化成的接口定义。Adaptee 是一组不兼容 ITarget 接口定义的接口，Adaptor 将 Adaptee 转化成一组符合 ITarget 接口定义的接口：</p>
+          <h2 id="迭代器模式的原理和实现"><a href="#迭代器模式的原理和实现" class="headerlink" title="迭代器模式的原理和实现"></a>迭代器模式的原理和实现</h2><p><code>迭代器模式</code>（Iterator Design Pattern），也叫作游标模式（Cursor Design Pattern）。它用来遍历集合对象，这里说的“集合对象”也可以叫“容器”、“聚合对象”，实际上就是包含一组对象的对象，比如数组、链表、树、图、跳表。<strong>迭代器模式将集合对象的遍历操作从集合类中拆分出来，放到迭代器类中，让两者的职责更加单一</strong>。</p>
+<p>迭代器是用来遍历容器的，所以，一个完整的迭代器模式一般会涉及<code>容器</code>和<code>容器迭代器</code>两部分内容。为了达到基于接口而非实现编程的目的，容器又包含容器接口、容器实现类，迭代器又包含迭代器接口、迭代器实现类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/25.png" alt></p>
+<p>大部分编程语言都提供了遍历容器的迭代器类，我们在平时开发中，直接拿来用即可，几乎不大可能从零编写一个迭代器。不过，这里为了讲解迭代器的实现原理，我们<strong>假设某个新的编程语言的基础类库中，还没有提供线性容器对应的迭代器，需要我们从零开始开发</strong>。线性数据结构包括数组和链表，假设在这种新的编程语言中，这两个数据结构分别对应 ArrayList 和 LinkedList 两个类。除此之外，我们<strong>从两个类中抽象出公共的接口，定义为 List 接口，以方便开发者基于接口而非实现编程</strong>，编写的代码能在两种数据存储结构之间灵活切换。</p>
+<p>现在，我们针对 ArrayList 和 LinkedList 两个线性容器，设计实现对应的迭代器。按照之前给出的迭代器模式的类图，我们<strong>定义一个迭代器接口 Iterator，以及针对两种容器的具体的迭代器实现类 ArrayIterator 和 ListIterator</strong>。我们先来看下 Iterator 接口的定义：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1069512491.html#more" rel="contents">
+            <a class="btn" href="/p/938376309.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -403,7 +405,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2790089948.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2887344057.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -425,8 +427,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2790089948.html" itemprop="url">
-                  Decorator Design Pattern
+                <a class="post-title-link" href="/p/2887344057.html" itemprop="url">
+                  State Design Pattern
                 </a>
               
             
@@ -442,8 +444,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-05T19:25:33+08:00">
-                2020-12-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-23T01:05:32+08:00">
+                2020-12-23
               </time>
             
 
@@ -479,11 +481,13 @@
 
       
         
-          <h2 id="Java-IO-类的“奇怪”用法"><a href="#Java-IO-类的“奇怪”用法" class="headerlink" title="Java IO 类的“奇怪”用法"></a>Java IO 类的“奇怪”用法</h2><p>Java IO 类库非常庞大和复杂，有几十个类，负责 IO 数据的读取和写入。如果对 Java IO 类做一下分类，我们可以从下面两个维度将它划分为四类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/13.png" alt></p>
-<p>针对不同的读取和写入场景，Java IO 又在这四个父类基础之上，扩展出了很多子类。具体如下所示：</p>
+          <h2 id="什么是有限状态机？"><a href="#什么是有限状态机？" class="headerlink" title="什么是有限状态机？"></a>什么是有限状态机？</h2><p><code>有限状态机</code>，英文翻译是 Finite State Machine，缩写为 FSM，简称为状态机。状态机有 3 个组成部分：状态（State）、事件（Event）、动作（Action）。其中，<strong>事件也称为转移条件（Transition Condition），事件触发状态的转移及动作的执行</strong>。不过，动作不是必须的，也可能只转移状态，不执行任何动作。</p>
+<p>在超级马里奥中，马里奥可以变身为多种形态，比如小马里奥（Small Mario）、超级马里奥（Super Mario）、火焰马里奥（Fire Mario）、斗篷马里奥（Cape Mario）等等。在不同的游戏情节下，各个形态会互相转化，并相应的增减积分。比如，初始形态是小马里奥，吃了蘑菇之后就会变成超级马里奥，并且增加 100 积分。</p>
+<p>实际上，<strong>马里奥形态的转变就是一个状态机</strong>。其中，马里奥的不同形态就是状态机中的“状态”，游戏情节（比如吃了蘑菇）就是状态机中的“事件”，加减积分就是状态机中的“动作”。比如，吃蘑菇这个事件，会触发状态的转移：从小马里奥转移到超级马里奥，以及触发动作的执行（增加 100 积分）。为了方便接下来的讲解，我对游戏背景做了简化，只保留了部分状态和事件：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/GoF/23.png" alt></p>
+<p>我写了一个骨架代码，如下所示。其中，obtainMushRoom()、obtainCape()、obtainFireFlower()、meetMonster() 这几个函数，能够根据当前的状态和事件，更新状态和增减积分：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2790089948.html#more" rel="contents">
+            <a class="btn" href="/p/2887344057.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -526,7 +530,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/154021461.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3695826069.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -548,8 +552,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/154021461.html" itemprop="url">
-                  Bridge Design Pattern
+                <a class="post-title-link" href="/p/3695826069.html" itemprop="url">
+                  Chain of Responsibility Design Pattern
                 </a>
               
             
@@ -565,8 +569,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-05T01:27:29+08:00">
-                2020-12-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-20T00:34:22+08:00">
+                2020-12-20
               </time>
             
 
@@ -602,18 +606,15 @@
 
       
         
-          <h2 id="桥接模式的原理解析"><a href="#桥接模式的原理解析" class="headerlink" title="桥接模式的原理解析"></a>桥接模式的原理解析</h2><p><code>桥接模式</code>（Bridge Design Pattern）的定义：</p>
+          <h2 id="职责链模式的原理和实现"><a href="#职责链模式的原理和实现" class="headerlink" title="职责链模式的原理和实现"></a>职责链模式的原理和实现</h2><p><code>职责链模式</code>的英文翻译是 Chain of Responsibility Design Pattern。它是这么定义的：</p>
 <blockquote>
-<p>Decouple an abstraction from its implementation so that the two can vary independently. – GoF</p>
+<p>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.</p>
 </blockquote>
-<p>翻译成中文就是：<strong>将抽象和实现解耦，让它们可以独立变化</strong>。GoF 给出的定义非常的简短，单凭这一句话，估计没几个人能看懂是什么意思。所以，我们通过 JDBC 驱动的例子来解释一下。<strong>JDBC 驱动是桥接模式的经典应用</strong>。我们先来看一下，如何利用 JDBC 驱动来查询数据库。具体的代码如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>); <span class="comment">// 加载及注册 JDBC 驱动程序</span></span><br><span class="line">String url = <span class="string">"jdbc:mysql://localhost:3306/sample_db?user=root&amp;password=your_password"</span>;</span><br><span class="line">Connection con = DriverManager.getConnection(url);</span><br><span class="line">Statement stmt = con.createStatement()；</span><br><span class="line">String query = <span class="string">"select * from test"</span>;</span><br><span class="line">ResultSet rs = stmt.executeQuery(query);</span><br><span class="line"><span class="keyword">while</span>(rs.next()) </span><br><span class="line">&#123;</span><br><span class="line">    rs.getString(<span class="number">1</span>);</span><br><span class="line">    rs.getInt(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果我们想要把 MySQL 数据库换成 Oracle 数据库，只需要把第一行代码中的 com.mysql.jdbc.Driver 换成 oracle.jdbc.driver.OracleDriver 就可以了。当然，也有更灵活的实现方式，我们可以把需要加载的 Driver 类写到配置文件中，<strong>当程序启动的时候，自动从配置文件中加载</strong>，这样在切换数据库的时候，我们都不需要修改代码，只需要修改配置文件就可以了。</p>
-<p>如此优雅的数据库切换是如何实现的呢？源码之下无秘密，我们先从 com.mysql.jdbc.Driver 这个类的代码看起：</p>
+<p>翻译成中文就是：将请求的发送和接收解耦，让多个接收对象都有机会处理这个请求。<strong>将这些接收对象串成一条链，并沿着这条链传递这个请求，直到链上的某个接收对象能够处理它为止</strong>。在职责链模式中，多个处理器（也就是刚刚定义中说的接收对象）依次处理同一个请求。一个请求先经过 A 处理器处理，然后再把请求传递给 B 处理器，B 处理器处理完后再传递给 C 处理器，以此类推，形成一个链条。<strong>链条上的每个处理器各自承担各自的处理职责，所以叫作职责链模式</strong>。</p>
+<p>第一种实现方式如下所示。其中，<strong>Handler 是所有处理器类的抽象父类，handle() 是抽象方法</strong>。每个具体的处理器类的 handle() 函数的代码结构类似，如果它能处理该请求，就不继续往下传递；如果不能处理，则交由后面的处理器来处理（也就是调用 successor.handle()）。<strong>HandlerChain 是处理器链，从数据结构的角度来看，它就是一个记录了链头、链尾的链表</strong>。其中，记录链尾是为了方便添加处理器：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/154021461.html#more" rel="contents">
+            <a class="btn" href="/p/3695826069.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -656,7 +657,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1398574830.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3861717191.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -678,8 +679,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1398574830.html" itemprop="url">
-                  Proxy Design Pattern
+                <a class="post-title-link" href="/p/3861717191.html" itemprop="url">
+                  Strategy Design Pattern
                 </a>
               
             
@@ -695,8 +696,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-02T00:56:30+08:00">
-                2020-12-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-19T15:40:31+08:00">
+                2020-12-19
               </time>
             
 
@@ -732,12 +733,16 @@
 
       
         
-          <h2 id="代理模式的原理解析"><a href="#代理模式的原理解析" class="headerlink" title="代理模式的原理解析"></a>代理模式的原理解析</h2><p><code>代理模式</code>（Proxy Design Pattern）的原理和代码实现都不难掌握。它在不改变原始类（或叫被代理类）代码的情况下，通过<strong>引入代理类来给原始类附加功能</strong>。</p>
-<p>我们开发了一个性能计数器 – MetricsCollector 类，在业务系统中，我们采用如下方式来使用这个 MetricsCollector 类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//...省略其他属性和方法...</span></span><br><span class="line">    <span class="keyword">private</span> MetricsCollector metricsCollector; <span class="comment">// 依赖注入</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">login</span><span class="params">(String telephone, String password)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTimestamp = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//...省略 login 逻辑...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> endTimeStamp = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">long</span> responseTime = endTimeStamp - startTimestamp;</span><br><span class="line">        RequestInfo requestInfo = <span class="keyword">new</span> RequestInfo(<span class="string">"login"</span>, responseTime, startTimestamp);</span><br><span class="line">        metricsCollector.recordRequest(requestInfo);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//...返回 UserVo 数据...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">register</span><span class="params">(String telephone, String password)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTimestamp = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//...省略 register 逻辑...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> endTimeStamp = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">long</span> responseTime = endTimeStamp - startTimestamp;</span><br><span class="line">        RequestInfo requestInfo = <span class="keyword">new</span> RequestInfo(<span class="string">"register"</span>, responseTime, startTimestamp);</span><br><span class="line">        metricsCollector.recordRequest(requestInfo);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//...返回 UserVo 数据...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="策略模式的原理与实现"><a href="#策略模式的原理与实现" class="headerlink" title="策略模式的原理与实现"></a>策略模式的原理与实现</h2><p><code>策略模式</code>，英文全称是 Strategy Design Pattern。它是这样定义的：</p>
+<blockquote>
+<p>Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.</p>
+</blockquote>
+<p>翻译成中文就是：定义一族算法类，将每个算法分别封装起来，让它们可以互相替换。策略模式可以使算法的变化独立于使用它们的客户端。工厂模式是解耦对象的创建和使用，观察者模式是解耦观察者和被观察者。策略模式跟两者类似，也能起到解耦的作用，不过，它<strong>解耦的是策略的定义、创建、使用</strong>这三部分。</p>
+<h3 id="策略的定义"><a href="#策略的定义" class="headerlink" title="策略的定义"></a>策略的定义</h3><p>策略类的定义比较简单，<strong>包含一个策略接口和一组实现这个接口的策略类</strong>。因为所有的策略类都实现相同的接口，所以，客户端代码基于接口而非实现编程，可以灵活地替换不同的策略。示例代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Strategy</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">algorithmInterface</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title">Strategy</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">algorithmInterface</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 具体的算法...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title">Strategy</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">algorithmInterface</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 具体的算法...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1398574830.html#more" rel="contents">
+            <a class="btn" href="/p/3861717191.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -780,7 +785,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1979191221.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/691459856.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -802,8 +807,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1979191221.html" itemprop="url">
-                  Prototype Design Pattern
+                <a class="post-title-link" href="/p/691459856.html" itemprop="url">
+                  Template Method Design Pattern
                 </a>
               
             
@@ -819,8 +824,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-29T18:52:39+08:00">
-                2020-11-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-16T23:24:34+08:00">
+                2020-12-16
               </time>
             
 
@@ -856,13 +861,15 @@
 
       
         
-          <h2 id="原型模式的原理与应用"><a href="#原型模式的原理与应用" class="headerlink" title="原型模式的原理与应用"></a>原型模式的原理与应用</h2><p>如果<strong>对象的创建成本比较大，而同一个类的不同对象之间差别不大</strong>（大部分字段都相同），在这种情况下，我们可以利用对已有对象（原型）进行复制（或者叫拷贝）的方式来创建新对象，以达到节省创建时间的目的。这种基于原型来创建对象的方式就叫作<code>原型设计模式</code>（Prototype Design Pattern），简称原型模式。</p>
-<p>实际上，<strong>创建对象包含的申请内存、给成员变量赋值这一过程</strong>，本身并不会花费太多时间，或者说对于大部分业务系统来说，这点时间完全是可以忽略的。应用一个复杂的模式，只得到一点点的性能提升，这就是所谓的过度设计，得不偿失。但是，如果<strong>对象中的数据需要经过复杂的计算才能得到</strong>（比如排序、计算哈希值），或者需要从 RPC、网络、数据库、文件系统等非常慢速的 IO 中读取，这种情况下，我们就可以利用原型模式，从其他已有对象中直接拷贝得到，而不用每次在创建新对象的时候，都重复执行这些耗时的操作。</p>
-<p>假设数据库中存储了大约 10 万条“搜索关键词”信息，每条信息包含关键词、关键词被搜索的次数、信息最近被更新的时间等。系统 A 在启动的时候会加载这份数据到内存中，用于处理某些其他的业务需求。为了方便快速地查找某个关键词对应的信息，我们<strong>给关键词建立一个散列表索引</strong>。如果你熟悉的是 Java 语言，可以直接使用语言中提供的 HashMap 容器来实现。其中，HashMap 的 key 为搜索关键词，value 为关键词详细信息（比如搜索次数）。我们只需要将数据从数据库中读取出来，放入 HashMap 就可以了。</p>
-<p>不过，我们还有另外一个系统 B，专门用来分析搜索日志，定期（比如间隔 10 分钟）批量地更新数据库中的数据，并且标记为新的数据版本。比如，在下面的示例图中，我们对 v2 版本的数据进行更新，得到 v3 版本的数据。这里我们假设只有更新和新添关键词，没有删除关键词的行为：</p>
+          <h2 id="模板模式的原理与实现"><a href="#模板模式的原理与实现" class="headerlink" title="模板模式的原理与实现"></a>模板模式的原理与实现</h2><p><code>模板模式</code>，全称是模板方法设计模式，英文是 Template Method Design Pattern。它是这么定义的：</p>
+<blockquote>
+<p>Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.</p>
+</blockquote>
+<p>翻译成中文就是：模板方法模式<strong>在一个方法中定义一个算法骨架，并将某些步骤推迟到子类中实现</strong>。模板方法模式可以让子类在不改变算法整体结构的情况下，重新定义算法中的某些步骤。这里的“算法”，我们<strong>可以理解为广义上的“业务逻辑”，并不特指数据结构和算法中的“算法”</strong>。这里的算法骨架就是“模板”，包含算法骨架的方法就是“模板方法”，这也是模板方法模式名字的由来。</p>
+<p>原理很简单，代码实现就更加简单，我写了一个示例代码，templateMethod() 函数<strong>定义为 final，是为了避免子类重写它</strong>。method1() 和 method2() <strong>定义为 abstract，是为了强迫子类去实现</strong>。不过，这些都不是必须的，在实际的项目开发中，模板模式的代码实现比较灵活：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1979191221.html#more" rel="contents">
+            <a class="btn" href="/p/691459856.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -900,7 +907,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/34/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/36/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/34/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/36/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -943,7 +950,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

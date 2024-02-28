@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2993337315.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3468801965.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2993337315.html" itemprop="url">
-                  Design a Unique ID Generator in Distributed Systems
+                <a class="post-title-link" href="/p/3468801965.html" itemprop="url">
+                  Decision Making
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-02T23:57:06+08:00">
-                2023-11-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-02-28T23:09:03+08:00">
+                2024-02-28
               </time>
             
 
@@ -356,12 +356,11 @@
 
       
         
-          <p>In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the auto_increment attribute in a traditional database. However, auto_increment does not work in a distributed environment because a single database server is not large enough and generating unique IDs across multiple databases with minimal delay is challenging.</p>
-<p>Here are a few examples of unique IDs:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/00.svg" alt></p>
-<h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>Asking clarification questions is the first step to tackle any system design interview question. Here is an example of candidate-interviewer interaction:<br>Candidate: What are the characteristics of unique IDs?<br>Interviewer: IDs must be unique and sortable.<br>C: For each new record, does ID increment by 1?<br>I: The ID increments by time but not necessarily only increments by 1. IDs created in the evening are larger than those created in the morning on the same day.<br>C: Do IDs only contain numerical values?<br>I: Yes, that is correct.<br>C: What is the ID length requirement?<br>I: IDs should fit into 64-bit.<br>C: What is the scale of the system?<br>I: The system should be able to generate 10,000 IDs per second.</p>
+          <p>When it comes to decision-making, software engineers are no strangers to making critical choices that can affect the outcome of a project. That’s why many behavioral job interviews include questions about this topic. The purpose of these questions is to assess your ability to think critically, make informed decisions under pressure, and consider the potential consequences of your choices.</p>
+<p>To ace questions about decision-making, it’s essential to focus on the process you use to make decisions. You should be able to explain the steps you take to gather information, weigh the pros and cons, consider the risks and benefits, and ultimately arrive at a well-informed decision. Additionally, be prepared to share examples of times when you made tough decisions and the impact of your choices. It’s crucial to demonstrate your ability to think strategically and make sound judgments while keeping the company’s goals and values in mind.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2993337315.html#more" rel="contents">
+            <a class="btn" href="/p/3468801965.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -404,7 +403,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/58895832.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/697705177.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -426,8 +425,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/58895832.html" itemprop="url">
-                  Design a Key-value Store
+                <a class="post-title-link" href="/p/697705177.html" itemprop="url">
+                  Time Management
                 </a>
               
             
@@ -443,8 +442,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-25T15:35:55+08:00">
-                2023-10-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-02-28T23:04:05+08:00">
+                2024-02-28
               </time>
             
 
@@ -480,42 +479,11 @@
 
       
         
-          <p>A key-value store, also referred to as a key-value database, is a non-relational database. Each unique identifier is stored as a key with its associated value. This data pairing is known as a “key-value” pair.</p>
-<p>In a key-value pair, the key must be unique, and the value associated with the key can be accessed through the key. Keys can be plain text or hashed values. For performance reasons, a short key works better. What do keys look like? Here are a few examples:</p>
-<ul>
-<li>Plain text key: “last_logged_in_at”</li>
-<li>Hashed key: 253DDEC4</li>
-</ul>
-<p>The value in a key-value pair can be strings, lists, objects, etc. The value is usually treated as an opaque object in key-value stores, such as Amazon dynamo [1], Memcached [2], Redis [3], etc.</p>
-<p>Here is a data snippet in a key-value store:</p>
-<table>
-<thead>
-<tr>
-<th align="left">key</th>
-<th align="left">value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">145</td>
-<td align="left">john</td>
-</tr>
-<tr>
-<td align="left">147</td>
-<td align="left">bob</td>
-</tr>
-<tr>
-<td align="left">160</td>
-<td align="left">julia</td>
-</tr>
-</tbody></table>
-<p>In this chapter, you are asked to design a key-value store that supports the following operations:</p>
-<ul>
-<li>put(key, value)  // insert “value” associated with “key”</li>
-<li>get(key)  // get “value” associated with “key”</li>
-</ul>
+          <p>As a software engineer, you are likely accustomed to dealing with complex technical problems. However, another critical skill that employers look for is your ability to manage your time effectively. Time management skills are essential for any job, and they are particularly crucial for software engineers who must juggle multiple projects, prioritize tasks, and meet tight deadlines. Therefore, it’s no surprise that questions about time management are a common topic in behavioral job interviews.</p>
+<p>When answering time management questions, focus on specific examples that demonstrate your ability to organize your workload and meet deadlines effectively. You can talk about strategies that you use to stay on track, such as creating to-do lists, using productivity apps, or breaking larger tasks into smaller, manageable chunks. Be sure to provide examples of how you have successfully managed your time in the past, including how you responded to unexpected changes or challenges. Finally, emphasize your commitment to meeting deadlines and delivering high-quality work, even when faced with competing demands on your time.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/58895832.html#more" rel="contents">
+            <a class="btn" href="/p/697705177.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -558,7 +526,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3609435369.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1255276062.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -580,8 +548,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3609435369.html" itemprop="url">
-                  Design Consistent Hashing
+                <a class="post-title-link" href="/p/1255276062.html" itemprop="url">
+                  Communication
                 </a>
               
             
@@ -597,8 +565,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-23T22:44:09+08:00">
-                2023-10-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-02-28T22:54:00+08:00">
+                2024-02-28
               </time>
             
 
@@ -634,61 +602,11 @@
 
       
         
-          <p>To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let us take an in-depth look at the problem.</p>
-<h2 id="The-rehashing-problem"><a href="#The-rehashing-problem" class="headerlink" title="The rehashing problem"></a>The rehashing problem</h2><p>If you have n cache servers, a common way to balance the load is to use the following hash method: <em>serverIndex = hash(key) % N</em>, where N is the size of the server pool.</p>
-<p>Let us use an example to illustrate how it works. As shown in Table 1, we have 4 servers and 8 string keys with their hashes:</p>
-<table>
-<thead>
-<tr>
-<th align="left">key</th>
-<th align="left">hash</th>
-<th align="left">hash % 4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">key0</td>
-<td align="left">18358617</td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">key1</td>
-<td align="left">26143584</td>
-<td align="left">0</td>
-</tr>
-<tr>
-<td align="left">key2</td>
-<td align="left">18131146</td>
-<td align="left">2</td>
-</tr>
-<tr>
-<td align="left">key3</td>
-<td align="left">35863496</td>
-<td align="left">0</td>
-</tr>
-<tr>
-<td align="left">key4</td>
-<td align="left">34085809</td>
-<td align="left">1</td>
-</tr>
-<tr>
-<td align="left">key5</td>
-<td align="left">27581703</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left">key6</td>
-<td align="left">38164978</td>
-<td align="left">2</td>
-</tr>
-<tr>
-<td align="left">key7</td>
-<td align="left">22530351</td>
-<td align="left">3</td>
-</tr>
-</tbody></table>
+          <p>Questions about communication are asked to evaluate your ability to work effectively with others and articulate technical ideas clearly. In a software development environment, communication plays a critical role in ensuring project success. As such, interviewers want to assess your communication skills to determine if you can collaborate effectively with team members, stakeholders, and clients.</p>
+<p>When answering questions about communication, it is important to provide specific examples of how you have communicated technical concepts to non-technical stakeholders, how you have provided constructive feedback to team members, and how you have adapted your communication style to suit different audiences. You should also demonstrate your ability to actively listen and be open to feedback. By providing specific examples and emphasizing your strong communication skills, you can increase your chances of impressing the interviewer and securing the job you are applying for.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3609435369.html#more" rel="contents">
+            <a class="btn" href="/p/1255276062.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -731,7 +649,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/679484188.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3183516040.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -753,8 +671,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/679484188.html" itemprop="url">
-                  Design a Rate Limiter
+                <a class="post-title-link" href="/p/3183516040.html" itemprop="url">
+                  Teamwork
                 </a>
               
             
@@ -770,8 +688,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-17T20:13:53+08:00">
-                2023-10-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-02-28T22:41:37+08:00">
+                2024-02-28
               </time>
             
 
@@ -807,21 +725,11 @@
 
       
         
-          <p>In a network system, a rate limiter is used to control the rate of traffic sent by a client or a service. In the HTTP world, a rate limiter limits the number of client requests allowed to be sent over a specified period. If the API request count exceeds the threshold defined by the rate limiter, all the excess calls are blocked. Here are a few examples:</p>
-<ul>
-<li>A user can write no more than 2 posts per second.</li>
-<li>You can create a maximum of 10 accounts per day from the same IP address.</li>
-<li>You can claim rewards no more than 5 times per week from the same device.</li>
-</ul>
-<p>In this chapter, you are asked to design a rate limiter. Before starting the design, we first look at the benefits of using an API rate limiter:</p>
-<ul>
-<li>Prevent resource starvation caused by Denial of Service (DoS) attack [1]. Almost all APIs published by large tech companies enforce some form of rate limiting. For example, Twitter limits the number of tweets to 300 per 3 hours [2]. Google docs APIs have the following default limit: 300 per user per 60 seconds for read requests [3]. A rate limiter prevents DoS attacks, either intentional or unintentional, by blocking the excess calls.</li>
-<li>Reduce cost. Limiting excess requests means fewer servers and allocating more resources to high priority APIs. Rate limiting is extremely important for companies that use paid third party APIs. For example, you are charged on a per-call basis for the following external APIs: check credit, make a payment, retrieve health records, etc. Limiting the number of calls is essential to reduce costs.</li>
-<li>Prevent servers from being overloaded. To reduce server load, a rate limiter is used to filter out excess requests caused by bots or users’ misbehavior.</li>
-</ul>
+          <p>The purpose of questions about teamwork is to assess a candidate’s ability to work effectively with others towards common goals. In today’s work environment, teamwork is a critical skill, and employers want to ensure that their potential employees can collaborate with colleagues to deliver projects on time, within budget, and with high quality. Therefore, you should be prepared to discuss your experience working in a team environment and how you contributed to the success of the team.</p>
+<p>When answering questions about teamwork, you should focus on highlighting your communication skills, your ability to collaborate with others, your willingness to take on different roles, and your adaptability to different working styles. Additionally, you should demonstrate how you have handled conflicts in the past and how you have helped to resolve them. It’s also essential to show how you have been able to learn from feedback and how you have implemented changes to improve your teamwork skills. Finally, make sure to emphasize your enthusiasm for working in a team environment and your commitment to helping your colleagues succeed. By showcasing your teamwork abilities, you can demonstrate your value to potential employers and increase your chances of landing the job.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/679484188.html#more" rel="contents">
+            <a class="btn" href="/p/3183516040.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -864,7 +772,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2855311307.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/274516859.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -886,8 +794,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2855311307.html" itemprop="url">
-                  A Framework for System Design Interviews
+                <a class="post-title-link" href="/p/274516859.html" itemprop="url">
+                  Problem Solving
                 </a>
               
             
@@ -903,8 +811,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-15T19:02:02+08:00">
-                2023-10-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-01-29T21:49:31+08:00">
+                2024-01-29
               </time>
             
 
@@ -940,13 +848,11 @@
 
       
         
-          <p>You have just landed a coveted on-site interview at your dream company. The hiring coordinator sends you a schedule for that day. Scanning down the list, you feel pretty good about it until your eyes land on this interview session - System Design Interview.</p>
-<p>System design interviews are often intimidating. It could be as vague as “designing a well-known product X?”. The questions are ambiguous and seem unreasonably broad. Your weariness is understandable. After all, how could anyone design a popular product in an hour that has taken hundreds if not thousands of engineers to build?</p>
-<p>The good news is that no one expects you to. Real-world system design is extremely complicated. For example, Google search is deceptively simple; however, the amount of technology that underpins that simplicity is truly astonishing. If no one expects you to design a real-world system in an hour, what is the benefit of a system design interview?</p>
-<p>The system design interview simulates real-life problem solving where two co-workers collaborate on an ambiguous problem and come up with a solution that meets their goals. The problem is open-ended, and there is no perfect answer. The final design is less important compared to the work you put in the design process. This allows you to demonstrate your design skill, defend your design choices, and respond to feedback in a constructive manner.</p>
+          <p>Problem solving is a critical skill for any software engineer, and it’s not just about finding a solution to a technical challenge. It’s also about identifying the right problem to solve, breaking it down into manageable pieces, and communicating your approach and progress to others. That’s why many job interviews for software engineering positions include questions about problem solving.</p>
+<p>When answering questions about problem solving in a behavioral job interview, it’s important to focus on your process, not just your end result. Explain how you approached the problem, the steps you took to analyze and break it down, and any roadblocks you encountered along the way. Be sure to emphasize your communication skills, both with technical and nontechnical stakeholders, as collaboration is a crucial aspect of problem solving in the workplace. Finally, highlight any lessons you learned from the experience and how you would approach similar problems in the future.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2855311307.html#more" rel="contents">
+            <a class="btn" href="/p/274516859.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -984,7 +890,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1027,7 +933,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

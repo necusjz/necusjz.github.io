@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3629374418.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2813634607.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3629374418.html" itemprop="url">
-                  设计支持自定义规则的灰度发布组件
+                <a class="post-title-link" href="/p/2813634607.html" itemprop="url">
+                  场景：实现有状态函数
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:50:35+08:00">
-                2021-03-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-12T22:56:38+08:00">
+                2022-03-12
               </time>
             
 
@@ -356,12 +356,33 @@
 
       
         
-          <h3 id="需求场景"><a href="#需求场景" class="headerlink" title="需求场景"></a>需求场景</h3><p>最初，公共服务平台提供的是，基于某个开源 RPC 框架的 RPC 格式的接口。在上线一段时间后，我们发现这个开源 RPC 框架的 Bug 很多，多次因为框架本身的 Bug，导致整个公共服务平台的接口不可用，但又因为团队成员对框架源码不熟悉，并且框架的代码质量本身也不高，排查、修复起来花费了很长时间，影响面非常大。所以，我们评估下来，觉着这个框架的可靠性不够，维护成本、二次开发成本都太高，最终决定替换掉它。<strong>对于引入新的框架，我们的要求是成熟、简单，并且与我们现有的技术栈（Spring）相吻合</strong>。这样，即便出了问题，我们也能利用之前积累的知识、经验来快速解决。所以，我们决定直接使用 Spring 框架来提供 RESTful 格式的远程接口。</p>
-<p>把 RPC 接口替换成 RESTful 接口，除了需要修改公共服务平台的代码之外，调用方的接口调用代码也要做相应的修改。除此之外，对于公共服务平台的代码，尽管我们只是改动接口暴露方式，对业务代码基本上没有改动，但是，我们也并不能保证就完全不出问题。所以，为了保险起见，我们希望<strong>灰度替换掉老的 RPC 服务，而不是一刀切，在某个时间点上，让所有的调用方一下子都变成调用新的 RESTful 接口</strong>。因为替换的过程是灰度的，所以老的 RPC 服务不能下线，同时还要部署另外一套新的 RESTful 服务。我们先让业务不是很重要、流量不大的某个调用方，替换成调用新的 RESTful 接口。经过这个调用方一段时间的验证之后，如果新的 RESTful 接口没有问题，我们再逐步让其他调用方，替换成调用新的 RESTful 接口。</p>
-<p>但是，如果万一中途出现问题，我们就需要将调用方的代码回滚，再重新部署，这就会导致调用方一段时间内服务不可用。而且，如果新的代码还包含调用方自身新的业务代码，简单通过 Git 回滚代码重新部署，会导致新的业务代码也被回滚。所以，为了避免这种情况的发生，我们就得手动将调用新的 RESTful 接口的代码删除，再改回为调用老的 RPC 接口；除此之外，为了不影响调用方本身业务的开发进度，调用方基于回滚之后的老代码，来做新功能开发，那替换成新的 RESTful 接口的那部分代码，要想再重新 merge 回去就比较难了，有可能会出现代码冲突，需要再重新开发。</p>
+          <p>三种实现有状态函数的方式：</p>
+<ul>
+<li><strong>基于全局变量</strong>：<ul>
+<li>学习成本低，最容易理解；</li>
+<li>会增加模块级的全局状态，封装性和可维护性最差；</li>
+</ul>
+</li>
+<li><strong>基于函数闭包</strong>：<ul>
+<li>学习成本适中，可读性较好；</li>
+<li>适合用来实现变量较少、较简单的有状态函数；</li>
+</ul>
+</li>
+<li><strong>创建类来封装状态</strong>：<ul>
+<li>学习成本较高；</li>
+<li>当变量较多、行为较复杂时，类代码比闭包代码更易读，也更容易维护；</li>
+</ul>
+</li>
+</ul>
+<p>Ethan 正在自学 Python，一天，他从网上看到一道和字符串处理有关的练习题：</p>
+<blockquote>
+<p>有一段文字，里面包含各类数字，比如数量、价格等，编写一段代码把文字里的所有数字都用星号替代，实现脱敏效果。</p>
+</blockquote>
+<p>使用 re.sub() 函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mosaic_string</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">r'\d+'</span>, <span class="string">'*'</span>, s)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3629374418.html#more" rel="contents">
+            <a class="btn" href="/p/2813634607.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -404,7 +425,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/104703185.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1989037369.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -426,8 +447,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/104703185.html" itemprop="url">
-                  设计通用的接口幂等框架
+                <a class="post-title-link" href="/p/1989037369.html" itemprop="url">
+                  函数与装饰器
                 </a>
               
             
@@ -443,8 +464,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:46:56+08:00">
-                2021-03-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-12T21:17:54+08:00">
+                2022-03-12
               </time>
             
 
@@ -480,12 +501,17 @@
 
       
         
-          <h3 id="需求场景"><a href="#需求场景" class="headerlink" title="需求场景"></a>需求场景</h3><p>调用方访问公共服务平台的接口，会有<strong>三种可能的结果：成功、失败和超时</strong>。前两种结果非常明确，调用方可以自己决定收到结果之后如何处理。结果为“成功”，万事大吉；结果为“失败”，一般情况下，调用方会将失败的结果，反馈给用户（移动端 App），让用户自行决定是否重试。但是，当接口请求超时时，处理起来就没那么容易了。有可能业务逻辑已经执行成功了，只是公共服务平台返回结果给调用方的时候超时了，但也有可能业务逻辑没有执行成功，比如，因为数据库当时存在集中写入，导致部分数据写入超时。总之，<strong>超时对应的执行结果是未决的</strong>。</p>
-<p><strong>如果接口只包含查询、删除、更新这些操作，那接口天然是幂等的</strong>。所以，超时之后，重新再执行一次，也没有任何副作用。不过，这里有两点需要特殊说明一下。</p>
-<p><strong>删除操作需要当心 ABA 问题</strong>。删除操作超时了，又触发一次删除，但在这次删除之前，又有一次新的插入。后一次删除操作删除了新插入的数据，而新插入的数据本不应该删除。不过，大部分业务都可以容忍 ABA 问题。对于少数不能容忍的业务场景，我们可以针对性的特殊处理。除此之外，细究起来，update x = x + delta 这样格式的更新操作并非幂等，只有 update x = y 这样格式的更新操作才是幂等的。不过，后者也存在跟删除同样的 ABA 问题。</p>
+          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>Python 是一门支持面向对象的编程语言，但除此之外，Python 对函数的支持也毫不逊色。函数在 Python 中是一等对象，这意味着我们可以把函数自身作为函数参数来使用。</p>
+<h3 id="函数参数的常用技巧"><a href="#函数参数的常用技巧" class="headerlink" title="函数参数的常用技巧"></a>函数参数的常用技巧</h3><p>参数（Parameter）是函数的重要组成部分，它是函数最主要的输入源，决定了调用方使用函数时的体验。Python 函数的参数默认值只会在函数定义阶段被创建一次，别将可变类型作为参数默认值，使用 None 来替代：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=[])</span>:</span></span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=None)</span>:</span></span><br><span class="line">    <span class="comment"># 在函数内部进行判断，保证参数默认每次都使用一个新的空列表</span></span><br><span class="line">    <span class="keyword">if</span> items <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        items = []</span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
+
+<p>定义一个特殊对象（标记变量）作为参数默认值，严格区分调用方是不是<strong>真的</strong>提供了这个默认参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># object 通常不会单独使用，但是拿来做这种标记变量刚刚好</span></span><br><span class="line">_not_set = object()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dump_value</span><span class="params">(value, extra=_not_set)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> extra <span class="keyword">is</span> _not_set:</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 调用方没有传递 extra 参数</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/104703185.html#more" rel="contents">
+            <a class="btn" href="/p/1989037369.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -528,7 +554,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/116790431.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3014737985.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -550,8 +576,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/116790431.html" itemprop="url">
-                  设计支持各种算法的限流框架
+                <a class="post-title-link" href="/p/3014737985.html" itemprop="url">
+                  场景：数字统计任务
                 </a>
               
             
@@ -567,8 +593,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:45:54+08:00">
-                2021-03-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-06T22:06:47+08:00">
+                2022-03-06
               </time>
             
 
@@ -604,12 +630,17 @@
 
       
         
-          <h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>公司成立初期，团队人少。公司集中精力开发一个金融理财产品（我们把这个项目叫做 X 项目）。整个项目只做了简单的前后端分离，后端的所有代码都在一个 GitHub 仓库中，整个后端作为一个应用来部署，没有划分微服务。遇到了行业风口，公司发展得不错，公司开始招更多人，开发更多的金融产品，比如专注房贷的理财产品、专注供应链的产品、专注消费贷的借款端产品等等。在产品形态上，每个金融产品都做成了独立的 App。对于不同的金融产品，尽管移动端长得不一样，但是后端的很多功能、代码都是可以复用的。为了快速上线，针对每个应用，公司都成立一个新的团队，然后拷贝 X 项目的代码，在此基础之上修改、添加新的功能。</p>
-<p>这样成立新团队，拷贝老代码，改改就能上线一个新产品的开发模式，在一开始很受欢迎。产品上线快，也给公司赢得了竞争上的优势。但时间一长，这样的开发模式暴露出来的问题就越来越多了。而且随着公司的发展，公司也过了急速扩张期，人招得太多，公司开始考虑研发效率问题了。因为所有的项目的代码都是从 X 项目拷贝来的，多个团队同时维护相似的代码，显然是重复劳动，协作起来也非常麻烦。任何团队发现代码的 bug，都要同步到其他团队做相同的修改。而且，各个团队对代码独立迭代，改得面目全非，即便要添加一个通用的功能，每个团队也都要基于自己的代码再重复开发。</p>
-<p>除此之外，公司成立初期，各个方面条件有限，只能招到开发水平一般的员工，而且追求快速上线，所以，X 项目的代码质量很差，结构混乱、命名不规范、到处是临时解决方案、埋了很多坑，在烂代码之上不停地堆砌烂代码，时间长了，代码的可读性越来越差、维护成本越来越高，甚至高过了重新开发的成本。</p>
+          <p>Ethan 是一位 Python 初学者，在学习了如何用 Python 读取文件后，他想要做一个小练习：统计某个文件中数字字符的数量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_digits</span><span class="params">(fname)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> open(fname) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">            <span class="keyword">for</span> s <span class="keyword">in</span> line:</span><br><span class="line">                <span class="keyword">if</span> s.isdigit():</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+
+<p>首先用 with open(file_name) 上下文管理器语法获得一个文件对象，然后用 for 循环迭代它，<strong>逐行</strong>获取文件里的内容。它有两个好处：</p>
+<ul>
+<li>with 上下文管理器会自动关闭文件描述符；</li>
+<li>在迭代文件对象时，内容是一行一行返回的，不会占用太多内存；</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/116790431.html#more" rel="contents">
+            <a class="btn" href="/p/3014737985.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -652,7 +683,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/469711973.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1690741888.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -674,8 +705,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/469711973.html" itemprop="url">
-                  MyBatis
+                <a class="post-title-link" href="/p/1690741888.html" itemprop="url">
+                  场景：消除条件分支
                 </a>
               
             
@@ -691,8 +722,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:14:09+08:00">
-                2021-03-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-06T02:21:06+08:00">
+                2022-03-06
               </time>
             
 
@@ -728,11 +759,13 @@
 
       
         
-          <h2 id="MyBatis-和-ORM-框架介绍"><a href="#MyBatis-和-ORM-框架介绍" class="headerlink" title="MyBatis 和 ORM 框架介绍"></a>MyBatis 和 ORM 框架介绍</h2><p>MyBatis 是一个 ORM（Object-Relational Mapping）框架。ORM 框架主要是根据类和数据库表之间的映射关系，帮助程序员自动实现对象与数据库中数据之间的互相转化。说得更具体点就是，<strong>ORM 负责将程序中的对象存储到数据库中、将数据库中的数据转化为程序中的对象</strong>。实际上，Java 中的 ORM 框架有很多，除了刚刚提到的 MyBatis 之外，还有 Hibernate、TopLink 等。</p>
-<p>如果用一句话来总结框架作用的话，那就是简化开发。MyBatis 框架也不例外，它<strong>简化的是数据库方面的开发</strong>。因为 MyBatis 依赖 JDBC 驱动，所以，在项目中使用 MyBatis，除了需要引入 MyBatis 框架本身（mybatis.jar）之外，还需要引入 JDBC 驱动（比如，访问 MySQL 的 JDBC 驱动实现类库 mysql-connector-java.jar）。将两个 jar 包引入项目之后，我们就可以开始编程了。使用 MyBatis 来访问数据库中用户信息的代码如下所示：</p>
+          <h2 id="使用-bisect-优化范围类分支判断"><a href="#使用-bisect-优化范围类分支判断" class="headerlink" title="使用 bisect 优化范围类分支判断"></a>使用 bisect 优化范围类分支判断</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rank</span><span class="params">(rating)</span>:</span></span><br><span class="line">    rating_num = float(rating)</span><br><span class="line">    <span class="keyword">if</span> rating_num &gt;= <span class="number">8.5</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'S'</span></span><br><span class="line">    <span class="keyword">elif</span> rating_num &gt;= <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">elif</span> rating_num &gt;= <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    <span class="keyword">elif</span> rating_num &gt;= <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'C'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'D'</span></span><br></pre></td></tr></table></figure>
+
+<p>要优化这段代码，我们得把所有分界点收集起来，放在一个元组里。因为 breakpoints 已经是一个<strong>排好序的元组</strong>，所以我们可以直接使用 bisect 模块来实现查找功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bisect</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rank</span><span class="params">(rating)</span>:</span></span><br><span class="line">    breakpoints = (<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8.5</span>)</span><br><span class="line">    grades = (<span class="string">'D'</span>, <span class="string">'C'</span>, <span class="string">'B'</span>, <span class="string">'A'</span>, <span class="string">'S'</span>)</span><br><span class="line"></span><br><span class="line">    index = bisect.bisect(breakpoints, float(rating))</span><br><span class="line">    <span class="keyword">return</span> grades[index]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/469711973.html#more" rel="contents">
+            <a class="btn" href="/p/1690741888.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -775,7 +808,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2270072152.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3423673570.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -797,8 +830,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2270072152.html" itemprop="url">
-                  Spring Framework
+                <a class="post-title-link" href="/p/3423673570.html" itemprop="url">
+                  语法结构
                 </a>
               
             
@@ -814,8 +847,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-29T15:45:20+08:00">
-                2021-03-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-05T19:23:37+08:00">
+                2022-03-05
               </time>
             
 
@@ -851,10 +884,15 @@
 
       
         
-          <h2 id="Spring-框架简单介绍"><a href="#Spring-框架简单介绍" class="headerlink" title="Spring 框架简单介绍"></a>Spring 框架简单介绍</h2><p>我们常说的 Spring 框架，是指 Spring Framework 基础框架。<strong>Spring Framework 是整个 Spring 生态（也被称作 Spring 全家桶）的基石</strong>。除了 Spring Framework，Spring 全家桶中还有更多基于 Spring Framework 开发出来的、整合更多功能的框架，比如 Spring Boot、Spring Cloud。在 Spring 全家桶中，Spring Framework 是最基础、最底层的一部分。它提供了最基础、最核心的 IoC 和 AOP 功能。当然，它包含的功能还不仅如此，还有其他比如事务管理（Transactions）、MVC 框架（Spring MVC）等很多功能：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/23.png" alt></p>
+          <h2 id="条件分支控制流"><a href="#条件分支控制流" class="headerlink" title="条件分支控制流"></a>条件分支控制流</h2><p>掌握如何写出好的条件分支代码非常重要，它可以帮助我们用更简洁、更清晰的代码来表达复杂逻辑。</p>
+<h3 id="分支惯用写法"><a href="#分支惯用写法" class="headerlink" title="分支惯用写法"></a>分支惯用写法</h3><p>当某个对象作为主角出现在 if 分支里时，解释器会主动对它进行真值测试，也就是调用 bool() 函数获取它的布尔值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bool([]), bool([1, 2, 3])</span><br><span class="line">(False, True)</span><br></pre></td></tr></table></figure>
+
+<p>不要因为过度追求简写而引入其他逻辑问题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更精准：只有为 0 的时候，才会满足分支条件</span></span><br><span class="line"><span class="keyword">if</span> containers_count == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更宽泛：为 0、None、空字符串等时，都可以满足分支条件</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> containers_count:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2270072152.html#more" rel="contents">
+            <a class="btn" href="/p/3423673570.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -892,7 +930,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -935,7 +973,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

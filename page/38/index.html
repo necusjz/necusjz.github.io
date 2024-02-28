@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2349017152.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1250907357.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2349017152.html" itemprop="url">
-                  迪米特法则 (LoD)
+                <a class="post-title-link" href="/p/1250907357.html" itemprop="url">
+                  Factory Design Pattern
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-07T18:27:05+08:00">
-                2020-11-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-22T16:32:49+08:00">
+                2020-11-22
               </time>
             
 
@@ -356,14 +356,11 @@
 
       
         
-          <h2 id="何为“高内聚、松耦合”？"><a href="#何为“高内聚、松耦合”？" class="headerlink" title="何为“高内聚、松耦合”？"></a>何为“高内聚、松耦合”？</h2><p>“高内聚、松耦合”是一个非常重要的设计思想，能够有效地提高代码的可读性和可维护性，缩小功能改动导致的代码改动范围。实际上，“高内聚、松耦合”是一个比较通用的设计思想，可以用来指导不同粒度代码的设计与开发，比如<strong>系统、模块、类，甚至是函数</strong>，也可以应用到不同的开发场景中，比如<strong>微服务、框架、组件、类库</strong>等。</p>
-<p>为了方便我讲解，接下来我以“类”作为这个设计思想的应用对象来展开讲解，其他应用场景你可以自行类比。在这个设计思想中，<code>高内聚</code>用来指导类本身的设计，<code>松耦合</code>用来指导类与类之间依赖关系的设计。不过，这两者并非完全独立不相干。<strong>高内聚有助于松耦合，松耦合又需要高内聚的支持</strong>。</p>
-<h3 id="高内聚"><a href="#高内聚" class="headerlink" title="高内聚"></a>高内聚</h3><p>所谓高内聚，就是指相近的功能应该放到同一个类中，不相近的功能不要放到同一个类中。相近的功能往往会被同时修改，放到同一个类中，<strong>修改会比较集中，代码容易维护</strong>。</p>
-<h3 id="松耦合"><a href="#松耦合" class="headerlink" title="松耦合"></a>松耦合</h3><p>所谓松耦合是说，在代码中，类与类之间的依赖关系简单清晰。即使两个类有依赖关系，<strong>一个类的代码改动不会或者很少导致依赖类的代码改动</strong>。</p>
-<h3 id="内聚和耦合的关系"><a href="#内聚和耦合的关系" class="headerlink" title="内聚和耦合的关系"></a>内聚和耦合的关系</h3><p>高内聚有助于松耦合，同理，<strong>低内聚也会导致紧耦合</strong>。关于这一点，我画了一张对比图来解释。图中左边部分的代码结构是“高内聚、松耦合”；右边部分正好相反，是“低内聚、紧耦合”：</p>
+          <h2 id="简单工厂（Simple-Factory）"><a href="#简单工厂（Simple-Factory）" class="headerlink" title="简单工厂（Simple Factory）"></a>简单工厂（Simple Factory）</h2><p>在下面这段代码中，我们根据配置文件的后缀（json、xml…），选择不同的解析器（JsonRuleConfigParser、XmlRuleConfigParser…），将存储在文件中的配置解析成内存对象 RuleConfig：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RuleConfigSource</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RuleConfig <span class="title">load</span><span class="params">(String ruleConfigFilePath)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);</span><br><span class="line">        IRuleConfigParser parser = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"json"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> JsonRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"xml"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> XmlRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"yaml"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> YamlRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"properties"</span>.equalsIgnoreCase(ruleConfigFileExtension)) </span><br><span class="line">        &#123;</span><br><span class="line">            parser = <span class="keyword">new</span> PropertiesRuleConfigParser();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InvalidRuleConfigException(<span class="string">"Rule config file format is not supported: "</span> + ruleConfigFilePath);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String configText = <span class="string">""</span>;</span><br><span class="line">        <span class="comment">// 从 ruleConfigFilePath 文件中读取配置文本到 configText 中</span></span><br><span class="line">        RuleConfig ruleConfig = parser.parse(configText);</span><br><span class="line">        <span class="keyword">return</span> ruleConfig;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getFileExtension</span><span class="params">(String filePath)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//...解析文件名获取扩展名，比如 rule.json，返回 json</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"json"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2349017152.html#more" rel="contents">
+            <a class="btn" href="/p/1250907357.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -406,7 +403,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3581356533.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1857033827.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -428,8 +425,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3581356533.html" itemprop="url">
-                  DRY 原则
+                <a class="post-title-link" href="/p/1857033827.html" itemprop="url">
+                  Singleton Design Pattern
                 </a>
               
             
@@ -445,8 +442,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-03T23:29:22+08:00">
-                2020-11-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-21T14:32:44+08:00">
+                2020-11-21
               </time>
             
 
@@ -482,15 +479,12 @@
 
       
         
-          <p>DRY 原则的英文描述为：</p>
-<blockquote>
-<p>Don’t Repeat Yourself.</p>
-</blockquote>
-<p>中文直译为：不要重复自己。今天，我们主要讲<strong>三种典型的代码重复情况</strong>，它们分别是：实现逻辑重复、功能语义重复和代码执行重复。这三种代码重复，有的看似违反 DRY，实际上并不违反；有的看似不违反，实际上却违反了。</p>
-<h2 id="实现逻辑重复"><a href="#实现逻辑重复" class="headerlink" title="实现逻辑重复"></a>实现逻辑重复</h2><p>我们先来看下面这样一段代码是否违反了 DRY 原则：</p>
+          <h2 id="为什么要使用单例？"><a href="#为什么要使用单例？" class="headerlink" title="为什么要使用单例？"></a>为什么要使用单例？</h2><p>单例设计模式（Singleton Design Pattern）理解起来非常简单。<strong>一个类只允许创建一个对象（或者实例）</strong>，那这个类就是一个单例类，这种设计模式就叫作单例设计模式，简称单例模式。</p>
+<h3 id="实战案例一：处理资源访问冲突"><a href="#实战案例一：处理资源访问冲突" class="headerlink" title="实战案例一：处理资源访问冲突"></a>实战案例一：处理资源访问冲突</h3><p>在这个例子中，我们自定义实现了一个往文件中打印日志的 Logger 类。具体的代码实现如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> FileWriter writer;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Logger</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"/Users/wangzheng/log.txt"</span>);</span><br><span class="line">        writer = <span class="keyword">new</span> FileWriter(file, <span class="keyword">true</span>); <span class="comment">// true 表示追加写入</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        writer.write(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Logger 类的应用示例：</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = <span class="keyword">new</span> Logger();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String username, String password)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//...省略业务逻辑代码...</span></span><br><span class="line">        logger.log(username + <span class="string">" logged-in!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = <span class="keyword">new</span> Logger();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">(OrderVo order)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//...省略业务逻辑代码...</span></span><br><span class="line">        logger.log(<span class="string">"Created an order: "</span> + order.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3581356533.html#more" rel="contents">
+            <a class="btn" href="/p/1857033827.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -533,7 +527,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/990570322.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3911150617.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -555,8 +549,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/990570322.html" itemprop="url">
-                  KISS vs. YAGNI
+                <a class="post-title-link" href="/p/3911150617.html" itemprop="url">
+                  编程技巧
                 </a>
               
             
@@ -572,8 +566,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-03T22:05:30+08:00">
-                2020-11-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T22:34:06+08:00">
+                2020-11-17
               </time>
             
 
@@ -609,16 +603,11 @@
 
       
         
-          <h2 id="如何理解-KISS-原则"><a href="#如何理解-KISS-原则" class="headerlink" title="如何理解 KISS 原则"></a>如何理解 KISS 原则</h2><p>KISS 原则的英文描述：</p>
-<blockquote>
-<p>Keep It Simple and Stupid.</p>
-</blockquote>
-<p>翻译成中文就是：<strong>尽量保持简单</strong>。KISS 原则算是一个万金油类型的设计原则，可以应用在很多场景中。它不仅经常用来指导软件开发，还经常用来指导更加广泛的系统设计、产品设计等，比如，冰箱、建筑、iPhone 手机的设计等等。</p>
-<p>代码的<code>可读性</code>和<code>可维护性</code>是衡量代码质量非常重要的两个标准。而 KISS 原则就是保持代码可读和可维护的重要手段。<strong>代码足够简单，也就意味着很容易读懂，bug 比较难隐藏</strong>。即便出现 bug，修复起来也比较简单。</p>
-<h2 id="代码行数越少就越“简单”吗？"><a href="#代码行数越少就越“简单”吗？" class="headerlink" title="代码行数越少就越“简单”吗？"></a>代码行数越少就越“简单”吗？</h2><p>下面这三段代码可以实现同样一个功能：检查输入的字符串 ipAddress 是否是合法的 IP 地址。</p>
+          <h2 id="把代码分割成更小的单元块"><a href="#把代码分割成更小的单元块" class="headerlink" title="把代码分割成更小的单元块"></a>把代码分割成更小的单元块</h2><p>大部分人阅读代码的习惯都是，<strong>先看整体再看细节</strong>。所以，我们要有模块化和抽象思维，善于将大块的复杂逻辑提炼成类或者函数，屏蔽掉细节，让阅读代码的人不至于迷失在细节中，这样能极大地提高代码的可读性。不过，<strong>只有代码逻辑比较复杂的时候，我们其实才建议提炼类或者函数</strong>。毕竟如果提炼出的函数只包含两三行代码，在阅读代码的时候，还得跳过去看一下，这样反倒增加了阅读成本。</p>
+<p>这里我举一个例子来进一步解释一下。重构前，在 invest() 函数中，最开始的那段关于时间处理的代码，是不是很难看懂？重构之后，我们将这部分逻辑抽象成一个函数，并且命名为 isLastDayOfMonth，从名字就能清晰地了解它的功能，判断今天是不是当月的最后一天。这里，我们就是通过将复杂的逻辑代码提炼成函数，<strong>大大提高了代码的可读性</strong>。代码具体如下所示：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/990570322.html#more" rel="contents">
+            <a class="btn" href="/p/3911150617.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -661,7 +650,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2712174275.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/504225117.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -683,8 +672,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2712174275.html" itemprop="url">
-                  复杂度分析
+                <a class="post-title-link" href="/p/504225117.html" itemprop="url">
+                  代码风格
                 </a>
               
             
@@ -700,8 +689,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-01T18:09:29+08:00">
-                2020-11-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T21:52:36+08:00">
+                2020-11-17
               </time>
             
 
@@ -737,16 +726,13 @@
 
       
         
-          <p>其实，只要讲到数据结构与算法，就一定离不开时间、空间复杂度分析。而且，我个人认为，<strong>复杂度分析是整个算法学习的精髓</strong>，只要掌握了它，数据结构和算法的内容基本上就掌握了一半。</p>
-<h2 id="为什么需要复杂度分析？"><a href="#为什么需要复杂度分析？" class="headerlink" title="为什么需要复杂度分析？"></a>为什么需要复杂度分析？</h2><p>首先，我可以肯定地说，你这种评估算法执行效率的方法是正确的。很多数据结构和算法书籍还给这种方法起了一个名字，叫<code>事后统计法</code>。但是，这种统计方法有非常大的局限性。</p>
-<h3 id="测试结果非常依赖测试环境"><a href="#测试结果非常依赖测试环境" class="headerlink" title="测试结果非常依赖测试环境"></a>测试结果非常依赖测试环境</h3><p>测试环境中<strong>硬件的不同会对测试结果有很大的影响</strong>。比如，我们拿同样一段代码，分别用 Intel Core i9 处理器和 Intel Core i3 处理器来运行，不用说，i9 处理器要比 i3 处理器执行的速度快很多。还有，比如原本在这台机器上 a 代码执行的速度比 b 代码要快，等我们换到另一台机器上时，可能会有截然相反的结果。</p>
-<h3 id="测试结果受数据规模的影响很大"><a href="#测试结果受数据规模的影响很大" class="headerlink" title="测试结果受数据规模的影响很大"></a>测试结果受数据规模的影响很大</h3><p>后面我们会讲排序算法，我们先拿它举个例子。对同一个排序算法，<strong>待排序数据的有序度不一样</strong>，排序的执行时间就会有很大的差别。极端情况下，如果数据已经是有序的，那排序算法不需要做任何操作，执行时间就会非常短。除此之外，<strong>如果测试数据规模太小</strong>，测试结果可能无法真实地反映算法的性能。比如，对于小规模的数据排序，插入排序可能反倒会比快速排序要快！</p>
-<blockquote>
-<p>我们需要一个不用具体的测试数据来测试，就可以粗略地估计算法的执行效率的方法。</p>
-</blockquote>
+          <h2 id="类、函数多大才合适？"><a href="#类、函数多大才合适？" class="headerlink" title="类、函数多大才合适？"></a>类、函数多大才合适？</h2><p>总体上来讲，<strong>类或函数的代码行数不能太多，但也不能太少</strong>。类或函数的代码行数太多，一个类上千行，一个函数几百行，逻辑过于繁杂，阅读代码的时候，很容易就会看了后面忘了前面。相反，类或函数的代码行数太少，在代码总量相同的情况下，被分割成的类和函数就会相应增多，调用关系就会变得更复杂，阅读某个代码逻辑的时候，需要频繁地在 n 多类或者 n 多函数之间跳来跳去，阅读体验也不好。</p>
+<p>对于函数代码行数的最大限制，网上有一种说法，那就是<strong>不要超过一个显示屏的垂直高度</strong>。比如，在我的电脑上，如果要让一个函数的代码完整地显示在 IDE 中，那最大代码行数不能超过 50。这个说法我觉得挺有道理的。因为超过一屏之后，在阅读代码的时候，为了串联前后的代码逻辑，就可能需要频繁地上下滚动屏幕，阅读体验不好不说，还容易出错。</p>
+<p>对于类的代码行数的最大限制，这个就更难给出一个确切的值了。有一个间接的判断标准 – 当一个类的代码读起来让你感觉头大了，实现某个功能时不知道该用哪个函数了，想用哪个函数翻半天都找不到了，只用到一个小功能要引入整个类（<strong>类中包含很多无关此功能实现的函数</strong>）的时候，这就说明类的行数过多了。</p>
+<h2 id="一行代码多长最合适？"><a href="#一行代码多长最合适？" class="headerlink" title="一行代码多长最合适？"></a>一行代码多长最合适？</h2><p>不同的编程语言、不同的规范、不同的项目团队，对此的限制可能都不相同。不管这个限制是多少，总体上来讲我们要遵循的一个原则是：<strong>一行代码最长不能超过 IDE 显示的宽度</strong>。需要滚动鼠标才能查看一行的全部代码，显然不利于代码的阅读。当然，这个限制也不能太小，太小会导致很多稍长点的语句被折成两行，也会影响到代码的整洁，不利于阅读。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2712174275.html#more" rel="contents">
+            <a class="btn" href="/p/504225117.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -789,7 +775,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/494874986.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/270478817.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -811,8 +797,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/494874986.html" itemprop="url">
-                  学习指导手册
+                <a class="post-title-link" href="/p/270478817.html" itemprop="url">
+                  命名与注释
                 </a>
               
             
@@ -828,8 +814,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-01T16:51:40+08:00">
-                2020-11-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T20:33:40+08:00">
+                2020-11-17
               </time>
             
 
@@ -865,18 +851,14 @@
 
       
         
-          <p><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/00.png" alt></p>
-<p>现在，针对每个知识点，我再给你逐一解释一下。我这里先说明一下，下面标记的难易程度、是否重点、掌握程度，都只是针对初学者来说的，如果你已经有一定基础，可以根据自己的情况，安排自己的学习。</p>
-<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>尽管在专栏中，我只用了两节课的内容，来讲复杂度分析这个知识点。但是，我想说的是，它真的<strong>非常重要</strong>。你必须要牢牢掌握这两节，基本上要做到，简单代码能很快分析出时间、空间复杂度；对于复杂点的代码，比如递归代码，你也要掌握专栏中讲到的两种分析方法：<code>递推公式</code>和<code>递归树</code>。</p>
-<p>对于初学者来说，光看入门篇的两节复杂度分析文章，可能还不足以完全掌握复杂度分析。不过，在后续讲解每种数据结构和算法的时候，我都有详细分析它们的时间、空间复杂度。所以，你可以在学习专栏中其他章节的时候，再<strong>不停地、有意识地去训练自己的复杂度分析能力</strong>。</p>
-<ul>
-<li>难易程度：Medium；</li>
-<li>是否重点：10 分；</li>
-<li>掌握程度：在不看我的分析的情况下，能自行分析专栏中大部分数据结构和算法的时间、空间复杂度；</li>
-</ul>
+          <h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><p>大到项目名、模块名、包名、对外暴露的接口，小到类名、函数名、变量名、参数名，只要是做开发，我们就逃不过“起名字”这一关。命名的好坏，对于代码的可读性来说非常重要，甚至可以说是起决定性作用的。除此之外，<strong>命名能力也体现了一个程序员的基本编程素养</strong>。这也是我把“命名”放到第一个来讲解的原因。</p>
+<p>实际上，命名这件事说难也不难，关键还是看你重不重视，愿不愿意花时间。对于影响范围比较大的命名，比如包名、接口、类名，我们一定<strong>要反复斟酌、推敲</strong>。实在想不到好名字的时候，可以去 GitHub 上用相关的关键词联想搜索一下，看看类似的代码是怎么命名的。</p>
+<h3 id="命名多长最合适？"><a href="#命名多长最合适？" class="headerlink" title="命名多长最合适？"></a>命名多长最合适？</h3><p>尽管长的命名可以包含更多的信息，更能准确直观地表达意图，但是，如果函数、变量的命名很长，那由它们组成的语句就会很长。在代码列长度有限制的情况下，就会<strong>经常出现一条语句被分割成两行的情况</strong>，这其实会影响代码可读性。</p>
+<p>实际上，<strong>在足够表达其含义的情况下，命名当然是越短越好</strong>。但是，大部分情况下，短的命名都没有长的命名更能达意。所以，很多书籍或者文章都不推荐在命名时使用缩写。对于一些默认的、大家都比较熟知的词，我比较推荐用缩写。这样一方面能让命名短一些，另一方面又不影响阅读理解，比如，sec 表示 second、str 表示 string、num 表示 number、doc 表示 document。除此之外，对于作用域比较小的变量，我们可以使用相对短的命名，比如一些函数内的临时变量。相反，<strong>对于类名这种作用域比较大的，我更推荐用长的命名方式</strong>。</p>
+<p>总之，命名的一个原则就是以能准确达意为目标。不过，对于代码的编写者来说，自己对代码的逻辑很清楚，总感觉用什么样的命名都可以达意，实际上，对于不熟悉你代码的同事来讲，可能就不这么认为了。所以，命名的时候，我们一定<strong>要学会换位思考</strong>，假设自己不熟悉这块代码，从代码阅读者的角度去考量命名是否足够直观。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/494874986.html#more" rel="contents">
+            <a class="btn" href="/p/270478817.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -914,7 +896,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/37/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><span class="page-number current">38</span><a class="page-number" href="/page/39/">39</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/39/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/37/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><span class="page-number current">38</span><a class="page-number" href="/page/39/">39</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/39/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -957,7 +939,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

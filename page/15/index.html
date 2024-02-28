@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/942551829.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/104703185.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/942551829.html" itemprop="url">
-                  Disruptor 背后的数据结构和算法
+                <a class="post-title-link" href="/p/104703185.html" itemprop="url">
+                  设计通用的接口幂等框架
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T14:42:45+08:00">
-                2021-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:46:56+08:00">
+                2021-03-31
               </time>
             
 
@@ -356,10 +356,12 @@
 
       
         
-          <h2 id="基于循环队列的生产者-消费者模型"><a href="#基于循环队列的生产者-消费者模型" class="headerlink" title="基于循环队列的生产者-消费者模型"></a>基于循环队列的生产者-消费者模型</h2><p>非循环的顺序队列在添加、删除数据的工程中，会<strong>涉及数据的搬移操作，导致性能变差</strong>。而循环队列正好可以解决这个数据搬移的问题，所以，性能更加好。所以，大部分用到顺序队列的场景中，我们都选择用顺序队列中的循环队列。实际上，循环队列这种数据结构，就是我们今天要讲的内存消息队列的雏形。我借助循环队列，实现了一个最简单的生产者-消费者模型。为了方便你理解，对于生产者和消费者之间操作的同步，我并没有用到线程相关的操作。而是采用了“当队列满了之后，生产者就轮训等待；当队列空了之后，消费者就轮训等待”这样的措施：</p>
+          <h3 id="需求场景"><a href="#需求场景" class="headerlink" title="需求场景"></a>需求场景</h3><p>调用方访问公共服务平台的接口，会有<strong>三种可能的结果：成功、失败和超时</strong>。前两种结果非常明确，调用方可以自己决定收到结果之后如何处理。结果为“成功”，万事大吉；结果为“失败”，一般情况下，调用方会将失败的结果，反馈给用户（移动端 App），让用户自行决定是否重试。但是，当接口请求超时时，处理起来就没那么容易了。有可能业务逻辑已经执行成功了，只是公共服务平台返回结果给调用方的时候超时了，但也有可能业务逻辑没有执行成功，比如，因为数据库当时存在集中写入，导致部分数据写入超时。总之，<strong>超时对应的执行结果是未决的</strong>。</p>
+<p><strong>如果接口只包含查询、删除、更新这些操作，那接口天然是幂等的</strong>。所以，超时之后，重新再执行一次，也没有任何副作用。不过，这里有两点需要特殊说明一下。</p>
+<p><strong>删除操作需要当心 ABA 问题</strong>。删除操作超时了，又触发一次删除，但在这次删除之前，又有一次新的插入。后一次删除操作删除了新插入的数据，而新插入的数据本不应该删除。不过，大部分业务都可以容忍 ABA 问题。对于少数不能容忍的业务场景，我们可以针对性的特殊处理。除此之外，细究起来，update x = x + delta 这样格式的更新操作并非幂等，只有 update x = y 这样格式的更新操作才是幂等的。不过，后者也存在跟删除同样的 ABA 问题。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/942551829.html#more" rel="contents">
+            <a class="btn" href="/p/104703185.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -402,7 +404,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3247778254.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/116790431.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -424,8 +426,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3247778254.html" itemprop="url">
-                  搜索引擎背后的数据结构和算法
+                <a class="post-title-link" href="/p/116790431.html" itemprop="url">
+                  设计支持各种算法的限流框架
                 </a>
               
             
@@ -441,8 +443,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T13:19:37+08:00">
-                2021-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:45:54+08:00">
+                2021-03-31
               </time>
             
 
@@ -478,19 +480,12 @@
 
       
         
-          <h2 id="整体系统介绍"><a href="#整体系统介绍" class="headerlink" title="整体系统介绍"></a>整体系统介绍</h2><p>搜索引擎大致可以分为四个部分：<strong>搜集、分析、索引、查询</strong>：</p>
-<ol>
-<li>搜集，就是我们常说的利用爬虫爬取网页；</li>
-<li>分析，主要负责网页内容抽取、分词，构建临时索引，计算 PageRank 值这几部分工作；</li>
-<li>索引，主要负责通过分析阶段得到的临时索引，构建倒排索引；</li>
-<li>查询，主要负责响应用户的请求，根据倒排索引获取相关网页，计算网页排名，返回查询结果给用户；</li>
-</ol>
-<h2 id="搜集"><a href="#搜集" class="headerlink" title="搜集"></a>搜集</h2><p>搜索引擎<strong>把整个互联网看作数据结构中的有向图</strong>，把每个页面看作一个顶点。如果某个页面中包含另外一个页面的链接，那我们就在两个顶点之间连一条有向边。我们可以利用图的遍历搜索算法，来遍历整个互联网中的网页。我们前面介绍过两种图的遍历方法，深度优先和广度优先。<strong>搜索引擎采用的是广度优先搜索策略</strong>。具体点讲的话，那就是，我们先找一些比较知名的网页（专业的叫法是权重比较高）的链接（比如新浪主页网址、腾讯主页网址等），作为种子网页链接，放入到队列中。爬虫按照广度优先的策略，不停地从队列中取出链接，然后去爬取对应的网页，解析出网页里包含的其他网页链接，再将解析出来的链接添加到队列中。</p>
-<p>爬虫在爬取网页的过程中，涉及的四个重要的文件。其中，links.bin 和 bloom_filter.bin 这两个文件是爬虫自身所用的；另外的两个 doc_raw.bin 和 doc_id.bin 是作为搜集阶段的成果，供后面的分析、索引、查询用的。</p>
-<h3 id="待爬取网页链接文件：links-bin"><a href="#待爬取网页链接文件：links-bin" class="headerlink" title="待爬取网页链接文件：links.bin"></a>待爬取网页链接文件：links.bin</h3><p>我们可以把整个页面看作一个大的字符串，然后利用字符串匹配算法，在这个大字符串中，搜索这样一个网页标签，然后顺序读取之间的字符串 – 这其实就是网页链接。在广度优先搜索爬取页面的过程中，爬虫会不停地解析页面链接，将其放到队列中。于是，队列中的链接就会越来越多，可能会多到内存放不下。所以，我们用一个存储在磁盘中的文件（links.bin）来作为广度优先搜索中的队列。爬虫从 links.bin 文件中，取出链接去爬取对应的页面。等爬取到网页之后，将解析出来的链接，直接存储到 links.bin 文件中。这样用文件来存储网页链接的方式，还有其他好处。比如，<strong>支持断点续爬</strong>。也就是说，当机器断电之后，网页链接不会丢失；当机器重启之后，还可以从之前爬取到的位置继续爬取。</p>
+          <h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>公司成立初期，团队人少。公司集中精力开发一个金融理财产品（我们把这个项目叫做 X 项目）。整个项目只做了简单的前后端分离，后端的所有代码都在一个 GitHub 仓库中，整个后端作为一个应用来部署，没有划分微服务。遇到了行业风口，公司发展得不错，公司开始招更多人，开发更多的金融产品，比如专注房贷的理财产品、专注供应链的产品、专注消费贷的借款端产品等等。在产品形态上，每个金融产品都做成了独立的 App。对于不同的金融产品，尽管移动端长得不一样，但是后端的很多功能、代码都是可以复用的。为了快速上线，针对每个应用，公司都成立一个新的团队，然后拷贝 X 项目的代码，在此基础之上修改、添加新的功能。</p>
+<p>这样成立新团队，拷贝老代码，改改就能上线一个新产品的开发模式，在一开始很受欢迎。产品上线快，也给公司赢得了竞争上的优势。但时间一长，这样的开发模式暴露出来的问题就越来越多了。而且随着公司的发展，公司也过了急速扩张期，人招得太多，公司开始考虑研发效率问题了。因为所有的项目的代码都是从 X 项目拷贝来的，多个团队同时维护相似的代码，显然是重复劳动，协作起来也非常麻烦。任何团队发现代码的 bug，都要同步到其他团队做相同的修改。而且，各个团队对代码独立迭代，改得面目全非，即便要添加一个通用的功能，每个团队也都要基于自己的代码再重复开发。</p>
+<p>除此之外，公司成立初期，各个方面条件有限，只能招到开发水平一般的员工，而且追求快速上线，所以，X 项目的代码质量很差，结构混乱、命名不规范、到处是临时解决方案、埋了很多坑，在烂代码之上不停地堆砌烂代码，时间长了，代码的可读性越来越差、维护成本越来越高，甚至高过了重新开发的成本。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3247778254.html#more" rel="contents">
+            <a class="btn" href="/p/116790431.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -533,7 +528,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2361214650.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/469711973.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -555,8 +550,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2361214650.html" itemprop="url">
-                  Redis 常用数据类型对应的数据结构
+                <a class="post-title-link" href="/p/469711973.html" itemprop="url">
+                  MyBatis
                 </a>
               
             
@@ -572,8 +567,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T12:38:26+08:00">
-                2021-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:14:09+08:00">
+                2021-03-31
               </time>
             
 
@@ -609,10 +604,11 @@
 
       
         
-          <h2 id="Redis-数据库介绍"><a href="#Redis-数据库介绍" class="headerlink" title="Redis 数据库介绍"></a>Redis 数据库介绍</h2><p>Redis 是一种键值（Key-Value）数据库。相对于关系型数据库（比如 MySQL），Redis 也被叫作<strong>非关系型数据库</strong>。像 MySQL 这样的关系型数据库，表的结构比较复杂，会包含很多字段，可以通过 SQL 语句，来实现非常复杂的查询需求。而 Redis 中只包含“键”和“值”两部分，只能通过“键”来查询“值”。正是因为这样简单的存储结构，也让 Redis 的读写效率非常高；除此之外，Redis 主要是作为内存数据库来使用，也就是说，数据是存储在内存中的。尽管它经常被用作内存数据库，但是，它也支持将数据存储在硬盘中。Redis 中，键的数据类型是字符串，但是<strong>为了丰富数据存储的方式，方便开发者使用，值的数据类型有很多</strong>，常用的数据类型有这样几种，它们分别是字符串、列表、字典、集合、有序集合。</p>
+          <h2 id="MyBatis-和-ORM-框架介绍"><a href="#MyBatis-和-ORM-框架介绍" class="headerlink" title="MyBatis 和 ORM 框架介绍"></a>MyBatis 和 ORM 框架介绍</h2><p>MyBatis 是一个 ORM（Object-Relational Mapping）框架。ORM 框架主要是根据类和数据库表之间的映射关系，帮助程序员自动实现对象与数据库中数据之间的互相转化。说得更具体点就是，<strong>ORM 负责将程序中的对象存储到数据库中、将数据库中的数据转化为程序中的对象</strong>。实际上，Java 中的 ORM 框架有很多，除了刚刚提到的 MyBatis 之外，还有 Hibernate、TopLink 等。</p>
+<p>如果用一句话来总结框架作用的话，那就是简化开发。MyBatis 框架也不例外，它<strong>简化的是数据库方面的开发</strong>。因为 MyBatis 依赖 JDBC 驱动，所以，在项目中使用 MyBatis，除了需要引入 MyBatis 框架本身（mybatis.jar）之外，还需要引入 JDBC 驱动（比如，访问 MySQL 的 JDBC 驱动实现类库 mysql-connector-java.jar）。将两个 jar 包引入项目之后，我们就可以开始编程了。使用 MyBatis 来访问数据库中用户信息的代码如下所示：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2361214650.html#more" rel="contents">
+            <a class="btn" href="/p/469711973.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -655,7 +651,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3468801964.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2270072152.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -677,8 +673,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3468801964.html" itemprop="url">
-                  Decision Making
+                <a class="post-title-link" href="/p/2270072152.html" itemprop="url">
+                  Spring Framework
                 </a>
               
             
@@ -694,8 +690,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T15:12:37+08:00">
-                2021-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-29T15:45:20+08:00">
+                2021-03-29
               </time>
             
 
@@ -731,12 +727,10 @@
 
       
         
-          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a set of values find an answer with an option to choose or ignore the current value.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>If you decide to choose the current value use the previous result where the value was ignored; vice versa, if you decide to ignore the current value use previous result where value was used:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i: indexing a set of values</span></span><br><span class="line"><span class="comment">// j: options to ignore j values</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">        dp[i][j] = max(&#123;dp[i][j], dp[i<span class="number">-1</span>][j] + arr[i], dp[i<span class="number">-1</span>][j<span class="number">-1</span>]&#125;);</span><br><span class="line">        dp[i][j<span class="number">-1</span>] = max(&#123;dp[i][j<span class="number">-1</span>], dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + arr[i], arr[i]&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="Spring-框架简单介绍"><a href="#Spring-框架简单介绍" class="headerlink" title="Spring 框架简单介绍"></a>Spring 框架简单介绍</h2><p>我们常说的 Spring 框架，是指 Spring Framework 基础框架。<strong>Spring Framework 是整个 Spring 生态（也被称作 Spring 全家桶）的基石</strong>。除了 Spring Framework，Spring 全家桶中还有更多基于 Spring Framework 开发出来的、整合更多功能的框架，比如 Spring Boot、Spring Cloud。在 Spring 全家桶中，Spring Framework 是最基础、最底层的一部分。它提供了最基础、最核心的 IoC 和 AOP 功能。当然，它包含的功能还不仅如此，还有其他比如事务管理（Transactions）、MVC 框架（Spring MVC）等很多功能：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/23.png" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3468801964.html#more" rel="contents">
+            <a class="btn" href="/p/2270072152.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -779,7 +773,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1675068398.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/24993952.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -801,8 +795,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1675068398.html" itemprop="url">
-                  Dynamic Programming on Strings
+                <a class="post-title-link" href="/p/24993952.html" itemprop="url">
+                  Google Guava
                 </a>
               
             
@@ -818,8 +812,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T15:00:41+08:00">
-                2021-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-25T17:25:21+08:00">
+                2021-03-25
               </time>
             
 
@@ -855,15 +849,10 @@
 
       
         
-          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given two strings <strong>s1</strong> and <strong>s2</strong>, return a result.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Most of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i<span class="number">-1</span>] == s2[j<span class="number">-1</span>]) &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>If you are given one string <strong>s</strong> the approach may little vary:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; n; ++l) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == s[j]) &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="Google-Guava-介绍"><a href="#Google-Guava-介绍" class="headerlink" title="Google Guava 介绍"></a>Google Guava 介绍</h2><p>Google Guava 是 Google 公司内部 Java 开发工具库的开源版本。Google 内部的很多 Java 项目都在使用它。它提供了一些 JDK 没有提供的功能，以及对 JDK 已有功能的增强功能。其中就包括：集合（Collections）、缓存（Caching）、原生类型支持（Primitives Support）、并发库（Concurrency Libraries）、通用注解（Common Annotation）、字符串处理（Strings Processing）、数学计算（Math）、I/O、事件总线（EventBus）等等：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/21.png" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1675068398.html#more" rel="contents">
+            <a class="btn" href="/p/24993952.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -901,7 +890,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -944,7 +933,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

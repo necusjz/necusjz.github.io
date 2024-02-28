@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/399501003.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2842312158.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/399501003.html" itemprop="url">
-                  Designing an API Rate Limiter
+                <a class="post-title-link" href="/p/2842312158.html" itemprop="url">
+                  Distinct Ways
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T18:52:28+08:00">
-                2021-02-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:20:31+08:00">
+                2021-03-01
               </time>
             
 
@@ -356,16 +356,415 @@
 
       
         
-          <h2 id="What-is-a-Rate-Limiter"><a href="#What-is-a-Rate-Limiter" class="headerlink" title="What is a Rate Limiter?"></a>What is a Rate Limiter?</h2><p>Imagine we have a service which is receiving a huge number of requests, but it can only serve a limited number of requests per second. To handle this problem we would need some kind of throttling or rate limiting mechanism that would allow only a certain number of requests so our service can respond to all of them. A rate limiter, at a high level, limits the number of events an entity (user, device, IP, etc.) can perform in a particular time window. For example:</p>
+          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a target find a number of distinct ways to reach the target.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Sum all possible ways to reach the current state:</p>
+<blockquote>
+<p>dp[i] = dp[i-1] + dp[i-2] + … + dp[i-k]</p>
+</blockquote>
+<p>Generate sum for all values in the target and return the value for the target:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ways.size(); ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ways[j] &lt;= i) &#123;</span><br><span class="line">            dp[i] += dp[i-ways[j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[target];</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note</strong>:<br>Some questions point out the number of repetitions, in that case, <strong>add one more loop</strong> to simulate every repetition.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2842312158.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3410525220.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3410525220.html" itemprop="url">
+                  Min/Max to Reach a Target
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:01:33+08:00">
+                2021-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a target find minimum (maximum) cost/path/sum to reach the target.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Choose minimum (maximum) path among all possible paths before the current state, then add value for the current state:</p>
+<blockquote>
+<p>dp[i] = min(dp[i-1], dp[i-2], …, dp[i-k]) + cost[i]</p>
+</blockquote>
+<p>Generate optimal solutions for all values in the target and return the value for the target:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ways.size(); ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ways[j] &lt;= i) &#123;</span><br><span class="line">            dp[i] = min(dp[i], dp[i-ways[j]] + cost);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[target];</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3410525220.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/522404174.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/522404174.html" itemprop="url">
+                  Additional Resources
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-28T01:44:04+08:00">
+                2021-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Here are some useful links for further reading:</p>
 <ul>
-<li>A user can send only one message per second;</li>
-<li>A user is allowed only three failed credit card transactions per day;</li>
-<li>A single IP can only create twenty accounts per day;</li>
+<li><a href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" target="_blank" rel="noopener">Dynamo</a> - Highly available key-value store;</li>
+<li><a href="http://notes.stephenholiday.com/Kafka.pdf" target="_blank" rel="noopener">Kafka</a> - A distributed messaging system for log processing;</li>
+<li><a href="https://www.akamai.com/es/es/multimedia/documents/technical-publication/consistent-hashing-and-random-trees-distributed-caching-protocols-for-relieving-hot-spots-on-the-world-wide-web-technical-publication.pdf" target="_blank" rel="noopener">Consistent Hashing</a> - Original paper;</li>
+<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf" target="_blank" rel="noopener">Paxos</a> - Protocol for distributed consensus;</li>
+<li><a href="http://sites.fas.harvard.edu/~cs265/papers/kung-1981.pdf" target="_blank" rel="noopener">Concurrency Controls</a> -<br>Optimistic methods for concurrency controls;</li>
+<li><a href="http://highscalability.com/blog/2011/11/14/using-gossip-protocols-for-failure-detection-monitoring-mess.html" target="_blank" rel="noopener">Gossip Protocol</a> - For failure detection and more;</li>
+<li><a href="http://static.googleusercontent.com/media/research.google.com/en/us/archive/chubby-osdi06.pdf" target="_blank" rel="noopener">Chubby</a> - Lock service for loosely-coupled distributed systems;</li>
+<li><a href="https://www.usenix.org/legacy/event/usenix10/tech/full_papers/Hunt.pdf" target="_blank" rel="noopener">ZooKeeper</a> - Wait-free coordination for Internet-scale systems;</li>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener">MapReduce</a> - Simplified data processing on large clusters;</li>
+<li><a href="https://storageconference.us/2010/Papers/MSST/Shvachko.pdf" target="_blank" rel="noopener">Hadoop</a> - A distributed file system;</li>
 </ul>
-<p>In general, a rate limiter caps how many requests a sender can issue in a specific time window. It then blocks requests once the cap is reached.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3434091281.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3434091281.html" itemprop="url">
+                  Designing Ticketmaster
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-28T00:32:58+08:00">
+                2021-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="What-is-an-Online-Movie-Ticket-Booking-System"><a href="#What-is-an-Online-Movie-Ticket-Booking-System" class="headerlink" title="What is an Online Movie Ticket Booking System?"></a>What is an Online Movie Ticket Booking System?</h2><p>A movie ticket booking system provides its customers the ability to purchase theatre seats online. E-ticketing systems allow the customers to browse through movies currently being played and to book seats, anywhere anytime.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Our ticket booking service should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
+<ol>
+<li>Our ticket booking service should be able to list different cities where its affiliate cinemas are located;</li>
+<li>Once the user selects the city, the service should display the movies released in that particular city;</li>
+<li>Once the user selects a movie, the service should display the cinemas running that movie and its available showtimes;</li>
+<li>The user should be able to choose a show at a particular cinema and book their tickets;</li>
+<li>The service should be able to show the user the seating arrangement of the cinema hall. The user should be able to select multiple seats according to their preference;</li>
+<li>The user should be able to distinguish available seats from booked ones;</li>
+<li>Users should be able to put a hold on the seats for five minutes before they make a payment to finalize the booking;</li>
+<li>The user should be able to wait if there is a chance that the seats might become available, e.g., when holds by other users expire;</li>
+<li>Waiting customers should be serviced in a fair, first come, first serve manner;</li>
+</ol>
+<p><strong>Non-Functional Requirements</strong>:</p>
+<ol>
+<li>The system would need to be highly concurrent. There will be multiple booking requests for the same seat at any particular point in time. The service should handle this gracefully and fairly;</li>
+<li>The core thing of the service is ticket booking, which means financial transactions. This means that the system should be secure and the database ACID compliant;</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/399501003.html#more" rel="contents">
+            <a class="btn" href="/p/3434091281.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -408,7 +807,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3988606675.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2387701916.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -430,8 +829,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3988606675.html" itemprop="url">
-                  Designing Typeahead Suggestion
+                <a class="post-title-link" href="/p/2387701916.html" itemprop="url">
+                  Designing Uber backend
                 </a>
               
             
@@ -447,8 +846,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-18T17:33:31+08:00">
-                2021-02-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-27T22:10:31+08:00">
+                2021-02-27
               </time>
             
 
@@ -484,436 +883,24 @@
 
       
         
-          <h2 id="What-is-Typeahead-Suggestion"><a href="#What-is-Typeahead-Suggestion" class="headerlink" title="What is Typeahead Suggestion?"></a>What is Typeahead Suggestion?</h2><p>Typeahead suggestions enable users to search for known and frequently searched terms. As the user types into the search box, it tries to predict the query based on the characters the user has entered and gives a list of suggestions to complete the query. Typeahead suggestions help the user to articulate their search queries better. It’s not about speeding up the search process but rather about guiding the users and lending them a helping hand in constructing their search query.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><ul>
-<li><strong>Functional Requirements</strong>: As the user types in their query, our service should suggest top 10 terms starting with whatever the user has typed;</li>
-<li><strong>Non-Function Requirements</strong>: The suggestions should appear in real-time. The user should be able to see the suggestions within 200ms;</li>
+          <h2 id="What-is-Uber"><a href="#What-is-Uber" class="headerlink" title="What is Uber?"></a>What is Uber?</h2><p>Uber enables its customers to book drivers for taxi rides. Uber drivers use their personal cars to drive customers around. Both customers and drivers communicate with each other through their smartphones using the Uber app.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s start with building a simpler version of Uber.<br>There are two types of users (Drivers, Customers) in our system:</p>
+<ul>
+<li>Drivers need to regularly notify the service about their current location and their availability to pick passengers;</li>
+<li>Passengers get to see all the nearby available drivers;</li>
+<li>Customer can request a ride; nearby drivers are notified that a customer is ready to be picked up;</li>
+<li>Once a driver and a customer accept a ride, they can constantly see each other’s current location until the trip finishes;</li>
+<li>Upon reaching the destination, the driver marks the journey complete to become available for the next ride;</li>
+</ul>
+<h2 id="Capacity-Estimation-and-Constraints"><a href="#Capacity-Estimation-and-Constraints" class="headerlink" title="Capacity Estimation and Constraints"></a>Capacity Estimation and Constraints</h2><ul>
+<li>Let’s assume we have 300M customers and 1M drivers with 1M daily active customers and 500K daily active drivers;</li>
+<li>Let’s assume 1M daily rides;</li>
+<li>Let’s assume that all active drivers notify their current location every three seconds;</li>
+<li>Once a customer puts in a request for a ride, the system should be able to contact drivers in real-time;</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3988606675.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3903474270.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3903474270.html" itemprop="url">
-                  Designing Youtube or Netflix
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-18T14:00:29+08:00">
-                2021-02-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Why-Youtube"><a href="#Why-Youtube" class="headerlink" title="Why Youtube?"></a>Why Youtube?</h2><p>Youtube is one of the most popular video sharing websites in the world. Users of the service can upload, view, share, rate, and report videos as well as add comments on videos.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>For the sake of this exercise, we plan to design a simpler version of Youtube with following requirements:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Users should be able to upload videos;</li>
-<li>Users should be able to share and view videos;</li>
-<li>Users should be able to perform searches based on video titles;</li>
-<li>Our services should be able to record stats of videos, e.g., likes/dislikes, total number of views, etc;</li>
-<li>Users should be able to add and view comments on videos;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>The system should be highly reliable, any video uploaded should not be lost;</li>
-<li>The system should be highly available. Consistency can take a hit (in the interest of availability); if a user doesn’t see a video for a while, it should be fine;</li>
-<li>Users should have a real-time experience while watching videos and should not feel any lag;</li>
-</ol>
-<p><strong>Not in Scope</strong>: Video recommendations, most popular videos, channels, subscriptions, watch later, favorites, etc.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3903474270.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1116262314.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1116262314.html" itemprop="url">
-                  Designing Twitter
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-17T18:41:07+08:00">
-                2021-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="What-is-Twitter"><a href="#What-is-Twitter" class="headerlink" title="What is Twitter?"></a>What is Twitter?</h2><p>Twitter is an online social networking service where users post and read short 140-character messages called “tweets”. Registered users can post and read tweets, but those who are not registered can only read them. Users access Twitter through their website interface, SMS, or mobile app.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>We will be designing a simpler version of Twitter with the following requirements:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Users should be able to post new tweets;</li>
-<li>A user should be able to follow other users;</li>
-<li>Users should be able to mark tweets as favorites;</li>
-<li>The service should be able to create and display a user’s timeline consisting of top tweets from all the people the user follows;</li>
-<li>Tweets can contain photos and videos;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>Our service needs to be highly available;</li>
-<li>Acceptable latency of the system is 200ms for timeline generation;</li>
-<li>Consistency can take a hit (in the interest of availability); if a user doesn’t see a tweet for a while, it should be fine;</li>
-</ol>
-<p><strong>Extended Requirements</strong>:</p>
-<ol>
-<li>Searching for tweets;</li>
-<li>Replying to a tweet;</li>
-<li>Trending topics – current hot topics/searches;</li>
-<li>Tagging other users;</li>
-<li>Tweet Notification;</li>
-<li>Who to follow? Suggestions?</li>
-<li>Moments;</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1116262314.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1494138080.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1494138080.html" itemprop="url">
-                  Designing Facebook Messenger
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-14T23:23:35+08:00">
-                2021-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="What-is-Facebook-Messenger"><a href="#What-is-Facebook-Messenger" class="headerlink" title="What is Facebook Messenger?"></a>What is Facebook Messenger?</h2><p>Facebook Messenger is a software application which provides text-based instant messaging services to its users. Messenger users can chat with their Facebook friends both from cell-phones and Facebook’s website.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Our Messenger should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Messenger should support one-on-one conversations between users;</li>
-<li>Messenger should keep track of the online/offline statuses of its users;</li>
-<li>Messenger should support the persistent storage of chat history;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>Users should have real-time chat experience with minimum latency;</li>
-<li>Our system should be highly consistent; users should be able to see the same chat history on all their devices;</li>
-<li>Messenger’s high availability is desirable; we can tolerate lower availability in the interest of consistency;</li>
-</ol>
-<p><strong>Extended Requirements</strong>:</p>
-<ol>
-<li>Group Chats: Messenger should support multiple people talking to each other in a group;</li>
-<li>Push notifications: Messenger should be able to notify users of new messages when they are offline;</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1494138080.html#more" rel="contents">
+            <a class="btn" href="/p/2387701916.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -951,7 +938,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -994,7 +981,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

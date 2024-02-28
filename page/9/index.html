@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/907302273.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3697556407.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/907302273.html" itemprop="url">
-                  Network Security Groups
+                <a class="post-title-link" href="/p/3697556407.html" itemprop="url">
+                  Azure Application Gateway and Azure WAF
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T13:03:11+08:00">
-                2022-04-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-25T00:22:47+08:00">
+                2022-04-25
               </time>
             
 
@@ -356,12 +356,14 @@
 
       
         
-          <p><em>Network Security Group</em> (NSG) is a built-in tool for network control that allow us to <strong>control incoming and outgoing traffic on an NIC or at the subnet level</strong>. They contain sets of rules that allow or deny specific traffic to specific resources or subnets in Azure. An NSG can be associated with either a subnet (by applying security rules to all resources associated with the subnet) or an NIC, which is done by applying security rules to the VM associated with the NIC.</p>
-<h2 id="Create-an-NSG"><a href="#Create-an-NSG" class="headerlink" title="Create an NSG"></a>Create an NSG</h2><p>As a first step to more effectively control network traffic, we are going to create a new NSG. <strong>The NSG deployment can be initiated during a VM deployment</strong>. This will associate the NSG to the NIC associated with the deployed VM. In this case, the NSG is already associated with the resource, and rules defined in the NSG will apply only to the associated VM.</p>
-<p>If the NSG is deployed separately, it is not associated and <strong>the rules that are created within it are not applied until an association has been created with the NIC or the subnet</strong>. When it is associated with a subnet, the NSG rules will apply to all resources on the subnet.</p>
+          <p><em>Azure Application Gateway</em> is essentially a load balancer for web traffic, but it also provides us with better traffic control. Traditional load balancers operate on the transport layer and allow us to route traffic based on protocol (TCP or UDP) and IP address, mapping IP addresses, and protocols in the frontend to IP addresses and protocols in the backend. This <strong>classic operation mode is often referred to as layer 4</strong>.</p>
+<p>Application gateway expands on that and allows us to <strong>use hostnames and paths to determine where traffic should go, making it a layer 7 load balancer</strong>. For example, we can have multiple servers that are optimized for different things. If one of our servers is optimized for video, then all video requests should be routed to that specific server based on the incoming URL request.</p>
+<h2 id="Create-an-application-gateway"><a href="#Create-an-application-gateway" class="headerlink" title="Create an application gateway"></a>Create an application gateway</h2><p><em>Azure Application Gateway</em> can be used as a simple load balancer to perform traffic distribution from the frontend to the backend based on protocols and ports. But it can also expand on that and perform additional routing based on hostnames and paths. This allows us to have resource pools based on rules and also allows us to optimize performance. Using these options and performing routing based on context will increase application performance, along with providing high availability. Of course, in this case, we need to <strong>have multiple resources for each performance type in each backend pool</strong> (each performance type requests a separate backend pool).</p>
+<p>Using these additional rules, we can <strong>route incoming requests to endpoints that are optimized for certain roles</strong>. For example, we can have multiple backend pools with different settings that are optimized to perform only specific tasks. Based on the nature of the incoming requests, the application gateway will route the requests to the appropriate backend pool. This approach, along with high availability, will provide better performance by routing each request to a backend pool that will process the request in a more optimized way.</p>
+<p>We can set up autoscaling for application gateway (available only for V2) with additional information for the minimum and maximum number of units. This way, application gateway will <strong>scale based on demand and ensure that performance is not impacted</strong>, even with the maximum number of requests.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/907302273.html#more" rel="contents">
+            <a class="btn" href="/p/3697556407.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -404,7 +406,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/743133161.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1841516736.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -426,8 +428,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/743133161.html" itemprop="url">
-                  Virtual Machine Networking
+                <a class="post-title-link" href="/p/1841516736.html" itemprop="url">
+                  Traffic Manager
                 </a>
               
             
@@ -443,8 +445,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:39:24+08:00">
-                2022-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-23T23:44:09+08:00">
+                2022-04-23
               </time>
             
 
@@ -480,13 +482,12 @@
 
       
         
-          <p><em>Azure Virtual Machine</em> depends on virtual networking, and <strong>during the creation process, we need to define the network settings</strong>.</p>
-<h2 id="Create-VMs"><a href="#Create-VMs" class="headerlink" title="Create VMs"></a>Create VMs</h2><p>When a VM is created, a <em>Network Interface Card</em> (NIC) is created in the process. <strong>An NIC is used as a sort of interconnection between the VM and the VNet</strong>. A NIC is assigned a private IP address by the network. As an NIC is associated with both the VM and the VNet, the IP address is used by the VM. Using this IP address, the VM can communicate over a private network with other VMs (or other Azure resources) on the same network.</p>
-<p>Additionally, <strong>NICs and VMs can be assigned public IP addresses as well</strong>. A public address can be used to communicate with the VM over the internet, either to access services or to manage the VM.</p>
-<h2 id="View-VM-network-settings"><a href="#View-VM-network-settings" class="headerlink" title="View VM network settings"></a>View VM network settings</h2><p>After an Azure VM is created, we can review the network settings in the VM pane. Networking information is displayed in several places, including in the VM’s network settings. Additionally, each Azure resource has a separate pane and exists as an individual resource, so we can view these settings in multiple places. However, <strong>the most complete picture of VM network settings can be found in the VM pane and the NIC pane</strong>.</p>
+          <p>Azure Load Balancer is limited to providing high availability and scalability only to Azure VMs. Also, a single load balancer is limited to VMs in a single Azure region. If we want to provide high availability and scalability to other Azure services that are globally distributed, we must introduce a new component—<em>Azure Traffic Manager</em>. Traffic manager is <strong>DNS-based and provides the ability to distribute traffic over services and spread traffic across Azure regions</strong>. But traffic manager is not limited to Azure services only; we can add external endpoints as well.</p>
+<h2 id="Create-a-traffic-manager-profile"><a href="#Create-a-traffic-manager-profile" class="headerlink" title="Create a traffic manager profile"></a>Create a traffic manager profile</h2><p>Traffic manager provides load balancing to services, but traffic is routed and directed using DNS entries. <strong>The frontend is an FQDN assigned during creation, and all traffic coming to traffic manager is distributed to endpoints in the backend</strong>. The default routing method is <em>Performance</em>. The performance method will distribute traffic based on the best possible performance available.</p>
+<p>For example, if we have more than one backend endpoint in the same region, traffic will be spread evenly. If the endpoints are located across different regions, traffic manager will <strong>direct traffic to the endpoint closest to the incoming traffic in terms of geographical location and minimum network latency</strong>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/743133161.html#more" rel="contents">
+            <a class="btn" href="/p/1841516736.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -529,7 +530,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/457978096.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2042627151.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -551,8 +552,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/457978096.html" itemprop="url">
-                  Azure Virtual Network
+                <a class="post-title-link" href="/p/2042627151.html" itemprop="url">
+                  Load Balancers
                 </a>
               
             
@@ -568,8 +569,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:18:23+08:00">
-                2022-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-23T18:02:25+08:00">
+                2022-04-23
               </time>
             
 
@@ -605,13 +606,14 @@
 
       
         
-          <p><em>Azure Virtual Network</em> represents your local network in the cloud. It enables other Azure resources to communicate over a secure private network <strong>without exposing endpoints over the internet</strong>.</p>
-<h2 id="Create-a-VNet"><a href="#Create-a-VNet" class="headerlink" title="Create a VNet"></a>Create a VNet</h2><p>We deploy VNets to resource group under subscription in the Azure data center that we choose. <em>Region</em> and <em>Subscription</em> are important parameters; we will <strong>only be able to attach Azure resources to this VNet if they are in the same subscription and region as the Azure data center</strong>.</p>
-<p>The address space option defines the number of IP addresses that will be available for our network. It uses the <em>Classless Inter-Domain Routing</em> (CIDR) format and the largest range we can choose is /8. In the portal, we need to create an initial subnet and define the subnet address range. <strong>The smallest subnet allowed is /29 and the largest is /8</strong> (however, this cannot be larger than the VNet range). For reference, the range 10.0.0.0/8 will create an address range of 167772115 IP addresses (from 10.0.0.0 to 10.255.255.255) and 10.0.0.0/29 will create a range of 8 IP addresses (from 10.0.0.0 to 10.0.0.7).</p>
-<h2 id="Add-a-subnet"><a href="#Add-a-subnet" class="headerlink" title="Add a subnet"></a>Add a subnet</h2><p>In addition to adding subnets while creating a VNet, we can <strong>add additional subnets to our network at any time</strong>. A single VNet can have multiple subnets defined. Subnets cannot overlap and must be in the range of the VNet address range. For each subnet, four IP addresses are saved for Azure management and cannot be used. Depending on the network settings, we can define the communication rules between subnets in the VNet.</p>
+          <p><em>Azure Load Balancer</em> is used to support scaling and high availability for applications and services. A load balancer is primarily composed of <strong>three components—a frontend, a backend, and routing rules</strong>. Requests coming to the frontend of a load balancer are distributed based on routing rules to the backend, where we place multiple instances of a service.</p>
+<p>This can be used for performance-related reasons, where we would like to distribute traffic equally between endpoints in the backend, or for high availability, where multiple instances of services are used to increase the chances that at least one endpoint will be available at all times. Azure supports <strong>two types of load balancers—internal and public</strong>.</p>
+<h2 id="Create-an-internal-load-balancer"><a href="#Create-an-internal-load-balancer" class="headerlink" title="Create an internal load balancer"></a>Create an internal load balancer</h2><p>An internal load balancer is assigned a private IP address (from the address range of subnets in the VNet) for a frontend IP address, and it targets the private IP addresses of our services (usually, an Azure VM) in the backend. An internal load balancer is <strong>usually used by services that are not internet-facing and are accessed only from within our VNet</strong>.</p>
+<p>Traffic can come from other networks (other VNets or local networks) if there is some kind of VPN in place. <strong>The traffic coming to the frontend of the internal load balancer will be distributed across the endpoints in the backend of the load balancer</strong>. Internal load balancers are usually used for services that are not placed in a <em>DeMilitarized Zone</em> (DMZ) (and are therefore not accessible over the internet), but rather in middle- or back-tier services in a multitier application architecture.</p>
+<p>We also need to keep in mind the differences between the Basic and Standard SKUs. The main difference is in <em>Performance</em> (this is better in the Standard SKU) and <em>SLA</em> (Standard has an SLA guaranteeing 99.99% availability, while Basic has no SLA). Also, note that <strong>Standard SKU requires an NSG</strong>. If an NSG is not present on the subnet or network interface, or NIC (of the VM in the backend), traffic will not be allowed to reach its target. For more information on load balancer SKUs, see <a href="https://docs.microsoft.com/azure/load-balancer/skus" target="_blank" rel="noopener">https://docs.microsoft.com/azure/load-balancer/skus</a>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/457978096.html#more" rel="contents">
+            <a class="btn" href="/p/2042627151.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -654,7 +656,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/558864227.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2931158028.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -676,8 +678,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/558864227.html" itemprop="url">
-                  Bump Python SDK
+                <a class="post-title-link" href="/p/2931158028.html" itemprop="url">
+                  Connect to Resources Securely
                 </a>
               
             
@@ -693,8 +695,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-11T11:40:53+08:00">
-                2022-04-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T23:40:35+08:00">
+                2022-04-22
               </time>
             
 
@@ -730,22 +732,12 @@
 
       
         
-          <h2 id="Update-corresponding-versions"><a href="#Update-corresponding-versions" class="headerlink" title="Update corresponding versions"></a>Update corresponding versions</h2><p>Update <em>package name + package version</em>:</p>
-<ul>
-<li>setup.py;</li>
-<li>requirements.py3.Linux.txt;</li>
-<li>requirements.py3.Darwin.txt;</li>
-<li>requirements.py3.Windows.txt;</li>
-</ul>
-<p>Update <em>resource type + api version</em>:</p>
-<ul>
-<li>_shared.py (latest);</li>
-</ul>
-<h2 id="Setup-development-environment"><a href="#Setup-development-environment" class="headerlink" title="Setup development environment"></a>Setup development environment</h2><p>Install expected Python packages:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
+          <p><strong>Exposing management endpoints (RDP, SSH, HTTP, and others) over a public IP address is not a good idea</strong>. Any kind of management access should be controlled and allowed only over a secure connection. Usually, this is done by connecting to a private network (via S2S or P2S) and accessing resources over private IP addresses. In some situations, this is not easy to achieve. The cause of this can be insufficient local infrastructure, or in some cases, the scenario may be too complex. Fortunately, there are other ways to achieve the same goal. We can safely connect to our resources using <em>Azure Bastion</em>, <em>Azure Virtual WAN</em>, and <em>Azure Private Link</em>.</p>
+<h2 id="Create-a-bastion-instance"><a href="#Create-a-bastion-instance" class="headerlink" title="Create a bastion instance"></a>Create a bastion instance</h2><p><em>Azure Bastion</em> allows us to connect securely to our Azure resources without additional infrastructure. All we need is a browser. It is essentially <strong>a PaaS service provisioned in our VNet that provides a secure RDP/SSH connection to Azure VMs</strong>. The connection is made directly from the Azure Portal over <em>Transport Layer Security</em> (TLS). Using TLS, it provides a secure RDP and SSH connection to all resources on that network. The connection is made through a browser session, and no public IP address is required. This means that we don’t need to expose any of the management ports over a public IP address.</p>
+<h2 id="Connect-to-a-VM-with-bastion"><a href="#Connect-to-a-VM-with-bastion" class="headerlink" title="Connect to a VM with bastion"></a>Connect to a VM with bastion</h2><p>With Azure Bastion, we can connect to a VM through the browser without a public IP address and without exposing it publicly. Azure Bastion <strong>uses a subnet in the VNet to connect to VMs in that specific network</strong>. It provides a safe connection over TLS and allows a connection to a VM without exposing it over a public IP address.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/558864227.html#more" rel="contents">
+            <a class="btn" href="/p/2931158028.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -788,7 +780,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3597318647.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -810,8 +802,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1507841079.html" itemprop="url">
-                  Generate CLI from Swagger
+                <a class="post-title-link" href="/p/3597318647.html" itemprop="url">
+                  Create Hybrid Connections
                 </a>
               
             
@@ -827,8 +819,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-08T10:21:45+08:00">
-                2022-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T18:24:27+08:00">
+                2022-04-22
               </time>
             
 
@@ -864,46 +856,12 @@
 
       
         
-          <p>It’s always good to start with a command like that:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --version=3.0.6370 --az --use=@autorest/az@latest ../azure-rest-api-specs/specification/dnsresolver/resource-manager/readme.md --azure-cli-extension-folder=./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>Make sure you have these specific versions installed:</p>
-<table>
-<thead>
-<tr>
-<th align="center">AutoRest Core</th>
-<th align="center">AutoRest CLI</th>
-<th align="center">Node.js</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">3.0.6370</td>
-<td align="center">3.5.1</td>
-<td align="center">12.20</td>
-</tr>
-</tbody></table>
-<p>Errors you might encounter nowadays:</p>
-<ul>
-<li>ERROR: Schema violation: Additional properties not allowed: x-ms-identifiers<ol>
-<li>Append <em>--pass-thru:schema-validator-swagger</em> to the command;</li>
-</ol>
-</li>
-<li>AttributeError: module ‘mistune’ has no attribute ‘BlockGrammar’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_python@5.4.0/node_modules/@autorest/python</em>;</li>
-<li>Execute <em>pip install mistune==0.8.4</em>;</li>
-</ol>
-</li>
-<li>ImportError: cannot import name ‘_unicodefun’ from ‘click’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_az@1.8.0/node_modules/@autorest/az</em>;</li>
-<li>Execute <em>pip install click==8.0.2</em>;</li>
-</ol>
-</li>
-</ul>
-<p>One more thing, it’s a good practice to clean up AutoRest extensions by:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --reset</span><br></pre></td></tr></table></figure>
+          <p><em>Hybrid Connection</em> allows us to create secure connections with VNets. These connections can either be from on-premises or from other VNets. Establishing connections to VNets enables the exchange of secure network traffic with other services that are located in different VNets, different subscriptions, or outside Azure (in different clouds or on-premises). Using secure connections <strong>removes the need for publicly exposed endpoints that present a potential security risk</strong>. This is especially important when we consider management, where opening public endpoints creates a security risk and presents a major issue.</p>
+<p>For example, if we consider managing VMs, it’s a common practice to use either <em>Remote Desktop Protocol</em> (RDP) or PowerShell for management. Exposing these ports to public access presents a great risk. A best practice is to <strong>disable any kind of public access to such ports and use only access from an internal network for management</strong>. In this case, we use either a Site-to-Site or a Point-to-Site connection to enable secure management.</p>
+<p>In another scenario, we might need the ability to <strong>access a service or a database on another network, either on-premises or via another VNet</strong>. Again, exposing these services might present a risk, and we use either Site-to-Site, VNet-to-VNet, or VNet peering to enable such a connection in a secure way.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1507841079.html#more" rel="contents">
+            <a class="btn" href="/p/3597318647.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -941,7 +899,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -984,7 +942,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

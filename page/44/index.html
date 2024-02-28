@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/336071984.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3239570309.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/336071984.html" itemprop="url">
-                  Presentations and Conferences
+                <a class="post-title-link" href="/p/3239570309.html" itemprop="url">
+                  异步与通讯
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T21:55:51+08:00">
-                2019-10-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-17T00:50:01+08:00">
+                2020-01-17
               </time>
             
 
@@ -356,24 +356,20 @@
 
       
         
-          <h2 id="Presenting-a-product-or-service"><a href="#Presenting-a-product-or-service" class="headerlink" title="Presenting a product or service"></a>Presenting a product or service</h2><blockquote>
-<p>I want to tell you today about…</p>
-</blockquote>
-<h3 id="Useful-Tips"><a href="#Useful-Tips" class="headerlink" title="Useful Tips"></a>Useful Tips</h3><p>When presenting a product or service, an effective way to convince your audience is to follow the <strong>FAB</strong> approach:</p>
+          <h2 id="异步（Asynchronism）"><a href="#异步（Asynchronism）" class="headerlink" title="异步（Asynchronism）"></a>异步（Asynchronism）</h2><p><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/08/00.jpg" alt></p>
+<p>异步工作流有助于减少那些原本顺序执行的请求时间。它们可以通过<strong>提前进行一些耗时的工作</strong>来帮助减少请求时间，比如定期汇总数据。</p>
+<h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>消息队列接收、保留和传递消息。如果<strong>按顺序执行操作太慢</strong>的话，你可以使用有以下工作流的消息队列：</p>
 <ul>
-<li><strong>F</strong>eature: Highlight the features of the product or service you want the audience to focus on.</li>
-<li><strong>A</strong>dvantage: Show how these features make the product or service better than its predecessors or competitors.</li>
-<li><strong>B</strong>enefit: Show how this product or service will improve the user’s life.</li>
+<li>应用程序将作业发布到队列，然后通知用户作业状态；</li>
+<li>一个 worker 从队列中取出该作业，对其进行处理，然后显示该作业完成；</li>
 </ul>
-<p>This approach can be grouped into a <em>3-step</em> presentation structure:</p>
-<ol>
-<li>Introduction: Summarize what you are going to tell the audience.</li>
-<li>Main body: Tell them.</li>
-<li>Conclusion: Tell them what they should do next.</li>
-</ol>
+<p>不去阻塞用户操作，作业在后台处理。在此期间，客户端可能会进行一些处理使得<strong>任务看上去像是已经完成了</strong>。例如，如果要发送一条推文，推文可能会马上出现在你的时间线上，但是可能需要一些时间才能将你的推文推送到你的所有关注者那里去。</p>
+<p><code>Redis</code> 是一个令人满意的简单的消息代理，但是消息有可能会丢失。</p>
+<p><code>RabbitMQ</code> 很受欢迎但是要求你适应 AMQP 协议，并且管理你自己的节点。</p>
+<p><code>Amazon SQS</code> 是被托管的，但可能具有高延迟，并且消息可能会被传送两次。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/336071984.html#more" rel="contents">
+            <a class="btn" href="/p/3239570309.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -416,7 +412,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/440362476.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/350907895.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -438,8 +434,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/440362476.html" itemprop="url">
-                  Kubernetes - 生产级容器集群平台
+                <a class="post-title-link" href="/p/350907895.html" itemprop="url">
+                  数据库
                 </a>
               
             
@@ -455,8 +451,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-04T22:33:23+08:00">
-                2019-09-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-15T00:10:29+08:00">
+                2020-01-15
               </time>
             
 
@@ -492,20 +488,19 @@
 
       
         
-          <p>Kubernetes 是 Google 团队发起并维护的开源容器集群管理系统，底层<strong>基于 Docker、rkt 等容器技术</strong>，提供强大的应用管理和资源调度能力。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Kubernetes 是 Google 公司于 2014 年开源的容器集群管理项目。该项目<strong>基于 Go 语言实现</strong>，遵守 Apache v2 许可，试图为基于容器的应用部署和生产管理打造一套强大并且易用的操作平台。<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Kubernetes/01.png" alt><br>目前被云原生计算基金会（Cloud Native Computing Foundation，CNCF）管理，以开源项目形式持续演化。<br>Kubernetes 拥有鲜明的技术优势：</p>
+          <h2 id="关系型数据库管理系统（RDBMS）"><a href="#关系型数据库管理系统（RDBMS）" class="headerlink" title="关系型数据库管理系统（RDBMS）"></a>关系型数据库管理系统（RDBMS）</h2><p>像 SQL 这样的关系型数据库，是一系列以<code>表</code>的形式组织的<strong>数据项集合</strong>。</p>
+<p><code>ACID</code> 用来描述关系型数据库事务的特性：</p>
 <ul>
-<li>优秀的 API 设计，以及简洁高效的架构设计；</li>
-<li>基于微服务模式的多层资源抽象模型，兼顾灵活性与可操作性；</li>
-<li><strong>可拓展性好</strong>，模块化容易替换，伸缩能力极佳；</li>
-<li>自动化程度高，真正实现<code>所得即所用</code>；</li>
-<li>部署支持多种环境，包括虚拟机、裸机部署，还很好支持常见云平台；</li>
-<li>支持丰富的运维和配置工具，方便用户对集群进行性能测试、问题检查和状态监控；</li>
-<li>自带控制台、客户端命令等工具。</li>
+<li>原子性（<strong>A</strong>tomicity）：每个事务内部所有操作要么全部完成，要么全部不完成；</li>
+<li>一致性（<strong>C</strong>onsistency）：任何事务都使数据库从一个有效的状态转换到另一个有效状态；</li>
+<li>隔离性（<strong>I</strong>solation）：并发执行事务的结果与顺序执行事务的结果相同；</li>
+<li>持久性（<strong>D</strong>urability）：事务提交后，对系统的影响是永久的。</li>
 </ul>
+<p>关系型数据库的扩展，包括许多技术：<code>主-从复制</code>、<code>主-主复制</code>、<code>联邦</code>、<code>分片</code>、<code>非规范化</code>和 <code>SQL 调优</code>。</p>
+<h3 id="主-从复制"><a href="#主-从复制" class="headerlink" title="主-从复制"></a>主-从复制</h3><p>主库同时负责读取和写入操作，并复制写入到一个或多个从库中，<strong>从库只负责读操作</strong>。树状形式的从库再将写入复制到更多的从库中去。如果<strong>主库离线，系统可以以只读模式运行</strong>，直到某个从库被提升为主库或有新的主库出现：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/06/00.jpg" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/440362476.html#more" rel="contents">
+            <a class="btn" href="/p/350907895.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -548,7 +543,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1138769253.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4286794200.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -570,8 +565,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1138769253.html" itemprop="url">
-                  数据抽象
+                <a class="post-title-link" href="/p/4286794200.html" itemprop="url">
+                  反向代理与应用层
                 </a>
               
             
@@ -587,8 +582,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-29T23:32:23+08:00">
-                2019-08-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-28T10:59:30+08:00">
+                2019-12-28
               </time>
             
 
@@ -624,23 +619,25 @@
 
       
         
-          <p><code>数据类型</code>指的是一组值和一组对这些值的<strong>操作的集合</strong>。原则上所有程序都只需要使用原始数据类型即可，但为了在<strong>更高层次的抽象</strong>上编写程序更加方便，重点学习定义和使用数据类型，这个过程也被称为<code>数据抽象</code>。</p>
-<p>Java 编程的基础主要是使用 class 关键字构造被称为<code>引用类型</code>的数据类型。这种编程风格称为<code>面向对象编程</code>，因为它的核心概念是对象，即<strong>保存了某个数据类型的值的实体</strong>。</p>
-<p>抽象数据类型（ADT）是一种能够对使用者<strong>隐藏数据表示</strong>的数据类型：</p>
+          <h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p><code>Reverse Proxy</code> 是一种可以<strong>集中调用内部服务，并提供统一公共接口</strong>的 Web 服务器。来自客户端的请求先被反向代理服务器转发到可响应请求的服务器，然后再把服务器的响应结果返回给客户端。</p>
+<p><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/05/00.jpg" alt></p>
+<p>带来的好处包括：</p>
 <ul>
-<li>在使用 ADT 时，我们的注意力集中在 API 描述的操作上，而不会去关心数据的表示；</li>
-<li>在实现 ADT 时，我们的注意力集中在数据本身，并将实现对该数据的各种操作；</li>
+<li><strong>增加安全性</strong>：隐藏后端服务器的信息，屏蔽黑名单中的 IP，限制每个客户端的连接数；</li>
+<li><strong>提高可扩展性和灵活性</strong>：客户端只能看到反向代理服务器的 IP，这使你可以增减服务器或修改它们的配置；</li>
+<li>SSL 终结：<strong>解密传入的请求并加密服务器响应</strong>，这样的话后端服务器就不必再执行这些潜在高消耗运算了（不需要再每台服务器上安装 <code>X.509</code>）；</li>
+<li><strong>压缩</strong>：压缩服务器响应；</li>
+<li><strong>缓存</strong>：直接返回命中的缓存结果；</li>
+<li><strong>静态内容</strong>：直接提供静态内容（HTML/CSS/JS、图片、视频等）。</li>
 </ul>
-<p>在程序设计上，<strong>ADT 支持封装</strong>：</p>
-<ul>
-<li>以适用于各种用途的 API 形式，准确地定义问题；</li>
-<li>用 API 的实现描述算法和数据结构；</li>
+<h3 id="反向代理与负载均衡"><a href="#反向代理与负载均衡" class="headerlink" title="反向代理与负载均衡"></a>反向代理与负载均衡</h3><ul>
+<li>当你有多个服务器时，部署负载均衡器非常有用。通常，负载均衡器将流量路由给一组<strong>功能相同</strong>的服务器上；</li>
+<li><strong>即使只有一台 Web 服务器或应用服务器</strong>时，反向代理也同样有用；</li>
+<li>Nginx 和 HAProxy 等解决方案，可以<strong>同时支持</strong>七层反向代理和负载均衡。</li>
 </ul>
-<h2 id="使用抽象数据类型"><a href="#使用抽象数据类型" class="headerlink" title="使用抽象数据类型"></a>使用抽象数据类型</h2><p>要使用一种数据类型<strong>并不一定非得知道它是如何实现的</strong>，所以我们首先来编写一个使用一种名为 Counter 的简单数据类型的程序。</p>
-<p>要使用 Counter 对象，首先需要了解应该如何定义数据类型的操作，以及在 Java 语言中应该如何创建和使用某个数据类型的对象。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1138769253.html#more" rel="contents">
+            <a class="btn" href="/p/4286794200.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -683,7 +680,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1947218041.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2882315781.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -705,8 +702,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1947218041.html" itemprop="url">
-                  分布式处理与大数据平台
+                <a class="post-title-link" href="/p/2882315781.html" itemprop="url">
+                  负载均衡器
                 </a>
               
             
@@ -722,8 +719,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-25T12:51:22+08:00">
-                2019-08-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-25T17:56:19+08:00">
+                2019-12-25
               </time>
             
 
@@ -759,16 +756,21 @@
 
       
         
-          <p>分布式系统和大数据处理平台是目前业界关注的热门技术。三大重量级武器：<strong>Hadoop、Spark、Storm</strong>，以及新一代的数据采集和分析引擎 Elasticsearch。<br>实际上，摩尔定律的失效，必将导致越来越多的复杂任务必须<strong>采用分布式架构进行处理</strong>。已有的开源平台提供了很好的实现参考，方便用户将更多的精力放到核心业务的维护上。</p>
-<h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><p>Hadoop 是 Apache 软件基金会旗下的一个开源<strong>分布式计算平台</strong>，基于 Java 语言实现，由三个核心子系统组成：<strong>HDFS、YARN、MapReduce</strong>。其中，HDFS 是一套分布式文件系统；YARN 是资源管理系统，MapReduce 是<strong>运行在 YARN 上的应用</strong>，负责分布式处理管理。<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/02/01.jpg" alt><br>核心子系统说明如下：</p>
+          <p><code>Load Balancer</code> 将传入的请求分发到应用服务器和数据库等计算资源。无论哪种情况，负载均衡器将来自计算资源的响应，返回给恰当的客户端。负载均衡器的效用在于:</p>
 <ul>
-<li>HDFS：一个<strong>高度容错性的分布式文件系统</strong>，适合部署在大量廉价的机器上，提供高吞吐量的数据访问；</li>
-<li>YARN：<strong>资源管理器</strong>，可为上层应用提供统一的资源管理和调度，兼容多计算框架；</li>
-<li>MapReduce：是一种<strong>分布式编程模型</strong>，把大规模数据集的处理，<code>分发（Map）</code>给网络上的多个节点，之后收集处理结果进行<code>规约（Reduce）</code>。</li>
+<li>防止请求进入不好的服务器</li>
+<li>防止资源过载</li>
+<li><strong>帮助消除单一的故障点</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/04/00.jpg" alt></p>
+<p>负载均衡器可以通过硬件（昂贵）或 HAProxy 等软件来实现。 增加的好处包括：</p>
+<ul>
+<li>SSL 终结：<strong>解密传入的请求并加密服务器响应</strong>，这样的话后端服务器就不必再执行这些潜在高消耗运算了（不需要再每台服务器上安装 <code>X.509</code>）；</li>
+<li>Session 留存：当 <strong>Web 应用程序不追踪 session</strong> 时，发出 <code>cookie</code> 并将特定客户端的请求，路由到同一实例。</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1947218041.html#more" rel="contents">
+            <a class="btn" href="/p/2882315781.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -811,7 +813,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2378783909.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1008765119.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -833,8 +835,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2378783909.html" itemprop="url">
-                  Web 服务与应用
+                <a class="post-title-link" href="/p/1008765119.html" itemprop="url">
+                  域名系统与内容分发网络
                 </a>
               
             
@@ -850,8 +852,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T21:56:36+08:00">
-                2019-08-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-21T00:49:11+08:00">
+                2019-12-21
               </time>
             
 
@@ -887,19 +889,18 @@
 
       
         
-          <p>Web 服务和应用是目前互联网技术领域的热门技术。重点介绍如何使用 Docker 来运行常见的 Web 服务器（包括 Apache、Nginx、Tomcat 等），以及一些常见应用（包括 <code>LAMP</code> 和 <code>CI/CD</code>）。<br>包括 Web 服务在内的<strong>中间件领域十分适合引入容器技术</strong>：</p>
+          <h2 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h2><p><strong>D</strong>omain <strong>N</strong>ame <strong>S</strong>ystem（DNS）将 <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> 等域名转换成 IP 地址：</p>
+<p><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/03/00.jpg" alt></p>
+<p>域名系统是分层次的，一些 DNS 服务器位于顶层。当查询（域名）IP 时，路由或 ISP 提供连接 DNS 服务器的信息。<strong>较底层的 DNS 服务器缓存映射</strong>，它可能会因为 DNS 传播延时而失效。DNS 结果可以缓存在浏览器或操作系统中一段时间，时间长短取决于 <code>TTL</code>（Time To Live）：</p>
 <ul>
-<li>中间件服务器是除数据库服务器外的主要计算节点，<strong>很容易成为性能瓶颈</strong>，所以通常需要大批量部署，而 Docker 对于批量部署有着许多先天的优势；</li>
-<li>中间件服务器结构清晰，在剥离了配置文件、日志、代码目录之后，容器几乎可以<strong>处于零增长状态</strong>，这使得容器的迁移更加方便；</li>
-<li>中间服务器很容易实现集群，在使用硬件的 F5、软件的 Nginx 等<strong>负载均衡后</strong>，中间件服务器集群变得非常容易。</li>
+<li>NS 记录（域名服务）：指定解析域名或子域名的 DNS 服务器；</li>
+<li>MX 记录（邮件交换）：指定接收信息的邮件服务器；</li>
+<li>A 记录（地址）：指定域名对应的 IP 地址记录；</li>
+<li>CNAME（规范）：一个域名映射到另一个域名，或映射到一个 A 记录。</li>
 </ul>
-<blockquote>
-<p>需要注意<strong>数据的持久化</strong>。对于程序代码、资源目录、日志、数据库、文件等需要实时更新和保存的数据，一定要启动数据持久化机制，避免发生数据丢失。</p>
-</blockquote>
-<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><p>Apache 是一个高稳定性的、商业级别的开源 Web 服务器，是目前世界使用排名第一的 <strong>Web 服务器软件</strong>。<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/01/01.jpg" alt><br>在使用 Dockerfile 创建镜像时，会继承父镜像的开放端口，但却<strong>不会继承启动命令</strong>。因此，需要在 run.sh 脚本中添加启动 sshd 的服务的命令。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2378783909.html#more" rel="contents">
+            <a class="btn" href="/p/1008765119.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -937,7 +938,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/43/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/45/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/43/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/45/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -980,7 +981,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

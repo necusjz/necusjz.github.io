@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1492973727.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2952399260.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1492973727.html" itemprop="url">
-                  Top K Elements
+                <a class="post-title-link" href="/p/2952399260.html" itemprop="url">
+                  Consistent Hashing
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T22:56:12+08:00">
-                2021-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-06T20:07:23+08:00">
+                2021-02-06
               </time>
             
 
@@ -356,150 +356,22 @@
 
       
         
-          
-            <blockquote>
-<p>heapq 的大型应用现场，常与 freq 配合使用。借助 index 可以实现对复杂 object 的比较，也可以通过 total_ordering 定义数据类。有时需要用队列暂存 heappop 的元素。</p>
-</blockquote>
-<p>Any problem that asks us to find the <em>Top K Elements</em> among a given set falls under this pattern.</p>
-<p>The best data structure that comes to mind to keep track of “K” elements is <strong>heap</strong>. This pattern will make use of the heap to solve multiple problems dealing with “K” elements at a time from a set of given elements.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">freq = dict()</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> s:</span><br><span class="line">    freq[char] = freq.get(char, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">max_heap = []</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> freq:</span><br><span class="line">    heappush(max_heap, (-freq[char], char))</span><br><span class="line"></span><br><span class="line">ans = <span class="string">""</span></span><br><span class="line"><span class="keyword">while</span> max_heap:</span><br><span class="line">    queue, k = [], <span class="number">2</span>  <span class="comment"># store pop-up items</span></span><br><span class="line">    <span class="keyword">while</span> max_heap <span class="keyword">and</span> k &gt; <span class="number">0</span>:</span><br><span class="line">        count, char = heappop(max_heap)</span><br><span class="line">        ans += char</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> -count - <span class="number">1</span> &gt; <span class="number">0</span>:</span><br><span class="line">            queue.append((count + <span class="number">1</span>, char))</span><br><span class="line"></span><br><span class="line">        k -= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> k != <span class="number">0</span> <span class="keyword">and</span> queue:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># push back</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> queue:</span><br><span class="line">        heappush(max_heap, item)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/top-k-frequent-words/" target="_blank" rel="noopener">692. Top K Frequent Words</a><br><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a><br><a href="https://leetcode.com/problems/k-closest-points-to-origin/" target="_blank" rel="noopener">973. K Closest Points to Origin</a><br><a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/" target="_blank" rel="noopener">1167. Minimum Cost to Connect Sticks</a><br><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a><br><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank" rel="noopener">451. Sort Characters By Frequency</a><br><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/" target="_blank" rel="noopener">703. Kth Largest Element in a Stream</a><br><a href="https://leetcode.com/problems/find-k-closest-elements/" target="_blank" rel="noopener">658. Find K Closest Elements</a><br><a href="https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/" target="_blank" rel="noopener">1481. Least Number of Unique Integers after K Removals</a><br><a href="https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/" target="_blank" rel="noopener">1508. Range Sum of Sorted Subarray Sums</a><br><a href="https://leetcode.com/problems/reorganize-string/" target="_blank" rel="noopener">767. Reorganize String</a><br><a href="https://leetcode.com/problems/rearrange-string-k-distance-apart/" target="_blank" rel="noopener">358. Rearrange String k Distance Apart</a><br><a href="https://leetcode.com/problems/task-scheduler/" target="_blank" rel="noopener">621. Task Scheduler</a><br><a href="https://leetcode.com/problems/maximum-frequency-stack/" target="_blank" rel="noopener">895. Maximum Frequency Stack</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/836241768.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/836241768.html" itemprop="url">
-                  Bitwise XOR
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T20:56:43+08:00">
-                2021-01-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>四两拨千斤的位运算，比如：剥离最右边的 1、将最右边的 1 置 0 等等。更多技巧可以参考 <a href="https://catonmat.net/low-level-bit-hacks" target="_blank" rel="noopener">Low Level Bit Hacks</a>。</p>
-</blockquote>
-<p><em>Bitwise XOR</em> returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/04.png" alt></p>
-<p>It is surprising to know the approaches that the XOR operator enables us to solve certain problems. For example, let’s take a look at the following problem:</p>
+          <p><code>Distributed Hash Table</code> (DHT) is one of the fundamental components used in distributed scalable systems. Hash Tables need a key, a value, and a hash function where hash function maps the key to a location where the value is stored:</p>
 <blockquote>
-<p>Given an array of n-1 integers in the range from 1 to n, find the one number that is missing from the array.</p>
+<p>index = hash_function(key)</p>
 </blockquote>
-<p>Example:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span></span><br><span class="line">Answer: <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>A straight forward approach to solve this problem can be:</p>
+<p>Suppose we are designing a distributed caching system. Given “n” cache servers, an intuitive hash function would be “key % n”. It is simple and commonly used. But it has two major drawbacks:</p>
 <ol>
-<li>Find the sum of all integers from 1 to n; let’s call it: s1.</li>
-<li>Subtract all the numbers in the input array from s1; this will give us the missing number.</li>
+<li>It is NOT horizontally scalable. Whenever a new cache host is added to the system, all existing mappings are broken. It will be a pain point in maintenance if the caching system contains lots of data. Practically, it becomes difficult to schedule a downtime to update all caching mappings;</li>
+<li>It may NOT be load balanced, especially for non-uniformly distributed data. In practice, it can be easily assumed that the data will not be distributed uniformly. For the caching system, it translates into some caches becoming hot and saturated while the others idle and are almost empty;</li>
 </ol>
+<p>In such situations, consistent hashing is a good way to improve the caching system.</p>
+<h2 id="What-is-Consistent-Hashing"><a href="#What-is-Consistent-Hashing" class="headerlink" title="What is Consistent Hashing?"></a>What is Consistent Hashing?</h2><p>Consistent hashing is a very useful strategy for distributed caching systems and DHTs. It allows us to distribute data across a cluster in such a way that will minimize reorganization when nodes are added or removed. Hence, the caching system will be easier to scale up or scale down.</p>
+<p>In Consistent Hashing, when the hash table is resized (e.g., a new cache host is added to the system), only “k/n” keys need to be remapped where “k” is the total number of keys and “n” is the total number of servers. Recall that in a caching system using the “mod” as the hash function, all keys need to be remapped.</p>
+<p>In Consistent Hashing, objects are mapped to the same host if possible. When a host is removed from the system, the objects on that host are shared by other hosts; when a new host is added, it takes its share from a few hosts without touching other’s shares.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/836241768.html#more" rel="contents">
+            <a class="btn" href="/p/2952399260.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -542,7 +414,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/581537989.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2737299582.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -564,8 +436,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/581537989.html" itemprop="url">
-                  Modified Binary Search
+                <a class="post-title-link" href="/p/2737299582.html" itemprop="url">
+                  CAP Theorem
                 </a>
               
             
@@ -581,8 +453,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T20:46:57+08:00">
-                2021-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-06T19:09:18+08:00">
+                2021-02-06
               </time>
             
 
@@ -618,17 +490,14 @@
 
       
         
-          
-            <blockquote>
-<p>无处不在的二分思想。往往通过外部变量 track 中间结果，元素不是 distinct 时需要单独处理。有时仅为解法的一小步，bisect_left 第一个大于等于；bisect_right 第一个大于。</p>
-</blockquote>
-<p>As we know, whenever we are given <strong>a sorted array or linked list or matrix</strong>, and we are asked to find a certain element, the best algorithm we can use is binary search.</p>
-<p>This pattern describes an efficient way to handle all problems involving <em>Binary Search</em>. We will go through a set of problems that will help us build an understanding of this pattern so that we can apply this technique to other problems we might come across in the interviews.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">lo, hi = <span class="number">0</span>, len(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> lo &lt;= hi:</span><br><span class="line">    mid = lo + ((hi - lo) &gt;&gt; <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> nums[mid] &gt;= target:</span><br><span class="line">        <span class="comment"># find leftmost element</span></span><br><span class="line">        <span class="keyword">if</span> mid == <span class="number">0</span> <span class="keyword">or</span> nums[mid<span class="number">-1</span>] &lt; target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        </span><br><span class="line">        hi = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        lo = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> len(nums)</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/binary-search/" target="_blank" rel="noopener">704. Binary Search</a><br><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a><br><a href="https://leetcode.com/problems/find-smallest-letter-greater-than-target/" target="_blank" rel="noopener">744. Find Smallest Letter Greater Than Target</a><br><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. Find First and Last Position of Element in Sorted Array</a><br><a href="https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/" target="_blank" rel="noopener">702. Search in a Sorted Array of Unknown Size</a><br><a href="https://leetcode.com/problems/closest-binary-search-tree-value/" target="_blank" rel="noopener">270. Closest Binary Search Tree Value</a><br><a href="https://leetcode.com/problems/peak-index-in-a-mountain-array/" target="_blank" rel="noopener">852. Peak Index in a Mountain Array</a><br><a href="https://leetcode.com/problems/find-in-mountain-array/" target="_blank" rel="noopener">1095. Find in Mountain Array</a><br><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. Search in Rotated Sorted Array</a><br><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">153. Find Minimum in Rotated Sorted Array</a></p>
-
-          
+          <p>CAP theorem states that it is impossible for a distributed software system to simultaneously provide more than two out of three of the following guarantees (CAP): Consistency, Availability, and Partition tolerance. When we design a distributed system, trading off among CAP is almost the first thing we want to consider. CAP theorem says while designing a distributed system we can pick only two of the following three options:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/educative/07.png" alt></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2737299582.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -667,7 +536,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2189758150.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2149259335.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -689,8 +558,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2189758150.html" itemprop="url">
-                  Subsets
+                <a class="post-title-link" href="/p/2149259335.html" itemprop="url">
+                  SQL vs. NoSQL
                 </a>
               
             
@@ -706,8 +575,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T20:35:10+08:00">
-                2021-01-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-06T12:45:33+08:00">
+                2021-02-06
               </time>
             
 
@@ -743,18 +612,23 @@
 
       
         
-          
-            <blockquote>
-<p>使用 BFS 解决一系列排列、组合问题。基本上对 queue 进行迭代就可以了（需要 popleft 时选择 deque），但有时需要用到递归。</p>
-</blockquote>
-<p>A huge number of coding interview problems involve dealing with <em>Permutations</em> and <em>Combinations</em> of a given set of elements. This pattern describes an efficient <strong>breadth-first search</strong> approach to handle all these problems.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Iteration"""</span></span><br><span class="line">queue = deque([[]])</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> sorted(nums):</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(queue)):</span><br><span class="line">        item = queue.popleft()</span><br><span class="line">        cand = item + [num]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># skip duplicates</span></span><br><span class="line">        <span class="keyword">if</span> cand <span class="keyword">not</span> <span class="keyword">in</span> queue:</span><br><span class="line">            queue.append(cand)</span><br><span class="line"></span><br><span class="line">        queue.append(item)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> queue</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Recursion"""</span></span><br><span class="line"><span class="meta">@cache</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(beg, end)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> beg &gt; end:</span><br><span class="line">        <span class="keyword">return</span> [<span class="literal">None</span>]</span><br><span class="line"></span><br><span class="line">    trees = []</span><br><span class="line">    <span class="keyword">for</span> val <span class="keyword">in</span> range(beg, end + <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># divide &amp; conquer</span></span><br><span class="line">        l = build(beg, val - <span class="number">1</span>)</span><br><span class="line">        r = build(val + <span class="number">1</span>, end)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> l:</span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> r:</span><br><span class="line">                root = TreeNode(val)</span><br><span class="line">                root.left = x</span><br><span class="line">                root.right = y</span><br><span class="line"></span><br><span class="line">                trees.append(root)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> trees</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> build(<span class="number">1</span>, n)</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/subsets/" target="_blank" rel="noopener">78. Subsets</a><br><a href="https://leetcode.com/problems/subsets-ii/" target="_blank" rel="noopener">90. Subsets II</a><br><a href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener">46. Permutations</a><br><a href="https://leetcode.com/problems/letter-case-permutation/" target="_blank" rel="noopener">784. Letter Case Permutation</a><br><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">22. Generate Parentheses</a><br><a href="https://leetcode.com/problems/generalized-abbreviation/" target="_blank" rel="noopener">320. Generalized Abbreviation</a><br><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/" target="_blank" rel="noopener">241. Different Ways to Add Parentheses</a><br><a href="https://leetcode.com/problems/unique-binary-search-trees-ii/" target="_blank" rel="noopener">95. Unique Binary Search Trees II</a><br><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. Unique Binary Search Trees</a></p>
-
-          
+          <p>In the world of databases, there are two main types of solutions: SQL and NoSQL (or relational databases and non-relational databases). Both of them differ in the way they were built, the kind of information they store, and the storage method they use.</p>
+<p>Relational databases are structured and have predefined schemas like phone books that store phone numbers and addresses. Non-relational databases are unstructured, distributed, and have a dynamic schema like file folders that hold everything from a person’s address and phone number to their Facebook “likes” and online shopping preferences.</p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>Relational databases store data in rows and columns. Each row contains all the information about one entity and each column contains all the separate data points. Some of the most popular relational databases are MySQL, Oracle, MS SQL Server, SQLite, PostgreSQL, and MariaDB.</p>
+<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><p>Following are the most common types of NoSQL:</p>
+<ul>
+<li><strong>Key-Value Stores</strong>: Data is stored in an array of key-value pairs. The “key” is an attribute name which is linked to a “value”. Well-known key-value stores include Redis, Voldemort, and Dynamo;</li>
+<li><strong>Document Databases</strong>: In these databases, data is stored in documents (instead of rows and columns in a table) and these documents are grouped together in collections. Each document can have an entirely different structure. Document databases include the CouchDB and MongoDB;</li>
+<li><strong>Wide-Column Databases</strong>: Instead of “tables”, in columnar databases we have column families, which are containers for rows. Unlike relational databases, we don’t need to know all the columns up front and each row doesn’t have to have the same number of columns. Columnar databases are best suited for analyzing large datasets - big names include Cassandra and HBase;</li>
+<li><strong>Graph Databases</strong>: These databases are used to store data whose relations are best represented in a graph. Data is saved in graph structures with nodes (entities), properties (information about the entities), and lines (connections between the entities). Examples of graph database include Neo4J and InfiniteGraph;</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2149259335.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -793,7 +667,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3727509945.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2468951811.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -815,8 +689,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3727509945.html" itemprop="url">
-                  Two Heaps
+                <a class="post-title-link" href="/p/2468951811.html" itemprop="url">
+                  Redundancy & Replication
                 </a>
               
             
@@ -832,8 +706,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T17:46:46+08:00">
-                2021-01-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-06T11:33:35+08:00">
+                2021-02-06
               </time>
             
 
@@ -869,17 +743,138 @@
 
       
         
-          
-            <blockquote>
-<p>大多是 max_heap 和 min_heap 的配合使用。在用索引获取堆顶元素时，注意保证 heap 非空。</p>
-</blockquote>
-<p>In many problems, where we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the largest element in one part and the smallest element in the other part. This pattern is an efficient approach to solve such problems.</p>
-<p>This pattern uses <em>Two Heaps</em> to solve these problems; A <strong>max heap</strong> to find the largest element and a <strong>min heap</strong> to find the smallest element.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.max_heap = []</span><br><span class="line">        self.min_heap = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(self, num: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.max_heap <span class="keyword">or</span> num &lt;= -self.max_heap[<span class="number">0</span>]:</span><br><span class="line">            heappush(self.max_heap, -num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            heappush(self.min_heap, num)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># rebalance</span></span><br><span class="line">        <span class="keyword">if</span> len(self.max_heap) &gt; len(self.min_heap) + <span class="number">1</span>:</span><br><span class="line">            heappush(self.min_heap, -heappop(self.max_heap))</span><br><span class="line">        <span class="keyword">if</span> len(self.min_heap) &gt; len(self.max_heap):</span><br><span class="line">            heappush(self.max_heap, -heappop(self.min_heap))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_median</span><span class="params">(self)</span> -&gt; float:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.max_heap) == len(self.min_heap):</span><br><span class="line">            <span class="keyword">return</span> (-self.max_heap[<span class="number">0</span>] + self.min_heap[<span class="number">0</span>]) / <span class="number">2</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> -self.max_heap[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+          <p><code>Redundancy</code> is the duplication of critical components or functions of a system with the intention of increasing the reliability of the system, usually in the form of a backup or fail-safe, or to improve actual system performance. For example, if there is only one copy of a file stored on a single server, then losing that server means losing the file. Since losing data is seldom a good thing, we can create duplicate or redundant copies of the file to solve this problem.</p>
+<p>Redundancy plays a key role in removing the single points of failure in the system and provides backups if needed in a crisis. For example, if we have two instances of a service running in production and one fails, the system can failover to the other one:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/educative/06.png" alt></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2468951811.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener">295. Find Median from Data Stream</a><br><a href="https://leetcode.com/problems/sliding-window-median/" target="_blank" rel="noopener">480. Sliding Window Median</a><br><a href="https://leetcode.com/problems/ipo/" target="_blank" rel="noopener">502. IPO</a><br><a href="https://leetcode.com/problems/find-right-interval/" target="_blank" rel="noopener">436. Find Right Interval</a></p>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3678059815.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3678059815.html" itemprop="url">
+                  Proxies
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-04T20:12:13+08:00">
+                2021-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>A <code>Proxy Server</code> is an intermediate server between the client and the back-end server. Clients connect to proxy servers to make a request for a service like a web page, file, connection, etc. In short, a proxy server is a piece of software or hardware that acts as an intermediary for requests from clients seeking resources from other servers:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/educative/05.png" alt></p>
+<p>Typically, proxies are used to filter requests, log requests, or sometimes transform requests (by adding/removing headers, encrypting/decrypting, or compressing a resource). Another advantage of a proxy server is that its cache can serve a lot of requests. If multiple clients access a particular resource, the proxy server can cache it and serve it to all the clients without going to the remote server.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3678059815.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -913,7 +908,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -956,7 +951,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

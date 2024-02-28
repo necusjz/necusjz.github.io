@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2642016565.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2304129997.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2642016565.html" itemprop="url">
-                  如何选择数据结构和算法
+                <a class="post-title-link" href="/p/2304129997.html" itemprop="url">
+                  Tree Breadth-First Search
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-29T23:18:02+08:00">
-                2021-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T17:22:57+08:00">
+                2021-01-30
               </time>
             
 
@@ -356,20 +356,17 @@
 
       
         
-          <p>工程上的问题往往都比较开放，在选择数据结构和算法的时候，我们往往需要综合各种因素，比如编码难度、维护成本、数据特征、数据规模等，最终<strong>选择一个工程的最合适解，而非理论上的最优解</strong>。为了让你能做到活学活用，在实际的软件开发中，不生搬硬套数据结构和算法，今天，我们就聊一聊，在实际的软件开发中，如何权衡各种因素，合理地选择使用哪种数据结构和算法？关于这个问题，我总结了六条经验。</p>
-<h2 id="时间、空间复杂度不能跟性能划等号"><a href="#时间、空间复杂度不能跟性能划等号" class="headerlink" title="时间、空间复杂度不能跟性能划等号"></a>时间、空间复杂度不能跟性能划等号</h2><p>我们在学习每种数据结构和算法的时候，都详细分析了算法的时间复杂度、空间复杂度，但是，在实际的软件开发中，复杂度不能与性能简单划等号，不能表示执行时间和内存消耗的确切数据量：</p>
-<ul>
-<li><strong>复杂度不是执行时间和内存消耗的精确值</strong>：<br>在用大 O 表示法表示复杂度的时候，我们会忽略掉低阶、常数、系数，只保留高阶，并且它的度量单位是语句的执行频度。每条语句的执行时间，并非是相同、确定的。所以，复杂度给出的只能是一个非精确量值的趋势；</li>
-<li><strong>代码的执行时间有时不跟时间复杂度成正比</strong>：<br>我们常说，时间复杂度是 O(nlogn) 的算法，比时间复杂度是 O(n^2) 的算法，执行效率要高。这样说的一个前提是，算法处理的是大规模数据的情况。对于小规模数据的处理，算法的执行效率并不一定跟时间复杂度成正比，有时还会跟复杂度成反比；</li>
-<li><strong>对于处理不同问题的不同算法，其复杂度大小没有可比性</strong>：<br>复杂度只能用来表征不同算法，在处理同样的问题，以及同样数据类型的情况下的性能表现。但是，对于不同的问题、不同的数据类型，不同算法之间的复杂度大小并没有可比性；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2642016565.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <blockquote>
+<p>基本就是 deque 一把梭，不过需要单纯处理 root 为 None 的情况。借助同层节点的 index 可实现更细微的操作。</p>
+</blockquote>
+<p>This pattern is based on the <em>Breadth-First Search</em> (BFS) technique to traverse a tree.</p>
+<p>Any problem involving the traversal of a tree in a level-by-level order can be efficiently solved using this approach. We will use a <strong>queue</strong> to keep track of all the nodes of a level before we jump onto the next level. This also means that the space complexity of the algorithm will be O(W), where “W” is <strong>the maximum number of nodes on any level</strong>.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">queue = deque([root])</span><br><span class="line"><span class="keyword">while</span> queue:</span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> range(len(queue)):</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        <span class="keyword">if</span> idx != curr_len - <span class="number">1</span>:</span><br><span class="line">            node.next = queue[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># bfs</span></span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            queue.append(node.left)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            queue.append(node.right)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">102. Binary Tree Level Order Traversal</a><br><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="noopener">107. Binary Tree Level Order Traversal II</a><br><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">103. Binary Tree Zigzag Level Order Traversal</a><br><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/" target="_blank" rel="noopener">637. Average of Levels in Binary Tree</a><br><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">111. Minimum Depth of Binary Tree</a><br><a href="https://leetcode.com/problems/n-ary-tree-level-order-traversal/" target="_blank" rel="noopener">429. N-ary Tree Level Order Traversal</a><br><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/" target="_blank" rel="noopener">117. Populating Next Right Pointers in Each Node II</a><br><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">116. Populating Next Right Pointers in Each Node</a><br><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank" rel="noopener">199. Binary Tree Right Side View</a></p>
+
+          
         
       
     </div>
@@ -408,7 +405,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2723260666.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3232636938.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -430,8 +427,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2723260666.html" itemprop="url">
-                  并行算法
+                <a class="post-title-link" href="/p/3232636938.html" itemprop="url">
+                  In-Place Reversal of a Linked List
                 </a>
               
             
@@ -447,8 +444,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-29T01:04:14+08:00">
-                2021-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T17:09:24+08:00">
+                2021-01-30
               </time>
             
 
@@ -484,20 +481,17 @@
 
       
         
-          <p>时间复杂度是衡量算法执行效率的一种标准。但是，时间复杂度并不能跟性能划等号。在真实的软件开发中，<strong>即便在不降低时间复杂度的情况下，也可以通过一些优化手段，提升代码的执行效率</strong>。毕竟，对于实际的软件开发来说，即便是像 10%, 20% 这样微小的性能提升，也是非常可观的。算法的目的就是为了提高代码执行的效率，那当算法无法再继续优化的情况下，我们该如何来进一步提高执行效率呢？我们今天就讲一种非常简单但又非常好用的优化方法，那就是并行计算。</p>
-<h2 id="并行排序"><a href="#并行排序" class="headerlink" title="并行排序"></a>并行排序</h2><p>假设我们要给大小为 8GB 的数据进行排序，并且，我们机器的内存可以一次性容纳这么多数据。<strong>对于排序来说，最常用的就是时间复杂度为 O(nlogn) 的三种排序算法：归并排序、快速排序、堆排序</strong>。从理论上讲，这个排序问题，已经很难再从算法层面优化了。而利用并行的处理思想，我们可以很轻松地将这个给 8GB 数据排序问题的执行效率提高很多倍。具体的实现思路有下面两种：</p>
-<ol>
-<li>对归并排序并行化处理：<br>我们可以<strong>将这 8GB 的数据划分成 16 个小的数据集合</strong>，每个集合包含 500MB 的数据。我们用 16 个线程，并行地对这 16 个 500MB 的数据集合进行排序。这 16 个小集合分别排序完成之后，我们再将这 16 个有序集合合并；</li>
-<li>对快速排序并行化处理：<br>我们通过扫描一遍数据，找到数据所处的范围区间。我们<strong>把这个区间从小到大划分成 16 个小区间</strong>。我们将 8GB 的数据划分到对应的区间中。针对这 16 个小区间的数据，我们启动 16 个线程，并行地进行排序。等到 16 个线程都执行结束之后，得到的数据就是有序数据了；</li>
-</ol>
-<p>对比这两种处理思路，它们利用的都是分治的思想，对数据进行分片，然后并行处理。它们的区别在于，第一种处理思路是，先随意地对数据分片，排序之后再合并；第二种处理思路是，先对数据按照大小划分区间，然后再排序，排完序就不需要再处理了。这个跟归并和快排的区别如出一辙。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2723260666.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <blockquote>
+<p>除了掌握反转链表的写法外，设置哨兵节点（前一个节点）、由远及近地处理 next pointer 也很重要。</p>
+</blockquote>
+<p>In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this <strong>in-place</strong>, i.e., using the existing node objects and without using extra memory.</p>
+<p><em>In-Place Reversal of a Linked List</em> pattern describes an efficient way to solve the above problem.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dummy, dummy.next = ListNode(), head  <span class="comment"># set sentinel</span></span><br><span class="line">ptr = dummy</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(left - <span class="number">1</span>):</span><br><span class="line">    ptr = ptr.next</span><br><span class="line"></span><br><span class="line">prev, curr = <span class="literal">None</span>, ptr.next</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(right - left + <span class="number">1</span>):</span><br><span class="line">    curr.next, prev, curr = prev, curr, curr.next</span><br><span class="line"></span><br><span class="line"><span class="comment"># link</span></span><br><span class="line">ptr.next.next = curr</span><br><span class="line">ptr.next = prev</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> dummy.next</span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">206. Reverse Linked List</a><br><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">92. Reverse Linked List II</a><br><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">25. Reverse Nodes in k-Group</a><br><a href="https://leetcode.com/problems/reverse-nodes-in-even-length-groups/" target="_blank" rel="noopener">2074. Reverse Nodes in Even Length Groups</a><br><a href="https://leetcode.com/problems/rotate-list/" target="_blank" rel="noopener">61. Rotate List</a></p>
+
+          
         
       
     </div>
@@ -536,7 +530,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3751436791.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1292284163.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -558,8 +552,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3751436791.html" itemprop="url">
-                  索引
+                <a class="post-title-link" href="/p/1292284163.html" itemprop="url">
+                  Cyclic Sort
                 </a>
               
             
@@ -575,8 +569,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-28T00:18:26+08:00">
-                2021-01-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T16:55:01+08:00">
+                2021-01-30
               </time>
             
 
@@ -612,16 +606,20 @@
 
       
         
-          <p>MySQL 底层依赖的是 B+ 树这种数据结构。那类似 Redis 这样的 Key-Value 数据库中的索引，又是怎么实现的呢？底层依赖的又是什么数据结构呢？今天，我就来讲一下<strong>索引这种常用的技术解决思路，底层往往会依赖哪些数据结构</strong>。</p>
-<h2 id="为什么需要索引？"><a href="#为什么需要索引？" class="headerlink" title="为什么需要索引？"></a>为什么需要索引？</h2><p>在实际的软件开发中，业务纷繁复杂，功能千变万化，但是，万变不离其宗。<strong>如果抛开这些业务和功能的外壳，其实它们的本质都可以抽象为：对数据的存储和计算</strong>。对应到数据结构和算法中，那“存储”需要的就是数据结构，“计算”需要的就是算法。对于存储的需求，功能上无外乎增删改查，这其实并不复杂。但是，<strong>一旦存储的数据很多，那性能就成了这些系统要关注的重点</strong>，特别是在一些跟存储相关的基础系统（比如 MySQL 数据库、分布式文件系统等）、中间件（比如消息中间件 RocketMQ 等）中。</p>
-<p>“如何节省存储空间、如何提高数据增删改查的执行效率”，这样的问题就成了设计的重点。而这些系统的实现，都离不开一个东西，那就是索引。不夸张地说，<strong>索引设计得好坏，直接决定了这些系统是否优秀</strong>。索引这个概念，非常好理解。你可以类比书籍的目录来理解。如果没有目录，我们想要查找某个知识点的时候，就要一页一页翻。通过目录，我们就可以快速定位相关知识点的页数，查找的速度也会有质的提高。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3751436791.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <blockquote>
+<p>常用但鲜为人知的循环排序。核心理念是：将元素交换到正确的位置，继而获取某个 range 内缺失的数字。其中，缺失数字为索引值，已有数字为元素值。警惕 desired index 可能造成的数组越界。</p>
+</blockquote>
+<p>This pattern describes an interesting approach to deal with problems involving arrays <strong>containing numbers in a given range</strong>. For example, take the following problem:</p>
+<blockquote>
+<p>You are given an unsorted array containing numbers taken from the range “1” to “n”. The array can have duplicates, which means that some numbers will be missing. Find all the missing numbers.</p>
+</blockquote>
+<p>To efficiently solve this problem, we can use the fact that the input array contains numbers in the range of “1” to “n”. For example, to efficiently sort the array, we can try placing each number in its correct place, i.e., placing “1” at index “0”, placing “2” at index “1”, and so on. Once we are done with the sorting, we can iterate the array to find all indices that are missing the correct numbers. These will be our required numbers.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">n = len(nums)</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; n:</span><br><span class="line">    j = nums[i] - <span class="number">1</span></span><br><span class="line">    <span class="comment"># avoid index out of bounds</span></span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> &lt;= j &lt; n <span class="keyword">and</span> nums[i] != nums[j]:</span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    <span class="keyword">if</span> nums[i] != i + <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> n + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/couples-holding-hands/" target="_blank" rel="noopener">765. Couples Holding Hands</a><br><a href="https://leetcode.com/problems/missing-number/" target="_blank" rel="noopener">268. Missing Number</a><br><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/" target="_blank" rel="noopener">448. Find All Numbers Disappeared in an Array</a><br><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">287. Find the Duplicate Number</a><br><a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/" target="_blank" rel="noopener">442. Find All Duplicates in an Array</a><br><a href="https://leetcode.com/problems/set-mismatch/" target="_blank" rel="noopener">645. Set Mismatch</a><br><a href="https://leetcode.com/problems/first-missing-positive/" target="_blank" rel="noopener">41. First Missing Positive</a><br><a href="https://leetcode.com/problems/kth-missing-positive-number/" target="_blank" rel="noopener">1539. Kth Missing Positive Number</a></p>
+
+          
         
       
     </div>
@@ -660,7 +658,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1133727597.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1924995809.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -682,8 +680,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1133727597.html" itemprop="url">
-                  搜索
+                <a class="post-title-link" href="/p/1924995809.html" itemprop="url">
+                  Merge Intervals
                 </a>
               
             
@@ -699,8 +697,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-25T23:31:24+08:00">
-                2021-01-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T16:38:37+08:00">
+                2021-01-30
               </time>
             
 
@@ -736,16 +734,18 @@
 
       
         
-          <h2 id="如何用-A-搜索算法实现游戏中的寻路功能"><a href="#如何用-A-搜索算法实现游戏中的寻路功能" class="headerlink" title="如何用 A* 搜索算法实现游戏中的寻路功能"></a>如何用 A* 搜索算法实现游戏中的寻路功能</h2><p>魔兽世界、仙剑奇侠传这类 MMRPG 游戏，有一个非常重要的功能，那就是人物角色自动寻路。当人物处于游戏地图中的某个位置的时候，我们用鼠标点击另外一个相对较远的位置，人物就会自动地绕过障碍物走过去。玩过这么多游戏，不知你是否思考过，这个功能是怎么实现的呢？</p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>实际上，这是一个非常典型的搜索问题。人物的起点就是他当下所在的位置，终点就是鼠标点击的位置。我们需要在地图中，找一条从起点到终点的路径。这条路径要绕过地图中所有障碍物，并且看起来要是一种非常聪明的走法。<strong>所谓“聪明”，笼统地解释就是，走的路不能太绕</strong>。理论上讲，最短路径显然是最聪明的走法，是这个问题的最优解。<strong>如果图非常大，那 Dijkstra 最短路径算法的执行耗时会很多</strong>。在真实的软件开发中，我们面对的是超级大的地图和海量的寻路请求，算法的执行效率太低，这显然是无法接受的。</p>
-<p>实际上，像出行路线规划、游戏寻路，这些真实软件开发中的问题，一般情况下，我们都不需要非得求最优解（也就是最短路径）。在权衡路线规划质量和执行效率的情况下，我们只需要寻求一个次优解就足够了。这个快速的路径规划算法，就是我们今天要学习的 <code>A* 算法</code>。实际上，A* 算法是对 Dijkstra 算法的优化和改造。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1133727597.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <blockquote>
+<p>两个区间之间存在 6 种可能情况。取交集时，start = max(a.start, b.start); end = min(a.end, b.end)。</p>
+</blockquote>
+<p>This pattern describes an efficient technique to deal with overlapping intervals. In a lot of problems involving intervals, we either need to find overlapping intervals or merge intervals if they overlap.</p>
+<p>Given two intervals (“a” and “b”), there will be <strong>six different ways</strong> the two intervals can relate to each other:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/03.png" alt></p>
+<p>Understanding the above six cases will help us in solving all intervals related problems.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">n = len(intervals)</span><br><span class="line">ans = []</span><br><span class="line"></span><br><span class="line">idx = <span class="number">0</span></span><br><span class="line"><span class="comment"># case 1</span></span><br><span class="line"><span class="keyword">while</span> idx &lt; n <span class="keyword">and</span> intervals[idx][<span class="number">1</span>] &lt; new_interval[<span class="number">0</span>]:</span><br><span class="line">    ans.append(intervals[idx])</span><br><span class="line">    idx += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># case 2-5</span></span><br><span class="line"><span class="keyword">while</span> idx &lt; n <span class="keyword">and</span> intervals[idx][<span class="number">0</span>] &lt;= new_interval[<span class="number">1</span>]:</span><br><span class="line">    new_interval[<span class="number">0</span>] = min(new_interval[<span class="number">0</span>], intervals[idx][<span class="number">0</span>])</span><br><span class="line">    new_interval[<span class="number">1</span>] = max(new_interval[<span class="number">1</span>], intervals[idx][<span class="number">1</span>])</span><br><span class="line">    idx += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">ans.append(new_interval)</span><br><span class="line"></span><br><span class="line"><span class="comment"># case 6</span></span><br><span class="line"><span class="keyword">while</span> idx &lt; n:</span><br><span class="line">    ans.append(intervals[idx])</span><br><span class="line">    idx += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener">56. Merge Intervals</a><br><a href="https://leetcode.com/problems/insert-interval/" target="_blank" rel="noopener">57. Insert Interval</a><br><a href="https://leetcode.com/problems/interval-list-intersections/" target="_blank" rel="noopener">986. Interval List Intersections</a><br><a href="https://leetcode.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener">435. Non-overlapping Intervals</a><br><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="noopener">253. Meeting Rooms II</a><br><a href="https://leetcode.com/problems/car-pooling/" target="_blank" rel="noopener">1094. Car Pooling</a><br><a href="https://leetcode.com/problems/employee-free-time/" target="_blank" rel="noopener">759. Employee Free Time</a></p>
+
+          
         
       
     </div>
@@ -784,7 +784,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1628506310.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3580079225.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -806,8 +806,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1628506310.html" itemprop="url">
-                  B+ 树
+                <a class="post-title-link" href="/p/3580079225.html" itemprop="url">
+                  Fast & Slow Pointers
                 </a>
               
             
@@ -823,8 +823,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-23T16:37:16+08:00">
-                2021-01-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T16:11:29+08:00">
+                2021-01-30
               </time>
             
 
@@ -860,21 +860,17 @@
 
       
         
-          <h2 id="MySQL-数据库索引是如何实现的"><a href="#MySQL-数据库索引是如何实现的" class="headerlink" title="MySQL 数据库索引是如何实现的"></a>MySQL 数据库索引是如何实现的</h2><p>作为一个软件开发工程师，你对数据库肯定再熟悉不过了。作为主流的数据存储系统，它在我们的业务开发中，有着举足轻重的地位。在工作中，<strong>为了加速数据库中数据的查找速度，我们常用的处理思路是，对表中数据创建索引</strong>。那你是否思考过，数据库索引是如何实现的呢？底层使用的是什么数据结构和算法呢？</p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>思考的过程比结论更重要。所以，今天的讲解，我会尽量还原这个解决方案的思考过程，让你知其然，并且知其所以然。</p>
-<h3 id="解决问题的前提是定义清楚问题"><a href="#解决问题的前提是定义清楚问题" class="headerlink" title="解决问题的前提是定义清楚问题"></a>解决问题的前提是定义清楚问题</h3><p>除了对问题进行详细的调研，还有一个办法，那就是，<strong>通过对一些模糊的需求进行假设，来限定要解决的问题的范围</strong>。如果你对数据库的操作非常了解，针对我们现在这个问题，你就能把索引的需求定义得非常清楚。但是，对于大部分软件工程师来说，我们可能只了解一小部分常用的 SQL 语句，所以，这里我们假设要解决的问题，只包含这样两个常用的需求：</p>
-<ul>
-<li>根据某个值查找数据，比如 SELECT * FROM user WHERE id=1234；</li>
-<li>根据区间值来查找某些数据，比如 SELECT * FROM user WHERE id&gt;1234 and id&lt;2345；</li>
-</ul>
-<p>除了这些功能性需求之外，这种问题往往还会涉及一些非功能性需求，我们着重考虑性能方面的需求。性能方面的需求，我们<strong>主要考察时间和空间两方面，也就是执行效率和存储空间</strong>。在执行效率方面，我们希望通过索引，查询数据的效率尽可能地高；在存储空间方面，我们希望索引不要消耗太多的内存空间。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1628506310.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <blockquote>
+<p>掌握判环以及判环的变形。while 循环的条件往往是 r and r.next 存在，过程中可以顺便获取 middle pointer。</p>
+</blockquote>
+<p>The <em>Fast &amp; Slow Pointers</em> approach is a pointer algorithm that uses two pointers which move through the array (or linked list) at different speeds. This approach is quite useful when dealing with cyclic linked lists or arrays.</p>
+<p>By moving at different speeds (say, in a cyclic linked list), the algorithm proves that <strong>the two pointers are bound to meet</strong>. The fast pointer should catch the slow pointer once both the pointers are in a cyclic loop.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(num)</span>:</span></span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> num:</span><br><span class="line">        num, mod = divmod(num, <span class="number">10</span>)</span><br><span class="line">        ret += mod * mod</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">l = r = n  </span><br><span class="line"><span class="keyword">while</span> r != <span class="number">1</span> <span class="keyword">and</span> next(r) != <span class="number">1</span>:</span><br><span class="line">    l = next(l)</span><br><span class="line">    r = next(next(r))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> l == r:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="noopener">141. Linked List Cycle</a><br><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">142. Linked List Cycle II</a><br><a href="https://leetcode.com/problems/happy-number/" target="_blank" rel="noopener">202. Happy Number</a><br><a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">876. Middle of the Linked List</a><br><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">234. Palindrome Linked List</a><br><a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="noopener">143. Reorder List</a><br><a href="https://leetcode.com/problems/circular-array-loop/" target="_blank" rel="noopener">457. Circular Array Loop</a></p>
+
+          
         
       
     </div>
@@ -908,7 +904,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/24/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/26/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/24/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/26/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -951,7 +947,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1999142518.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4052390726.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1999142518.html" itemprop="url">
-                  Designing Dropbox
+                <a class="post-title-link" href="/p/4052390726.html" itemprop="url">
+                  Designing Yelp or Nearby Friends
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-14T12:02:07+08:00">
-                2021-02-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-27T16:41:34+08:00">
+                2021-02-27
               </time>
             
 
@@ -356,16 +356,288 @@
 
       
         
-          <h2 id="Why-Cloud-Storage"><a href="#Why-Cloud-Storage" class="headerlink" title="Why Cloud Storage?"></a>Why Cloud Storage?</h2><p>Cloud file storage services have become very popular recently as they simplify the storage and exchange of digital resources among multiple devices. The shift from using single personal computers to using multiple devices with different platforms and operating systems such as smartphones and tablets each with portable access from various geographical locations at any time, is believed to be accountable for the huge popularity of cloud storage services. Following are some of the top benefits of such services:</p>
+          <h2 id="Why-Yelp-or-Proximity-Server"><a href="#Why-Yelp-or-Proximity-Server" class="headerlink" title="Why Yelp or Proximity Server?"></a>Why Yelp or Proximity Server?</h2><p>Proximity servers are used to discover nearby attractions like places, events, etc. If you haven’t used <a href="https://www.yelp.com/" target="_blank" rel="noopener">yelp.com</a> before, please try it before proceeding (you can search for nearby restaurants, theaters, etc.) and spend some time understanding different options that the website offers. This will help you a lot in understanding this chapter better.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p><strong>What do we wish to achieve from a Yelp like service</strong>? Our service will be storing information about different places so that users can perform a search on them. Upon querying, our service will return a list of places around the user.<br>Our Yelp-like service should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
+<ol>
+<li>Users should be able to add/delete/update places;</li>
+<li>Given their location (longitude/latitude), users should be able to find all nearby places within a given radius;</li>
+<li>Users should be able to add feedback/review about a place. The feedback can have pictures, text, and a rating;</li>
+</ol>
+<p><strong>Non-Functional Requirements</strong>:</p>
+<ol>
+<li>Users should have a real-time search experience with minimum latency;</li>
+<li>Our service should support a heavy search load. There will be a lot of search requests compared to adding a new place;</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/4052390726.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2182986560.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2182986560.html" itemprop="url">
+                  Designing Facebook's Newsfeed
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-26T16:28:27+08:00">
+                2021-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="What-is-Facebook’s-Newsfeed"><a href="#What-is-Facebook’s-Newsfeed" class="headerlink" title="What is Facebook’s Newsfeed?"></a>What is Facebook’s Newsfeed?</h2><p>A Newsfeed is the constantly updating list of stories in the middle of Facebook’s homepage. It includes status updates, photos, videos, links, app activity, and “likes” from people, pages, and groups that a user follows on Facebook. In other words, it is a compilation of a complete scrollable version of your friends’ and your life story from photos, videos, locations, status updates, and other activities.<br>For any social media site you design - Twitter, Instagram, or Facebook - you will need a newsfeed system to display updates from friends and followers.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s design a newsfeed for Facebook with the following requirements:<br><strong>Functional Requirements</strong>:</p>
+<ol>
+<li>Newsfeed will be generated based on the posts from the people, pages, and groups that a user follows;</li>
+<li>A user may have many friends and follow a large number of pages/groups;</li>
+<li>Feeds may contain images, videos, or just text;</li>
+<li>Our service should support appending new posts as they arrive to the newsfeed for all active users;</li>
+</ol>
+<p><strong>Non-Functional Requirements</strong>:</p>
+<ol>
+<li>Our system should be able to generate any user’s newsfeed in real-time - maximum latency seen by the end user would be 2s;</li>
+<li>A post shouldn’t take more than 5s to make it to a use’s feed assuming a new newsfeed request comes in;</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2182986560.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2593767960.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2593767960.html" itemprop="url">
+                  Designing a Web Crawler
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-26T11:08:41+08:00">
+                2021-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="What-is-a-Web-Crawler"><a href="#What-is-a-Web-Crawler" class="headerlink" title="What is a Web Crawler?"></a>What is a Web Crawler?</h2><p>A web crawler is a software program which browses the World Wide Web in a methodical and automated manner. It collects documents by recursively fetching links from a set of starting pages. Many sites, particularly search engines, use web crawling as a means of providing up-to-date data. Search engines download all the pages to create an index on them to perform faster searches.<br>Some other uses of web crawlers are:</p>
 <ul>
-<li><strong>Availability</strong>: The motto of cloud storage services is to have data availability anywhere, anytime. Users can access their files/photos from any device whenever and wherever they like;</li>
-<li><strong>Reliability and Durability</strong>: Another benefit of cloud storage is that it offers 100% reliability and durability of data. Cloud storage ensures that users will never lose their data by keeping multiple copies of the data stored on different geographically located servers;</li>
-<li><strong>Scalability</strong>: Users will never have to worry about getting out of storage space. With cloud storage you have unlimited storage as long as you are ready to pay for it;</li>
+<li>To test web pages and links for valid syntax and structure;</li>
+<li>To monitor sites to see when their structure or contents change;</li>
+<li>To maintain mirror sites for popular Web sites;</li>
+<li>To build a special-purpose index, e.g., one that has some understanding of the content stored in multimedia files on the Web;</li>
 </ul>
-<p>If you haven’t used <a href="https://www.dropbox.com/?_hp=b&landing=dbv2" target="_blank" rel="noopener">dropbox.com</a> before, we would highly recommend creating an account there and uploading/editing a file and also going through the different options their service offers. This will help you a lot in understanding this chapter.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s assume we need to crawl all the web:</p>
+<ul>
+<li><strong>Scalability</strong>: Our service needs to be scalable such that it can crawl the entire Web and can be used to fetch hundreds of millions of Web documents;</li>
+<li><strong>Extensibility</strong>: Our service should be designed in a modular way with the expectation that new functionality will be added to it. There could be newer document types that need to be downloaded and processed in the future;</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1999142518.html#more" rel="contents">
+            <a class="btn" href="/p/2593767960.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -408,7 +680,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2933063913.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3819033204.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -430,8 +702,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2933063913.html" itemprop="url">
-                  Designing Instagram
+                <a class="post-title-link" href="/p/3819033204.html" itemprop="url">
+                  Designing Twitter Search
                 </a>
               
             
@@ -447,8 +719,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-13T13:04:32+08:00">
-                2021-02-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-24T22:37:32+08:00">
+                2021-02-24
               </time>
             
 
@@ -484,26 +756,18 @@
 
       
         
-          <h2 id="What-is-Instagram"><a href="#What-is-Instagram" class="headerlink" title="What is Instagram?"></a>What is Instagram?</h2><p>Instagram is a social networking service that enables its users to upload and share their photos and videos with other users. Instagram users can choose to share information either publicly or privately. Anything shared publicly can be seen by any other user, whereas privately shared content can only be accessed by the specified set of people. Instagram also enables its users to share through many other social networking platforms, such as Facebook, Twitter, Flickr, and Tumblr.</p>
-<p>We plan to design a simpler version of Instagram for this design problem, where a user can share photos and follow other users. The “News Feed” for each user will consist of top photos of all the people the user follows.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>We’ll focus on the following set of requirements while designing Instagram:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Users should be able to upload/download/view photos;</li>
-<li>Users can perform searches based on photo/video titles;</li>
-<li>Users can follow other users;</li>
-<li>The system should generate and display a user’s News Feed consisting of top photos from all the people the user follows;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>Our service needs to be highly available;</li>
-<li>The acceptable latency of the system is 200ms for News Feed generation;</li>
-<li>Consistency can take a hit (in the interest of availability) if a user doesn’t see a photo for a while; it should be fine;</li>
-<li>The system should be highly reliable; any uploaded photo or video should never be lost;</li>
-</ol>
-<p><strong>Not in Scope</strong>: Adding tags to photos, searching photos on tags, commenting on photos, tagging users to photos, who to follow, etc.</p>
+          <h2 id="What-is-Twitter-Search"><a href="#What-is-Twitter-Search" class="headerlink" title="What is Twitter Search?"></a>What is Twitter Search?</h2><p>Twitter users can update their status whenever they like. Each status (called tweet) consists of plain text and our goal is to design a system that allows searching over all the user tweets.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>We need to design a system that can efficiently store and query tweets:</p>
+<ul>
+<li>Let’s assume Twitter has 1.5 billion total users with 800 million daily active users;</li>
+<li>On average Twitter gets 400 million tweets every day;</li>
+<li>The average size of a tweet is 300 bytes;</li>
+<li>Let’s assume there will be 500M searches every day;</li>
+<li>The search query will consist of multiple words combined with AND/OR;</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2933063913.html#more" rel="contents">
+            <a class="btn" href="/p/3819033204.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -546,7 +810,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/681315069.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/399501003.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -568,8 +832,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/681315069.html" itemprop="url">
-                  Designing Pastebin
+                <a class="post-title-link" href="/p/399501003.html" itemprop="url">
+                  Designing an API Rate Limiter
                 </a>
               
             
@@ -585,8 +849,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-12T22:24:47+08:00">
-                2021-02-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T18:52:28+08:00">
+                2021-02-20
               </time>
             
 
@@ -622,290 +886,16 @@
 
       
         
-          <h2 id="What-is-Pastebin"><a href="#What-is-Pastebin" class="headerlink" title="What is Pastebin?"></a>What is Pastebin?</h2><p>Pastebin like services enable users to store plain text or images over the network (typically the Internet) and generate unique URLs to access the uploaded data. Such services are also used to share data over the network quickly, as users would just need to pass the URL to let other users see it.</p>
-<p>If you haven’t used <a href="https://pastebin.com/" target="_blank" rel="noopener">pastebin.com</a> before, please try creating a new “Paste” there and spend some time going through the different options their service offers. This will help you a lot in understanding this chapter.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Our Pastebin service should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Users should be able to upload or “paste” their data and get a unique URL to access it;</li>
-<li>Users will only be able to upload text;</li>
-<li>Data and links will expire after a specific time span automatically; users should also be able to specify expiration time;</li>
-<li>Users should optionally be able to pick a custom alias for their paste;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>The system should be highly reliable, any data uploaded should not be lost;</li>
-<li>The system should be highly available. This is required because if our service is down, users will not be able to access their pastes;</li>
-<li>Users should be able to access their pastes in real-time with minimum latency;</li>
-<li>Paste links should not be guessable (not predictable);</li>
-</ol>
-<p><strong>Extended Requirements</strong>:</p>
-<ol>
-<li>Analytics, e.g., how many times a paste was accessed?</li>
-<li>Our service should also be accessible through REST APIs by other services;</li>
-</ol>
+          <h2 id="What-is-a-Rate-Limiter"><a href="#What-is-a-Rate-Limiter" class="headerlink" title="What is a Rate Limiter?"></a>What is a Rate Limiter?</h2><p>Imagine we have a service which is receiving a huge number of requests, but it can only serve a limited number of requests per second. To handle this problem we would need some kind of throttling or rate limiting mechanism that would allow only a certain number of requests so our service can respond to all of them. A rate limiter, at a high level, limits the number of events an entity (user, device, IP, etc.) can perform in a particular time window. For example:</p>
+<ul>
+<li>A user can send only one message per second;</li>
+<li>A user is allowed only three failed credit card transactions per day;</li>
+<li>A single IP can only create twenty accounts per day;</li>
+</ul>
+<p>In general, a rate limiter caps how many requests a sender can issue in a specific time window. It then blocks requests once the cap is reached.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/681315069.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1408711108.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1408711108.html" itemprop="url">
-                  Designing TinyURL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-08T21:38:19+08:00">
-                2021-02-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Why-do-We-Need-URL-Shortening"><a href="#Why-do-We-Need-URL-Shortening" class="headerlink" title="Why do We Need URL Shortening?"></a>Why do We Need URL Shortening?</h2><p>URL shortening is used to create shorter aliases for long URLs. We call these shortened aliases “short links”. Users are redirected to the original URL when they hit these short links. Short links save a lot of space when displayed, printed, messaged, or tweeted. Additionally, users are less likely to mistype shorter URLs.</p>
-<p>For example, if we shorten this page through TinyURL:</p>
-<blockquote>
-<p><a href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/" target="_blank" rel="noopener">https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/</a></p>
-</blockquote>
-<p>We would get:</p>
-<blockquote>
-<p><a href="http://tinyurl.com/jlg8zpc" target="_blank" rel="noopener">http://tinyurl.com/jlg8zpc</a></p>
-</blockquote>
-<p>The shortened URL is nearly one-third the size of the actual URL.<br>URL shortening is used to optimize links across devices, track individual links to analyze audience, measure ad campaigns’ performance, or hide affiliated original URLs.</p>
-<p>If you haven’t used <a href="https://tinyurl.com/app" target="_blank" rel="noopener">tinyurl.com</a> before, please try creating a new shortened URL and spend some time going through the various options their service offers. This will help you a lot in understanding this chapter.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1408711108.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2297695313.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2297695313.html" itemprop="url">
-                  A Step by Step Guide
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-07T14:13:17+08:00">
-                2021-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>A lot of software engineers struggle with System Design Interviews (SDIs) primarily because of three reasons:</p>
-<ol>
-<li>The unstructured nature of SDIs, where the candidates are asked to work on an open-ended design problem that doesn’t have a standard answer;</li>
-<li>Candidates lack experience in developing complex and large scale systems;</li>
-<li>Candidates did not spend enough time to prepare for SDIs;</li>
-</ol>
-<p>Like coding interviews, candidates who haven’t put a deliberate effort to prepare for SDIs, mostly perform poorly, especially at top companies like Google, Facebook, Amazon, Microsoft, etc. In these companies, candidates who do not perform above average have a limited chance to get an offer. On the other hand, a good performance always results in a better offer (higher position and salary) since it shows the candidate’s ability to handle a complex system.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2297695313.html#more" rel="contents">
+            <a class="btn" href="/p/399501003.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -943,7 +933,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -986,7 +976,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

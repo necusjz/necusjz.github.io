@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/731546748.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1661843536.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/731546748.html" itemprop="url">
-                  《面试宝典》读书笔记 Ⅰ
+                <a class="post-title-link" href="/p/1661843536.html" itemprop="url">
+                  面试题 6：从尾到头打印链表
                 </a>
               
             
@@ -319,8 +319,137 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T22:46:01+08:00">
-                2017-04-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-20T20:15:24+08:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>输入一个链表的头节点，从尾到头反过来打印出每个节点的值。链表节点定义如下：</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> m_mKey;</span><br><span class="line">    ListNode *m_pNext;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>内存分配不是在创建链表时一次性完成的，由于没有闲置的内存，链表的空间效率比数组高。</li>
+<li>如果我们打算修改输入的数据，最好先问面试官是不是允许修改。</li>
+<li>典型的<strong>后进先出</strong>，可以用栈实现这种顺序。递归本质上就是一个栈结构，但有可能导致函数调用栈溢出，显然用<strong>栈基于循环</strong>实现的代码的鲁棒性要好一些。</li>
+<li>考查对循环、递归、栈 3 个相互关联的概念的理解。</li>
+</ul>
+<p><a href="https://gist.githubusercontent.com/necusjz/39107507d9eb6a1736ee4e8cb98ef35f/raw/3aa2ee894f7880b74a5986bab68f47873f148d9d/06_PrintListInReversedOrder.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2396768901.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2396768901.html" itemprop="url">
+                  面试题 5：替换空格
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T21:41:33+08:00">
+                2017-11-19
               </time>
             
 
@@ -357,21 +486,22 @@
       
         
           <blockquote>
-<p>基本概念、面向对象技术</p>
+<p>请实现一个函数，把字符串中的每个空格替换成“20%”。例如，输入“We are happy.”，则输出“We%20are%20happy.”。</p>
 </blockquote>
-<h2 id="Java-语言的优点"><a href="#Java-语言的优点" class="headerlink" title="Java 语言的优点"></a>Java 语言的优点</h2><h3 id="纯面向对象语言"><a href="#纯面向对象语言" class="headerlink" title="纯面向对象语言"></a>纯面向对象语言</h3><p>能够直接反应现实生活中的对象。</p>
-<h3 id="平台无关性"><a href="#平台无关性" class="headerlink" title="平台无关性"></a>平台无关性</h3><p>由于 Java 为解释型语言，编译器会把 Java 代码变成<code>中间代码</code>，然后在 JVM 上解释执行。<br>中间代码与平台无关，可以很好地跨平台执行，具有很好的可移植性。</p>
-<h3 id="提供了很多内置的类库"><a href="#提供了很多内置的类库" class="headerlink" title="提供了很多内置的类库"></a>提供了很多内置的类库</h3><p>简化了开发人员的程序设计工作，同时缩短了项目开发的时间。<br>对多线程的支持、对网络通讯的支持、垃圾回收器。</p>
+<ul>
+<li>URL参数中含有特殊字符，如空格、”#”等。会导致服务器端无法获得正确的参数值，<strong>转换规则：</strong>”%”后面跟上 ASCII 码的两位十六进制的表示。</li>
+<li>从前往后复制每个字符则需要重复移动数字多次（O(n^2)），从后往前复制，这样就能减少移动的次数，从而提高效率（O(n)）。能清晰地分析出两种不同方法的时间效率各是多少。</li>
+<li>画一两个示意图解释自己的思路（<strong>两个指针</strong>），既能帮助我们厘清思路，也能使我们和面试官的交流变得更加高效。
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/731546748.html#more" rel="contents">
+            <a class="btn" href="/p/2396768901.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </div>
+    </li></ul></div>
 
     <div>
       
@@ -407,7 +537,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3697041086.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3765477483.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -429,8 +559,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3697041086.html" itemprop="url">
-                  Python 语言精要 Ⅰ
+                <a class="post-title-link" href="/p/3765477483.html" itemprop="url">
+                  面试题 3.2：不修改数组找出重复的数字
                 </a>
               
             
@@ -446,8 +576,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T16:14:38+08:00">
-                2017-04-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T22:14:42+08:00">
+                2017-11-18
               </time>
             
 
@@ -483,19 +613,20 @@
 
       
         
-          <blockquote>
-<p>常常得先把那些乱七八糟的数据，处理成漂亮点的结构化形式。</p>
+          
+            <blockquote>
+<p>在一个长度为 n+1 的数组里的所有数字都在 1～n 的范围内，所以数组中至少有一个数字是重复的。请找出数组中任意一个重复的数字，但不能修改输入的数组。例如，如果输入长度为 8 的数组 [2, 3, 5, 4, 3, 2, 6, 7]，那么对应的输出是重复的数字 2 或者 3。</p>
 </blockquote>
-<h2 id="Python-解释器"><a href="#Python-解释器" class="headerlink" title="Python 解释器"></a>Python 解释器</h2><p>一次执行一条语句。<br>“&gt;&gt;&gt;”是提示符，可以在那里输入表达式。</p>
-<h2 id="语言语义"><a href="#语言语义" class="headerlink" title="语言语义"></a>语言语义</h2><p>重视可读性、简洁性、明确性，可执行的伪代码。</p>
-<h3 id="缩进，而不是大括号"><a href="#缩进，而不是大括号" class="headerlink" title="缩进，而不是大括号"></a>缩进，而不是大括号</h3><p>通过空白符（4 个空格）来组织代码。<br><strong>冒号</strong>表示一段缩进代码块的开始，其后必须缩进相同的量，直到代码块结束为止：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3697041086.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<ul>
+<li>可以创建一个长度为 n+1 的辅助数组，该方案需要 O(n) 的辅助空间。</li>
+<li>某范围里数字的个数对解决这个问题很重要。</li>
+<li>函数 countRange 将被调用 O(logn) 次，每次需要 O(n) 的时间，总时间复杂度是 O(nlogn)，相当于以时间换空间。</li>
+<li><strong>交流的重要性：</strong>面试官提出不同的<strong>功能要求</strong>或者<strong>性能要求</strong>，我们最终选取的算法也将不同。</li>
+<li>能快速、正确地实现二分查找算法的代码。</li>
+</ul>
+<p><a href="https://gist.githubusercontent.com/necusjz/74768154bc00d4b5f8c324470912b555/raw/a817b319e3f7aad1e202e0e5ff128d9f2387d7d5/03_02_FindDuplicationNoEdit.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
         
       
     </div>
@@ -534,7 +665,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2380035110.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1539951461.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -556,8 +687,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2380035110.html" itemprop="url">
-                  决策树
+                <a class="post-title-link" href="/p/1539951461.html" itemprop="url">
+                  面试题 3.1：找出数组中重复的数字
                 </a>
               
             
@@ -573,8 +704,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T19:54:57+08:00">
-                2017-04-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-16T22:55:46+08:00">
+                2017-11-16
               </time>
             
 
@@ -610,20 +741,21 @@
 
       
         
-          <h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><p>决策过程中提出的每个判定问题都是对某个属性的<strong>测试</strong><br>考虑范围在上一次决策结果的限定范围之内</p>
+          
+            <blockquote>
+<p>在一个长度为 n 的数组里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入长度为 7 的数组 [2, 3, 1, 0, 2, 5, 3]，那么对应的输出是重复的数字 2 或者 3。</p>
+</blockquote>
 <ul>
-<li>叶结点对应于决策结果</li>
-<li>其他每个结点对应于一个属性测试</li>
-<li>根结点包含样本全集</li>
+<li>排序一个长度为 n 的数组需要 O(nlogn) 的时间。</li>
+<li>利用<strong>哈希表</strong>可以实现时间复杂度为 O(n) 的算法，但代价是一个空间复杂度为 O(n) 的哈希表。</li>
+<li>重复数字通过<strong>指针</strong>，传递给函数的调用者。</li>
+<li>尽管有一个两重循环，但每个数字最多只要交换两次就能找到属于它自己的位置，故时间复杂度是 O(n)。</li>
+<li>一维数组在内存中占据连续的空间，可以根据下标定位对应的元素。</li>
+<li>问题比较复杂时，关键是能否通过<strong>具体的例子</strong>找出其中的规律。</li>
 </ul>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>决策树学习的目的是为了，产生一棵处理未见示例能力强的决策树。<br>遵循简单且直观的分而治之（divide-and-comquer）策略。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2380035110.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p><a href="https://gist.githubusercontent.com/necusjz/8aa1c6ddebdd9da390161900a1f6240d/raw/79ad885bd1c1163c9f59ee558e63ac0e260ee68d/03_01_FindDuplication.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
         
       
     </div>
@@ -662,7 +794,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1376188223.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1774076896.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -684,8 +816,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1376188223.html" itemprop="url">
-                  线性模型
+                <a class="post-title-link" href="/p/1774076896.html" itemprop="url">
+                  面试题 4：二维数组中的查找
                 </a>
               
             
@@ -701,8 +833,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-06T17:50:27+08:00">
-                2017-04-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T22:53:54+08:00">
+                2017-05-18
               </time>
             
 
@@ -738,147 +870,21 @@
 
       
         
-          <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><p><img src="https://raw.githubusercontent.com/necusjz/p/master/MachineLearning/3_1.jpeg" alt><br>xi 是 x 在第 i 个属性上的取值。<br>w 和 b 学得之后，模型就得以确定。<br>许多功能更为强大的非线性模型（nolinear model）可在线性模型的基础上，通过引入<strong>层级结构</strong>或<strong>高维映射</strong>而得。<br>w 直观表达了各属性在预测中的重要性，因此线性模型有很好的可解释性（comprehensibility）。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1376188223.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2099105191.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2099105191.html" itemprop="url">
-                  模型评估与选择
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T18:44:53+08:00">
-                2017-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="训练误差与过拟合"><a href="#训练误差与过拟合" class="headerlink" title="训练误差与过拟合"></a>训练误差与过拟合</h2><p>精度（accuracy），精度 = 1-错误率。</p>
+            <blockquote>
+<p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+</blockquote>
 <ul>
-<li>在训练集上的误差称为<strong>训练误差</strong>（training error）</li>
-<li>在新样本上的误差称为<strong>泛化误差</strong>（generalization error）</li>
+<li>通过分析简单具体的例子，试图寻找普遍的规律。</li>
+<li>在二维数组的中间选取一个数字，转变成从数组的一个角上选取数字。</li>
+<li>如果该数字大于要查找的数字，则剔除这个数字所在列；如果该数字小于要查找的数字，则剔除这个数字所在的行。</li>
+<li>也可以选取左下角的数字。</li>
+<li>注意特殊输入测试（空指针）。</li>
+<li>根据行号和列号计算出相对于数组首地址的偏移量。</li>
 </ul>
-<p>实际希望的，是在新样本上能表现得很好的学习器。</p>
-<ul>
-<li>过拟合（overfitting）：把训练样本自身的一些特点，当作了所有潜在样本都会具有的一般性质。</li>
-<li>欠拟合（underfitting）：对训练样本的一般性质尚未学好。</li>
-</ul>
-<p>过拟合是<strong>无法彻底避免</strong>的。若可彻底避免过拟合，则通过经验误差最小化就能获得最优解。</p>
-<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><p>以测试集的<strong>测量误差</strong>（testing error）作为泛化误差的近似。<br>测试集应该尽可能与训练集互斥，通过对<strong>数据集 D</strong> 进行适当的处理，从中产生<strong>训练集 S</strong> 和<strong>测试集 T</strong>。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2099105191.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p><a href="https://gist.githubusercontent.com/necusjz/83dfc36a20f58eba1aea9dbc8da71bce/raw/81e306769a73284820e71f060207b028a90b14ca/04_FindInPartiallySortedMatrix.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
         
       
     </div>
@@ -912,7 +918,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/52/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/54/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/52/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/54/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -955,7 +961,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

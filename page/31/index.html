@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2755965992.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1711742275.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2755965992.html" itemprop="url">
-                  排序
+                <a class="post-title-link" href="/p/1711742275.html" itemprop="url">
+                  递归树
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-29T22:36:10+08:00">
-                2020-12-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-05T00:15:49+08:00">
+                2021-01-05
               </time>
             
 
@@ -356,10 +356,12 @@
 
       
         
-          <p>最经典的、最常用的排序算法：冒泡排序、插入排序、选择排序、归并排序、快速排序、计数排序、基数排序、桶排序。我<strong>按照时间复杂度</strong>把它们分成了三类：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/41.png" alt></p>
+          <h2 id="递归树与时间复杂度分析"><a href="#递归树与时间复杂度分析" class="headerlink" title="递归树与时间复杂度分析"></a>递归树与时间复杂度分析</h2><p>递归的思想就是，将大问题分解为小问题来求解，然后再将小问题分解为小小问题。这样一层一层地分解，直到问题的数据规模被分解得足够小，不用继续递归分解为止。如果我们<strong>把这个一层一层的分解过程画成图，它其实就是一棵树</strong>。我们给这棵树起一个名字，叫作<code>递归树</code>（Recursion Tree）。归并排序每次会将数据规模一分为二，我们把归并排序画成递归树，就是下面这个样子：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/131.png" alt></p>
+<p>因为每次分解都是一分为二，所以代价很低，我们把时间上的消耗记作常量 1。归并算法中比较耗时的是归并操作，也就是把两个子数组合并为大数组。从图中我们可以看出，<strong>每一层归并操作消耗的时间总和是一样的，跟要排序的数据规模有关</strong>。我们把每一层归并操作消耗的时间记作 n。现在，我们只需要知道这棵树的高度 h，用高度 h 乘以每一层的时间消耗 n，就可以得到总的时间复杂度 O(n*h)。</p>
+<p>从归并排序的原理和递归树，可以看出来，归并排序递归树是一棵满二叉树。满二叉树的高度大约是 log2​n，所以，归并排序递归实现的时间复杂度就是 O(nlogn)。我这里的时间复杂度都是估算的，对树的高度的计算也没有那么精确，但是这并不影响复杂度的计算结果。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2755965992.html#more" rel="contents">
+            <a class="btn" href="/p/1711742275.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -402,7 +404,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3328524930.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4171019779.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -424,8 +426,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3328524930.html" itemprop="url">
-                  递归
+                <a class="post-title-link" href="/p/4171019779.html" itemprop="url">
+                  红黑树
                 </a>
               
             
@@ -441,8 +443,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-29T00:15:53+08:00">
-                2020-12-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-04T17:47:55+08:00">
+                2021-01-04
               </time>
             
 
@@ -478,11 +480,12 @@
 
       
         
-          <p>现在很多 App 都有推荐注册返佣金的功能。这个功能中，用户 A 推荐用户 B 来注册，用户 B 又推荐了用户 C 来注册。我们可以说，用户 C 的“最终推荐人”为用户 A，用户 B 的“最终推荐人”也为用户 A，而用户 A 没有“最终推荐人”。一般来说，我们会<strong>通过数据库来记录这种推荐关系</strong>。在数据库表中，我们可以记录两行数据，其中 actor_id 表示用户 id，referrer_id 表示推荐人 id：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/39.png" alt></p>
-<h2 id="如何理解“递归”？"><a href="#如何理解“递归”？" class="headerlink" title="如何理解“递归”？"></a>如何理解“递归”？</h2><p><code>递归</code>（Recursion）是一种应用非常广泛的算法（或者编程技巧）。很多数据结构和算法的编码实现都要用到递归，比如 DFS 深度优先搜索、前中后序二叉树遍历等等。所以，<strong>搞懂递归非常重要</strong>，否则，复杂一些的数据结构和算法学起来就会比较吃力。</p>
+          <h2 id="什么是“平衡二叉查找树”？"><a href="#什么是“平衡二叉查找树”？" class="headerlink" title="什么是“平衡二叉查找树”？"></a>什么是“平衡二叉查找树”？</h2><p>平衡二叉树的严格定义是这样的：<strong>二叉树中任意一个节点的左右子树的高度相差不能大于 1</strong>。从这个定义来看，上一节我们讲的完全二叉树、满二叉树其实都是平衡二叉树，但是非完全二叉树也有可能是平衡二叉树：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/114.png" alt></p>
+<p>平衡二叉查找树不仅满足上面平衡二叉树的定义，还满足二叉查找树的特点。最先被发明的平衡二叉查找树是 <code>AVL 树</code>，它严格符合我刚讲到的平衡二叉查找树的定义，即任何节点的左右子树高度相差不超过 1，是一种高度平衡的二叉查找树。发明平衡二叉查找树这类数据结构的初衷是，<strong>解决普通二叉查找树在频繁的插入、删除等动态更新的情况下，出现时间复杂度退化的问题</strong>。</p>
+<p>平衡二叉查找树中“平衡”的意思，其实就是让整棵树左右看起来比较“对称”、比较“平衡”，不要出现左子树很高、右子树很矮的情况。这样就能让整棵树的高度相对来说低一些，相应的插入、删除、查找等操作的效率高一些。所以，如果我们现在设计一个新的平衡二叉查找树，<strong>只要树的高度不比 log2n 大很多（比如树的高度仍然是对数量级的）</strong>，尽管它不符合我们前面讲的严格的平衡二叉查找树的定义，但我们仍然可以说，这是一个合格的平衡二叉查找树。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3328524930.html#more" rel="contents">
+            <a class="btn" href="/p/4171019779.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -525,7 +528,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3066327077.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2225903441.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -547,8 +550,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3066327077.html" itemprop="url">
-                  队列
+                <a class="post-title-link" href="/p/2225903441.html" itemprop="url">
+                  二叉树基础
                 </a>
               
             
@@ -564,8 +567,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-28T13:39:07+08:00">
-                2020-12-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-03T18:00:37+08:00">
+                2021-01-03
               </time>
             
 
@@ -601,13 +604,11 @@
 
       
         
-          <p>我们知道，CPU 资源是有限的，<strong>任务的处理速度与线程个数并不是线性正相关</strong>。相反，过多的线程反而会导致 CPU 频繁切换，处理性能下降。所以，线程池的大小一般都是综合考虑要处理任务的特点和硬件环境，来事先设置的。</p>
-<h2 id="如何理解“队列”？"><a href="#如何理解“队列”？" class="headerlink" title="如何理解“队列”？"></a>如何理解“队列”？</h2><p><code>队列</code>（Queue）这个概念非常好理解。你可以把它想象成排队买票，先来的先买，后来的人只能站末尾，不允许插队。<strong>先进者先出</strong>，这就是典型的队列。</p>
-<p>我们知道，栈只支持两个基本操作：入栈 push()和出栈 pop()。队列跟栈非常相似，支持的操作也很有限，最基本的操作也是两个：<strong>入队 enqueue()</strong>，放一个数据到队列尾部；<strong>出队 dequeue()</strong>，从队列头部取一个元素。所以，队列跟栈一样，也是一种操作受限的线性表数据结构：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/29.png" alt></p>
-<p>队列的概念很好理解，基本操作也很容易掌握。作为一种非常基础的数据结构，队列的应用也非常广泛，特别是一些具有某些额外特性的队列，比如循环队列、阻塞队列、并发队列。它们<strong>在很多偏底层系统、框架、中间件的开发中，起着关键性的作用</strong>。比如高性能队列 Disruptor、Linux 环形缓存，都用到了循环并发队列；java.util.concurrent 并发包利用 ArrayBlockingQueue 来实现公平锁等。</p>
+          <h2 id="树（Tree）"><a href="#树（Tree）" class="headerlink" title="树（Tree）"></a>树（Tree）</h2><p>我们首先来看，什么是<code>树</code>？我在图中画了几棵树：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/96.png" alt></p>
+<p>树这种数据结构真的很像我们现实生活中的树，这里面每个元素我们叫做“节点”；用来连接相邻节点之间的关系，我们叫做“父子关系”。比如下面这幅图，A 节点就是 B 节点的<code>父节点</code>，B 节点是 A 节点的<code>子节点</code>。B、C、D 这三个节点的父节点是同一个节点，所以它们之间互称为<code>兄弟节点</code>。我们把没有父节点的节点叫做<code>根节点</code>，也就是图中的节点 E。我们把没有子节点的节点叫做<code>叶子节点</code>，比如图中的 G、H、I、J、K、L 都是叶子节点：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/97.png" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3066327077.html#more" rel="contents">
+            <a class="btn" href="/p/2225903441.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -650,7 +651,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/524993275.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/585302133.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -672,8 +673,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/524993275.html" itemprop="url">
-                  栈
+                <a class="post-title-link" href="/p/585302133.html" itemprop="url">
+                  哈希算法
                 </a>
               
             
@@ -689,8 +690,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-27T23:06:47+08:00">
-                2020-12-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-03T16:39:06+08:00">
+                2021-01-03
               </time>
             
 
@@ -726,144 +727,149 @@
 
       
         
-          <p>当你依次访问完一串页面 a-&gt;b-&gt;c 之后，点击浏览器的后退按钮，就可以查看之前浏览过的页面 b 和 a。当你后退到页面 a，点击前进按钮，就可以重新查看页面 b 和 c。但是，如果你后退到页面 b 后，点击了新的页面 d，那就无法再通过前进、后退功能查看页面 c 了。</p>
-<h2 id="如何理解“栈”？"><a href="#如何理解“栈”？" class="headerlink" title="如何理解“栈”？"></a>如何理解“栈”？</h2><p>关于<code>栈</code>（Stack），我有一个非常贴切的例子，就是一摞叠在一起的盘子。我们平时放盘子的时候，都是从下往上一个一个放；取的时候，我们也是从上往下一个一个地依次取，不能从中间任意抽出。<strong>后进者先出，先进者后出</strong>，这就是典型的栈结构：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/20.png" alt></p>
-<p>从栈的操作特性上来看，栈是一种<strong>操作受限的线性表</strong>，只允许在一端插入和删除数据。事实上，从功能上来说，数组或链表确实可以替代栈，但你要知道，特定的数据结构是对特定场景的抽象，而且，<strong>数组或链表暴露了太多的操作接口</strong>，操作上的确灵活自由，但使用时就比较不可控，自然也就更容易出错。</p>
-<blockquote>
-<p>当某个数据集合只涉及在一端插入和删除数据，并且满足后进先出、先进后出的特性，这时我们就应该首选栈这种数据结构。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/524993275.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/593668330.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/593668330.html" itemprop="url">
-                  链表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-27T01:14:38+08:00">
-                2020-12-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>缓存</code>是一种提高数据读取性能的技术，在硬件设计、软件开发中都有着非常广泛的应用，比如常见的 CPU 缓存、数据库缓存、浏览器缓存等等。缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有三种：</p>
+          <h2 id="什么是哈希算法？"><a href="#什么是哈希算法？" class="headerlink" title="什么是哈希算法？"></a>什么是哈希算法？</h2><p><strong>将任意长度的二进制值串映射为固定长度的二进制值串，这个映射的规则就是哈希算法</strong>，而通过原始数据映射之后得到的二进制值串就是<code>哈希值</code>。但是，要想设计一个优秀的哈希算法并不容易，根据我的经验，我总结了需要满足的几点要求：</p>
 <ul>
-<li>先进先出策略 FIFO（First In, First Out）；</li>
-<li>最少使用策略 LFU（Least Frequently Used）；</li>
-<li>最近最少使用策略 LRU（Least Recently Used）；</li>
+<li>从哈希值不能反向推导出原始数据（所以哈希算法也叫单向哈希算法）；</li>
+<li>对输入数据非常敏感，哪怕原始数据只修改了一个 bit，最后得到的哈希值也大不相同；</li>
+<li>散列冲突的概率要很小，对于不同的原始数据，哈希值相同的概率非常小；</li>
+<li>哈希算法的执行效率要尽量高效，针对较长的文本，也能快速地计算出哈希值；</li>
 </ul>
-<h2 id="五花八门的链表结构"><a href="#五花八门的链表结构" class="headerlink" title="五花八门的链表结构"></a>五花八门的链表结构</h2><p>相比数组，<code>链表</code>（Linked List）是一种稍微复杂一点的数据结构。我们先从<strong>底层的存储结构</strong>上来看一看，为了直观地对比，我画了一张图：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/10.png" alt></p>
-<p>从图中我们看到，数组需要一块<strong>连续的内存空间</strong>来存储，对内存的要求比较高。如果我们申请一个 100MB 大小的数组，当内存中没有连续的、足够大的存储空间时，即便内存的剩余总可用空间大于 100MB，仍然会申请失败；而链表恰恰相反，它并不需要一块连续的内存空间，它通过“指针”将一组<strong>零散的内存块</strong>串联起来使用，所以如果我们申请的是 100MB 大小的链表，根本不会有问题。</p>
+<p>我们分别对“今天我来讲哈希算法”和“jiajia”这两个文本，计算 MD5 哈希值，得到两串看起来毫无规律的字符串（MD5 的哈希值是 128 位的 bit 长度，为了方便表示，我把它们转化成了 16 进制编码）。可以看出来，无论要哈希的文本有多长、多短，通过 MD5 哈希之后，得到的哈希值的长度都是相同的，而且得到的哈希值看起来像一堆随机数，完全没有规律：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MD5(<span class="string">"今天我来讲哈希算法"</span>) = bb4767201ad42c74e650c1b6c03d78fa</span><br><span class="line">MD5(<span class="string">"jiajia"</span>) = cd611a31ea969b908932d44d126d195b</span><br></pre></td></tr></table></figure>
+
+<p>我们再来看两个非常相似的文本，“我今天讲哈希算法！”和“我今天讲哈希算法”。这两个文本只有一个感叹号的区别。如果用 MD5 哈希算法分别计算它们的哈希值，你会发现，尽管只有一字之差，得到的哈希值也是完全不同的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MD5(<span class="string">"我今天讲哈希算法！"</span>) = <span class="number">425f</span>0d5a917188d2c3c3dc85b5e4f2cb</span><br><span class="line">MD5(<span class="string">"我今天讲哈希算法"</span>) = a1fb91ac128e6aa37fe42c663971ac3d</span><br></pre></td></tr></table></figure>
+
+<p>通过哈希算法得到的哈希值，很难反向推导出原始数据。比如上面的例子中，我们就很难通过哈希值“a1fb91ac128e6aa37fe42c663971ac3d”反推出对应的文本“我今天讲哈希算法”。哈希算法要处理的文本可能是各种各样的。比如，对于非常长的文本，<strong>如果哈希算法的计算时间很长，那就只能停留在理论研究的层面，很难应用到实际的软件开发中</strong>。比如，我们把今天这篇包含 4000 多个汉字的文章，用 MD5 计算哈希值，用不了 1ms 的时间。</p>
+<p>哈希算法的应用非常非常多，我选了最常见的七个，分别是：安全加密、唯一标识、数据校验、散列函数、负载均衡、数据分片、分布式存储。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/593668330.html#more" rel="contents">
+            <a class="btn" href="/p/585302133.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2439909564.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2439909564.html" itemprop="url">
+                  散列表
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-02T13:48:27+08:00">
+                2021-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="散列思想"><a href="#散列思想" class="headerlink" title="散列思想"></a>散列思想</h2><p>散列表的英文叫“Hash Table”，我们平时也叫它“哈希表”或者“Hash 表”。散列表用的是数组支持按照下标随机访问数据的特性，所以<strong>散列表其实就是数组的一种扩展</strong>，由数组演化而来。可以说，如果没有数组，就没有散列表。</p>
+<p>假设校长说，参赛编号不能设置得这么简单，要加上年级、班级这些更详细的信息，所以我们把编号的规则稍微修改了一下，用 6 位数字来表示。比如 051167，其中，前两位 05 表示年级，中间两位 11 表示班级，最后两位还是原来的编号 1 到 89。尽管我们不能直接把编号作为数组下标，但我们可以截取参赛编号的后两位作为数组下标，来存取选手信息数据。当通过参赛编号查询选手信息的时候，我们用同样的方法，取参赛编号的后两位，作为数组下标，来读取数组中的数据。</p>
+<p>这就是典型的散列思想。其中，参赛选手的编号我们叫做<code>键值</code>。我们用它来标识一个选手。我们把参赛编号转化为数组下标的映射方法就叫作<code>散列函数</code>，而散列函数计算得到的值就叫作<code>散列值</code>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/83.png" alt></p>
+<p>通过这个例子，我们可以总结出这样的规律：<strong>散列表用的就是数组支持按照下标随机访问的时候，时间复杂度是 O(1) 的特性</strong>。我们通过散列函数把元素的键值映射为下标，然后将数据存储在数组中对应下标的位置。当我们按照键值查询元素时，我们用同样的散列函数，将键值转化数组下标，从对应的数组下标的位置取数据。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2439909564.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -901,7 +907,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/30/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/32/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/30/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/32/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -944,7 +950,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

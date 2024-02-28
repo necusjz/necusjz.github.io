@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3423673570.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2165241535.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3423673570.html" itemprop="url">
-                  语法结构
+                <a class="post-title-link" href="/p/2165241535.html" itemprop="url">
+                  场景：处理旅游数据
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-05T19:23:37+08:00">
-                2022-03-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-26T18:50:45+08:00">
+                2022-03-26
               </time>
             
 
@@ -356,15 +356,11 @@
 
       
         
-          <h2 id="条件分支控制流"><a href="#条件分支控制流" class="headerlink" title="条件分支控制流"></a>条件分支控制流</h2><p>掌握如何写出好的条件分支代码非常重要，它可以帮助我们用更简洁、更清晰的代码来表达复杂逻辑。</p>
-<h3 id="分支惯用写法"><a href="#分支惯用写法" class="headerlink" title="分支惯用写法"></a>分支惯用写法</h3><p>当某个对象作为主角出现在 if 分支里时，解释器会主动对它进行真值测试，也就是调用 bool() 函数获取它的布尔值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; bool([]), bool([1, 2, 3])</span><br><span class="line">(False, True)</span><br></pre></td></tr></table></figure>
-
-<p>不要因为过度追求简写而引入其他逻辑问题：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更精准：只有为 0 的时候，才会满足分支条件</span></span><br><span class="line"><span class="keyword">if</span> containers_count == <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更宽泛：为 0、None、空字符串等时，都可以满足分支条件</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> containers_count:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+          <p>Ethan 打开笔记本电脑，从电脑桌面上的文件夹里翻出两个 Excel 表格文件，在这两个文件里，分别存着最近去过普吉岛和新西兰旅游的旅客信息，需要从这两份数据里，找出那些<strong>去过普吉岛但没去过新西兰的人</strong>，再让销售人员向他们推销一些新西兰精品旅游路线。将文件转换为 JSON 格式后，里面的内容大致如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 去过普吉岛的人员数据</span><br><span class="line">users_visited_phuket = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"first_name"</span>: <span class="string">"Sirena"</span>,</span><br><span class="line">        <span class="attr">"last_name"</span>: <span class="string">"Gross"</span>,</span><br><span class="line">        <span class="attr">"phone_number"</span>: <span class="string">"650-568-0388"</span>,</span><br><span class="line">        <span class="attr">"date_visited"</span>: <span class="string">"2018-03-14"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 去过新西兰的人员数据</span><br><span class="line">users_visited_nz = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"first_name"</span>: <span class="string">"Justin"</span>,</span><br><span class="line">        <span class="attr">"last_name"</span>: <span class="string">"Malcom"</span>,</span><br><span class="line">        <span class="attr">"phone_number"</span>: <span class="string">"267-282-1964"</span>,</span><br><span class="line">        <span class="attr">"date_visited"</span>: <span class="string">"2011-03-13"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3423673570.html#more" rel="contents">
+            <a class="btn" href="/p/2165241535.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -407,7 +403,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2925783580.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2857695660.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -429,8 +425,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2925783580.html" itemprop="url">
-                  蟒蛇军火库
+                <a class="post-title-link" href="/p/2857695660.html" itemprop="url">
+                  开发大型项目
                 </a>
               
             
@@ -446,8 +442,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-05T14:11:16+08:00">
-                2022-03-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-22T00:10:30+08:00">
+                2022-03-22
               </time>
             
 
@@ -483,11 +479,11 @@
 
       
         
-          <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>Python 之禅：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import this</span><br><span class="line">The Zen of Python, by Tim Peters</span><br><span class="line"></span><br><span class="line">Beautiful is better than ugly.</span><br><span class="line">Explicit is better than implicit.</span><br><span class="line">Simple is better than complex.</span><br><span class="line">Complex is better than complicated.</span><br><span class="line">Flat is better than nested.</span><br><span class="line">Sparse is better than dense.</span><br><span class="line">Readability counts.</span><br><span class="line">Special cases aren&apos;t special enough to break the rules.</span><br><span class="line">Although practicality beats purity.</span><br><span class="line">Errors should never pass silently.</span><br><span class="line">Unless explicitly silenced.</span><br><span class="line">In the face of ambiguity, refuse the temptation to guess.</span><br><span class="line">There should be one-- and preferably only one --obvious way to do it.</span><br><span class="line">Although that way may not be obvious at first unless you&apos;re Dutch.</span><br><span class="line">Now is better than never.</span><br><span class="line">Although never is often better than *right* now.</span><br><span class="line">If the implementation is hard to explain, it&apos;s a bad idea.</span><br><span class="line">If the implementation is easy to explain, it may be a good idea.</span><br><span class="line">Namespaces are one honking great idea -- let&apos;s do more of those!</span><br></pre></td></tr></table></figure>
+          <h2 id="数据模型与描述符"><a href="#数据模型与描述符" class="headerlink" title="数据模型与描述符"></a>数据模型与描述符</h2><p>在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为<strong>魔法方法</strong>（Magic Method）。</p>
+<h3 id="字符串魔法方法"><a href="#字符串魔法方法" class="headerlink" title="字符串魔法方法"></a>字符串魔法方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, favorite_color)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.favorite_color = favorite_color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 变量名后的 !r 表示在渲染字符串模版时，程序会优先使用 repr() 而非 str() 的结果</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;cls_name&#125;(name=&#123;name!r&#125;, age=&#123;age!r&#125;, favorite_color=&#123;color!r&#125;)'</span>.format(</span><br><span class="line">            cls_name=self.__class__.__name__,</span><br><span class="line">            name=self.name,</span><br><span class="line">            age=self.age,</span><br><span class="line">            color=self.favorite_color,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__format__</span><span class="params">(self, format_spec)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> format_spec == <span class="string">'verbose'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)[<span class="subst">&#123;self.favorite_color&#125;</span>]'</span></span><br><span class="line">        <span class="keyword">elif</span> format_spec == <span class="string">'simple'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)'</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2925783580.html#more" rel="contents">
+            <a class="btn" href="/p/2857695660.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -530,7 +526,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1367447921.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3290605089.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -552,8 +548,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1367447921.html" itemprop="url">
-                  变量与基础类型
+                <a class="post-title-link" href="/p/3290605089.html" itemprop="url">
+                  场景：寻找元类替代品
                 </a>
               
             
@@ -569,8 +565,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-04T20:23:54+08:00">
-                2022-03-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T21:12:14+08:00">
+                2022-03-20
               </time>
             
 
@@ -606,15 +602,21 @@
 
       
         
-          <h2 id="变量与注释"><a href="#变量与注释" class="headerlink" title="变量与注释"></a>变量与注释</h2><p>当我们看到一段代码时，最先注意到的，不是代码有几层循环，用了什么模式，而是<strong>变量与注释</strong>，因为它们是代码里最接近自然语言的东西，最容易被大脑消化、理解。</p>
-<h3 id="变量常见用法"><a href="#变量常见用法" class="headerlink" title="变量常见用法"></a>变量常见用法</h3><p>Python 支持灵活的动态解包语法，只要用星号表达式（*variables）作为变量名，它便会<strong>贪婪</strong>地捕获多个值对象，并将捕获到的内容作为列表赋值给 variables：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = [&apos;ethan&apos;, &apos;apple&apos;, &apos;orange&apos;, &apos;banana&apos;, 100]</span><br><span class="line">&gt;&gt;&gt; username, *fruits, score = data</span><br><span class="line">&gt;&gt;&gt; fruits</span><br><span class="line">[&apos;apple&apos;, &apos;orange&apos;, &apos;banana&apos;, 100]</span><br></pre></td></tr></table></figure>
+          <blockquote>
+<p>Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don’t (the people who actually need them know with certainty that they need them, and don’t need an explanation about why).<br>-- <em>Tim Peters</em></p>
+</blockquote>
+<p>元类是 Python 中的一种特殊对象，它<strong>控制着类的创建行为</strong>，就像普通类控制着实例的创建行为一样。type 是 Python 中最基本的元类，直接调用 type() 就可以创建一个类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Foo = type(&apos;Foo&apos;, (), &#123;&apos;bar&apos;: 3&#125;)</span><br><span class="line">&gt;&gt;&gt; Foo</span><br><span class="line">&lt;class &apos;__main__.Foo&apos;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在 Python 交互式命令行里，_ 变量还有一层特殊含义——默认保存我们输入的上个表达式的返回值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &apos;foo&apos;.upper()</span><br><span class="line">&apos;FOO&apos;</span><br><span class="line">&gt;&gt;&gt; print(_)</span><br><span class="line">FOO</span><br></pre></td></tr></table></figure>
+<p>在调用 type() 创建类时，需要提供三个参数，它们的含义如下：</p>
+<ul>
+<li>name: str，需要创建的类名；</li>
+<li>bases: Tuple[Type]，包含其他类的元组，代表类的所有基类；</li>
+<li>attrs: Dict[str, Any]，包含所有类成员（属性、方法）的字典；</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1367447921.html#more" rel="contents">
+            <a class="btn" href="/p/3290605089.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -657,7 +659,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/122526936.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4207367335.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -679,8 +681,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/122526936.html" itemprop="url">
-                  重新认识 Docker 容器
+                <a class="post-title-link" href="/p/4207367335.html" itemprop="url">
+                  面向对象编程
                 </a>
               
             
@@ -696,8 +698,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-28T01:16:39+08:00">
-                2021-05-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T16:39:34+08:00">
+                2022-03-20
               </time>
             
 
@@ -733,17 +735,20 @@
 
       
         
-          <p>剖析 Linux 容器的核心实现原理：</p>
-<ol>
-<li>基于 Namespace 的视图隔离；</li>
-<li>基于 Cgroups 的资源限制；</li>
-<li>基于 rootfs 的文件系统；</li>
-</ol>
-<h2 id="Docker-容器的核心功能"><a href="#Docker-容器的核心功能" class="headerlink" title="Docker 容器的核心功能"></a>Docker 容器的核心功能</h2><p>在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    html = <span class="string">"&lt;h3&gt;Hello &#123;name&#125;!&lt;/h3&gt;"</span> \</span><br><span class="line">           <span class="string">"&lt;b&gt;Hostname:&lt;/b&gt; &#123;hostname&#125;&lt;br/&gt;"</span>           </span><br><span class="line">    <span class="keyword">return</span> html.format(name=os.getenv(<span class="string">"NAME"</span>, <span class="string">"world"</span>), hostname=socket.gethostname())</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+          <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。<strong>在 Python 里，万物皆对象</strong>，最基础的浮点数也是一个对象。</p>
+<h3 id="类常用知识"><a href="#类常用知识" class="headerlink" title="类常用知识"></a>类常用知识</h3><p>通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。<strong>封装</strong>（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。</p>
+<p>当你使用 __{var} 的方式定义一个私有属性时，Python 解释器只是重新给了它一个包含当前类名的别名 <strong>_{class}__{var}</strong>，因此你仍然可以在外部用这个别名来访问和修改它。</p>
+<blockquote>
+<p>设计哲学：期望程序员做正确的事，而不是在语言上增加太多条条框框。</p>
+</blockquote>
+<p>在某些特殊场景下，合理利用 __dict__ 可以帮你完成常规做法难以做到的一些事情：</p>
+<ul>
+<li>实例的 __dict__ 里，保存着当前实例的所有数据；</li>
+<li>类的 __dict__ 里，保存着类的文档、方法等所有数据；</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/122526936.html#more" rel="contents">
+            <a class="btn" href="/p/4207367335.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -786,7 +791,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1666378453.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4159641954.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -808,8 +813,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1666378453.html" itemprop="url">
-                  从容器到容器云：谈谈 Kubernetes 的本质
+                <a class="post-title-link" href="/p/4159641954.html" itemprop="url">
+                  场景：查找第一张专辑
                 </a>
               
             
@@ -825,8 +830,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-25T19:13:33+08:00">
-                2021-05-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-13T15:41:54+08:00">
+                2022-03-13
               </time>
             
 
@@ -862,15 +867,10 @@
 
       
         
-          <h2 id="容器的核心知识"><a href="#容器的核心知识" class="headerlink" title="容器的核心知识"></a>容器的核心知识</h2><p>一个容器，实际上是一个由 Linux Namespace、Linux Cgroups 和 rootfs 三种技术构建出来的进程的隔离环境。从这个结构中我们不难看出，一个正在运行的 Linux 容器，其实可以被“一分为二”地看待：</p>
-<ol>
-<li>一组联合挂载在 /var/lib/docker/aufs/mnt 上的 rootfs，这一部分我们称为<strong>容器镜像</strong>（Container Image），是容器的静态视图；</li>
-<li>一个由 Namespace + Cgroups 构成的隔离环境，这一部分我们称为<strong>容器运行时</strong>（Container Runtime），是容器的动态视图；</li>
-</ol>
-<p>更进一步地说，作为一名开发者，我并不关心容器运行时的差异。因为，在整个“开发 -&gt; 测试 -&gt; 发布”的流程中，真正承载着容器信息进行传递的，是容器镜像，而不是容器运行时。这个重要假设，正是容器技术圈在 Docker 项目成功后不久，就迅速走向了“容器编排”这个“上层建筑”的主要原因：作为一家云服务商或者基础设施提供商，我只要能够<strong>将用户提交的 Docker 镜像以容器的方式运行起来，就能成为这个非常热闹的容器生态图上的一个承载点</strong>，从而将整个容器技术栈上的价值，沉淀在我的这个节点上。更重要的是，只要从我这个承载点向 Docker 镜像制作者和使用者方向回溯，整条路径上的各个服务节点，比如 CI/CD、监控、安全、网络、存储等等，都有我可以发挥和盈利的余地。这个逻辑，正是所有云计算提供商如此热衷于容器技术的重要原因：通过容器镜像，它们可以和潜在用户（即，开发者）直接关联起来。</p>
+          <p>iTunes 是苹果公司提供的内容商店服务，在里面可以购买世界各地的电影、音乐等数字内容。同时，iTunes 还提供了一个公开的可免费调用的内容查询 API。下面这个脚本就通过调用该 API 实现了查找歌手的第一张专辑的功能：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1666378453.html#more" rel="contents">
+            <a class="btn" href="/p/4159641954.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -908,7 +908,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -951,7 +951,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

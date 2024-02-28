@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2387701916.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3247778254.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2387701916.html" itemprop="url">
-                  Designing Uber backend
+                <a class="post-title-link" href="/p/3247778254.html" itemprop="url">
+                  搜索引擎背后的数据结构和算法
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-27T22:10:31+08:00">
-                2021-02-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T13:19:37+08:00">
+                2021-03-23
               </time>
             
 
@@ -356,24 +356,19 @@
 
       
         
-          <h2 id="What-is-Uber"><a href="#What-is-Uber" class="headerlink" title="What is Uber?"></a>What is Uber?</h2><p>Uber enables its customers to book drivers for taxi rides. Uber drivers use their personal cars to drive customers around. Both customers and drivers communicate with each other through their smartphones using the Uber app.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s start with building a simpler version of Uber.<br>There are two types of users (Drivers, Customers) in our system:</p>
-<ul>
-<li>Drivers need to regularly notify the service about their current location and their availability to pick passengers;</li>
-<li>Passengers get to see all the nearby available drivers;</li>
-<li>Customer can request a ride; nearby drivers are notified that a customer is ready to be picked up;</li>
-<li>Once a driver and a customer accept a ride, they can constantly see each other’s current location until the trip finishes;</li>
-<li>Upon reaching the destination, the driver marks the journey complete to become available for the next ride;</li>
-</ul>
-<h2 id="Capacity-Estimation-and-Constraints"><a href="#Capacity-Estimation-and-Constraints" class="headerlink" title="Capacity Estimation and Constraints"></a>Capacity Estimation and Constraints</h2><ul>
-<li>Let’s assume we have 300M customers and 1M drivers with 1M daily active customers and 500K daily active drivers;</li>
-<li>Let’s assume 1M daily rides;</li>
-<li>Let’s assume that all active drivers notify their current location every three seconds;</li>
-<li>Once a customer puts in a request for a ride, the system should be able to contact drivers in real-time;</li>
-</ul>
+          <h2 id="整体系统介绍"><a href="#整体系统介绍" class="headerlink" title="整体系统介绍"></a>整体系统介绍</h2><p>搜索引擎大致可以分为四个部分：<strong>搜集、分析、索引、查询</strong>：</p>
+<ol>
+<li>搜集，就是我们常说的利用爬虫爬取网页；</li>
+<li>分析，主要负责网页内容抽取、分词，构建临时索引，计算 PageRank 值这几部分工作；</li>
+<li>索引，主要负责通过分析阶段得到的临时索引，构建倒排索引；</li>
+<li>查询，主要负责响应用户的请求，根据倒排索引获取相关网页，计算网页排名，返回查询结果给用户；</li>
+</ol>
+<h2 id="搜集"><a href="#搜集" class="headerlink" title="搜集"></a>搜集</h2><p>搜索引擎<strong>把整个互联网看作数据结构中的有向图</strong>，把每个页面看作一个顶点。如果某个页面中包含另外一个页面的链接，那我们就在两个顶点之间连一条有向边。我们可以利用图的遍历搜索算法，来遍历整个互联网中的网页。我们前面介绍过两种图的遍历方法，深度优先和广度优先。<strong>搜索引擎采用的是广度优先搜索策略</strong>。具体点讲的话，那就是，我们先找一些比较知名的网页（专业的叫法是权重比较高）的链接（比如新浪主页网址、腾讯主页网址等），作为种子网页链接，放入到队列中。爬虫按照广度优先的策略，不停地从队列中取出链接，然后去爬取对应的网页，解析出网页里包含的其他网页链接，再将解析出来的链接添加到队列中。</p>
+<p>爬虫在爬取网页的过程中，涉及的四个重要的文件。其中，links.bin 和 bloom_filter.bin 这两个文件是爬虫自身所用的；另外的两个 doc_raw.bin 和 doc_id.bin 是作为搜集阶段的成果，供后面的分析、索引、查询用的。</p>
+<h3 id="待爬取网页链接文件：links-bin"><a href="#待爬取网页链接文件：links-bin" class="headerlink" title="待爬取网页链接文件：links.bin"></a>待爬取网页链接文件：links.bin</h3><p>我们可以把整个页面看作一个大的字符串，然后利用字符串匹配算法，在这个大字符串中，搜索这样一个网页标签，然后顺序读取之间的字符串 – 这其实就是网页链接。在广度优先搜索爬取页面的过程中，爬虫会不停地解析页面链接，将其放到队列中。于是，队列中的链接就会越来越多，可能会多到内存放不下。所以，我们用一个存储在磁盘中的文件（links.bin）来作为广度优先搜索中的队列。爬虫从 links.bin 文件中，取出链接去爬取对应的页面。等爬取到网页之后，将解析出来的链接，直接存储到 links.bin 文件中。这样用文件来存储网页链接的方式，还有其他好处。比如，<strong>支持断点续爬</strong>。也就是说，当机器断电之后，网页链接不会丢失；当机器重启之后，还可以从之前爬取到的位置继续爬取。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2387701916.html#more" rel="contents">
+            <a class="btn" href="/p/3247778254.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -416,7 +411,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4052390726.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2361214650.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -438,8 +433,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4052390726.html" itemprop="url">
-                  Designing Yelp or Nearby Friends
+                <a class="post-title-link" href="/p/2361214650.html" itemprop="url">
+                  Redis 常用数据类型对应的数据结构
                 </a>
               
             
@@ -455,8 +450,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-27T16:41:34+08:00">
-                2021-02-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T12:38:26+08:00">
+                2021-03-23
               </time>
             
 
@@ -492,21 +487,10 @@
 
       
         
-          <h2 id="Why-Yelp-or-Proximity-Server"><a href="#Why-Yelp-or-Proximity-Server" class="headerlink" title="Why Yelp or Proximity Server?"></a>Why Yelp or Proximity Server?</h2><p>Proximity servers are used to discover nearby attractions like places, events, etc. If you haven’t used <a href="https://www.yelp.com/" target="_blank" rel="noopener">yelp.com</a> before, please try it before proceeding (you can search for nearby restaurants, theaters, etc.) and spend some time understanding different options that the website offers. This will help you a lot in understanding this chapter better.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p><strong>What do we wish to achieve from a Yelp like service</strong>? Our service will be storing information about different places so that users can perform a search on them. Upon querying, our service will return a list of places around the user.<br>Our Yelp-like service should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Users should be able to add/delete/update places;</li>
-<li>Given their location (longitude/latitude), users should be able to find all nearby places within a given radius;</li>
-<li>Users should be able to add feedback/review about a place. The feedback can have pictures, text, and a rating;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>Users should have a real-time search experience with minimum latency;</li>
-<li>Our service should support a heavy search load. There will be a lot of search requests compared to adding a new place;</li>
-</ol>
+          <h2 id="Redis-数据库介绍"><a href="#Redis-数据库介绍" class="headerlink" title="Redis 数据库介绍"></a>Redis 数据库介绍</h2><p>Redis 是一种键值（Key-Value）数据库。相对于关系型数据库（比如 MySQL），Redis 也被叫作<strong>非关系型数据库</strong>。像 MySQL 这样的关系型数据库，表的结构比较复杂，会包含很多字段，可以通过 SQL 语句，来实现非常复杂的查询需求。而 Redis 中只包含“键”和“值”两部分，只能通过“键”来查询“值”。正是因为这样简单的存储结构，也让 Redis 的读写效率非常高；除此之外，Redis 主要是作为内存数据库来使用，也就是说，数据是存储在内存中的。尽管它经常被用作内存数据库，但是，它也支持将数据存储在硬盘中。Redis 中，键的数据类型是字符串，但是<strong>为了丰富数据存储的方式，方便开发者使用，值的数据类型有很多</strong>，常用的数据类型有这样几种，它们分别是字符串、列表、字典、集合、有序集合。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/4052390726.html#more" rel="contents">
+            <a class="btn" href="/p/2361214650.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -549,7 +533,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2182986560.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3468801964.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -571,8 +555,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2182986560.html" itemprop="url">
-                  Designing Facebook's Newsfeed
+                <a class="post-title-link" href="/p/3468801964.html" itemprop="url">
+                  Make Decisions
                 </a>
               
             
@@ -588,8 +572,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-26T16:28:27+08:00">
-                2021-02-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T15:12:37+08:00">
+                2021-03-01
               </time>
             
 
@@ -625,22 +609,12 @@
 
       
         
-          <h2 id="What-is-Facebook’s-Newsfeed"><a href="#What-is-Facebook’s-Newsfeed" class="headerlink" title="What is Facebook’s Newsfeed?"></a>What is Facebook’s Newsfeed?</h2><p>A Newsfeed is the constantly updating list of stories in the middle of Facebook’s homepage. It includes status updates, photos, videos, links, app activity, and “likes” from people, pages, and groups that a user follows on Facebook. In other words, it is a compilation of a complete scrollable version of your friends’ and your life story from photos, videos, locations, status updates, and other activities.<br>For any social media site you design - Twitter, Instagram, or Facebook - you will need a newsfeed system to display updates from friends and followers.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s design a newsfeed for Facebook with the following requirements:<br><strong>Functional Requirements</strong>:</p>
-<ol>
-<li>Newsfeed will be generated based on the posts from the people, pages, and groups that a user follows;</li>
-<li>A user may have many friends and follow a large number of pages/groups;</li>
-<li>Feeds may contain images, videos, or just text;</li>
-<li>Our service should support appending new posts as they arrive to the newsfeed for all active users;</li>
-</ol>
-<p><strong>Non-Functional Requirements</strong>:</p>
-<ol>
-<li>Our system should be able to generate any user’s newsfeed in real-time - maximum latency seen by the end user would be 2s;</li>
-<li>A post shouldn’t take more than 5s to make it to a use’s feed assuming a new newsfeed request comes in;</li>
-</ol>
+          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a set of values find an answer with an option to choose or ignore the current value.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>If you decide to choose the current value use the previous result where the value was ignored; vice versa, if you decide to ignore the current value use previous result where value was used:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i: indexing a set of values</span></span><br><span class="line"><span class="comment">// j: options to ignore j values</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">        dp[i][j] = max(&#123;dp[i][j], dp[i<span class="number">-1</span>][j] + arr[i], dp[i<span class="number">-1</span>][j<span class="number">-1</span>]&#125;);</span><br><span class="line">        dp[i][j<span class="number">-1</span>] = max(&#123;dp[i][j<span class="number">-1</span>], dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + arr[i], arr[i]&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2182986560.html#more" rel="contents">
+            <a class="btn" href="/p/3468801964.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -683,7 +657,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2593767960.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1675068398.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -705,8 +679,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2593767960.html" itemprop="url">
-                  Designing a Web Crawler
+                <a class="post-title-link" href="/p/1675068398.html" itemprop="url">
+                  Dynamic Programming on Strings
                 </a>
               
             
@@ -722,8 +696,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-26T11:08:41+08:00">
-                2021-02-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T15:00:41+08:00">
+                2021-03-01
               </time>
             
 
@@ -759,21 +733,15 @@
 
       
         
-          <h2 id="What-is-a-Web-Crawler"><a href="#What-is-a-Web-Crawler" class="headerlink" title="What is a Web Crawler?"></a>What is a Web Crawler?</h2><p>A web crawler is a software program which browses the World Wide Web in a methodical and automated manner. It collects documents by recursively fetching links from a set of starting pages. Many sites, particularly search engines, use web crawling as a means of providing up-to-date data. Search engines download all the pages to create an index on them to perform faster searches.<br>Some other uses of web crawlers are:</p>
-<ul>
-<li>To test web pages and links for valid syntax and structure;</li>
-<li>To monitor sites to see when their structure or contents change;</li>
-<li>To maintain mirror sites for popular Web sites;</li>
-<li>To build a special-purpose index, e.g., one that has some understanding of the content stored in multimedia files on the Web;</li>
-</ul>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Let’s assume we need to crawl all the web:</p>
-<ul>
-<li><strong>Scalability</strong>: Our service needs to be scalable such that it can crawl the entire Web and can be used to fetch hundreds of millions of Web documents;</li>
-<li><strong>Extensibility</strong>: Our service should be designed in a modular way with the expectation that new functionality will be added to it. There could be newer document types that need to be downloaded and processed in the future;</li>
-</ul>
+          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given two strings <strong>s1</strong> and <strong>s2</strong>, return a result.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Most of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i<span class="number">-1</span>] == s2[j<span class="number">-1</span>]) &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If you are given one string <strong>s</strong> the approach may little vary:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; n; ++l) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == s[j]) &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2593767960.html#more" rel="contents">
+            <a class="btn" href="/p/1675068398.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -816,7 +784,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3819033204.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3299276735.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -838,8 +806,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3819033204.html" itemprop="url">
-                  Designing Twitter Search
+                <a class="post-title-link" href="/p/3299276735.html" itemprop="url">
+                  Interval Merging
                 </a>
               
             
@@ -855,8 +823,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-24T22:37:32+08:00">
-                2021-02-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:48:39+08:00">
+                2021-03-01
               </time>
             
 
@@ -892,18 +860,16 @@
 
       
         
-          <h2 id="What-is-Twitter-Search"><a href="#What-is-Twitter-Search" class="headerlink" title="What is Twitter Search?"></a>What is Twitter Search?</h2><p>Twitter users can update their status whenever they like. Each status (called tweet) consists of plain text and our goal is to design a system that allows searching over all the user tweets.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>We need to design a system that can efficiently store and query tweets:</p>
-<ul>
-<li>Let’s assume Twitter has 1.5 billion total users with 800 million daily active users;</li>
-<li>On average Twitter gets 400 million tweets every day;</li>
-<li>The average size of a tweet is 300 bytes;</li>
-<li>Let’s assume there will be 500M searches every day;</li>
-<li>The search query will consist of multiple words combined with AND/OR;</li>
-</ul>
+          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a set of numbers find an optimal solution for a problem considering the current number and the best you can get from the left and right sides.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Find all optimal solutions for every interval and return the best possible answer:</p>
+<blockquote>
+<p>dp[i][j] = dp[i][k] + result[k] + dp[k+1][j]</p>
+</blockquote>
+<p>Get the best from the left and right sides and add a solution for the current position:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; n; ++l) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt; j; ++k) &#123;</span><br><span class="line">            dp[i][j] = max(dp[i][j], dp[i][k] + result[k] + dp[k+<span class="number">1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[<span class="number">0</span>][n<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3819033204.html#more" rel="contents">
+            <a class="btn" href="/p/3299276735.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -941,7 +907,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -984,7 +950,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

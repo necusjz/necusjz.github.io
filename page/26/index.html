@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3173939512.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1858691252.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3173939512.html" itemprop="url">
-                  向量空间
+                <a class="post-title-link" href="/p/1858691252.html" itemprop="url">
+                  Two Pointers
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-23T16:05:27+08:00">
-                2021-01-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T15:49:52+08:00">
+                2021-01-30
               </time>
             
 
@@ -356,15 +356,22 @@
 
       
         
-          <h2 id="如何实现一个简单的音乐推荐系统"><a href="#如何实现一个简单的音乐推荐系统" class="headerlink" title="如何实现一个简单的音乐推荐系统"></a>如何实现一个简单的音乐推荐系统</h2><p>很多人都喜爱听歌，以前我们用 MP3 听歌，现在直接通过音乐 App 在线就能听歌。而且，各种音乐 App 的功能越来越强大，不仅可以自己选歌听，还可以根据你听歌的口味偏好，给你推荐可能会喜爱的音乐，而且有时候，推荐的音乐还非常适合你的口味，甚至会惊艳到你！如此智能的一个功能，你知道它是怎么实现的吗？</p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>实际上，要解决这个问题，并不需要特别高深的理论。解决思路的核心思想非常简单、直白，用两句话就能总结出来：</p>
+          <blockquote>
+<p>一个很灵活的模式，有序与否都有应用的场景。需要根据题意来决定，while 循环的条件是 l &lt; r 还是 l &lt;= r。</p>
+</blockquote>
+<p>In problems where we deal with sorted arrays (or linked lists) and need to find a set of elements that fulfill certain constraints, the <em>Two Pointers</em> approach becomes quite useful. The set of elements could be a pair, a triplet or even a subarray. For example, take a look at the following problem:</p>
+<blockquote>
+<p>Given an array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target.</p>
+</blockquote>
+<p>To solve this problem, we can consider each element one by one (pointed out by the first pointer) and iterate through the remaining elements (pointed out by the second pointer) to find a pair with the given sum. The time complexity of this algorithm will be O(N^2) where “N” is the number of elements in the input array.</p>
+<p>Given that the input array is <strong>sorted</strong>, an efficient way would be to start with one pointer in the beginning and another pointer at the end. At every step, we will see if the numbers pointed by the two pointers add up to the target sum. If they do not, we will do one of two things:</p>
 <ul>
-<li>找到跟你口味偏好相似的用户，把他们爱听的歌曲推荐给你；</li>
-<li>找出跟你喜爱的歌曲特征相似的歌曲，把这些歌曲推荐给你；</li>
+<li>If the sum of the two numbers pointed by the two pointers is greater than the target sum, this means that we need a pair with a less sum. So, to try more pairs, we can decrement the end-pointer;</li>
+<li>If the sum of the two numbers pointed by the two pointers is less than the target sum, this means that we need a pair with a greater sum. So, to try more pairs, we can increment the start-pointer;</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3173939512.html#more" rel="contents">
+            <a class="btn" href="/p/1858691252.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -407,7 +414,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3452110378.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3659857917.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -429,8 +436,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3452110378.html" itemprop="url">
-                  概率统计
+                <a class="post-title-link" href="/p/3659857917.html" itemprop="url">
+                  Sliding Window
                 </a>
               
             
@@ -446,8 +453,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-21T22:38:36+08:00">
-                2021-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T14:36:43+08:00">
+                2021-01-30
               </time>
             
 
@@ -483,14 +490,28 @@
 
       
         
-          <h2 id="如何利用朴素贝叶斯过滤垃圾短信"><a href="#如何利用朴素贝叶斯过滤垃圾短信" class="headerlink" title="如何利用朴素贝叶斯过滤垃圾短信"></a>如何利用朴素贝叶斯过滤垃圾短信</h2><p>垃圾短信和骚扰电话，我想每个人都收到过吧？买房、贷款、投资理财、开发票，各种垃圾短信和骚扰电话，不胜其扰。如果你是一名手机应用开发工程师，让你实现一个简单的垃圾短信过滤功能以及骚扰电话拦截功能，该用什么样的数据结构和算法实现呢？</p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>实际上，解决这个问题并不会涉及很高深的算法。今天，我就带你一块看下，如何利用简单的数据结构和算法，解决这种看似非常复杂的问题。</p>
-<h3 id="基于黑名单的过滤器"><a href="#基于黑名单的过滤器" class="headerlink" title="基于黑名单的过滤器"></a>基于黑名单的过滤器</h3><p>我们可以<strong>维护一个骚扰电话号码和垃圾短信发送号码的黑名单</strong>。如果黑名单中的电话号码不多的话，我们可以使用散列表、二叉树等动态数据结构来存储，对内存的消耗并不会很大。如果我们把每个号码看作一个字符串，并且假设平均长度是 16 个字节，那存储 50 万个电话号码，大约需要 10MB 的内存空间。即便是对于手机这样的内存有限的设备来说，这点内存的消耗也是可以接受的。</p>
-<p>但是，如果黑名单中的电话号码很多呢？比如有 500 万个。这个时候，如果再用散列表存储，就需要大约 100MB 的存储空间。为了实现一个拦截功能，耗费用户如此多的手机内存，这显然有点儿不合理。如果我们<strong>要存储 500 万个手机号码，我们把位图大小设置为 10 倍数据大小</strong>，也就是 5000 万，那也只需要使用 5000 万个二进制位（5000 万 bits），换算成字节，也就是不到 7MB 的存储空间。比起散列表的解决方案，内存的消耗减少了很多。</p>
-<p>我们<strong>还可以把黑名单存储在服务器端上，把过滤和拦截的核心工作，交给服务器端来做</strong>。手机端只负责将要检查的号码发送给服务器端，服务器端通过查黑名单，判断这个号码是否应该被拦截，并将结果返回给手机端。用这个解决思路完全不需要占用手机内存。不过，有利就有弊。我们知道，网络通信是比较慢的，所以，网络延迟就会导致处理速度降低。而且，这个方案还有个硬性要求，那就是只有在联网的情况下，才能正常工作。</p>
+          <blockquote>
+<p>难点大概是 shrink 的时机。窗口大小固定时，借助 end - start + 1；不固定时，借助基于 matched 的 while 循环。</p>
+</blockquote>
+<p>In many problems dealing with an array (or a linked list), we are asked to find or calculate something among all the contiguous subarrays (or sublists) of a given size. For example, take a look at this problem:</p>
+<blockquote>
+<p>Given an array, find the average of all contiguous subarrays of size “K” in it.</p>
+</blockquote>
+<p>Let’s understand this problem with a real input:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array: [1, 3, 2, 6, -1, 4, 1, 8, 2], K=5</span><br></pre></td></tr></table></figure>
+
+<p>Here, we are asked to find the average of all contiguous subarrays of size “5” in the given array. Let’s solve this:</p>
+<ol>
+<li>For the first 5 numbers (subarray from index 0~4), the average is: (1+3+2+6-1)/5 = 2.2;</li>
+<li>The average of next 5 numbers (subarray from index 1~5) is: (3+2+6-1+4)/5 = 2.8;</li>
+<li>For the next 5 numbers (subarray from index 2~6), the average is: (2+6-1+4+1)/5 = 2.4;</li>
+<li>…</li>
+</ol>
+<p>Here is the final output containing the averages of all contiguous subarrays of size 5:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output: [2.2, 2.8, 2.4, 3.6, 2.8]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3452110378.html#more" rel="contents">
+            <a class="btn" href="/p/3659857917.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -533,7 +554,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3661006181.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2356638731.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -555,8 +576,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3661006181.html" itemprop="url">
-                  位图
+                <a class="post-title-link" href="/p/2356638731.html" itemprop="url">
+                  Load Balancing
                 </a>
               
             
@@ -572,8 +593,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-20T23:39:22+08:00">
-                2021-01-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T13:14:04+08:00">
+                2021-01-30
               </time>
             
 
@@ -609,13 +630,11 @@
 
       
         
-          <h2 id="如何实现网页爬虫中的-URL-去重功能"><a href="#如何实现网页爬虫中的-URL-去重功能" class="headerlink" title="如何实现网页爬虫中的 URL 去重功能"></a>如何实现网页爬虫中的 URL 去重功能</h2><p>网页爬虫是搜索引擎中的非常重要的系统，负责爬取几十亿、上百亿的网页。爬虫的工作原理是，通过解析已经爬取页面中的网页链接，然后再爬取这些链接对应的网页。而<strong>同一个网页链接有可能被包含在多个页面中，这就会导致爬虫在爬取的过程中，重复爬取相同的网页</strong>。如果你是一名负责爬虫的工程师，你会如何避免这些重复的爬取呢？</p>
-<p>最容易想到的方法就是，我们记录已经爬取的网页链接（也就是 URL），<strong>在爬取一个新的网页之前，我们拿它的链接，在已经爬取的网页链接列表中搜索</strong>。如果存在，那就说明这个网页已经被爬取过了；如果不存在，那就说明这个网页还没有被爬取过，可以继续去爬取。等爬取到这个网页之后，我们将这个网页的链接添加到已经爬取的网页链接列表了。</p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>这个问题要处理的对象是网页链接，也就是 URL，需要支持的操作有两个，添加一个 URL 和查询一个 URL。除了这两个功能性的要求之外，在非功能性方面，我们还要求这两个操作的执行效率要尽可能高。除此之外，因为<strong>我们处理的是上亿的网页链接，内存消耗会非常大</strong>，所以在存储效率上，我们要尽可能地高效。</p>
-<p>显然，散列表、红黑树、跳表这些动态数据结构，都能支持快速地插入、查找数据，但是在内存消耗方面，是否可以接受呢？我们拿散列表来举例，假设一个 URL 的平均长度是 64 字节，那单纯存储这 10 亿个 URL，需要大约 60GB 的内存空间。因为散列表必须维持较小的装载因子，才能保证不会出现过多的散列冲突，导致操作的性能下降。而且，<strong>用链表法解决冲突的散列表，还会存储链表指针</strong>。所以，如果将这 10 亿个 URL 构建成散列表，那需要的内存空间会远大于 60GB，有可能会超过 100GB。</p>
+          <p>Load Balancer (LB) is another critical component of any distributed system. It helps to spread the traffic across a cluster of servers to improve responsiveness and availability of applications, websites or databases. LB also keeps track of the status of all the resources while distributing requests. If a server is not available to take new requests or is not responding or has elevated error rate, LB will stop sending traffic to such a server.</p>
+<p>Typically a load balancer sits between the client and the server accepting incoming network and application traffic and distributing the traffic across multiple backend servers using various algorithms. By balancing application requests across multiple servers, a load balancer reduces individual server load and prevents any one application server from becoming a single point of failure, thus improving overall application availability and responsiveness:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/educative/01.png" alt></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3661006181.html#more" rel="contents">
+            <a class="btn" href="/p/2356638731.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -658,7 +677,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/364667096.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1030410271.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -680,8 +699,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/364667096.html" itemprop="url">
-                  最短路径
+                <a class="post-title-link" href="/p/1030410271.html" itemprop="url">
+                  System Design Basics
                 </a>
               
             
@@ -697,8 +716,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-19T21:49:44+08:00">
-                2021-01-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T12:41:58+08:00">
+                2021-01-30
               </time>
             
 
@@ -734,11 +753,17 @@
 
       
         
-          <h2 id="地图软件是如何计算出最优出行路径的"><a href="#地图软件是如何计算出最优出行路径的" class="headerlink" title="地图软件是如何计算出最优出行路径的"></a>地图软件是如何计算出最优出行路径的</h2><p>像 Google 地图、百度地图、高德地图这样的地图软件，我想你应该经常使用吧？如果想从家开车到公司，你只需要输入起始、结束地址，地图就会给你规划一条最优出行路线。<strong>这里的最优，有很多种定义</strong>，比如最短路线、最少用时路线、最少红绿灯路线等等。作为一名软件开发工程师，你是否思考过，地图软件的最优路线是如何计算出来的吗？底层依赖了什么算法呢？</p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>解决软件开发中的实际问题，最重要的一点就是<code>建模</code>，也就是<strong>将复杂的场景抽象成具体的数据结构</strong>。我们把每个岔路口看作一个顶点，岔路口与岔路口之间的路看作一条边，路的长度就是边的权重。如果路是单行道，我们就在两个顶点之间画一条有向边；如果路是双行道，我们就在两个顶点之间画两条方向不同的边。这样，整个地图就被抽象成一个有向有权图。于是，我们要求解的问题就转化为，在一个有向有权图中，求两个顶点间的最短路径：</p>
+          <p>Whenever we are designing a large system, we need to consider a few things:</p>
+<ol>
+<li>What are the different architectural pieces that can be used?</li>
+<li>How do these pieces work with each other?</li>
+<li>How can we best utilize these pieces: what are the right tradeoffs?</li>
+</ol>
+<p>Investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future. In the following chapters, we will try to define some of the core building blocks of scalable systems. Familiarizing these concepts would greatly benefit in understanding distributed system concepts. In the next section, we will go through Consistent Hashing, CAP Theorem, Load Balancing, Caching, Data Partitioning, Indexes, Proxies, Queues, Replication, and choosing between SQL vs. NoSQL.</p>
+<p>Key characteristics of a distributed system include Scalability, Reliability, Availability, Efficiency, and Manageability.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/364667096.html#more" rel="contents">
+            <a class="btn" href="/p/1030410271.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -781,7 +806,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4215336901.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2642016565.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -803,8 +828,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4215336901.html" itemprop="url">
-                  拓扑排序
+                <a class="post-title-link" href="/p/2642016565.html" itemprop="url">
+                  如何选择数据结构和算法
                 </a>
               
             
@@ -820,8 +845,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-19T00:03:31+08:00">
-                2021-01-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-29T23:18:02+08:00">
+                2021-01-29
               </time>
             
 
@@ -857,11 +882,16 @@
 
       
         
-          <h2 id="如何确定代码源文件的编译依赖关系"><a href="#如何确定代码源文件的编译依赖关系" class="headerlink" title="如何确定代码源文件的编译依赖关系"></a>如何确定代码源文件的编译依赖关系</h2><p>我们知道，一个完整的项目往往会包含很多代码源文件。编译器在编译整个项目的时候，需要按照依赖关系，依次编译每个源文件。比如，A.cpp 依赖 B.cpp，那在编译的时候，编译器需要先编译 B.cpp，才能编译 A.cpp。编译器通过分析源文件或者程序员事先写好的编译配置文件（比如 Makefile 文件），来获取这种局部的依赖关系。那编译器又该<strong>如何通过源文件两两之间的局部依赖关系，确定一个全局的编译顺序呢</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/247.png" alt></p>
-<h2 id="算法解析"><a href="#算法解析" class="headerlink" title="算法解析"></a>算法解析</h2><p>我们在穿衣服的时候都有一定的顺序，我们可以把这种顺序想成，衣服与衣服之间有一定的依赖关系。比如说，你必须先穿袜子才能穿鞋，先穿内裤才能穿秋裤。假设我们现在有八件衣服要穿，它们之间的两两依赖关系我们已经很清楚了，那如何安排一个穿衣序列，能够满足所有的两两之间的依赖关系？这就是个<code>拓扑排序</code>（Topological Sorting）问题。从这个例子中，你应该能想到，<strong>在很多时候，拓扑排序的序列并不是唯一的</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/248.png" alt></p>
+          <p>工程上的问题往往都比较开放，在选择数据结构和算法的时候，我们往往需要综合各种因素，比如编码难度、维护成本、数据特征、数据规模等，最终<strong>选择一个工程的最合适解，而非理论上的最优解</strong>。为了让你能做到活学活用，在实际的软件开发中，不生搬硬套数据结构和算法，今天，我们就聊一聊，在实际的软件开发中，如何权衡各种因素，合理地选择使用哪种数据结构和算法？关于这个问题，我总结了六条经验。</p>
+<h2 id="时间、空间复杂度不能跟性能划等号"><a href="#时间、空间复杂度不能跟性能划等号" class="headerlink" title="时间、空间复杂度不能跟性能划等号"></a>时间、空间复杂度不能跟性能划等号</h2><p>我们在学习每种数据结构和算法的时候，都详细分析了算法的时间复杂度、空间复杂度，但是，在实际的软件开发中，复杂度不能与性能简单划等号，不能表示执行时间和内存消耗的确切数据量：</p>
+<ul>
+<li><strong>复杂度不是执行时间和内存消耗的精确值</strong>：<br>在用大 O 表示法表示复杂度的时候，我们会忽略掉低阶、常数、系数，只保留高阶，并且它的度量单位是语句的执行频度。每条语句的执行时间，并非是相同、确定的。所以，复杂度给出的只能是一个非精确量值的趋势；</li>
+<li><strong>代码的执行时间有时不跟时间复杂度成正比</strong>：<br>我们常说，时间复杂度是 O(nlogn) 的算法，比时间复杂度是 O(n^2) 的算法，执行效率要高。这样说的一个前提是，算法处理的是大规模数据的情况。对于小规模数据的处理，算法的执行效率并不一定跟时间复杂度成正比，有时还会跟复杂度成反比；</li>
+<li><strong>对于处理不同问题的不同算法，其复杂度大小没有可比性</strong>：<br>复杂度只能用来表征不同算法，在处理同样的问题，以及同样数据类型的情况下的性能表现。但是，对于不同的问题、不同的数据类型，不同算法之间的复杂度大小并没有可比性；</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/4215336901.html#more" rel="contents">
+            <a class="btn" href="/p/2642016565.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -899,7 +929,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -942,7 +972,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

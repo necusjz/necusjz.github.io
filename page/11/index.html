@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4159641954.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/743133161.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4159641954.html" itemprop="url">
-                  场景：查找第一张专辑
+                <a class="post-title-link" href="/p/743133161.html" itemprop="url">
+                  Virtual Machine Networking
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-13T15:41:54+08:00">
-                2022-03-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:39:24+08:00">
+                2022-04-20
               </time>
             
 
@@ -356,10 +356,13 @@
 
       
         
-          <p>iTunes 是苹果公司提供的内容商店服务，在里面可以购买世界各地的电影、音乐等数字内容。同时，iTunes 还提供了一个公开的可免费调用的内容查询 API。下面这个脚本就通过调用该 API 实现了查找歌手的第一张专辑的功能：</p>
+          <p><em>Azure Virtual Machine</em> depends on virtual networking, and <strong>during the creation process, we need to define the network settings</strong>.</p>
+<h2 id="Create-VMs"><a href="#Create-VMs" class="headerlink" title="Create VMs"></a>Create VMs</h2><p>When a VM is created, a <em>Network Interface Card</em> (NIC) is created in the process. <strong>An NIC is used as a sort of interconnection between the VM and the VNet</strong>. A NIC is assigned a private IP address by the network. As an NIC is associated with both the VM and the VNet, the IP address is used by the VM. Using this IP address, the VM can communicate over a private network with other VMs (or other Azure resources) on the same network.</p>
+<p>Additionally, <strong>NICs and VMs can be assigned public IP addresses as well</strong>. A public address can be used to communicate with the VM over the internet, either to access services or to manage the VM.</p>
+<h2 id="View-VM-network-settings"><a href="#View-VM-network-settings" class="headerlink" title="View VM network settings"></a>View VM network settings</h2><p>After an Azure VM is created, we can review the network settings in the VM pane. Networking information is displayed in several places, including in the VM’s network settings. Additionally, each Azure resource has a separate pane and exists as an individual resource, so we can view these settings in multiple places. However, <strong>the most complete picture of VM network settings can be found in the VM pane and the NIC pane</strong>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/4159641954.html#more" rel="contents">
+            <a class="btn" href="/p/743133161.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -402,7 +405,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2813634607.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/457978096.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -424,8 +427,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2813634607.html" itemprop="url">
-                  场景：实现有状态函数
+                <a class="post-title-link" href="/p/457978096.html" itemprop="url">
+                  Azure Virtual Network
                 </a>
               
             
@@ -441,8 +444,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-12T22:56:38+08:00">
-                2022-03-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:18:23+08:00">
+                2022-04-20
               </time>
             
 
@@ -478,291 +481,147 @@
 
       
         
-          <p>三种实现有状态函数的方式：</p>
+          <p><em>Azure Virtual Network</em> represents your local network in the cloud. It enables other Azure resources to communicate over a secure private network <strong>without exposing endpoints over the internet</strong>.</p>
+<h2 id="Create-a-VNet"><a href="#Create-a-VNet" class="headerlink" title="Create a VNet"></a>Create a VNet</h2><p>We deploy VNets to resource group under subscription in the Azure data center that we choose. <em>Region</em> and <em>Subscription</em> are important parameters; we will <strong>only be able to attach Azure resources to this VNet if they are in the same subscription and region as the Azure data center</strong>.</p>
+<p>The address space option defines the number of IP addresses that will be available for our network. It uses the <em>Classless Inter-Domain Routing</em> (CIDR) format and the largest range we can choose is /8. In the portal, we need to create an initial subnet and define the subnet address range. <strong>The smallest subnet allowed is /29 and the largest is /8</strong> (however, this cannot be larger than the VNet range). For reference, the range 10.0.0.0/8 will create an address range of 167772115 IP addresses (from 10.0.0.0 to 10.255.255.255) and 10.0.0.0/29 will create a range of 8 IP addresses (from 10.0.0.0 to 10.0.0.7).</p>
+<h2 id="Add-a-subnet"><a href="#Add-a-subnet" class="headerlink" title="Add a subnet"></a>Add a subnet</h2><p>In addition to adding subnets while creating a VNet, we can <strong>add additional subnets to our network at any time</strong>. A single VNet can have multiple subnets defined. Subnets cannot overlap and must be in the range of the VNet address range. For each subnet, four IP addresses are saved for Azure management and cannot be used. Depending on the network settings, we can define the communication rules between subnets in the VNet.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/457978096.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/558864227.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/558864227.html" itemprop="url">
+                  Bump Python SDK
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-11T11:40:53+08:00">
+                2022-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Update-corresponding-versions"><a href="#Update-corresponding-versions" class="headerlink" title="Update corresponding versions"></a>Update corresponding versions</h2><p>Update <em>package name + package version</em>:</p>
 <ul>
-<li><strong>基于全局变量</strong>：<ul>
-<li>学习成本低，最容易理解；</li>
-<li>会增加模块级的全局状态，封装性和可维护性最差；</li>
+<li>setup.py;</li>
+<li>requirements.py3.Linux.txt;</li>
+<li>requirements.py3.Darwin.txt;</li>
+<li>requirements.py3.Windows.txt;</li>
 </ul>
-</li>
-<li><strong>基于函数闭包</strong>：<ul>
-<li>学习成本适中，可读性较好；</li>
-<li>适合用来实现变量较少、较简单的有状态函数；</li>
-</ul>
-</li>
-<li><strong>创建类来封装状态</strong>：<ul>
-<li>学习成本较高；</li>
-<li>当变量较多、行为较复杂时，类代码比闭包代码更易读，也更容易维护；</li>
-</ul>
-</li>
-</ul>
-<p>Ethan 正在自学 Python，一天，他从网上看到一道和字符串处理有关的练习题：</p>
-<blockquote>
-<p>有一段文字，里面包含各类数字，比如数量、价格等，编写一段代码把文字里的所有数字都用星号替代，实现脱敏效果。</p>
-</blockquote>
-<p>使用 re.sub() 函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mosaic_string</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">r'\d+'</span>, <span class="string">'*'</span>, s)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2813634607.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1989037369.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1989037369.html" itemprop="url">
-                  函数与装饰器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-12T21:17:54+08:00">
-                2022-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>Python 是一门支持面向对象的编程语言，但除此之外，Python 对函数的支持也毫不逊色。函数在 Python 中是一等对象，这意味着我们可以把函数自身作为函数参数来使用。</p>
-<h3 id="函数参数的常用技巧"><a href="#函数参数的常用技巧" class="headerlink" title="函数参数的常用技巧"></a>函数参数的常用技巧</h3><p>参数（Parameter）是函数的重要组成部分，它是函数最主要的输入源，决定了调用方使用函数时的体验。Python 函数的参数默认值只会在函数定义阶段被创建一次，别将可变类型作为参数默认值，使用 None 来替代：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=[])</span>:</span></span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=None)</span>:</span></span><br><span class="line">    <span class="comment"># 在函数内部进行判断，保证参数默认每次都使用一个新的空列表</span></span><br><span class="line">    <span class="keyword">if</span> items <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        items = []</span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
-
-<p>定义一个特殊对象（标记变量）作为参数默认值，严格区分调用方是不是<strong>真的</strong>提供了这个默认参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># object 通常不会单独使用，但是拿来做这种标记变量刚刚好</span></span><br><span class="line">_not_set = object()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dump_value</span><span class="params">(value, extra=_not_set)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> extra <span class="keyword">is</span> _not_set:</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 调用方没有传递 extra 参数</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1989037369.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3014737985.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3014737985.html" itemprop="url">
-                  场景：数字统计任务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-06T22:06:47+08:00">
-                2022-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Ethan 是一位 Python 初学者，在学习了如何用 Python 读取文件后，他想要做一个小练习：统计某个文件中数字字符的数量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_digits</span><span class="params">(fname)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> open(fname) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">            <span class="keyword">for</span> s <span class="keyword">in</span> line:</span><br><span class="line">                <span class="keyword">if</span> s.isdigit():</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
-
-<p>首先用 with open(file_name) 上下文管理器语法获得一个文件对象，然后用 for 循环迭代它，<strong>逐行</strong>获取文件里的内容。它有两个好处：</p>
+<p>Update <em>resource type + api version</em>:</p>
 <ul>
-<li>with 上下文管理器会自动关闭文件描述符；</li>
-<li>在迭代文件对象时，内容是一行一行返回的，不会占用太多内存；</li>
+<li>_shared.py (latest);</li>
 </ul>
+<h2 id="Setup-development-environment"><a href="#Setup-development-environment" class="headerlink" title="Setup development environment"></a>Setup development environment</h2><p>Install expected Python packages:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3014737985.html#more" rel="contents">
+            <a class="btn" href="/p/558864227.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -805,7 +664,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1690741888.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -827,8 +686,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1690741888.html" itemprop="url">
-                  场景：消除条件分支
+                <a class="post-title-link" href="/p/1507841079.html" itemprop="url">
+                  Generate CLI from Swagger
                 </a>
               
             
@@ -844,8 +703,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-06T02:21:06+08:00">
-                2022-03-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-08T10:21:45+08:00">
+                2022-04-08
               </time>
             
 
@@ -881,17 +740,183 @@
 
       
         
-          <h2 id="使用-bisect-优化范围类分支判断"><a href="#使用-bisect-优化范围类分支判断" class="headerlink" title="使用 bisect 优化范围类分支判断"></a>使用 bisect 优化范围类分支判断</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rank</span><span class="params">(rating)</span>:</span></span><br><span class="line">    rating_num = float(rating)</span><br><span class="line">    <span class="keyword">if</span> rating_num &gt;= <span class="number">8.5</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'S'</span></span><br><span class="line">    <span class="keyword">elif</span> rating_num &gt;= <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">elif</span> rating_num &gt;= <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    <span class="keyword">elif</span> rating_num &gt;= <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'C'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'D'</span></span><br></pre></td></tr></table></figure>
+          <p>It’s always good to start with a command like that:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --version=3.0.6370 --az --use=@autorest/az@latest ../azure-rest-api-specs/specification/dnsresolver/resource-manager/readme.md --azure-cli-extension-folder=./azure-cli-extensions</span><br></pre></td></tr></table></figure>
 
-<p>要优化这段代码，我们得把所有分界点收集起来，放在一个元组里。因为 breakpoints 已经是一个<strong>排好序的元组</strong>，所以我们可以直接使用 bisect 模块来实现查找功能：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bisect</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rank</span><span class="params">(rating)</span>:</span></span><br><span class="line">    breakpoints = (<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8.5</span>)</span><br><span class="line">    grades = (<span class="string">'D'</span>, <span class="string">'C'</span>, <span class="string">'B'</span>, <span class="string">'A'</span>, <span class="string">'S'</span>)</span><br><span class="line"></span><br><span class="line">    index = bisect.bisect(breakpoints, float(rating))</span><br><span class="line">    <span class="keyword">return</span> grades[index]</span><br></pre></td></tr></table></figure>
+<p>Make sure you have these specific versions installed:</p>
+<table>
+<thead>
+<tr>
+<th align="center">AutoRest Core</th>
+<th align="center">AutoRest CLI</th>
+<th align="center">Node.js</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">3.0.6370</td>
+<td align="center">3.5.1</td>
+<td align="center">12.20</td>
+</tr>
+</tbody></table>
+<p>Errors you might encounter nowadays:</p>
+<ul>
+<li>ERROR: Schema violation: Additional properties not allowed: x-ms-identifiers<ol>
+<li>Append <em>--pass-thru:schema-validator-swagger</em> to the command;</li>
+</ol>
+</li>
+<li>AttributeError: module ‘mistune’ has no attribute ‘BlockGrammar’<ol>
+<li>Active the venv within <em>~/.autorest/@autorest_python@5.4.0/node_modules/@autorest/python</em>;</li>
+<li>Execute <em>pip install mistune==0.8.4</em>;</li>
+</ol>
+</li>
+<li>ImportError: cannot import name ‘_unicodefun’ from ‘click’<ol>
+<li>Active the venv within <em>~/.autorest/@autorest_az@1.8.0/node_modules/@autorest/az</em>;</li>
+<li>Execute <em>pip install click==8.0.2</em>;</li>
+</ol>
+</li>
+</ul>
+<p>One more thing, it’s a good practice to clean up AutoRest extensions by:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --reset</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1690741888.html#more" rel="contents">
+            <a class="btn" href="/p/1507841079.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4286004591.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/4286004591.html" itemprop="url">
+                  Contribute to Azure CLI
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-04T18:30:21+08:00">
+                2022-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="What-is-Azure-CLI"><a href="#What-is-Azure-CLI" class="headerlink" title="What is Azure CLI?"></a>What is Azure CLI?</h2><p>Azure CLI is a command-line tool to create and manage resources. You interact with Azure by running commands in a terminal or writing scripts to automate tasks. Azure CLI interacts with the <strong>Azure Resource Manager</strong> (ARM) service, which is the management layer to interact with resources in your account.</p>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Fork and clone the repositories you wish to develop for:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/necusjz/azure-cli.git</span><br><span class="line">$ git clone https://github.com/necusjz/azure-cli-extensions.git</span><br></pre></td></tr></table></figure>
+
+<p>Add or change the upstream:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/Azure/azure-cli.git</span><br><span class="line">$ git remote set-url upstream https://github.com/Azure/azure-cli.git</span><br></pre></td></tr></table></figure>
+
+<p>Install and setup <em>azdev</em>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install azdev</span><br><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
+
+<p>List what extensions are currently visible to your development environment:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension list -o table</span><br><span class="line">$ azdev extension add &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Publish extensions:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension publish &#123;&#125; --storage-account &#123;&#125; --storage-container &#123;&#125; --storage-account-key &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
         
       
     </div>
@@ -925,7 +950,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -968,7 +993,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

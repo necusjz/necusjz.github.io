@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2186165119.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/706693346.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2186165119.html" itemprop="url">
-                  玩转双指针
+                <a class="post-title-link" href="/p/706693346.html" itemprop="url">
+                  令人头大的字符串
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+08:00">
-                2022-07-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-04-06T20:42:58+08:00">
+                2023-04-06
               </time>
             
 
@@ -356,275 +356,152 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>双指针</strong>主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：</p>
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>字符串可以看成是字符组成的数组。由于字符串是程序里经常需要处理的数据类型，因此有很多针对字符串处理的题目。</p>
+<h2 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h2><p><a href="https://leetcode.com/problems/valid-anagram/" target="_blank" rel="noopener">242. Valid Anagram</a><br>我们可以利用哈希表或者数组统计两个数组中每个数字出现的频次，若频次相同，则说明它们包含的字符完全相同。</p>
+<p><a href="https://leetcode.com/problems/isomorphic-strings/" target="_blank" rel="noopener">205. Isomorphic Strings</a><br>我们可以将问题转化一下：记录两个字符串每个位置的字符第一次出现的位置，如果两个字符串中相同位置的字符与它们第一次出现的位置一样，那么这两个字符串同构。</p>
+<p><a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">647. Palindromic Substrings</a><br>我们可以从字符串的每个位置开始，向左向右延长，判断存在多少以当前位置为中轴的回文子字符串。</p>
+<p><a href="https://leetcode.com/problems/count-binary-substrings/" target="_blank" rel="noopener">696. Count Binary Substrings</a><br>从左往右遍历数组，记录和当前位置数字相同且连续的长度，以及其之前连续的不同数字的长度。若不同数字的连续长度大于等于当前数字的连续长度，则说明存在一个且只存在一个以当前数字结尾的满足条件的子字符串。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/706693346.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3229280313.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3229280313.html" itemprop="url">
+                  妙用数据结构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-23T23:41:56+08:00">
+                2023-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><p>在刷题时，我们几乎一定会用到各种数据结构来辅助我们解决问题，因此我们必须熟悉各种数据结构的特点。C++ STL 提供的数据结构包括（实际底层细节可能因编译器而异）：</p>
 <ul>
-<li>若两个指针指向同一数组，遍历方向相同且不会相交，则也称为<strong>滑动窗口</strong>（两个指针包围的区域即为当前的窗口），经常用于区间搜索；</li>
-<li>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的；</li>
+<li>Sequence Containers：维持顺序的容器：<ul>
+<li>vector：<strong>动态数组</strong>，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector 来存储各种数据或中间变量。因为在尾部增删的复杂度是 O(1)，我们也可以把它当作 stack 来用；</li>
+<li>list：<strong>双向链表</strong>，也可以当作 stack 和 queue 来使用。由于 LeetCode 的题目多用 Node 来表示链表，且链表不支持快速随机读取，因此我们很少用到这个数据结构（LRU 除外）；</li>
+<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删，不过有一定的额外开销；</li>
+<li>array：固定大小的数组，一般在刷题时我们不使用；</li>
+<li>forward_list：单向链表，一般在刷题时我们不使用；</li>
 </ul>
-<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a><br>因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最右边，向左遍历。</p>
-<h2 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h2><p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a><br>因为这两个数组已经排好序，我们可以把两个指针分别放在两个数组的末尾，即 nums1 的 m−1 位和 nums2 的 n−1 位。每次将较大的那个数字复制到 nums1 的后边，然后向前移动一位。因为我们也要定位 nums1 的末尾，所以我们还需要第三个指针，以便复制。</p>
-<blockquote>
-<p>a++ 和 ++a 都是将 a 加 1，但是 a++ 返回值为 a，而 ++a 返回值为 a+1。如果只是希望增加 a 的值，而不需要返回值，则推荐使用 ++a，其运行速度会略快一些。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2186165119.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1106653324.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1106653324.html" itemprop="url">
-                  最易懂的贪心算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-11T21:52:54+08:00">
-                2022-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>顾名思义，<strong>贪心算法或贪心思想</strong>采用贪心的策略，保证<strong>每次操作都是局部最优的</strong>，从而使最后得到的结果是<strong>全局最优的</strong>。<br>举一个最简单的例子：小明和小王喜欢吃苹果，小明可以吃五个，小王可以吃三个。已知苹果园里有吃不完的苹果，求小明和小王一共最多吃多少个苹果。在这个例子中，我们可以选用的贪心策略为，每个人吃自己能吃的最多数量的苹果，这在每个人身上都是局部最优的。又因为全局结果是局部结果的简单求和，且局部结果互不相干，因此局部最优的策略也同样是全局最优的策略。</p>
-<h2 id="分配问题"><a href="#分配问题" class="headerlink" title="分配问题"></a>分配问题</h2><p><a href="https://leetcode.com/problems/assign-cookies/" target="_blank" rel="noopener">455. Assign Cookies</a><br>因为饥饿度最小的孩子最容易吃饱，所以我们先考虑这个孩子。为了尽量使得剩下的饼干可以满足饥饿度更大的孩子，所以我们应该把大于等于这个孩子饥饿度的、且大小最小的饼干给这个孩子。</p>
-<blockquote>
-<p>对数组或字符串排序是常见的操作，方便之后的大小比较。在之后的讲解中，若我们谈论的是对连续空间的变量进行操作，我们并不会明确区分数组和字符串，因为他们本质上都是在连续空间上的有序变量集合。一个字符串 “abc” 可以被看作一个数组 [“a”, “b”, “c”]。</p>
-</blockquote>
-<p><a href="https://leetcode.com/problems/candy/" target="_blank" rel="noopener">135. Candy</a><br>做完了上一道题，你会不会认为存在比较关系的贪心策略一定需要排序或是选择？这里的贪心策略即为，在每次遍历中，只考虑并更新相邻一侧的大小关系。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1106653324.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1434545921.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1434545921.html" itemprop="url">
-                  Describe Core Azure Architectural Components
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-30T20:31:53+08:00">
-                2022-04-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Overview-of-Azure-subscriptions-management-groups-and-resources"><a href="#Overview-of-Azure-subscriptions-management-groups-and-resources" class="headerlink" title="Overview of Azure subscriptions, management groups, and resources"></a>Overview of Azure subscriptions, management groups, and resources</h2><p>You need to learn the organizing structure for resources in Azure, which has four levels: <em>Management Groups</em>, <em>Subscriptions</em>, <em>Resource Groups</em>, and <em>Resources</em>. The following image shows <strong>the top-down hierarchy of organization for these levels</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/05.png" alt></p>
-<p>Having seen the top-down hierarchy of organization, let’s <strong>describe each of those levels from the bottom up</strong>:</p>
-<ul>
-<li><strong>Resources</strong>: Resources are instances of services that you create, like VMs, storage, or SQL databases;</li>
-<li><strong>Resource groups</strong>: Resources are combined into resource groups, which act as a logical container into which Azure resources like web apps, databases, and storage accounts are deployed and managed;</li>
-<li><strong>Subscriptions</strong>: A subscription groups together user accounts and the resources that have been created by those user accounts. For each subscription, there are limits or quotas on the amount of resources that you can create and use. Organizations can use subscriptions to manage costs and the resources that are created by users, teams, or projects;</li>
-<li><strong>Management groups</strong>: They help you manage access, policy, and compliance for multiple subscriptions. All subscriptions in a management group automatically inherit the conditions applied to the management group;</li>
+</li>
+<li>Container Adaptors：基于其它容器实现的数据结构：<ul>
+<li>stack：<strong>后入先出的数据结构</strong>，默认基于 deque 实现。stack 常用于深度优先搜索、一些字符串匹配问题以及单调栈问题；</li>
+<li>queue：<strong>先入先出的数据结构</strong>，默认基于 deque 实现。queue 常用于广度优先搜索；</li>
+<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入任意值，O(1) 的时间获得最大值，O(logn) 的时间删除最大值。priority_queue 常用于维护数据结构并快速获取最大或最小值；</li>
+</ul>
+</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1434545921.html#more" rel="contents">
+            <a class="btn" href="/p/3229280313.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -667,7 +544,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/641155808.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/300863016.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -689,8 +566,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/641155808.html" itemprop="url">
-                  Discuss Azure Fundamental Concepts
+                <a class="post-title-link" href="/p/300863016.html" itemprop="url">
+                  神奇的位运算
                 </a>
               
             
@@ -706,8 +583,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-27T23:57:04+08:00">
-                2022-04-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-23T00:45:35+08:00">
+                2023-03-23
               </time>
             
 
@@ -743,30 +620,35 @@
 
       
         
-          <h2 id="Discuss-different-types-of-cloud-models"><a href="#Discuss-different-types-of-cloud-models" class="headerlink" title="Discuss different types of cloud models"></a>Discuss different types of cloud models</h2><p>There are three deployment models for cloud computing: <em>Public Cloud</em>, <em>Private Cloud</em>, and <em>Hybrid Cloud</em>. Each deployment model has <strong>different aspects that you should consider as you migrate to the cloud</strong>.</p>
-<h3 id="What-are-public-private-and-hybrid-clouds"><a href="#What-are-public-private-and-hybrid-clouds" class="headerlink" title="What are public, private, and hybrid clouds?"></a>What are public, private, and hybrid clouds?</h3><table>
+          <h2 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h2><p><strong>位运算</strong>是算法题里比较特殊的一种类型，它们利用二进制位运算的特性进行一些奇妙的优化和计算。常用的位运算符号包括：“∧”按位异或、“&amp;”按位与、“|”按位或、“∼”取反、“&lt;&lt;”算术左移和“&gt;&gt;”算术右移。以下是一些常见的位运算特性，其中 0s 和 1s 分别表示只由 0 或 1 构成的二进制数字：</p>
+<table>
 <thead>
 <tr>
-<th align="left">Deployment Model</th>
-<th align="left">Description</th>
+<th align="center">按位异或</th>
+<th align="center">按位与</th>
+<th align="center">按位或</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">Public Cloud</td>
-<td align="left">Services are offered over the public internet and available to anyone who wants to purchase them. Cloud resources, such as servers and storage, are owned and operated by a third-party cloud service provider, and delivered over the internet.</td>
+<td align="center">x ∧ 0s = x</td>
+<td align="center">x &amp; 0s = 0</td>
+<td align="center">x | 0s = x</td>
 </tr>
 <tr>
-<td align="left">Private Cloud</td>
-<td align="left">A private cloud consists of computing resources used exclusively by users from one business or organization. A private cloud can be physically located at your organization’s on-site (on-premises) datacenter, or it can be hosted by a third-party service provider.</td>
+<td align="center">x ∧ 1s = ∼x</td>
+<td align="center">x &amp; 1s = x</td>
+<td align="center">x | 1s = 1s</td>
 </tr>
 <tr>
-<td align="left">Hybrid Cloud</td>
-<td align="left">A hybrid cloud is a computing environment that combines a public cloud and a private cloud by allowing data and applications to be shared between them.</td>
+<td align="center">x ∧ x = 0</td>
+<td align="center">x &amp; x = x</td>
+<td align="center">x | x = x</td>
 </tr>
 </tbody></table>
+<p>除此之外，n &amp; (n - 1) 可以去除 n 的位级表示中最低的那一位，例如对于二进制表示 11110100，减去 1 得到 11110011，这两个数按位与得到 11110000。n &amp; -n 可以得到 n 的位级表示中最低的那一位，例如对于二进制表示 11110100，取负得到 00001100，这两个数按位与得到 00000100。还有更多的并不常用的技巧，若读者感兴趣可以<a href="https://catonmat.net/low-level-bit-hacks" target="_blank" rel="noopener">自行研究</a>，这里不再赘述。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/641155808.html#more" rel="contents">
+            <a class="btn" href="/p/300863016.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -809,7 +691,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2304314973.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1176626542.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -831,8 +713,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2304314973.html" itemprop="url">
-                  Introduction to Azure Fundamentals
+                <a class="post-title-link" href="/p/1176626542.html" itemprop="url">
+                  巧解数学问题
                 </a>
               
             
@@ -848,8 +730,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-26T00:16:19+08:00">
-                2022-04-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-16T23:24:06+08:00">
+                2023-03-16
               </time>
             
 
@@ -885,18 +767,135 @@
 
       
         
-          <h2 id="What-is-cloud-computing"><a href="#What-is-cloud-computing" class="headerlink" title="What is cloud computing?"></a>What is cloud computing?</h2><p>Have you ever wondered what cloud computing is? It’s <strong>the delivery of computing services over the internet</strong>, which is otherwise known as the cloud. These services include servers, storage, databases, networking, software, analytics, and intelligence. Cloud computing offers faster innovation, flexible resources, and economies of scale.</p>
-<h3 id="Why-is-cloud-computing-typically-cheaper-to-use"><a href="#Why-is-cloud-computing-typically-cheaper-to-use" class="headerlink" title="Why is cloud computing typically cheaper to use?"></a>Why is cloud computing typically cheaper to use?</h3><p>Cloud computing is the delivery of computing services over the internet by using a pay-as-you-go pricing model. You typically <strong>pay only for the cloud services you use</strong>, which helps you:</p>
-<ul>
-<li>Lower your operating costs;</li>
-<li>Run your infrastructure more efficiently;</li>
-<li>Scale as your business needs change;</li>
-</ul>
-<p>To put it another way, cloud computing is a way to <strong>rent compute power and storage from someone else’s datacenter</strong>. You can treat cloud resources like you would resources in your own datacenter. When you’re done using them, you give them back. You’re billed only for what you use.</p>
-<p><strong>Instead of maintaining CPUs and storage in your datacenter</strong>, you rent them for the time that you need them. The cloud provider takes care of maintaining the underlying infrastructure for you. The cloud enables you to quickly solve your toughest business challenges, and bring cutting-edge solutions to your users.</p>
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>对于 LeetCode 上数量不少的数学题，我们尽量将其按照类型划分讲解。然而很多数学题的解法并不通用，我们也很难在几道题里把所有的套路讲清楚，因此我们只选择了几道经典或是典型的题目，供大家参考。</p>
+<h2 id="公倍数与公因数"><a href="#公倍数与公因数" class="headerlink" title="公倍数与公因数"></a>公倍数与公因数</h2><p>利用<strong>辗转相除法</strong>，我们可以很方便地求得两个数的最大公因数 (GCD)；将两个数相乘再除以最大公因数即可得到最小公倍数 (LCM)。进一步地，我们也可以通过<strong>扩展欧几里得算法</strong>，在求得 a 和 b 最大公因数的同时，也得到它们的系数 x 和 y，从而使 ax + by = gcd(a, b)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd_extended</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> b, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    gcd, x1, y1 = gcd_extended(b % a, a)</span><br><span class="line">    x = y1 - (b // a) * x1</span><br><span class="line">    y = x1</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> gcd, x, y</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2304314973.html#more" rel="contents">
+            <a class="btn" href="/p/1176626542.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3761608421.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3761608421.html" itemprop="url">
+                  化繁为简的分治法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-09-19T21:45:18+08:00">
+                2022-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>顾名思义，<strong>分治问题</strong>由“分”(Divide) 和“治”(Conquer) 两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终合成一个大数组。<br>我们也使用数学表达式来表示这个过程。定义 T(n) 表示处理一个长度为 n 的数组的时间复杂度，则归并排序的时间复杂度递推公式为 T(n) = 2T(n/2) + O(n)。其中 2T(n/2) 表示我们分成了两个长度减半的子问题，O(n) 则为合并两个长度为 n/2 数组的时间复杂度。<br>那么怎么利用这个递推公式得到最终的时间复杂度呢？这里我们可以利用著名的<strong>主定理</strong> (Master Theorem) 求解：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/04.png" alt></p>
+<p>通过主定理我们可以知道，归并排序属于第二种情况，且时间复杂度为 O(nlogn)。其他的分治问题也可以通过主定理求得时间复杂度。另外，自上而下的分治可以和 Memoization 结合，避免重复遍历相同的子问题。如果方便推导，也可以换用自下而上的动态规划方法求解。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3761608421.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -934,7 +933,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -977,7 +976,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

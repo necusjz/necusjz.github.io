@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2439909564.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1487438784.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2439909564.html" itemprop="url">
-                  散列表
+                <a class="post-title-link" href="/p/1487438784.html" itemprop="url">
+                  字符串匹配基础
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-02T13:48:27+08:00">
-                2021-01-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-10T15:04:34+08:00">
+                2021-01-10
               </time>
             
 
@@ -356,13 +356,16 @@
 
       
         
-          <h2 id="散列思想"><a href="#散列思想" class="headerlink" title="散列思想"></a>散列思想</h2><p>散列表的英文叫“Hash Table”，我们平时也叫它“哈希表”或者“Hash 表”。散列表用的是数组支持按照下标随机访问数据的特性，所以<strong>散列表其实就是数组的一种扩展</strong>，由数组演化而来。可以说，如果没有数组，就没有散列表。</p>
-<p>假设校长说，参赛编号不能设置得这么简单，要加上年级、班级这些更详细的信息，所以我们把编号的规则稍微修改了一下，用 6 位数字来表示。比如 051167，其中，前两位 05 表示年级，中间两位 11 表示班级，最后两位还是原来的编号 1 到 89。尽管我们不能直接把编号作为数组下标，但我们可以截取参赛编号的后两位作为数组下标，来存取选手信息数据。当通过参赛编号查询选手信息的时候，我们用同样的方法，取参赛编号的后两位，作为数组下标，来读取数组中的数据。</p>
-<p>这就是典型的散列思想。其中，参赛选手的编号我们叫做<code>键值</code>。我们用它来标识一个选手。我们把参赛编号转化为数组下标的映射方法就叫作<code>散列函数</code>，而散列函数计算得到的值就叫作<code>散列值</code>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/83.png" alt></p>
-<p>通过这个例子，我们可以总结出这样的规律：<strong>散列表用的就是数组支持按照下标随机访问的时候，时间复杂度是 O(1) 的特性</strong>。我们通过散列函数把元素的键值映射为下标，然后将数据存储在数组中对应下标的位置。当我们按照键值查询元素时，我们用同样的散列函数，将键值转化数组下标，从对应的数组下标的位置取数据。</p>
+          <h2 id="BF-算法"><a href="#BF-算法" class="headerlink" title="BF 算法"></a>BF 算法</h2><p>BF（Brute Force）算法，中文叫作暴力匹配算法，也叫朴素匹配算法。从名字可以看出，这种算法的字符串匹配方式很“暴力”，当然也就会比较简单、好懂，但相应的性能也不高。我们在字符串 A 中查找字符串 B，那字符串 A 就是<code>主串</code>，字符串 B 就是<code>模式串</code>。我们把主串的长度记作 n，模式串的长度记作 m。因为我们是在主串中查找模式串，所以 n&gt;m。</p>
+<p>作为最简单、最暴力的字符串匹配算法，BF 算法的思想可以用一句话来概括，那就是，我们<strong>在主串中，检查起始位置分别是 0, 1, 2, n-m 且长度为 m 的 n-m+1 个子串，看有没有跟模式串匹配的</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/170.png" alt></p>
+<p>从上面的算法思想和例子，我们可以看出，在极端情况下，比如主串是“aaaaa…aaaaaa”，模式串是“aaaaab”。我们每次都比对 m 个字符，要比对 n-m+1 次，所以，这种算法的<strong>最坏情况时间复杂度是 O(n*m)</strong>。尽管理论上，BF 算法的时间复杂度很高，是 O(n*m)，但在实际的开发中，它却是一个比较常用的字符串匹配算法。原因有两点：</p>
+<ol>
+<li>实际的软件开发中，大部分情况下，模式串和主串的长度都不会太长。而且每次模式串与主串中的子串匹配的时候，当<strong>中途遇到不能匹配的字符的时候，就可以就停止了</strong>，不需要把 m 个字符都比对一下。所以，尽管理论上的最坏情况时间复杂度是 O(n*m)，但是，统计意义上，大部分情况下，算法执行效率要比这个高很多；</li>
+<li>朴素字符串匹配算法思想简单，代码实现也非常简单。简单意味着不容易出错，如果有 bug 也容易暴露和修复。在工程中，<strong>在满足性能要求的前提下，简单是首选</strong>；</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2439909564.html#more" rel="contents">
+            <a class="btn" href="/p/1487438784.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -405,7 +408,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/773139030.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1109326327.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -427,8 +430,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/773139030.html" itemprop="url">
-                  跳表
+                <a class="post-title-link" href="/p/1109326327.html" itemprop="url">
+                  广度和深度优先搜索
                 </a>
               
             
@@ -444,8 +447,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-31T23:55:38+08:00">
-                2020-12-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-09T23:54:29+08:00">
+                2021-01-09
               </time>
             
 
@@ -481,13 +484,12 @@
 
       
         
-          <p>我们只需要对链表稍加改造，就可以支持类似“二分”的查找算法。我们把改造之后的数据结构叫做<code>跳表</code>（Skip List）。它是一种<strong>各方面性能都比较优秀的动态数据结构</strong>，可以支持快速地插入、删除、查找操作，写起来也不复杂，甚至可以替代红黑树。</p>
-<h2 id="如何理解“跳表”？"><a href="#如何理解“跳表”？" class="headerlink" title="如何理解“跳表”？"></a>如何理解“跳表”？</h2><p>对于一个单链表来讲，即便链表中存储的数据是有序的，如果我们要想在其中查找某个数据，也只能从头到尾遍历链表。这样查找效率就会很低，时间复杂度会很高，是 O(n)：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/72.png" alt></p>
-<p>如果像图中那样，对链表建立一级“索引”，每两个结点提取一个结点到上一级，我们把抽出来的那一级叫做<code>索引层</code>。图中的 down 表示 down 指针，指向下一级结点：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/73.png" alt></p>
-<p>如果我们现在要查找某个结点，比如 16。我们可以先在索引层遍历，当遍历到索引层中值为 13 的结点时，我们发现下一个结点是 17，那要查找的结点 16 肯定就在这两个结点之间。然后我们通过索引层结点的 down 指针，下降到原始链表这一层，继续遍历。这个时候，我们只需要再遍历 2 个结点，就可以找到值等于 16 的这个结点了。这样，<strong>原来如果要查找 16，需要遍历 10 个结点，现在只需要遍历 7 个结点</strong>。</p>
+          <h2 id="什么是“搜索”算法？"><a href="#什么是“搜索”算法？" class="headerlink" title="什么是“搜索”算法？"></a>什么是“搜索”算法？</h2><p>我们知道，算法是作用于具体数据结构之上的，广度优先搜索算法和深度优先搜索算法都是基于“图”这种数据结构的。这是因为，<strong>图这种数据结构的表达能力很强，大部分涉及搜索的场景都可以抽象成图</strong>。图上的搜索算法，最直接的理解就是，在图中找出从一个顶点出发，到另一个顶点的路径。具体方法有很多，比如下面的两种最简单、最“暴力”的广度优先、深度优先搜索，还有 A*、IDA* 等启发式搜索算法。</p>
+<p>我这里先给出图的代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span></span><br><span class="line"><span class="class"></span>&#123; </span><br><span class="line">    <span class="comment">// 无向图</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> v;                     <span class="comment">// 顶点的个数</span></span><br><span class="line">    <span class="keyword">private</span> LinkedList&lt;Integer&gt; adj[]; <span class="comment">// 邻接表</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span> v)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.v = v;</span><br><span class="line">        adj = <span class="keyword">new</span> LinkedList[v];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v; ++i) </span><br><span class="line">        &#123;</span><br><span class="line">            adj[i] = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        <span class="comment">// 无向图一条边存两次</span></span><br><span class="line">        adj[s].add(t);</span><br><span class="line">        adj[t].add(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/773139030.html#more" rel="contents">
+            <a class="btn" href="/p/1109326327.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -530,7 +532,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3907716225.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/794365582.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -552,8 +554,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3907716225.html" itemprop="url">
-                  二分查找
+                <a class="post-title-link" href="/p/794365582.html" itemprop="url">
+                  图的表示
                 </a>
               
             
@@ -569,8 +571,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-31T00:19:36+08:00">
-                2020-12-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-09T13:27:21+08:00">
+                2021-01-09
               </time>
             
 
@@ -606,11 +608,13 @@
 
       
         
-          <p><code>二分查找</code>（Binary Search）算法，也叫折半查找算法。二分查找的思想非常简单，很多非计算机专业的同学很容易就能理解，但是看似越简单的东西往往越难掌握好，想要灵活应用就更加困难。</p>
-<h2 id="无处不在的二分思想"><a href="#无处不在的二分思想" class="headerlink" title="无处不在的二分思想"></a>无处不在的二分思想</h2><p>我们现在来做一个猜字游戏：我随机写一个 0 到 99 之间的数字，然后你来猜我写的是什么。猜的过程中，你每猜一次，我就会告诉你猜的大了还是小了，直到猜中为止。假设我写的数字是 23，你可以按照下面的步骤来试一试：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/68.png" alt></p>
+          <h2 id="如何理解“图”？"><a href="#如何理解“图”？" class="headerlink" title="如何理解“图”？"></a>如何理解“图”？</h2><p><code>图</code>（Graph）和树比起来，这是一种更加复杂的非线性表结构。我们知道，树中的元素我们称为节点，图中的元素我们就叫做<code>顶点</code>（Vertex）。从我画的图中可以看出来，图中的一个顶点可以与任意其他顶点建立连接关系。我们把这种建立的关系叫做<code>边</code>（Edge）：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/157.png" alt></p>
+<p>我们生活中就有很多符合图这种结构的例子。比如，社交网络就是一个非常典型的图结构。我们就拿微信举例子吧。我们可以把每个用户看作一个顶点。如果两个用户之间互加好友，那就在两者之间建立一条边。所以，整个微信的好友关系就可以用一张图来表示。其中，每个用户有多少个好友，对应到图中，就叫做顶点的<code>度</code>（Degree），就是跟顶点相连接的边的条数。</p>
+<p>实际上，微博的社交关系跟微信还有点不一样，或者说更加复杂一点。微博允许单向关注，如果用户 A 关注了用户 B，我们就在图中画一条从 A 到 B 的带箭头的边，来表示边的方向。如果用户 A 和用户 B 互相关注了，那我们就画一条从 A 指向 B 的边，再画一条从 B 指向 A 的边。我们把这种边有方向的图叫做<code>有向图</code>。以此类推，我们把边没有方向的图就叫做<code>无向图</code>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/158.png" alt></p>
+<p>无向图中有“度”这个概念，表示一个顶点有多少条边。在有向图中，我们把度分为<code>入度</code>（In-degree）和<code>出度</code>（Out-degree）。顶点的入度，表示有多少条边指向这个顶点；顶点的出度，表示有多少条边是以这个顶点为起点指向其他顶点。对应到微博的例子，入度就表示有多少粉丝，出度就表示关注了多少人。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3907716225.html#more" rel="contents">
+            <a class="btn" href="/p/794365582.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -653,7 +657,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1947743309.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1654306293.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -675,8 +679,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1947743309.html" itemprop="url">
-                  排序优化
+                <a class="post-title-link" href="/p/1654306293.html" itemprop="url">
+                  堆的应用
                 </a>
               
             
@@ -692,8 +696,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-30T23:43:52+08:00">
-                2020-12-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-07T23:58:31+08:00">
+                2021-01-07
               </time>
             
 
@@ -729,12 +733,14 @@
 
       
         
-          <p>几乎所有的编程语言都会提供排序函数，比如 C 语言中 qsort()，C++ STL 中的 sort()、stable_sort()，还有 Java 语言中的 Collections.sort()。在平时的开发中，我们也都是直接使用这些现成的函数来实现业务逻辑中的排序功能。那你知道这些排序函数是如何实现的吗？</p>
-<h2 id="如何选择合适的排序算法？"><a href="#如何选择合适的排序算法？" class="headerlink" title="如何选择合适的排序算法？"></a>如何选择合适的排序算法？</h2><p>如果要实现一个通用的、高效率的排序函数，我们应该选择哪种排序算法？我们先回顾一下前面讲过的几种排序算法：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/67.png" alt></p>
-<p>我们前面讲过，线性排序算法的时间复杂度比较低，适用场景比较特殊。所以如果要写一个通用的排序函数，<strong>不能选择线性排序算法</strong>。如果对小规模数据进行排序，可以选择时间复杂度是 O(n^2) 的算法；如果对大规模数据进行排序，时间复杂度是 O(nlogn) 的算法更加高效。所以，为了兼顾任意规模数据的排序，一般都会<strong>首选时间复杂度是 O(nlogn) 的排序算法来实现排序函数</strong>。</p>
+          <h2 id="堆的应用一：优先级队列"><a href="#堆的应用一：优先级队列" class="headerlink" title="堆的应用一：优先级队列"></a>堆的应用一：优先级队列</h2><p>优先级队列，顾名思义，它首先应该是一个队列。不过，在优先级队列中，数据的出队顺序不是先进先出，而是按照优先级来，<strong>优先级最高的，最先出队</strong>。一个堆就可以看作一个优先级队列，很多时候，它们只是概念上的区分而已。往优先级队列中插入一个元素，就相当于往堆中插入一个元素；从优先级队列中取出优先级最高的元素，就相当于取出堆顶元素。</p>
+<p>优先级队列的应用场景非常多。比如，赫夫曼编码、图的最短路径、最小生成树算法等等。不仅如此，很多语言中，都提供了优先级队列的实现，比如，Java 的 PriorityQueue，C++ 的 priority_queue 等。只讲这些应用场景比较空泛，现在，我举两个具体的例子：</p>
+<ol>
+<li>合并有序小文件：<br>假设我们有 100 个小文件，每个文件的大小是 100MB，每个文件中存储的都是有序的字符串。我们希望将这些 100 个小文件合并成一个有序的大文件。我们用数组这种数据结构，来存储从小文件中取出来的字符串。<strong>每次从数组中取最小字符串，都需要循环遍历整个数组</strong>，显然，这不是很高效。<br>这里就可以用到优先级队列，也可以说是堆。我们将从小文件中取出来的字符串放入到小顶堆中，那堆顶的元素，也就是优先级队列队首的元素，就是最小的字符串。我们将这个字符串放入到大文件中，并将其从堆中删除。然后再从小文件中取出下一个字符串，放入到堆中。循环这个过程，就可以将 100 个小文件中的数据依次放入到大文件中。我们知道，删除堆顶数据和往堆中插入数据的时间复杂度都是 O(logn)，n 表示堆中的数据个数，这里就是 100，比原来数组存储的方式高效了很多；</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1947743309.html#more" rel="contents">
+            <a class="btn" href="/p/1654306293.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -777,7 +783,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/144465771.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/799889741.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -799,8 +805,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/144465771.html" itemprop="url">
-                  线性排序
+                <a class="post-title-link" href="/p/799889741.html" itemprop="url">
+                  堆和堆排序
                 </a>
               
             
@@ -816,8 +822,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-30T17:57:19+08:00">
-                2020-12-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-05T22:39:40+08:00">
+                2021-01-05
               </time>
             
 
@@ -853,12 +859,16 @@
 
       
         
-          <p>时间复杂度是线性的排序算法叫作<code>线性排序</code>（Linear Sort）。之所以能做到线性的时间复杂度，主要原因是它们<strong>不涉及元素之间的比较操作，但是对要排序的数据要求很苛刻</strong>，应用不是非常广泛。学习重点是掌握这些排序算法的适用场景。</p>
-<h2 id="桶排序（Bucket-Sort）"><a href="#桶排序（Bucket-Sort）" class="headerlink" title="桶排序（Bucket Sort）"></a>桶排序（Bucket Sort）</h2><p>桶排序，顾名思义，会用到“桶”，核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。桶内排完序之后，再<strong>把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/61.png" alt></p>
-<p>如果要排序的数据有 n 个，我们把它们均匀地划分到 m 个桶内，每个桶里就有 k=n/m 个元素。每个桶内部使用快速排序，时间复杂度为 O(k * logk)。m 个桶排序的时间复杂度就是 O(m * k * logk)，因为 k=n/m，所以整个桶排序的时间复杂度就是 O(n*log(n/m))。当桶的个数 m 接近数据个数 n 时，log(n/m) 就是一个非常小的常量，这个时候桶排序的时间复杂度接近 O(n)。</p>
+          <h2 id="如何理解“堆”？"><a href="#如何理解“堆”？" class="headerlink" title="如何理解“堆”？"></a>如何理解“堆”？</h2><p><strong>堆是一种特殊的树</strong>。我罗列了两点要求，只要满足这两点，它就是一个堆：</p>
+<ul>
+<li>堆是一个完全二叉树；</li>
+<li>堆中每一个节点的值都必须大于等于（或小于等于）其子树中每个节点的值；</li>
+</ul>
+<p>对于每个节点的值都大于等于子树中每个节点值的堆，我们叫做<code>大顶堆</code>。对于每个节点的值都小于等于子树中每个节点值的堆，我们叫做<code>小顶堆</code>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/138.png" alt></p>
+<p>其中第 1 个和第 2 个是大顶堆，第 3 个是小顶堆，第 4 个不是堆。除此之外，从图中还可以看出来，<strong>对于同一组数据，我们可以构建多种不同形态的堆</strong>。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/144465771.html#more" rel="contents">
+            <a class="btn" href="/p/799889741.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -896,7 +906,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/29/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/31/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/29/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/31/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -939,7 +949,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3631972620.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3179819188.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3631972620.html" itemprop="url">
-                  端口映射与容器互联
+                <a class="post-title-link" href="/p/3179819188.html" itemprop="url">
+                  Meetings
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T22:23:38+08:00">
-                2019-06-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T16:42:58+08:00">
+                2019-08-18
               </time>
             
 
@@ -356,407 +356,18 @@
 
       
         
-          <p>在实践中，经常会碰到多个服务组件容器共同协作的情况，这往往需要多个容器之间，能够互相访问到对方的服务。<br>Docker 除了通过网络访问外，还提供了两个很方便的功能，来满足服务访问的基本需求：</p>
-<ul>
-<li>允许映射容器内应用的服务端口到宿主机。</li>
-<li>互联机制实现多个容器间，通过容器名来快速访问。</li>
-</ul>
-<h2 id="端口映射实现容器访问"><a href="#端口映射实现容器访问" class="headerlink" title="端口映射实现容器访问"></a>端口映射实现容器访问</h2><h3 id="从外部访问容器应用"><a href="#从外部访问容器应用" class="headerlink" title="从外部访问容器应用"></a>从外部访问容器应用</h3><p>当容器中运行一些网络应用，要让外部访问这些应用时，可以通过 <strong>-P</strong> 或 <strong>-p</strong> 参数来指定端口映射。<br>当使用 -P 参数时，Docker 会随机映射一个端口到内部容器开放的网络端口：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="keyword">run</span><span class="bash"> -d -P training/webapp python app.py</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>当使用 -p 参数时，可以指定要映射的端口，并且在一个指定端口上，只可以绑定一个容器。</p>
+          <h2 id="Running-a-face-to-face-meeting"><a href="#Running-a-face-to-face-meeting" class="headerlink" title="Running a face-to-face meeting"></a>Running a face-to-face meeting</h2><blockquote>
+<p>So, let’s get started.</p>
 </blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3631972620.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/449939361.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/449939361.html" itemprop="url">
-                  Docker 数据管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T18:03:26+08:00">
-                2019-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在生产环境中使用 Docker，往往需要对数据进行<code>持久化</code>，或者需要在多个容器之间进行<code>数据共享</code>，这必然涉及容器的数据管理操作。<br>容器中管理数据主要有两种方式：</p>
-<ul>
-<li>数据卷（Data Volumes）：宿主机目录直接映射进容器。</li>
-<li>数据卷容器（Data Volumes Containers）：使用特定容器维护数据卷。</li>
-</ul>
-<p>通过这些机制，即使容器在运行中出现故障，用户也不必担心数据发生丢失，只需要快速的重新创建容器即可。</p>
-<h2 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h2><p><strong>数据卷</strong>是一个可供容器使用的特殊目录，类似于 Linux 中的 <code>mount</code> 行为。</p>
-<blockquote>
-<p>对数据卷的更新不会影响镜像，解耦开应用和数据。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/449939361.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2978392717.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2978392717.html" itemprop="url">
-                  访问 Docker 仓库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-16T23:23:39+08:00">
-                2019-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>仓库</strong>（Repository）是集中维护容器镜像的地方，为 Docker 镜像文件的<code>分发和管理</code>提供了便捷的途径，又分为公共仓库和私有仓库。<br><strong>注册服务器</strong>（Registry）是存放仓库的具体服务器，一个注册服务器可以有多个仓库，而每个仓库下面可以有多个镜像。<br>仓库可以被认为是一个具体的<code>项目或目录</code>，例如对于仓库地址 <code>private-docker.com/ubuntu</code> 来说，<code>private-docker.com</code> 是注册服务器地址，<code>ubuntu</code> 是仓库名。</p>
-<h2 id="Docker-Hub-公共镜像市场"><a href="#Docker-Hub-公共镜像市场" class="headerlink" title="Docker Hub 公共镜像市场"></a>Docker Hub 公共镜像市场</h2><p>Docker Hub 是 Docker 官方提供的最大的公共镜像仓库，目前包括了超过 100, 000 的镜像，地址为 <code>https://hub.docker.com</code>。</p>
-<h3 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h3><p>可以执行 <strong>docker login</strong> 命令进行登录，登录成功的用户可以 push 个人制作的镜像到 Docker Hub。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2978392717.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3938507563.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3938507563.html" itemprop="url">
-                  操作 Docker 容器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-16T17:18:38+08:00">
-                2019-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>容器</strong>是 Docker 的另一个核心概念，容器是镜像的一个运行实例。镜像是静态的只读文件，容器中的应用进程处于运行状态。</p>
-<h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p>对容器的操作就像<code>直接操作应用</code>一样简单和快速。</p>
-<h3 id="新建容器"><a href="#新建容器" class="headerlink" title="新建容器"></a>新建容器</h3><p>可以使用 <strong>docker create</strong> 命令新建一个容器，新建的容器处于停止状态，可以使用 docker start 命令来启动他。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">create</span> -<span class="keyword">it</span> ubuntu:latest</span><br></pre></td></tr></table></figure>
-
-<p>容器是整个 Docker 技术栈的核心，支持的选项十分复杂。主要包括如下几大类：</p>
-<ul>
-<li>与容器运行模式相关</li>
-<li>与容器环境配置相关</li>
-<li>与容器资源限制和安全保护相关</li>
+<h3 id="Useful-Tips"><a href="#Useful-Tips" class="headerlink" title="Useful Tips"></a>Useful Tips</h3><ul>
+<li><strong>Go through the agenda</strong> at the start of the meeting and check no items are missing.</li>
+<li><strong>Ensure good timekeeping</strong> during the meeting, making sure that participants stick to the agenda and don’t get sidetracked.</li>
+<li><strong>Control the discussion,</strong> making sure all participants contribute where relevant and that no one person dominates the whole meeting.</li>
+<li><strong>Summarize key decisions</strong> at the end of each agenda point.</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3938507563.html#more" rel="contents">
+            <a class="btn" href="/p/3179819188.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -799,7 +410,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/406581579.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/294155228.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -821,8 +432,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/406581579.html" itemprop="url">
-                  使用 Docker 镜像
+                <a class="post-title-link" href="/p/294155228.html" itemprop="url">
+                  Telephoning
                 </a>
               
             
@@ -838,8 +449,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-09T13:09:58+08:00">
-                2019-06-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-15T00:48:12+08:00">
+                2019-08-15
               </time>
             
 
@@ -875,21 +486,407 @@
 
       
         
-          <p><strong>镜像</strong>是 Docker 三大核心概念中最重要的。</p>
-<h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p>可以使用 <strong>docker pull 命令</strong>直接从 Docker Hub 镜像源来下载镜像，描述一个镜像需要包括“名称+标签”信息（NAME[:TAG]）。</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>docker pull <span class="symbol">ubuntu:</span><span class="number">18.04</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果不显式指定 TAG，则默认会选择 latest 标签。从稳定性上考虑，不要在生产环境中忽略镜像的标签信息或使用默认的 lastest 标记的镜像。</p>
+          <h2 id="Cold-calling"><a href="#Cold-calling" class="headerlink" title="Cold calling"></a>Cold calling</h2><blockquote>
+<p>Do you have a moment to speak to me?</p>
 </blockquote>
-<p>镜像文件一般由若干层（layer）组成，当不同的镜像包括相同的层时，本地仅存储了层的一份内容，减少了存储空间。<br>如果从非官方的仓库下载镜像，则需要在仓库名称前指定完整的仓库地址：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull hub.c<span class="number">.163</span>.com<span class="regexp">/public/</span><span class="string">ubuntu:</span><span class="number">18.04</span></span><br></pre></td></tr></table></figure>
-
-<p>下载镜像到本地后，即可随时使用该镜像了：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">run</span> -<span class="keyword">it</span> ubuntu:<span class="number">18.04</span> /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="Useful-Tips"><a href="#Useful-Tips" class="headerlink" title="Useful Tips"></a>Useful Tips</h3><p>When cold calling (approaching prospective clients or customers for the first time), keep the following points in mind:</p>
+<ul>
+<li><strong>Be clear and concise</strong> about who you are and the purpose of the call.</li>
+<li><strong>Use questions</strong> to help and guide the person you are calling.</li>
+<li><strong>Always use titles</strong> (such as Dr., Mr., and Ms.) and never first names.</li>
+<li><strong>Don’t be offended by hostile behavior.</strong> It’s not personal.</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/406581579.html#more" rel="contents">
+            <a class="btn" href="/p/294155228.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3120560339.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3120560339.html" itemprop="url">
+                  Mesos - 优秀的集群资源调度平台
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T21:37:29+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Mesos 项目是源自 UC Berkeley 的对集群资源进行抽象和管理的开源项目，类似于操作系统内核，使用它可以很容易地<strong>实现分布式应用的自动化调度</strong>。同时，Mesos 自身也很好地结合和支持了 Docker 等相关容器技术，基于 Mesos 已有的大量应用框架，可以是实现用户应用的快速上线。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Mesos 可以将整个数据中心的<code>资源</code>（包括 CPU、内存、存储、网络等）进行抽象和调度，使得多个应用同时运行在集群中分享资源，并无须关心资源的物理分布情况。<br>如果把数据中心的集群资源看作一台服务器，那么 Mesos 要做的事情，其实就是今天操作系统内核的职责：<strong>抽象资源 + 调度任务</strong>；Mesos 拥有许多引人注目的特性，包括：</p>
+<ul>
+<li>支持数万个节点的<strong>大规模场景</strong>（Apple、Twitter、eBay 等公司使用）；</li>
+<li>支持多种应用框架，包括 Marathon、Singularity、Aurora 等；</li>
+<li>支持 <code>HA</code>（基于 ZooKeeper 实现）；</li>
+<li>支持 Docker、LXC 等容器机制进行任务隔离；</li>
+<li>提供了多个流行语言的 API，包括 Python、Java、C++ 等；</li>
+<li>自带了简洁易用的 <code>WebUI</code>，方便用户直接进行操作。</li>
+</ul>
+<blockquote>
+<p>Mesos 自身只是一个资源抽象的平台，要使用它往往需要结合运行在其上的分布式应用（<code>framework</code>）。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3120560339.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2380387870.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2380387870.html" itemprop="url">
+                  Networking
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T00:36:32+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Starting-a-conversation"><a href="#Starting-a-conversation" class="headerlink" title="Starting a conversation"></a>Starting a conversation</h2><blockquote>
+<p>Where do you come from then?</p>
+</blockquote>
+<h3 id="Useful-Tips"><a href="#Useful-Tips" class="headerlink" title="Useful Tips"></a>Useful Tips</h3><ul>
+<li>Successful small talk is not about saying brilliant things. It’s about commenting on and asking about <strong>ordinary things</strong> with conviction, interest, and enthusiasm.</li>
+<li><strong>Match the mood</strong> of your conversation partner. If they are smiling and cheerful, be ready to laugh. If they seem serious, be serious too.</li>
+<li>Ask where your partner comes from and, when somebody asks you the same thing, be ready to add <strong>something interesting</strong> about the place.</li>
+<li>Ask what your partner does and, when you’re asked the same question, <strong>don’t only give a title.</strong> Add a small piece of interesting or amusing information about the job or responsibility.</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2380387870.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1660105416.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1660105416.html" itemprop="url">
+                  使用 Dockerfile 创建镜像
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T17:17:13+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Dockerfile 是一个文本格式的配置文件，用户可以使用 Dockerfile 来快速创建自定义的镜像，本文会介绍使用 Dockerfile 的一些<strong>最佳实践</strong>。</p>
+<h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>Dockerfile 由一行行命令语句组成，并且支持以 <code>#</code> 开头的注释行。主体内容分为四部分：<strong>基础镜像信息</strong>、<strong>维护者信息</strong>、<strong>镜像操作指令</strong>、<strong>容器启动时执行指令</strong>。<br>下面给出一个简单的示例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># escape=\ (backslash)</span></span><br><span class="line"><span class="comment"># This dockerfile uses the ubuntu:xeniel image</span></span><br><span class="line"><span class="comment"># VERSION 2 - EDITION 1</span></span><br><span class="line"><span class="comment"># Author: docker_user</span></span><br><span class="line"><span class="comment"># Command format: Instruction [arguments / command] ..</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Base image to use, this must be set as the first line</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:xeniel</span><br><span class="line"></span><br><span class="line"><span class="comment"># Maintainer: docker_user &lt;docker_user at email.com&gt; (@docker_user)</span></span><br><span class="line"><span class="keyword">LABEL</span><span class="bash"> maintainer docker_user&lt;docker_user@email.com&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Commands to update the image</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"deb http://archive.ubuntu.com/ubuntu/ xeniel main universe"</span> &gt;&gt; /etc/apt/sources.list</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; apt-get install -y nginx</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"\ndaemon off;"</span> &gt;&gt; /etc/nginx/nginx.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Commands when creating a new container</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> /usr/sbin/nginx</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1660105416.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -927,7 +924,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/46/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/page/48/">48</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/48/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/46/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/page/48/">48</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/48/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -970,7 +967,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">279</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
