@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/05.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/06.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/07.png">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-03-03T13:12:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="妙用数据结构">
 <meta name="twitter:description" content="C++ STL在刷题时，我们几乎一定会用到各种数据结构来辅助我们解决问题，因此我们必须熟悉各种数据结构的特点。C++ STL 提供的数据结构包括（实际底层细节可能因编译器而异）：  Sequence Containers：维持顺序的容器： vector：动态数组，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector">
@@ -362,34 +362,34 @@
         <h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><p>在刷题时，我们几乎一定会用到各种数据结构来辅助我们解决问题，因此我们必须熟悉各种数据结构的特点。C++ STL 提供的数据结构包括（实际底层细节可能因编译器而异）：</p>
 <ul>
 <li>Sequence Containers：维持顺序的容器：<ul>
-<li>vector：<strong>动态数组</strong>，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector 来存储各种数据或中间变量。因为在尾部增删的复杂度是 O(1)，我们也可以把它当作 stack 来用；</li>
-<li>list：<strong>双向链表</strong>，也可以当作 stack 和 queue 来使用。由于 LeetCode 的题目多用 Node 来表示链表，且链表不支持快速随机读取，因此我们很少用到这个数据结构（LRU 除外）；</li>
-<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删，不过有一定的额外开销；</li>
-<li>array：固定大小的数组，一般在刷题时我们不使用；</li>
-<li>forward_list：单向链表，一般在刷题时我们不使用；</li>
+<li>vector：<strong>动态数组</strong>，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector 来存储各种数据或中间变量。因为在尾部增删的复杂度是 O(1)，我们也可以把它当作 stack 来用。</li>
+<li>list：<strong>双向链表</strong>，也可以当作 stack 和 queue 来使用。由于 LeetCode 的题目多用 Node 来表示链表，且链表不支持快速随机读取，因此我们很少用到这个数据结构（LRU 除外）。</li>
+<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删，不过有一定的额外开销。</li>
+<li>array：固定大小的数组，一般在刷题时我们不使用。</li>
+<li>forward_list：单向链表，一般在刷题时我们不使用。</li>
 </ul>
 </li>
 <li>Container Adaptors：基于其它容器实现的数据结构：<ul>
-<li>stack：<strong>后入先出的数据结构</strong>，默认基于 deque 实现。stack 常用于深度优先搜索、一些字符串匹配问题以及单调栈问题；</li>
-<li>queue：<strong>先入先出的数据结构</strong>，默认基于 deque 实现。queue 常用于广度优先搜索；</li>
-<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入任意值，O(1) 的时间获得最大值，O(logn) 的时间删除最大值。priority_queue 常用于维护数据结构并快速获取最大或最小值；</li>
+<li>stack：<strong>后入先出的数据结构</strong>，默认基于 deque 实现。stack 常用于深度优先搜索、一些字符串匹配问题以及单调栈问题。</li>
+<li>queue：<strong>先入先出的数据结构</strong>，默认基于 deque 实现。queue 常用于广度优先搜索。</li>
+<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入任意值，O(1) 的时间获得最大值，O(logn) 的时间删除最大值。priority_queue 常用于维护数据结构并快速获取最大或最小值。</li>
 </ul>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
 <li>Associative Containers：实现了排好序的数据结构：<ul>
-<li>set：<strong>有序集合</strong>，元素不可重复，底层实现默认为红黑树，即一种特殊的二叉查找树。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入、删除、查找任意值，O(logn) 的时间获得最小或最大值。这里注意，set 和 priority_queue 都可以用于维护数据结构并快速获取最大最小值，但是它们的时间复杂度和功能略有区别，如 priority_queue 默认不支持删除任意值，而 set 获得最大或最小值的时间复杂度略高，具体使用哪个根据需求而定；</li>
-<li>multiset：支持重复元素的 set；</li>
-<li>map：<strong>有序映射或有序表</strong>，在 set 的基础上加上映射关系，可以对每个元素 key 存一个值 value；</li>
-<li>multimap：支持重复元素的 map；</li>
+<li>set：<strong>有序集合</strong>，元素不可重复，底层实现默认为红黑树，即一种特殊的二叉查找树。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入、删除、查找任意值，O(logn) 的时间获得最小或最大值。这里注意，set 和 priority_queue 都可以用于维护数据结构并快速获取最大最小值，但是它们的时间复杂度和功能略有区别，如 priority_queue 默认不支持删除任意值，而 set 获得最大或最小值的时间复杂度略高，具体使用哪个根据需求而定。</li>
+<li>multiset：支持重复元素的 set。</li>
+<li>map：<strong>有序映射或有序表</strong>，在 set 的基础上加上映射关系，可以对每个元素 key 存一个值 value。</li>
+<li>multimap：支持重复元素的 map。</li>
 </ul>
 </li>
 <li>Unordered Associative Containers：对每个 Associative Containers 实现了哈希版本：<ul>
-<li>unordered_set：<strong>哈希集合</strong>，可以在 O(1) 的时间快速插入、查找、删除元素，常用于快速的查询一个元素是否在这个容器内；</li>
-<li>unordered_multiset：支持重复元素的 unordered_set；</li>
-<li>unordered_map：<strong>哈希映射或哈希表</strong>，在 unordered_set 的基础上加上映射关系，可以对每一个元素 key 存一个值 value。在某些情况下，如果 key 的范围已知且较小，我们也可以用 vector 代替 unordered_map，用位置表示 key，用每个位置的值表示 value；</li>
-<li>unordered_multimap：支持重复元素的 unordered_map；</li>
+<li>unordered_set：<strong>哈希集合</strong>，可以在 O(1) 的时间快速插入、查找、删除元素，常用于快速的查询一个元素是否在这个容器内。</li>
+<li>unordered_multiset：支持重复元素的 unordered_set。</li>
+<li>unordered_map：<strong>哈希映射或哈希表</strong>，在 unordered_set 的基础上加上映射关系，可以对每一个元素 key 存一个值 value。在某些情况下，如果 key 的范围已知且较小，我们也可以用 vector 代替 unordered_map，用位置表示 key，用每个位置的值表示 value。</li>
+<li>unordered_multimap：支持重复元素的 unordered_map。</li>
 </ul>
 </li>
 </ul>
@@ -414,8 +414,8 @@
 <h2 id="多重集合和映射"><a href="#多重集合和映射" class="headerlink" title="多重集合和映射"></a>多重集合和映射</h2><p><a href="https://leetcode.com/problems/reconstruct-itinerary/" target="_blank" rel="noopener">332. Reconstruct Itinerary</a><br>本题可以先用哈希表记录起止机场，其中键是起始机场，值是一个多重集合，表示对应的终止机场。储存完成之后，我们可以利用栈来恢复从终点到起点飞行的顺序，再将结果逆序得到从起点到终点的顺序。</p>
 <h2 id="前缀和与积分图"><a href="#前缀和与积分图" class="headerlink" title="前缀和与积分图"></a>前缀和与积分图</h2><p>一维的前缀和，二维的积分图，都是把每个位置之前的一维线段或二维矩形预先存储，方便加速计算：</p>
 <ul>
-<li>如果需要对前缀和或积分图的值做寻址，则要存在哈希表里；</li>
-<li>如果要对每个位置记录前缀和或积分图的值，则可以储存到一维或二维数组里，也常常伴随着动态规划；</li>
+<li>如果需要对前缀和或积分图的值做寻址，则要存在哈希表里。</li>
+<li>如果要对每个位置记录前缀和或积分图的值，则可以储存到一维或二维数组里，也常常伴随着动态规划。</li>
 </ul>
 <p><a href="https://leetcode.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener">303. Range Sum Query - Immutable</a><br>对于一维的数组，我们可以使用<strong>前缀和</strong>来解决此类问题。先建立一个与数组 nums 长度相同的新数组 psum，表示 nums 每个位置之前所有数字的和。如果我们需要获得位置 i 和 j 之间的数字和，只需计算 psum[j+1] - psum[i] 即可。</p>
 <p><a href="https://leetcode.com/problems/range-sum-query-2d-immutable/" target="_blank" rel="noopener">304. Range Sum Query 2D - Immutable</a><br>类似于前缀和，我们可以把这种思想拓展到二维，即<strong>积分图</strong> (Integral Image)。我们可以先建立一个 dp 矩阵，dp[i][j] 表示以位置 (0, 0) 为左上角、位置 (i-1, j-1) 为右下角的长方形中所有数字的和。<br>我们可以用动态规划来计算 dp 矩阵：dp[i][j] = matrix[i-1][j-1] + dp[i][j-1] + dp[i-1][j] - dp[i-1][j-1]，即当前坐标的数字 + 上面长方形的数字和 + 左边长方形的数字和 - 上面长方形和左边长方形重合面积（即左上一格的长方形）中的数字和：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/06.png" alt></p>

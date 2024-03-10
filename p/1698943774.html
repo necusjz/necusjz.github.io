@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Ethan&#39;s Blog">
 <meta property="og:description" content="数据结构介绍作为单链表的升级版，我们通常接触的树都是二叉树 (Binary Tree)，即每个节点最多有两个子节点；且除非题目说明，默认树中不存在循环结构。LeetCode 默认的树表示方法如下： 12345class TreeNode:    def __init__(self, val=0, left=None, right=None):        self.val = val">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-03-03T15:36:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指针三剑客之二：树">
 <meta name="twitter:description" content="数据结构介绍作为单链表的升级版，我们通常接触的树都是二叉树 (Binary Tree)，即每个节点最多有两个子节点；且除非题目说明，默认树中不存在循环结构。LeetCode 默认的树表示方法如下： 12345class TreeNode:    def __init__(self, val=0, left=None, right=None):        self.val = val">
@@ -370,7 +370,7 @@
 <h2 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h2><p>我们可以<strong>使用广度优先搜索进行层次遍历</strong>。注意，不需要使用两个队列来分别存储当前层的节点和下一层的节点，因为在开始遍历一层的节点时，当前队列中的节点数就是当前层的节点数，只要控制遍历这么多节点数，就能保证这次遍历的都是当前层的节点。</p>
 <p><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/" target="_blank" rel="noopener">637. Average of Levels in Binary Tree</a><br>利用广度优先搜索，我们可以很方便地求取每层的平均值。</p>
 <h2 id="前中后序遍历"><a href="#前中后序遍历" class="headerlink" title="前中后序遍历"></a>前中后序遍历</h2><p>前序遍历、中序遍历和后序遍历是三种利用深度优先搜索遍历二叉树的方式。它们是在对节点访问的顺序有一点不同，其它完全相同。</p>
-<p><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. Construct Binary Tree from Preorder and Inorder Traversal</a><br>前序遍历的第一个节点是 4，意味着 4 是根节点。我们在中序遍历结果里找到 4 这个节点，根据中序遍历的性质可以得出，4 在中序遍历数组位置的左子数组为左子树；4 在中序 遍历数组位置的右子数组为右子树。</p>
+<p><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. Construct Binary Tree from Preorder and Inorder Traversal</a><br>前序遍历的第一个节点是 4，意味着 4 是根节点。我们在中序遍历结果里找到 4 这个节点，根据中序遍历的性质可以得出，4 在中序遍历数组位置的左子数组为左子树；4 在中序遍历数组位置的右子数组为右子树。</p>
 <p><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. Binary Tree Preorder Traversal</a><br>因为递归的本质是栈调用，因此我们可以通过栈来实现前序遍历。注意入栈的顺序。</p>
 <h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p><strong>二叉查找树</strong> (BST) 是一种特殊的二叉树：对于每个父节点，其左子树中所有节点的值小于等于父结点的值，其右子树中所有节点的值大于等于父结点的值。因此对于一个二叉查找树，我们可以在 O(logn) 的时间内查找一个值是否存在：从根节点开始，若当前节点的值大于查找值则向左下走，若当前节点的值小于查找值则向右下走。同时因为二叉查找树是有序的，对其中序遍历的结果即为排好序的数组。</p>
 <p><a href="https://leetcode.com/problems/recover-binary-search-tree/" target="_blank" rel="noopener">99. Recover Binary Search Tree</a><br>有一个技巧是如果遍历整个序列过程中只出现了一次次序错误，说明就是这两个相邻节点需要被交换；如果出现了两次次序错误，那就需要交换这两个节点。</p>

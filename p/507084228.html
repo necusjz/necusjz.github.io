@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/01.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/02.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/03.png">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-03-02T08:43:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出动态规划">
 <meta name="twitter:description" content="算法解释这里我们引用一下维基百科的描述：“动态规划 (DP) 在查找有很多重叠子问题的情况的最优解时有效。它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。因此，动态规划保存递归时的结果，因而不会在解决同样的问题时花费时间。动态规划只能应用于有最优子结构的问题。最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不">
@@ -361,8 +361,8 @@
       
         <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>这里我们引用一下维基百科的描述：“<strong>动态规划</strong> (DP) 在查找有很多<strong>重叠子问题</strong>的情况的最优解时有效。它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。因此，动态规划保存递归时的结果，因而不会在解决同样的问题时花费时间。动态规划只能应用于有<strong>最优子结构</strong>的问题。最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不能完全满足，故有时需要引入一定的近似）。简单地说，问题能够分解成子问题来解决。”<br>通俗一点来讲，动态规划和其它遍历算法（如深/广度优先搜索）都是将原问题拆成多个子问题然后求解，他们之间最本质的区别是，动态规划<strong>保存子问题的解，避免重复计算</strong>。解决动态规划问题的关键是找到<strong>状态转移方程</strong>，这样我们可以通过计算和储存子问题的解来求解最终问题。<br>同时，我们也可以对动态规划进行<strong>空间压缩</strong>，起到节省空间消耗的效果。在一些情况下，动态规划可以看成是带有<strong>状态记录</strong> (Memoization) 的优先搜索。状态记录的意思为，如果一个子问题在优先搜索时已经计算过一次，我们可以把它的结果储存下来，之后遍历到该子问题的时候可以直接返回储存的结果：</p>
 <ul>
-<li>动态规划是自下而上的，即先解决子问题，再解决父问题；</li>
-<li>带有状态记录的优先搜索是自上而下的，即从父问题搜索到子问题，若重复搜索到同一个子问题则进行状态记录，防止重复计算；</li>
+<li>动态规划是自下而上的，即先解决子问题，再解决父问题。</li>
+<li>带有状态记录的优先搜索是自上而下的，即从父问题搜索到子问题，若重复搜索到同一个子问题则进行状态记录，防止重复计算。</li>
 </ul>
 <p>如果题目需求的是最终状态，那么使用动态规划比较方便；如果题目需要输出所有的路径，那么使用带有状态记录的优先搜索会比较方便。</p>
 <a id="more"></a>
@@ -398,7 +398,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">knapsack</span><span class="params">(weights, values, N, W)</span>:</span></span><br><span class="line">    dp = [<span class="number">0</span>] * (W + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">        w, v = weights[i<span class="number">-1</span>], values[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w, W + <span class="number">1</span>):</span><br><span class="line">            dp[j] = max(dp[j], dp[j-w] + v)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>压缩空间时到底需要正向还是逆向遍历呢？物品和体积哪个放在外层，哪个放在内层呢？这取决于状态转移方程的依赖关系。在思考空间压缩前，不妨将状态转移矩阵画出来，方便思考如何进行空间压缩。如果您实在不想仔细思考，这里有个简单的口诀：0-1 背包对物品的迭代放在外层，里层的体积或价值逆向遍历；完全背包对物品的迭代放在里层，外层的体积或价值正向遍历。</p>
+<p>压缩空间时到底需要正向还是逆向遍历呢？物品和体积哪个放在外层，哪个放在内层呢？这取决于状态转移方程的依赖关系。在思考空间压缩前，不妨将状态转移矩阵画出来，方便思考如何进行空间压缩。如果您实在不想仔细思考，这里有个简单的口诀：<strong>0-1 背包对物品的迭代放在外层，里层的体积或价值逆向遍历；完全背包对物品的迭代放在里层，外层的体积或价值正向遍历</strong>。</p>
 </blockquote>
 <p><a href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank" rel="noopener">416. Partition Equal Subset Sum</a><br>本题等价于 0-1 背包问题，设所有数字和为 sum，我们的目标是选取一部分物品，使得它们的总和为 sum/2。这道题不需要考虑价值，因此我们只需要通过一个布尔值矩阵来表示状态转移矩阵。</p>
 <p><a href="https://leetcode.com/problems/ones-and-zeroes/" target="_blank" rel="noopener">474. Ones and Zeroes</a><br>这是一个多维费用的 0-1 背包问题，有两个背包大小，0 的数量和 1 的数量。</p>

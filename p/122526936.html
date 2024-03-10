@@ -87,20 +87,20 @@
 
 
 
-<meta name="description" content="剖析 Linux 容器的核心实现原理：  基于 Namespace 的视图隔离； 基于 Cgroups 的资源限制； 基于 rootfs 的文件系统；  Docker 容器的核心功能在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单： 12345678910">
+<meta name="description" content="剖析 Linux 容器的核心实现原理：  基于 Namespace 的视图隔离 基于 Cgroups 的资源限制 基于 rootfs 的文件系统  Docker 容器的核心功能在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单： 12345678910111">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重新认识 Docker 容器">
 <meta property="og:url" content="https://necusjz.github.io/p/122526936.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="剖析 Linux 容器的核心实现原理：  基于 Namespace 的视图隔离； 基于 Cgroups 的资源限制； 基于 rootfs 的文件系统；  Docker 容器的核心功能在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单： 12345678910">
+<meta property="og:description" content="剖析 Linux 容器的核心实现原理：  基于 Namespace 的视图隔离 基于 Cgroups 的资源限制 基于 rootfs 的文件系统  Docker 容器的核心功能在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单： 12345678910111">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Docker/00.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/Docker/01.png">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-03-10T15:21:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重新认识 Docker 容器">
-<meta name="twitter:description" content="剖析 Linux 容器的核心实现原理：  基于 Namespace 的视图隔离； 基于 Cgroups 的资源限制； 基于 rootfs 的文件系统；  Docker 容器的核心功能在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单： 12345678910">
+<meta name="twitter:description" content="剖析 Linux 容器的核心实现原理：  基于 Namespace 的视图隔离 基于 Cgroups 的资源限制 基于 rootfs 的文件系统  Docker 容器的核心功能在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单： 12345678910111">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/Docker/00.png">
 
 
@@ -360,9 +360,9 @@
       
         <p>剖析 Linux 容器的核心实现原理：</p>
 <ol>
-<li>基于 Namespace 的视图隔离；</li>
-<li>基于 Cgroups 的资源限制；</li>
-<li>基于 rootfs 的文件系统；</li>
+<li>基于 Namespace 的视图隔离</li>
+<li>基于 Cgroups 的资源限制</li>
+<li>基于 rootfs 的文件系统</li>
 </ol>
 <h2 id="Docker-容器的核心功能"><a href="#Docker-容器的核心功能" class="headerlink" title="Docker 容器的核心功能"></a>Docker 容器的核心功能</h2><p>在开始实践之前，你需要准备一台 Linux 机器，并安装 Docker。这一次，我要用 Docker 部署一个用 Python 编写的 Web 应用。这个应用的代码部分（app.py）非常简单：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    html = <span class="string">"&lt;h3&gt;Hello &#123;name&#125;!&lt;/h3&gt;"</span> \</span><br><span class="line">           <span class="string">"&lt;b&gt;Hostname:&lt;/b&gt; &#123;hostname&#125;&lt;br/&gt;"</span>           </span><br><span class="line">    <span class="keyword">return</span> html.format(name=os.getenv(<span class="string">"NAME"</span>, <span class="string">"world"</span>), hostname=socket.gethostname())</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>

@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Ethan&#39;s Blog">
 <meta property="og:description" content="引言字符串可以看成是字符组成的数组。由于字符串是程序里经常需要处理的数据类型，因此有很多针对字符串处理的题目。 字符串比较242. Valid Anagram我们可以利用哈希表或者数组统计两个数组中每个数字出现的频次，若频次相同，则说明它们包含的字符完全相同。 205. Isomorphic Strings我们可以将问题转化一下：记录两个字符串每个位置的字符第一次出现的位置，如果两个字符串中相同位">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2023-12-21T13:33:03.000Z">
+<meta property="og:updated_time" content="2024-03-03T14:17:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="令人头大的字符串">
 <meta name="twitter:description" content="引言字符串可以看成是字符组成的数组。由于字符串是程序里经常需要处理的数据类型，因此有很多针对字符串处理的题目。 字符串比较242. Valid Anagram我们可以利用哈希表或者数组统计两个数组中每个数字出现的频次，若频次相同，则说明它们包含的字符完全相同。 205. Isomorphic Strings我们可以将问题转化一下：记录两个字符串每个位置的字符第一次出现的位置，如果两个字符串中相同位">
@@ -362,7 +362,7 @@
 <p><a href="https://leetcode.com/problems/count-binary-substrings/" target="_blank" rel="noopener">696. Count Binary Substrings</a><br>从左往右遍历数组，记录和当前位置数字相同且连续的长度，以及其之前连续的不同数字的长度。若不同数字的连续长度大于等于当前数字的连续长度，则说明存在一个且只存在一个以当前数字结尾的满足条件的子字符串。</p>
 <a id="more"></a>
 <h2 id="字符串理解"><a href="#字符串理解" class="headerlink" title="字符串理解"></a>字符串理解</h2><p><a href="https://leetcode.com/problems/basic-calculator-ii/" target="_blank" rel="noopener">227. Basic Calculator II</a><br>如果我们在字符串左边加上一个加号，可以证明其并不改变运算结果，且字符串可以分割成多个 (opt, num) 的形式；这样一来我们就可以从左往右处理了。</p>
-<h2 id="字符串比较-1"><a href="#字符串比较-1" class="headerlink" title="字符串比较"></a>字符串比较</h2><p><a href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/" target="_blank" rel="noopener">28. Find the Index of the First Occurrence in a String</a><br>使用著名的 <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm" target="_blank" rel="noopener">KMP 算法</a>，可以在 O(m+n) 时间利用动态规划完成匹配。</p>
+<h2 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h2><p><a href="https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/" target="_blank" rel="noopener">28. Find the Index of the First Occurrence in a String</a><br>使用著名的 <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm" target="_blank" rel="noopener">KMP 算法</a>，可以在 O(m+n) 时间利用动态规划完成匹配。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a href="https://leetcode.com/problems/longest-palindrome/" target="_blank" rel="noopener">409. Longest Palindrome</a><br>计算一组字符可以构成的回文字符串的最大长度，可以利用其它数据结构进行辅助统计。</p>
 <p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">3. Longest Substring Without Repeating Characters</a><br>计算最长无重复子字符串，同样的，可以利用其它数据结构进行辅助统计。</p>
 <p><a href="https://leetcode.com/problems/basic-calculator-iii/" target="_blank" rel="noopener">772. Basic Calculator III</a><br><a href="https://leetcode.com/problems/basic-calculator-ii/" target="_blank" rel="noopener">227. Basic Calculator II</a> 的 follow-up，十分推荐练习。</p>
@@ -531,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较"><span class="nav-number">2.</span> <span class="nav-text">字符串比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串理解"><span class="nav-number">3.</span> <span class="nav-text">字符串理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较-1"><span class="nav-number">4.</span> <span class="nav-text">字符串比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较"><span class="nav-number">2.</span> <span class="nav-text">字符串比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串理解"><span class="nav-number">3.</span> <span class="nav-text">字符串理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串匹配"><span class="nav-number">4.</span> <span class="nav-text">字符串匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li></ol></div>
             
 
           </div>
