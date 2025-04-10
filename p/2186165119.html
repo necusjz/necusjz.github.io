@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="算法解释双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：  若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的区域即为当前的窗口），经常用于区间搜索。 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。  Two Sum167. Two Sum II - Input Array">
+<meta name="description" content="算法解释双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：  若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的区域即为当前的窗口），经常用于区间搜索。 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。  在 C++ 中，要注意 const 的位置对指针效果的影响： 12345i">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玩转双指针">
 <meta property="og:url" content="https://necusjz.github.io/p/2186165119.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="算法解释双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：  若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的区域即为当前的窗口），经常用于区间搜索。 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。  Two Sum167. Two Sum II - Input Array">
+<meta property="og:description" content="算法解释双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：  若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的区域即为当前的窗口），经常用于区间搜索。 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。  在 C++ 中，要注意 const 的位置对指针效果的影响： 12345i">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.891Z">
+<meta property="og:updated_time" content="2025-04-07T13:11:35.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="玩转双指针">
-<meta name="twitter:description" content="算法解释双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：  若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的区域即为当前的窗口），经常用于区间搜索。 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。  Two Sum167. Two Sum II - Input Array">
+<meta name="twitter:description" content="算法解释双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：  若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的区域即为当前的窗口），经常用于区间搜索。 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。  在 C++ 中，要注意 const 的位置对指针效果的影响： 12345i">
 
 
 
@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+10:00">
                 2022-07-17
               </time>
             
@@ -360,14 +360,20 @@
 <li>若两个指针指向同一数组，遍历方向相同且不会相交，则也称为<strong>滑动窗口</strong>（两个指针包围的区域即为当前的窗口），经常用于区间搜索。</li>
 <li>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。</li>
 </ul>
+<p>在 C++ 中，要注意 const 的位置对指针效果的影响：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> * p1 = &amp;x; <span class="comment">// 指针可以被修改，值也可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p2 = &amp;x; <span class="comment">// 指针可以被修改，值不可以被修改（const int）</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x; <span class="comment">// 指针不可以被修改（* const），值可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x; <span class="comment">// 指针不可以被修改，值也不可以被修改</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a><br>因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最右边，向左遍历。</p>
 <h2 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h2><p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a><br>因为这两个数组已经排好序，我们可以把两个指针分别放在两个数组的末尾，即 nums1 的 m−1 位和 nums2 的 n−1 位。每次将较大的那个数字复制到 nums1 的后边，然后向前移动一位。因为我们也要定位 nums1 的末尾，所以我们还需要第三个指针，以便复制。</p>
 <blockquote>
 <p>a++ 和 ++a 都是将 a 加 1，但是 a++ 返回值为 a，而 ++a 返回值为 a+1。如果只是希望增加 a 的值，而不需要返回值，则推荐使用 ++a，其运行速度会略快一些。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><p><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">142. Linked List Cycle II</a><br>对于链表找环路的问题，有一个通用的解法——<a href="https://en.wikipedia.org/wiki/Cycle_detection" target="_blank" rel="noopener">Floyd 判圈法</a>。</p>
 <h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p><a href="https://leetcode.com/problems/minimum-window-substring/" target="_blank" rel="noopener">76. Minimum Window Substring</a><br>本题使用滑动窗口求解，即两个指针 l 和 r 都是从最左端向最右端移动，且 l 的位置一定在 r 的左边或重合。</p>
+<h2 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h2><p><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">142. Linked List Cycle II</a><br>对于链表找环路的问题，有一个通用的解法——<a href="https://en.wikipedia.org/wiki/Cycle_detection" target="_blank" rel="noopener">Floyd 判圈法</a>。</p>
+<blockquote>
+<p>对于某些只需要判断是否存在环路的题目，也可以通过建造哈希表来查重。</p>
+</blockquote>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a href="https://leetcode.com/problems/sum-of-square-numbers/" target="_blank" rel="noopener">633. Sum of Square Numbers</a><br>Two Sum 题目的变形题之一。</p>
 <p><a href="https://leetcode.com/problems/valid-palindrome-ii/" target="_blank" rel="noopener">680. Valid Palindrome II</a><br>Two Sum 题目的变形题之二。</p>
 <p><a href="https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/" target="_blank" rel="noopener">524. Longest Word in Dictionary through Deleting</a><br>归并两个有序数组的变形题。</p>
@@ -536,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法解释"><span class="nav-number">1.</span> <span class="nav-text">算法解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Sum"><span class="nav-number">2.</span> <span class="nav-text">Two Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并两个有序数组"><span class="nav-number">3.</span> <span class="nav-text">归并两个有序数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快慢指针"><span class="nav-number">4.</span> <span class="nav-text">快慢指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滑动窗口"><span class="nav-number">5.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">6.</span> <span class="nav-text">练习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法解释"><span class="nav-number">1.</span> <span class="nav-text">算法解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Sum"><span class="nav-number">2.</span> <span class="nav-text">Two Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并两个有序数组"><span class="nav-number">3.</span> <span class="nav-text">归并两个有序数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滑动窗口"><span class="nav-number">4.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快慢指针"><span class="nav-number">5.</span> <span class="nav-text">快慢指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">6.</span> <span class="nav-text">练习</span></a></li></ol></div>
             
 
           </div>
@@ -559,7 +565,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-27T00:14:02+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-27T00:14:02+10:00">
                 2022-07-27
               </time>
             
@@ -446,7 +446,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-21T20:01:28+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-21T20:01:28+10:00">
                 2022-07-21
               </time>
             
@@ -572,7 +572,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-20T22:09:48+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-20T22:09:48+10:00">
                 2022-07-20
               </time>
             
@@ -701,7 +701,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-19T01:19:44+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-19T01:19:44+10:00">
                 2022-07-19
               </time>
             
@@ -834,7 +834,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+10:00">
                 2022-07-17
               </time>
             
@@ -876,6 +876,9 @@
 <li>若两个指针指向同一数组，遍历方向相同且不会相交，则也称为<strong>滑动窗口</strong>（两个指针包围的区域即为当前的窗口），经常用于区间搜索。</li>
 <li>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。</li>
 </ul>
+<p>在 C++ 中，要注意 const 的位置对指针效果的影响：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> * p1 = &amp;x; <span class="comment">// 指针可以被修改，值也可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p2 = &amp;x; <span class="comment">// 指针可以被修改，值不可以被修改（const int）</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x; <span class="comment">// 指针不可以被修改（* const），值可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x; <span class="comment">// 指针不可以被修改，值也不可以被修改</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a><br>因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最右边，向左遍历。</p>
 <h2 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h2><p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a><br>因为这两个数组已经排好序，我们可以把两个指针分别放在两个数组的末尾，即 nums1 的 m−1 位和 nums2 的 n−1 位。每次将较大的那个数字复制到 nums1 的后边，然后向前移动一位。因为我们也要定位 nums1 的末尾，所以我们还需要第三个指针，以便复制。</p>
 <blockquote>
@@ -1017,7 +1020,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
