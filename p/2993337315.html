@@ -102,7 +102,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/04.svg">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/05.svg">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/06.svg">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.858Z">
+<meta property="og:updated_time" content="2025-04-14T06:28:18.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design a Unique ID Generator in Distributed Systems">
 <meta name="twitter:description" content="In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the auto_increment attribute in a traditional database. How">
@@ -363,7 +363,7 @@
       
 
       
-        <p>In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the auto_increment attribute in a traditional database. However, auto_increment does not work in a distributed environment because a single database server is not large enough and generating unique IDs across multiple databases with minimal delay is challenging.</p>
+        <p>In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the <em>auto_increment</em> attribute in a traditional database. However, <em>auto_increment</em> does not work in a distributed environment because a single database server is not large enough and generating unique IDs across multiple databases with minimal delay is challenging.</p>
 <p>Here are a few examples of unique IDs:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/00.svg" alt></p>
 <h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>Asking clarification questions is the first step to tackle any system design interview question. Here is an example of candidate-interviewer interaction:<br>Candidate: What are the characteristics of unique IDs?<br>Interviewer: IDs must be unique and sortable.<br>C: For each new record, does ID increment by 1?<br>I: The ID increments by time but not necessarily only increments by 1. IDs created in the evening are larger than those created in the morning on the same day.<br>C: Do IDs only contain numerical values?<br>I: Yes, that is correct.<br>C: What is the ID length requirement?<br>I: IDs should fit into 64-bit.<br>C: What is the scale of the system?<br>I: The system should be able to generate 10,000 IDs per second.</p>
 <a id="more"></a>
@@ -384,13 +384,13 @@
 </ul>
 <p>Let us look at each of them, how they work, and the pros/cons of each option.</p>
 <h3 id="Multi-master-replication"><a href="#Multi-master-replication" class="headerlink" title="Multi-master replication"></a>Multi-master replication</h3><p>As shown in Figure 2, the first approach is multi-master replication.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/01.svg" alt></p>
-<p>This approach uses the databases’ auto_increment feature. Instead of increasing the next ID by 1, we increase it by k, where k is the number of database servers in use. As illustrated in Figure 2, next ID to be generated is equal to the previous ID in the same server plus 2. This solves some scalability issues because IDs can scale with the number of database servers. However, this strategy has some major drawbacks:</p>
+<p>This approach uses the databases’ <em>auto_increment</em> feature. Instead of increasing the next ID by 1, we increase it by k, where k is the number of database servers in use. As illustrated in Figure 2, next ID to be generated is equal to the previous ID in the same server plus 2. This solves some scalability issues because IDs can scale with the number of database servers. However, this strategy has some major drawbacks:</p>
 <ul>
 <li>Hard to scale with multiple data centers.</li>
 <li>IDs do not go up with time across multiple servers.</li>
 <li>It does not scale well when a server is added or removed.</li>
 </ul>
-<h3 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h3><p>A UUID is another easy way to obtain unique IDs. UUID is a 128-bit number used to identify information in computer systems. UUID has a very low probability of getting collusion. Quoted from Wikipedia, “after generating 1 billion UUIDs every second for approximately 100 years would the probability of creating a single duplicate reach 50%” [1].</p>
+<h3 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h3><p>A UUID is another easy way to obtain unique IDs. UUID is a 128-bit number used to identify information in computer systems. UUID has a very low probability of getting collision. Quoted from Wikipedia, “after generating 1 billion UUIDs every second for approximately 100 years would the probability of creating a single duplicate reach 50%” [1].</p>
 <p>Here is an example of UUID: <em>09c93e62-50b4-468d-bf8a-c07e1040bfb2</em>. UUIDs can be generated independently without coordination between servers. Figure 3 presents the UUIDs design.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/02.svg" alt></p>
 <p>In this design, each web server contains an ID generator, and a web server is responsible for generating IDs independently.</p>
 <p>Pros:</p>
@@ -405,7 +405,7 @@
 <li>IDs could be non-numeric.</li>
 </ul>
 <h3 id="Ticket-server"><a href="#Ticket-server" class="headerlink" title="Ticket server"></a>Ticket server</h3><p>Ticket servers are another interesting way to generate unique IDs. Flicker developed ticket servers to generate distributed primary keys [2]. It is worth mentioning how the system works.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/03.svg" alt></p>
-<p>The idea is to use a centralized auto_increment feature in a single database server (ticket server). To learn more about this, refer to Flicker’s engineering blog article [2].</p>
+<p>The idea is to use a centralized <em>auto_increment</em> feature in a single database server (ticket server). To learn more about this, refer to Flicker’s engineering blog article [2].</p>
 <p>Pros:</p>
 <ul>
 <li>Numeric IDs.</li>
@@ -421,15 +421,15 @@
 <ul>
 <li>Sign bit: 1 bit. It will always be 0. This is reserved for future uses. It can potentially be used to distinguish between signed and unsigned numbers.</li>
 <li>Timestamp: 41 bits. Milliseconds since the epoch or custom epoch. We use Twitter snowflake default epoch 1288834974657, equivalent to Nov 04, 2010, 01:42:54 UTC.</li>
-<li>Datacenter ID: 5 bits, which gives us 2 ^ 5 = 32 datacenters.</li>
-<li>Machine ID: 5 bits, which gives us 2 ^ 5 = 32 machines per datacenter.</li>
+<li>Datacenter ID: 5 bits, which gives us 2^5 = 32 datacenters.</li>
+<li>Machine ID: 5 bits, which gives us 2^5 = 32 machines per datacenter.</li>
 <li>Sequence number: 12 bits. For every ID generated on that machine/process, the sequence number is incremented by 1. The number is reset to 0 every millisecond.</li>
 </ul>
 <h2 id="Step-3-Design-deep-dive"><a href="#Step-3-Design-deep-dive" class="headerlink" title="Step 3 - Design deep dive"></a>Step 3 - Design deep dive</h2><p>In the high-level design, we discussed various options to design a unique ID generator in distributed systems. We settle on an approach that is based on the Twitter snowflake ID generator. Let us dive deep into the design. To refresh our memory, the design diagram is relisted below.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/05.svg" alt></p>
 <p>Datacenter IDs and machine IDs are chosen at the startup time, generally fixed once the system is up running. Any changes in datacenter IDs and machine IDs require careful review since an accidental change in those values can lead to ID conflicts. Timestamp and sequence numbers are generated when the ID generator is running.</p>
 <h3 id="Timestamp"><a href="#Timestamp" class="headerlink" title="Timestamp"></a>Timestamp</h3><p>The most important 41 bits make up the timestamp section. As timestamps grow with time, IDs are sortable by time. Figure 7 shows an example of how binary representation is converted to UTC. You can also convert UTC back to binary representation using a similar method.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/06.svg" alt></p>
-<p>The maximum timestamp that can be represented in 41 bits is 2 ^ 41 - 1 = 2199023255551 milliseconds (ms), which gives us: ~69 years = 2199023255551 ms / 1000 / 365 days / 24 hours / 3600 seconds. This means the ID generator will work for 69 years and having a custom epoch time close to today’s date delays the overflow time. After 69 years, we will need a new epoch time or adopt other techniques to migrate IDs.</p>
-<h3 id="Sequence-number"><a href="#Sequence-number" class="headerlink" title="Sequence number"></a>Sequence number</h3><p>Sequence number is 12 bits, which give us 2 ^ 12 = 4096 combinations. This field is 0 unless more than one ID is generated in a millisecond on the same server. In theory, a machine can support a maximum of 4096 new IDs per millisecond.</p>
+<p>The maximum timestamp that can be represented in 41 bits is 2^41 - 1 = 2199023255551 milliseconds (ms), which gives us: <em>2199023255551 ms / 1000 / 365 days / 24 hours / 3600 seconds = ~69 years</em>. This means the ID generator will work for 69 years and having a custom epoch time close to today’s date delays the overflow time. After 69 years, we will need a new epoch time or adopt other techniques to migrate IDs.</p>
+<h3 id="Sequence-number"><a href="#Sequence-number" class="headerlink" title="Sequence number"></a>Sequence number</h3><p>Sequence number is 12 bits, which give us 2^12 = 4096 combinations. This field is 0 unless more than one ID is generated in a millisecond on the same server. In theory, a machine can support a maximum of 4096 new IDs per millisecond.</p>
 <h2 id="Step-4-Wrap-up"><a href="#Step-4-Wrap-up" class="headerlink" title="Step 4 - Wrap up"></a>Step 4 - Wrap up</h2><p>In this chapter, we discussed different approaches to design a unique ID generator: multi-master replication, UUID, ticket server, and Twitter snowflake-like unique ID generator. We settle on snowflake as it supports all our use cases and is scalable in a distributed environment.</p>
 <p>If there is extra time at the end of the interview, here are a few additional talking points:</p>
 <ul>

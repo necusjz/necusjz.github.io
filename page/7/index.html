@@ -484,9 +484,14 @@
       
         
           <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>深度优先搜索</strong>和<strong>广度优先搜索</strong>是两种最常见的优先搜索方法，它们被广泛地运用在图和树等结构中进行搜索。</p>
-<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>深度优先搜索 (DFS) 在搜索到一个新的节点时，立即对该新节点进行遍历；因此遍历需要用<strong>先入后出的栈</strong>来实现，也可以通过与栈等价的<strong>递归</strong>来实现。对于树结构而言，由于总是对新节点调用遍历，因此看起来是向着“深”的方向前进。<br>深度优先搜索也可以用来<strong>检测环路</strong>：记录每个遍历过的节点的父节点，若一个节点被再次遍历且父节点不同，则说明有环。我们也可以用之后会讲到的拓扑排序判断是否有环路，若最后存在入度不为零的点，则说明有环。<br>有时我们可能会需要对已经搜索过的节点进行标记，以防止在遍历时重复搜索某个节点，这种做法叫做<strong>状态记录</strong>或<strong>记忆化</strong> (Memoization)。</p>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>深度优先搜索 (DFS) 在搜索到一个新的节点时，立即对该新节点进行遍历；因此遍历需要用<strong>先入后出的栈</strong>来实现，也可以通过与栈等价的<strong>递归</strong>来实现。对于树结构而言，由于总是对新节点调用遍历，因此看起来是向着“深”的方向前进。</p>
+<p>深度优先搜索也可以用来<strong>检测环路</strong>：记录每个遍历过的节点的父节点，若一个节点被再次遍历且父节点不同，则说明有环。我们也可以用之后会讲到的拓扑排序判断是否有环路，若最后存在入度不为零的点，则说明有环。</p>
+<p>有时我们可能会需要对已经搜索过的节点进行标记，以防止在遍历时重复搜索某个节点，这种做法叫做<strong>状态记录</strong>或<strong>记忆化</strong> (Memoization)。</p>
 <p><a href="https://leetcode.com/problems/max-area-of-island/" target="_blank" rel="noopener">695. Max Area of Island</a><br>一般来说，深度优先搜索类型的题可以分为主函数和辅函数，主函数用于遍历所有的搜索位置，判断是否可以开始搜索，如果可以即在辅函数进行搜索。辅函数则负责深度优先搜索的递归调用。</p>
-<p><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener">547. Number of Provinces</a><br>本题拥有 n 个节点，每个节点最多有 n 条边，表示和所有城市在同一省份，最少可以有 1 条边，表示是孤立的城市。当清楚了图的表示方法后，这道题与上一道题本质相同：搜索省份（岛屿）的个数（最大面积）。</p>
+<p><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener">547. Number of Provinces</a><br>本题拥有 n 个节点，每个节点最多有 n 条边，表示和所有城市在同一省份，最少可以有 1 条边，表示是孤立的城市。当清楚了图的表示方法后，这道题与上一道题本质相同：搜索城市圈（岛屿圈）的个数。</p>
+<blockquote>
+<p>对于节点连接类问题，我们也可以利用并查集来进行快速的连接和搜索。</p>
+</blockquote>
 <p><a href="https://leetcode.com/problems/pacific-atlantic-water-flow/" target="_blank" rel="noopener">417. Pacific Atlantic Water Flow</a><br>虽然题目要求的是满足向下流能到达两个大洋的位置，如果我们对所有的位置进行搜索，那么在不剪枝的情况下复杂度会很高。因此我们可以反过来想，从两个大洋开始向上流，这样我们只需要对矩形四条边进行搜索。</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -609,11 +614,11 @@
 
       
         
-          <h2 id="常用排序算法"><a href="#常用排序算法" class="headerlink" title="常用排序算法"></a>常用排序算法</h2><p>以下是一些最基本的<strong>排序算法</strong>。虽然在 Python 里可以通过 sort() 快速排序，而且刷题时很少需要自己手写排序算法，但是熟习各种排序算法可以加深自己对算法的基本理解，以及解出由这些排序算法引申出来的题目：</p>
+          <h2 id="常用排序算法"><a href="#常用排序算法" class="headerlink" title="常用排序算法"></a>常用排序算法</h2><p>虽然在 Python 里可以通过 sort() 快速排序，而且刷题时很少需要自己手写排序算法，但是熟习各种排序算法可以加深自己对算法的基本理解，以及解出由这些排序算法引申出来的题目。以下是一些最基本的<strong>排序算法</strong>：</p>
 <ul>
-<li>快速排序（Quick Sort）</li>
-<li>归并排序（Merge Sort）</li>
-<li>堆排序（Heap Sort）</li>
+<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/quick_sort.py" target="_blank" rel="noopener">快速排序 (Quick Sort)</a></li>
+<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/merge_sort.py" target="_blank" rel="noopener">归并排序 (Merge Sort)</a></li>
+<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/heap_sort.py" target="_blank" rel="noopener">堆排序 (Heap Sort)</a></li>
 </ul>
 <h2 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h2><p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a><br><strong>快速选择</strong>一般用于求解 Kth Element 问题，可以在 O(n) 时间复杂度，O(1) 空间复杂度完成求解工作。</p>
 <h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a><br>顾名思义，<strong>桶排序</strong>的意思是为每个值设立一个桶，桶内记录这个值出现的次数（或其它属性），然后对桶进行排序。</p>
@@ -738,18 +743,19 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>二分查找</strong>也常被称为<strong>二分法</strong>或者<strong>折半查找</strong>，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。<br>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：</p>
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>二分查找</strong>也常被称为<strong>二分法</strong>或者<strong>折半查找</strong>，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。</p>
+<p>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：</p>
 <ul>
 <li>尝试熟练使用一种写法，比如左闭右开（满足 C++、Python 等语言的习惯）或左闭右闭（便于处理边界条件），尽量只保持这一种写法。</li>
 <li>在刷题时思考如果最后区间只剩下一个数或者两个数，自己的写法是否会陷入死循环，如果某种写法无法跳出死循环，则考虑尝试另一种写法。</li>
 </ul>
 <p>二分查找也可以看作双指针的一种特殊情况，但我们一般会将二者区分。双指针类型的题，指针通常是一步一步移动的，而在二分查找里，指针每次移动半个区间长度。</p>
-<h2 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h2><p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a><br>这道题还有一种更快的算法——<strong>牛顿迭代</strong>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></span><br><span class="line">    num = x</span><br><span class="line">    <span class="keyword">while</span> num * num &gt; x:</span><br><span class="line">        num = (num + x // num) // <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
-
+<h2 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h2><p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></p>
 <blockquote>
 <p>mid = (lo + hi) // 2 可能会因为 lo + hi 溢出而错误，因而采用 mid = lo + ((hi - lo) &gt;&gt; 1) 的写法。</p>
 </blockquote>
+<p>另外，这道题还有一种更快的算法——<a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank" rel="noopener">牛顿迭代法</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></span><br><span class="line">    num = x</span><br><span class="line">    <span class="keyword">while</span> num * num &gt; x:</span><br><span class="line">        num = (num + x // num) // <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/p/3797214653.html#more" rel="contents">
@@ -877,7 +883,7 @@
 <li>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。</li>
 </ul>
 <p>在 C++ 中，要注意 const 的位置对指针效果的影响：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> * p1 = &amp;x; <span class="comment">// 指针可以被修改，值也可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p2 = &amp;x; <span class="comment">// 指针可以被修改，值不可以被修改（const int）</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x; <span class="comment">// 指针不可以被修改（* const），值可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x; <span class="comment">// 指针不可以被修改，值也不可以被修改</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> * p1 = &amp;x; <span class="comment">// 指针可以被修改，值也可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p2 = &amp;x; <span class="comment">// 指针可以被修改，值不可以被修改 (const int)</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x; <span class="comment">// 指针不可以被修改 (* const)，值可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x; <span class="comment">// 指针不可以被修改，值也不可以被修改</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a><br>因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最右边，向左遍历。</p>
 <h2 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h2><p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a><br>因为这两个数组已经排好序，我们可以把两个指针分别放在两个数组的末尾，即 nums1 的 m−1 位和 nums2 的 n−1 位。每次将较大的那个数字复制到 nums1 的后边，然后向前移动一位。因为我们也要定位 nums1 的末尾，所以我们还需要第三个指针，以便复制。</p>

@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/05.svg">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/06.svg">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/07.webp">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.857Z">
+<meta property="og:updated_time" content="2025-04-13T14:53:45.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design a URL Shortener">
 <meta name="twitter:description" content="In this chapter, we will tackle an interesting and classic system design interview question: Designing a URL shortening service like TinyURL. Step 1 - Understand the problem and establish design scope">
@@ -366,7 +366,7 @@
       
         <p>In this chapter, we will tackle an interesting and classic system design interview question: Designing a URL shortening service like TinyURL.</p>
 <h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>System design interview questions are intentionally left open-ended. To design a well-crafted system, it is critical to ask clarification questions.</p>
-<p>Candidate: Can you give an example of how a URL shortener work?<br>Interviewer: Assume URL <a href="https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long" target="_blank" rel="noopener">https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long</a> is the original URL. Your service creates an alias with shorter length: <a href="https://tinyurl.com/y7keocwj" target="_blank" rel="noopener">https://tinyurl.com/y7keocwj</a>. If you click the alias, it redirects you to the original URL.<br>C: What is the traffic volume?<br>I: 100 million URLs are generated per day.<br>C: How long is the shortened URL?<br>I: As short as possible.<br>C: What characters are allowed in the shortened URL?<br>I: Shortened URL can be a combination of numbers (0-9) and characters (a-z, A-Z).<br>C: Can shortened URLs be deleted or updated?<br>I: For simplicity, let us assume shortened URLs cannot be deleted or updated.</p>
+<p>Candidate: Can you give an example of how a URL shortener work?<br>Interviewer: Assume <a href="https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long" target="_blank" rel="noopener">https://www.systeminterview.com/q=chatsystem&amp;c=loggedin&amp;v=v3&amp;l=long</a> is the original URL. Your service creates an alias with shorter length: <a href="https://tinyurl.com/y7keocwj" target="_blank" rel="noopener">https://tinyurl.com/y7keocwj</a>. If you click the alias, it redirects you to the original URL.<br>C: What is the traffic volume?<br>I: 100 million URLs are generated per day.<br>C: How long is the shortened URL?<br>I: As short as possible.<br>C: What characters are allowed in the shortened URL?<br>I: Shortened URL can be a combination of numbers (0-9) and characters (a-z, A-Z).<br>C: Can shortened URLs be deleted or updated?<br>I: For simplicity, let us assume shortened URLs cannot be deleted or updated.</p>
 <p>Here are the basic use cases:</p>
 <ol>
 <li>URL shortening: Given a long URL -&gt; Return a much shorter URL.</li>
@@ -383,20 +383,20 @@
 <li>Storage requirement over 10 years: 365 billion * 100 bytes = 36.5 TB.</li>
 </ul>
 <p>It is important for you to walk through the assumptions and calculations with your interviewer so that both of you are on the same page.</p>
-<h2 id="Step-2-Propose-high-level-design-and-get-buy-in"><a href="#Step-2-Propose-high-level-design-and-get-buy-in" class="headerlink" title="Step 2 - Propose high-level design and get buy-in"></a>Step 2 - Propose high-level design and get buy-in</h2><p>In this section, we discuss the API endpoints, URL redirecting, and URL shortening flows.</p>
-<h3 id="API-endpoints"><a href="#API-endpoints" class="headerlink" title="API endpoints"></a>API endpoints</h3><p>API endpoints facilitate the communication between clients and servers. We will design the APIs REST-style. If you are unfamiliar with RESTful API, you can consult external materials, such as the one in the reference material [1]. A URL shortener primary needs two API endpoints:</p>
+<h2 id="Step-2-Propose-high-level-design-and-get-buy-in"><a href="#Step-2-Propose-high-level-design-and-get-buy-in" class="headerlink" title="Step 2 - Propose high-level design and get buy-in"></a>Step 2 - Propose high-level design and get buy-in</h2><p>In this section, we discuss the API endpoints, URL shortening, and URL redirecting flows.</p>
+<h3 id="API-endpoints"><a href="#API-endpoints" class="headerlink" title="API endpoints"></a>API endpoints</h3><p>API endpoints facilitate the communication between clients and servers. We will design the APIs in a REST-style. If you are unfamiliar with RESTful API, you can consult external materials, such as the one in the reference material [1]. A URL shortener primary needs two API endpoints:</p>
 <ul>
 <li>URL shortening. To create a new short URL, a client sends a POST request, which contains one parameter: the original long URL. The API looks like this:<br><em>POST api/v1/data/shorten</em><ul>
 <li>Request parameter: {longUrl: longURLString}</li>
-<li>Return shortURL</li>
+<li>Return shortURL.</li>
 </ul>
 </li>
 <li>URL redirecting. To redirect a short URL to the corresponding long URL, a client sends a GET request. The API looks like this:<br><em>GET api/v1/shortUrl</em><ul>
-<li>Return longURL for HTTP redirection</li>
+<li>Return longURL for HTTP redirection.</li>
 </ul>
 </li>
 </ul>
-<h3 id="URL-shortening"><a href="#URL-shortening" class="headerlink" title="URL shortening"></a>URL shortening</h3><p>Let us assume the short URL looks like this: <a href="http://www.tinyurl.com/{hashValue}" target="_blank" rel="noopener">www.tinyurl.com/{hashValue}</a>. To support the URL shortening use case, we must find a hash function fx that maps a long URL to the hashValue, as shown in Figure 1.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/02.svg" alt></p>
+<h3 id="URL-shortening"><a href="#URL-shortening" class="headerlink" title="URL shortening"></a>URL shortening</h3><p>Let us assume the short URL looks like this: <a href="http://www.tinyurl.com/{hashValue}" target="_blank" rel="noopener">www.tinyurl.com/{hashValue}</a>. To support the URL shortening use case, we must find a hash function <em>fx</em> that maps a long URL to the hashValue, as shown in Figure 1.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/02.svg" alt></p>
 <p>The hash function must satisfy the following requirements:</p>
 <ul>
 <li>Each longURL must be hashed to one hashValue.</li>
@@ -416,7 +416,7 @@
 <li>Get longURL: longURL = hashTable.get(shortURL)</li>
 <li>Once you get the longURL, perform the URL redirect.</li>
 </ul>
-<h2 id="Step-3-Design-deep-dive"><a href="#Step-3-Design-deep-dive" class="headerlink" title="Step 3 - Design deep dive"></a>Step 3 - Design deep dive</h2><p>Up until now, we have discussed the high-level design of URL shortening and URL redirecting. In this section, we dive deep into the following: Data model, hash function, URL shortening and URL redirecting.</p>
+<h2 id="Step-3-Design-deep-dive"><a href="#Step-3-Design-deep-dive" class="headerlink" title="Step 3 - Design deep dive"></a>Step 3 - Design deep dive</h2><p>Up until now, we have discussed the high-level design of URL shortening and URL redirecting. In this section, we dive deep into the following: data model, hash function, URL shortening and URL redirecting.</p>
 <h3 id="Data-model"><a href="#Data-model" class="headerlink" title="Data model"></a>Data model</h3><p>In the high-level design, everything is stored in a hash table. This is a good starting point; however, this approach is not feasible for real-world systems as memory resources are limited and expensive. A better option is to store &lt;shortURL, longURL&gt; mapping in a relational database. Figure 4 shows a simple database table design. The simplified version of the table contains 3 columns: id, shortURL, longURL.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/03.svg" alt></p>
 <h3 id="Hash-function"><a href="#Hash-function" class="headerlink" title="Hash function"></a>Hash function</h3><p>Hash function is used to hash a long URL to a short URL, also known as hashValue.</p>
 <h4 id="Hash-value-length"><a href="#Hash-value-length" class="headerlink" title="Hash value length"></a>Hash value length</h4><p>The hashValue consists of characters from [0-9, a-z, A-Z], containing 10 + 26 + 26 = 62 possible characters. To figure out the length of hashValue, find the smallest n such that 62^n &gt;= 365 billion. The system must support up to 365 billion URLs based on the back-of-the-envelope estimation. Table 1 shows the length of hashValue and the corresponding maximal number of URLs it can support:</p>
@@ -489,7 +489,7 @@
 <h4 id="Base-62-conversion"><a href="#Base-62-conversion" class="headerlink" title="Base 62 conversion"></a>Base 62 conversion</h4><p>Base conversion is another approach commonly used for URL shorteners. Base conversion helps to convert the same number between its different number representation systems. Base 62 conversion is used as there are 62 possible characters for hashValue. Let us use an example to explain how the conversion works: Convert 11157(10) to base 62 representation:</p>
 <ul>
 <li>From its name, base 62 is a way of using 62 characters for encoding. The mappings are: 0-0, …, 9-9, 10-a, 11-b, …, 35-z, 36-A, …, 61-Z, where “a” stands for 10, “Z” stands for 61, etc.</li>
-<li>11157(10) = 62^2 * 2 + 62^1 * 55 + 62^0 * 59 = [2, 55, 59] -&gt; [2, T, X] in base 62 representation. Figure 6 shows the conversation process:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/05.svg" alt></li>
+<li>11157(10) = 62^2 * 2 + 62^1 * 55 + 62^0 * 59 = [2, 55, 59] -&gt; [2, T, X] in base 62 representation. Figure 6 shows the conversation process.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/05.svg" alt></li>
 <li>Thus, the short URL is <a href="https://tinyurl.com/2TX" target="_blank" rel="noopener">https://tinyurl.com/2TX</a></li>
 </ul>
 <h4 id="Comparison-of-the-two-approaches"><a href="#Comparison-of-the-two-approaches" class="headerlink" title="Comparison of the two approaches"></a>Comparison of the two approaches</h4><p>Table 3 shows the differences of the two approaches:</p>
@@ -551,7 +551,7 @@
 <h3 id="URL-redirecting-deep-dive"><a href="#URL-redirecting-deep-dive" class="headerlink" title="URL redirecting deep dive"></a>URL redirecting deep dive</h3><p>Figure 8 shows the detailed design of the URL redirecting. As there are more reads than writes, &lt;shortURL, longURL&gt; mapping is stored in a cache to improve performance.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/09/07.webp" alt></p>
 <p>The flow of URL redirecting is summarized as follows:</p>
 <ol>
-<li>A user clicks a short URL link: <a href="https://tinyurl.com/zn9edcu" target="_blank" rel="noopener">https://tinyurl.com/zn9edcu</a></li>
+<li>A user clicks a short URL link: <a href="https://tinyurl.com/zn9edcu" target="_blank" rel="noopener">https://tinyurl.com/zn9edcu</a>.</li>
 <li>The load balancer forwards the request to web servers.</li>
 <li>If a shortURL is already in the cache, return the longURL directly.</li>
 <li>If a shortURL is not in the cache, fetch the longURL from the database. If it is not in the database, it is likely a user entered an invalid shortURL.</li>
@@ -560,10 +560,10 @@
 <h2 id="Wrap-up"><a href="#Wrap-up" class="headerlink" title="Wrap up"></a>Wrap up</h2><p>In this chapter, we talked about the API design, data model, hash function, URL shortening, and URL redirecting.</p>
 <p>If there is extra time at the end of the interview, here are a few additional talking points:</p>
 <ul>
-<li>Rate limiter: A potential security problem we could face is that malicious users send an overwhelmingly large number of URL shortening requests. Rate limiter helps to filter out requests based on IP address or other filtering rules. If you want to refresh your memory about rate limiting, refer to the “Design a rate limiter” chapter.</li>
-<li>Web server scaling: Since the web tier is stateless, it is easy to scale the web tier by adding or removing web servers.</li>
-<li>Database scaling: Database replication and sharding are common techniques.</li>
-<li>Analytics: Data is increasingly important for business success. Integrating an analytics solution to the URL shortener could help to answer important questions like how many people click on a link? When do they click the link? etc.</li>
+<li>Rate limiter. A potential security problem we could face is that malicious users send an overwhelmingly large number of URL shortening requests. Rate limiter helps to filter out requests based on IP address or other filtering rules. If you want to refresh your memory about rate limiting, refer to the “Design a Rate Limiter” chapter.</li>
+<li>Web server scaling. Since the web tier is stateless, it is easy to scale the web tier by adding or removing web servers.</li>
+<li>Database scaling. Database replication and sharding are common techniques.</li>
+<li>Analytics. Data is increasingly important for business success. Integrating an analytics solution to the URL shortener could help to answer important questions like how many people click on a link? When do they click the link? etc.</li>
 <li>Availability, consistency, and reliability. These concepts are at the core of any large system’s success. We discussed them in detail in the “Scale From Zero To Millions Of Users” chapter, please refresh your memory on these topics.</li>
 </ul>
 <p>Congratulations on getting this far! Now give yourself a pat on the back. Good job!</p>

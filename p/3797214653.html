@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="算法解释二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：  尝试熟练使用一种写法，比如左闭右开（满足 C++">
+<meta name="description" content="算法解释二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。 具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：  尝试熟练使用一种写法，比如左闭右开（满足 C+">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="居合斩！二分查找">
 <meta property="og:url" content="https://necusjz.github.io/p/3797214653.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="算法解释二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：  尝试熟练使用一种写法，比如左闭右开（满足 C++">
+<meta property="og:description" content="算法解释二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。 具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：  尝试熟练使用一种写法，比如左闭右开（满足 C+">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.895Z">
+<meta property="og:updated_time" content="2025-04-11T14:15:18.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="居合斩！二分查找">
-<meta name="twitter:description" content="算法解释二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：  尝试熟练使用一种写法，比如左闭右开（满足 C++">
+<meta name="twitter:description" content="算法解释二分查找也常被称为二分法或者折半查找，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。 具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：  尝试熟练使用一种写法，比如左闭右开（满足 C+">
 
 
 
@@ -355,20 +355,24 @@
       
 
       
-        <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>二分查找</strong>也常被称为<strong>二分法</strong>或者<strong>折半查找</strong>，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。<br>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：</p>
+        <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>二分查找</strong>也常被称为<strong>二分法</strong>或者<strong>折半查找</strong>，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。</p>
+<p>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：</p>
 <ul>
 <li>尝试熟练使用一种写法，比如左闭右开（满足 C++、Python 等语言的习惯）或左闭右闭（便于处理边界条件），尽量只保持这一种写法。</li>
 <li>在刷题时思考如果最后区间只剩下一个数或者两个数，自己的写法是否会陷入死循环，如果某种写法无法跳出死循环，则考虑尝试另一种写法。</li>
 </ul>
 <p>二分查找也可以看作双指针的一种特殊情况，但我们一般会将二者区分。双指针类型的题，指针通常是一步一步移动的，而在二分查找里，指针每次移动半个区间长度。</p>
-<h2 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h2><p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a><br>这道题还有一种更快的算法——<strong>牛顿迭代</strong>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></span><br><span class="line">    num = x</span><br><span class="line">    <span class="keyword">while</span> num * num &gt; x:</span><br><span class="line">        num = (num + x // num) // <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
-
+<h2 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h2><p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></p>
 <blockquote>
 <p>mid = (lo + hi) // 2 可能会因为 lo + hi 溢出而错误，因而采用 mid = lo + ((hi - lo) &gt;&gt; 1) 的写法。</p>
 </blockquote>
+<p>另外，这道题还有一种更快的算法——<a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank" rel="noopener">牛顿迭代法</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></span><br><span class="line">    num = x</span><br><span class="line">    <span class="keyword">while</span> num * num &gt; x:</span><br><span class="line">        num = (num + x // num) // <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <h2 id="查找区间"><a href="#查找区间" class="headerlink" title="查找区间"></a>查找区间</h2><p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. Find First and Last Position of Element in Sorted Array</a><br>这道题可以看作是自己实现 Python 里的 bisect_left 和 bisect_right 函数。</p>
+<h2 id="查找峰值"><a href="#查找峰值" class="headerlink" title="查找峰值"></a>查找峰值</h2><p><a href="https://leetcode.com/problems/find-peak-element/" target="_blank" rel="noopener">162. Find Peak Element</a><br>在确保两端不是峰值后，若当前中点不是峰值，那么其左右一侧一定有一个峰值。</p>
 <h2 id="旋转数组查找数字"><a href="#旋转数组查找数字" class="headerlink" title="旋转数组查找数字"></a>旋转数组查找数字</h2><p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">81. Search in Rotated Sorted Array II</a><br>注意，因为数组存在重复数字，如果中点和左端的数字相同，我们并不能确定是左区间全部相同，还是右区间完全相同。在这种情况下，我们可以简单地将左端点右移一位，然后继续进行二分查找。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">154. Find Minimum in Rotated Sorted Array II</a><br>旋转数组的变形题之一。</p>
 <p><a href="https://leetcode.com/problems/single-element-in-a-sorted-array/" target="_blank" rel="noopener">540. Single Element in a Sorted Array</a><br>在出现独立数之前和之后，奇偶位数的值发生了什么变化？</p>
@@ -537,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法解释"><span class="nav-number">1.</span> <span class="nav-text">算法解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求开方"><span class="nav-number">2.</span> <span class="nav-text">求开方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找区间"><span class="nav-number">3.</span> <span class="nav-text">查找区间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转数组查找数字"><span class="nav-number">4.</span> <span class="nav-text">旋转数组查找数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法解释"><span class="nav-number">1.</span> <span class="nav-text">算法解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求开方"><span class="nav-number">2.</span> <span class="nav-text">求开方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找区间"><span class="nav-number">3.</span> <span class="nav-text">查找区间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找峰值"><span class="nav-number">4.</span> <span class="nav-text">查找峰值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旋转数组查找数字"><span class="nav-number">5.</span> <span class="nav-text">旋转数组查找数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">6.</span> <span class="nav-text">练习</span></a></li></ol></div>
             
 
           </div>

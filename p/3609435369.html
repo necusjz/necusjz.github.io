@@ -110,7 +110,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/12.svg">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/13.svg">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/06/14.svg">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.856Z">
+<meta property="og:updated_time" content="2025-04-10T14:15:06.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Consistent Hashing">
 <meta name="twitter:description" content="To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let u">
@@ -372,7 +372,7 @@
 
       
         <p>To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let us take an in-depth look at the problem.</p>
-<h2 id="The-rehashing-problem"><a href="#The-rehashing-problem" class="headerlink" title="The rehashing problem"></a>The rehashing problem</h2><p>If you have n cache servers, a common way to balance the load is to use the following hash method: <em>serverIndex = hash(key) % N</em>, where N is the size of the server pool.</p>
+<h2 id="The-rehashing-problem"><a href="#The-rehashing-problem" class="headerlink" title="The rehashing problem"></a>The rehashing problem</h2><p>If you have n cache servers, a common way to balance the load is to use the following hash method:<br><em>serverIndex = hash(key) % N</em>, where N is the size of the server pool.</p>
 <p>Let us use an example to illustrate how it works. As shown in Table 1, we have 4 servers and 8 string keys with their hashes:</p>
 <table>
 <thead>
