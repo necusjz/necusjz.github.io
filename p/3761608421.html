@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="算法解释顾名思义，分治问题由“分”(Divide) 和“治”(Conquer) 两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终">
+<meta name="description" content="算法解释顾名思义，分治问题由“分 (Divide)”和“治 (Conquer)”两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="化繁为简的分治法">
 <meta property="og:url" content="https://necusjz.github.io/p/3761608421.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="算法解释顾名思义，分治问题由“分”(Divide) 和“治”(Conquer) 两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终">
+<meta property="og:description" content="算法解释顾名思义，分治问题由“分 (Divide)”和“治 (Conquer)”两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/04.png">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.895Z">
+<meta property="og:updated_time" content="2025-04-24T06:33:30.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="化繁为简的分治法">
-<meta name="twitter:description" content="算法解释顾名思义，分治问题由“分”(Divide) 和“治”(Conquer) 两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终">
+<meta name="twitter:description" content="算法解释顾名思义，分治问题由“分 (Divide)”和“治 (Conquer)”两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/04.png">
 
 
@@ -357,10 +357,12 @@
       
 
       
-        <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>顾名思义，<strong>分治问题</strong>由“分”(Divide) 和“治”(Conquer) 两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终合成一个大数组。<br>我们也使用数学表达式来表示这个过程。定义 T(n) 表示处理一个长度为 n 的数组的时间复杂度，则归并排序的时间复杂度递推公式为 T(n) = 2T(n/2) + O(n)。其中 2T(n/2) 表示我们分成了两个长度减半的子问题，O(n) 则为合并两个长度为 n/2 数组的时间复杂度。<br>那么怎么利用这个递推公式得到最终的时间复杂度呢？这里我们可以利用著名的<strong>主定理</strong> (Master Theorem) 求解：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/04.png" alt></p>
-<p>通过主定理我们可以知道，归并排序属于第二种情况，且时间复杂度为 O(nlogn)。其他的分治问题也可以通过主定理求得时间复杂度。另外，自上而下的分治可以和 Memoization 结合，避免重复遍历相同的子问题。如果方便推导，也可以换用自下而上的动态规划方法求解。</p>
+        <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>顾名思义，<strong>分治问题</strong>由“分 (Divide)”和“治 (Conquer)”两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终合成一个大数组。</p>
+<p>我们也使用数学表达式来表示这个过程。定义 T(n) 表示处理一个长度为 n 的数组的时间复杂度，则归并排序的时间复杂度递推公式为 T(n) = 2T(n/2) + O(n)。其中 2T(n/2) 表示我们分成了两个长度减半的子问题，O(n) 则为合并两个长度为 n/2 数组的时间复杂度。</p>
+<p>那么怎么利用这个递推公式得到最终的时间复杂度呢？这里我们可以利用著名的<strong>主定理</strong> (Master Theorem) 求解：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/04.png" alt></p>
+<p>通过主定理我们可以知道，归并排序属于第二种情况，且时间复杂度为 O(nlogn)，其他的分治问题也可以通过主定理求得时间复杂度。另外，自上而下的分治可以和 Memoization 结合，避免重复遍历相同的子问题；如果方便推导，也可以换用自下而上的动态规划方法求解。</p>
 <a id="more"></a>
-<h2 id="表达式问题"><a href="#表达式问题" class="headerlink" title="表达式问题"></a>表达式问题</h2><p><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/" target="_blank" rel="noopener">241. Different Ways to Add Parentheses</a><br>利用分治思想，我们可以把加括号转化为，对于每个运算符号，先执行处理两侧的数学表达式，再处理此运算符号。注意边界情况，即字符串内无运算符号，只有数字。我们发现，某些被 Divide 的子字符串可能重复出现多次，因此我们可以用 Memoization 来去重。或者与其我们从上到下用分治处理 + Memoization，不如直接从下到上用动态规划处理。</p>
+<h2 id="表达式问题"><a href="#表达式问题" class="headerlink" title="表达式问题"></a>表达式问题</h2><p><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/" target="_blank" rel="noopener">241. Different Ways to Add Parentheses</a><br>利用分治思想，我们可以把加括号转化为：对于每个运算符号，先执行处理两侧的数学表达式，再处理此运算符号。注意边界情况，即字符串内无运算符号，只有数字。我们发现，某些被 Divide 的子字符串可能重复出现多次，因此我们可以用 Memoization 来去重。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a href="https://leetcode.com/problems/beautiful-array/" target="_blank" rel="noopener">932. Beautiful Array</a><br>试着用从上到下的分治（递归）写法求解，最好加上 Memoization；再用从下到上的动态规划写法求解。</p>
 <p><a href="https://leetcode.com/problems/burst-balloons/" target="_blank" rel="noopener">312. Burst Balloons</a><br>试着用从上到下的分治（递归）写法求解，最好加上 Memoization；再用从下到上的动态规划写法求解。</p>
 

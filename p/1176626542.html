@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Ethan&#39;s Blog">
 <meta property="og:description" content="引言对于 LeetCode 上数量不少的数学题，我们尽量将其按照类型划分讲解。然而很多数学题的解法并不通用，我们也很难在几道题里把所有的套路讲清楚，因此我们只选择了几道经典或是典型的题目，供大家参考。 公倍数与公因数利用辗转相除法，我们可以很方便地求得两个数的最大公因数 (GCD)；将两个数相乘再除以最大公因数即可得到最小公倍数 (LCM)。进一步地，我们也可以通过扩展欧几里得算法，在求得 a 和">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.892Z">
+<meta property="og:updated_time" content="2025-04-24T08:49:39.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="巧解数学问题">
 <meta name="twitter:description" content="引言对于 LeetCode 上数量不少的数学题，我们尽量将其按照类型划分讲解。然而很多数学题的解法并不通用，我们也很难在几道题里把所有的套路讲清楚，因此我们只选择了几道经典或是典型的题目，供大家参考。 公倍数与公因数利用辗转相除法，我们可以很方便地求得两个数的最大公因数 (GCD)；将两个数相乘再除以最大公因数即可得到最小公倍数 (LCM)。进一步地，我们也可以通过扩展欧几里得算法，在求得 a 和">
@@ -365,8 +365,9 @@
 <h2 id="数字处理"><a href="#数字处理" class="headerlink" title="数字处理"></a>数字处理</h2><p><a href="https://leetcode.com/problems/base-7/" target="_blank" rel="noopener">504. Base 7</a><br><strong>进制转换</strong>类型的题，通常是利用除法和取模 (Mod) 来进行计算，同时也要注意一些细节，如负数和零。如果输出是数字类型而非字符串，则也需要考虑是否会超出整数上下界。</p>
 <p><a href="https://leetcode.com/problems/factorial-trailing-zeroes/" target="_blank" rel="noopener">172. Factorial Trailing Zeroes</a><br>明显的，质因子 2 的数量远多于质因子 5 的数量，因此我们可以只统计阶乘结果里有多少个质因子 5。</p>
 <p><a href="https://leetcode.com/problems/add-strings/" target="_blank" rel="noopener">415. Add Strings</a><br>因为相加运算是从后往前进行的，所以可以先翻转字符串，再逐位计算。这种类型的题考察的是细节，如进位、位数差等等。</p>
-<p><a href="https://leetcode.com/problems/power-of-three/" target="_blank" rel="noopener">326. Power of Three</a><br>有两种方法，一种是利用对数。设 log(n, 3) = m，如果 n 是 3 的整数次方，那么 m 一定是整数。另一种方法是，因为在 int 范围内 3 的最大次方是 3^19 = 1162261467，如果 n 是 3 的整数次方，那么 1162261467 除以 n 的余数一定是零；反之亦然。</p>
-<h2 id="随机与取样"><a href="#随机与取样" class="headerlink" title="随机与取样"></a>随机与取样</h2><p><a href="https://leetcode.com/problems/shuffle-an-array/" target="_blank" rel="noopener">384. Shuffle an Array</a><br>我们采用经典的 <strong>Fisher-Yates 洗牌算法</strong>，原理是通过随机交换位置来实现随机打乱，有正向和反向两种写法，且实现非常方便。</p>
+<p><a href="https://leetcode.com/problems/power-of-three/" target="_blank" rel="noopener">326. Power of Three</a><br>有两种方法：一种是利用对数，设 log(3, n) = m，如果 n 是 3 的整数次方，那么 m 一定是整数。另一种方法是，因为在 int 范围内 3 的最大次方是 3^19 = 1162261467，如果 n 是 3 的整数次方，那么 1162261467 除以 n 的余数一定是零；反之亦然。</p>
+<p><a href="https://leetcode.com/problems/powx-n/" target="_blank" rel="noopener">50. Pow(x, n)</a><br>利用递归，我们可以较为轻松地解决本题。注意边界条件的处理。</p>
+<h2 id="随机与取样"><a href="#随机与取样" class="headerlink" title="随机与取样"></a>随机与取样</h2><p><a href="https://leetcode.com/problems/shuffle-an-array/" target="_blank" rel="noopener">384. Shuffle an Array</a><br>我们采用经典的<strong>洗牌算法</strong> (Fisher-Yates)，原理是通过随机交换位置来实现随机打乱，有正向和反向两种写法，且实现非常方便。</p>
 <p><a href="https://leetcode.com/problems/random-pick-with-weight/" target="_blank" rel="noopener">528. Random Pick with Weight</a><br>我们可以先使用 accumulate 求前缀和（即到每个位置为止所有数字的和），这个结果对于正整数数组是单调递增的。每当需要采样时，我们可以先随机产生一个数字，然后使用二分法查找其在前缀和中的位置，以模拟加权采样的过程。这里的二分法可以用 bisect_left 实现。</p>
 <p><a href="https://leetcode.com/problems/linked-list-random-node/" target="_blank" rel="noopener">382. Linked List Random Node</a><br>不同于数组，在未遍历完链表前，我们无法知道链表的总长度。这里我们就可以使用水库采样：遍历一次链表，在遍历到第 m 个节点时，有 1/m 的概率选择这个节点覆盖掉之前的节点选择。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a href="https://leetcode.com/problems/excel-sheet-column-title/" target="_blank" rel="noopener">168. Excel Sheet Column Title</a><br>7 进制转换的变种题，需要注意的一点是从 1 开始而不是 0。</p>
