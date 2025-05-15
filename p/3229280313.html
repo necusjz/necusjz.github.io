@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/05.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/06.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/07.png">
-<meta property="og:updated_time" content="2024-09-30T15:22:35.892Z">
+<meta property="og:updated_time" content="2025-05-15T06:06:15.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="妙用数据结构">
 <meta name="twitter:description" content="C++ STL在刷题时，我们几乎一定会用到各种数据结构来辅助我们解决问题，因此我们必须熟悉各种数据结构的特点。C++ STL 提供的数据结构包括（实际底层细节可能因编译器而异）：  Sequence Containers：维持顺序的容器： vector：动态数组，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector">
@@ -364,31 +364,31 @@
 <li>Sequence Containers：维持顺序的容器：<ul>
 <li>vector：<strong>动态数组</strong>，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector 来存储各种数据或中间变量。因为在尾部增删的复杂度是 O(1)，我们也可以把它当作 stack 来用。</li>
 <li>list：<strong>双向链表</strong>，也可以当作 stack 和 queue 来使用。由于 LeetCode 的题目多用 Node 来表示链表，且链表不支持快速随机读取，因此我们很少用到这个数据结构（LRU 除外）。</li>
-<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删，不过有一定的额外开销。</li>
+<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删（因此可以当作 stack 和 queue 来使用），不过有一定的额外开销。</li>
 <li>array：固定大小的数组，一般在刷题时我们不使用。</li>
 <li>forward_list：单向链表，一般在刷题时我们不使用。</li>
 </ul>
 </li>
-<li>Container Adaptors：基于其它容器实现的数据结构：<ul>
+<li>Container Adaptors：基于其它容器实现的容器：<ul>
 <li>stack：<strong>后入先出的数据结构</strong>，默认基于 deque 实现。stack 常用于深度优先搜索、一些字符串匹配问题以及单调栈问题。</li>
 <li>queue：<strong>先入先出的数据结构</strong>，默认基于 deque 实现。queue 常用于广度优先搜索。</li>
-<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入任意值，O(1) 的时间获得最大值，O(logn) 的时间删除最大值。priority_queue 常用于维护数据结构并快速获取最大或最小值。</li>
+<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组、O(logn) 的时间插入任意值、O(logn) 的时间删除最大值、O(1) 的时间获得最大值。priority_queue 常用于维护数据结构并快速获取最大值，并且可以自定义比较函数，比如通过存储负值或者更改比小函数为比大函数，即可实现最小值先出。</li>
 </ul>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
-<li>Associative Containers：实现了排好序的数据结构：<ul>
-<li>set：<strong>有序集合</strong>，元素不可重复，底层实现默认为红黑树，即一种特殊的二叉查找树。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入、删除、查找任意值，O(logn) 的时间获得最小或最大值。这里注意，set 和 priority_queue 都可以用于维护数据结构并快速获取最大最小值，但是它们的时间复杂度和功能略有区别，如 priority_queue 默认不支持删除任意值，而 set 获得最大或最小值的时间复杂度略高，具体使用哪个根据需求而定。</li>
+<li>Ordered Associative Containers：有序关联容器：<ul>
+<li>set：<strong>有序集合</strong>，元素不可重复，底层实现默认为红黑树，即一种特殊的二叉查找树 (BST)。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入、删除、查找任意值，O(logn) 的时间获得最小或最大值。这里注意：set 和 priority_queue 都可以用于维护数据结构并快速获取最大最小值，但是它们的时间复杂度和功能略有区别，如 priority_queue 默认不支持删除任意值，而 set 获得最大或最小值的时间复杂度略高，具体使用哪个根据需求而定。</li>
 <li>multiset：支持重复元素的 set。</li>
-<li>map：<strong>有序映射或有序表</strong>，在 set 的基础上加上映射关系，可以对每个元素 key 存一个值 value。</li>
+<li>map：<strong>有序映射</strong>或<strong>有序表</strong>，在 set 的基础上加上映射关系，可以对每个元素 key 存一个值 value。</li>
 <li>multimap：支持重复元素的 map。</li>
 </ul>
 </li>
-<li>Unordered Associative Containers：对每个 Associative Containers 实现了哈希版本：<ul>
+<li>Unordered Associative Containers：无序关联容器：<ul>
 <li>unordered_set：<strong>哈希集合</strong>，可以在 O(1) 的时间快速插入、查找、删除元素，常用于快速的查询一个元素是否在这个容器内。</li>
 <li>unordered_multiset：支持重复元素的 unordered_set。</li>
-<li>unordered_map：<strong>哈希映射或哈希表</strong>，在 unordered_set 的基础上加上映射关系，可以对每一个元素 key 存一个值 value。在某些情况下，如果 key 的范围已知且较小，我们也可以用 vector 代替 unordered_map，用位置表示 key，用每个位置的值表示 value。</li>
+<li>unordered_map：<strong>哈希映射</strong>或<strong>哈希表</strong>，在 unordered_set 的基础上加上映射关系，可以对每一个元素 key 存一个值 value。在某些情况下，如果 key 的范围已知且较小，我们也可以用 vector 代替 unordered_map，用位置表示 key，用每个位置的值表示 value。</li>
 <li>unordered_multimap：支持重复元素的 unordered_map。</li>
 </ul>
 </li>
@@ -401,7 +401,7 @@
 <h2 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h2><p><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" rel="noopener">232. Implement Queue using Stacks</a><br>我们可以用两个栈来实现一个队列：因为我们需要得到先入先出的结果，所以必定要通过一个额外栈翻转一次数组。这个翻转过程既可以在插入时完成，也可以在取值时完成。</p>
 <p><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">155. Min Stack</a><br>我们可以额外建立一个新栈，栈顶表示原栈里所有值的最小值。每当在原栈里插入一个数字时，若该数字小于等于新栈栈顶，则表示这个数字在原栈里是最小值，我们将其同时插入新栈内。每当从原栈里取出一个数字时，若该数字等于新栈栈顶，则表示这个数是原栈里的最小值之一，我们同时取出新栈栈顶的值。</p>
 <p><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. Valid Parentheses</a><br>括号匹配是典型的使用栈来解决的问题。我们从左往右遍历，每当遇到左括号便放入栈内，遇到右括号则判断其和栈顶的括号是否是统一类型，是则从栈内取出左括号，否则说明字符串不合法。</p>
-<h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p><strong>单调栈</strong>通过维持栈内值的单调递增（递减）性，在整体 O(n) 的时间内处理需要大小比较的问题。</p>
+<h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p>单调栈通过维持栈内值的单调递增（递减）性，在整体 O(n) 的时间内处理需要大小比较的问题。</p>
 <p><a href="https://leetcode.com/problems/daily-temperatures/" target="_blank" rel="noopener">739. Daily Temperatures</a><br>我们可以维持一个单调递减的栈，表示每天的温度；为了方便计算天数差，我们这里存放位置（即日期）而非温度本身。栈内数组永远保持单调递减，避免了使用排序进行比较。</p>
 <h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><p><strong>优先队列</strong> (Priority Queue) 可以在 O(1) 时间内获得最大值，并且可以在 O(logn) 时间内取出最大值或插入任意值。<br>优先队列常常用<strong>堆</strong> (Heap) 来实现。堆是一个完全二叉树，其每个节点的值总是大于等于子节点的值。实际实现堆时，我们通常用一个数组而不是用指针建立一个树。这是因为堆是完全二叉树，所以用数组表示时，位置 i 的节点的父节点位置一定为 (i-1)/2，而它的两个子节点的位置又一定分别为 2i+1 和 2i+2。</p>
 <p><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a><br>速度比较快的方法：把所有的链表存储在一个优先队列中，每次提取所有链表头部节点值最小的那个节点，直到所有链表都被提取完为止。</p>

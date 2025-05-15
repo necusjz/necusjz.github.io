@@ -487,15 +487,15 @@
 <li>Sequence Containers：维持顺序的容器：<ul>
 <li>vector：<strong>动态数组</strong>，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector 来存储各种数据或中间变量。因为在尾部增删的复杂度是 O(1)，我们也可以把它当作 stack 来用。</li>
 <li>list：<strong>双向链表</strong>，也可以当作 stack 和 queue 来使用。由于 LeetCode 的题目多用 Node 来表示链表，且链表不支持快速随机读取，因此我们很少用到这个数据结构（LRU 除外）。</li>
-<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删，不过有一定的额外开销。</li>
+<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删（因此可以当作 stack 和 queue 来使用），不过有一定的额外开销。</li>
 <li>array：固定大小的数组，一般在刷题时我们不使用。</li>
 <li>forward_list：单向链表，一般在刷题时我们不使用。</li>
 </ul>
 </li>
-<li>Container Adaptors：基于其它容器实现的数据结构：<ul>
+<li>Container Adaptors：基于其它容器实现的容器：<ul>
 <li>stack：<strong>后入先出的数据结构</strong>，默认基于 deque 实现。stack 常用于深度优先搜索、一些字符串匹配问题以及单调栈问题。</li>
 <li>queue：<strong>先入先出的数据结构</strong>，默认基于 deque 实现。queue 常用于广度优先搜索。</li>
-<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组，O(logn) 的时间插入任意值，O(1) 的时间获得最大值，O(logn) 的时间删除最大值。priority_queue 常用于维护数据结构并快速获取最大或最小值。</li>
+<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组、O(logn) 的时间插入任意值、O(logn) 的时间删除最大值、O(1) 的时间获得最大值。priority_queue 常用于维护数据结构并快速获取最大值，并且可以自定义比较函数，比如通过存储负值或者更改比小函数为比大函数，即可实现最小值先出。</li>
 </ul>
 </li>
 </ul>
