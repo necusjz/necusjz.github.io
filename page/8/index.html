@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1106653324.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/507084228.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1106653324.html" itemprop="url">
-                  最易懂的贪心算法
+                <a class="post-title-link" href="/p/507084228.html" itemprop="url">
+                  深入浅出动态规划
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-11T21:52:54+10:00">
-                2022-07-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-27T00:14:02+10:00">
+                2022-07-27
               </time>
             
 
@@ -356,17 +356,148 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>顾名思义，<strong>贪心算法或贪心思想</strong>采用贪心的策略，保证<strong>每次操作都是局部最优的</strong>，从而使最后得到的结果是<strong>全局最优的</strong>。</p>
-<p>举一个最简单的例子：小明和小王喜欢吃苹果，小明可以吃五个，小王可以吃三个。已知苹果园里有吃不完的苹果，求小明和小王一共最多吃多少个苹果。在这个例子中，我们可以选用的贪心策略为，每个人吃自己能吃的最多数量的苹果，这在每个人身上都是局部最优的。又因为全局结果是局部结果的简单求和，且局部结果互不相干，因此局部最优的策略也同样是全局最优的。</p>
-<p>证明一道题能用贪心算法解决，有时远比用贪心算法解决该题更复杂。一般情况下，在简单操作后，具有明显的从局部到整体的递推关系，或者可以通过数学归纳法推测结果时，我们才会使用贪心算法。</p>
-<h2 id="分配问题"><a href="#分配问题" class="headerlink" title="分配问题"></a>分配问题</h2><p><a href="https://leetcode.com/problems/assign-cookies/" target="_blank" rel="noopener">455. Assign Cookies</a><br>因为饥饿度最小的孩子最容易吃饱，所以我们先考虑这个孩子。为了尽量使得剩下的饼干可以满足饥饿度更大的孩子，所以我们应该把大于等于这个孩子饥饿度的、且大小最小的饼干给这个孩子。</p>
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>这里我们引用一下维基百科的描述：“<strong>动态规划</strong> (DP) 在查找有很多<strong>重叠子问题</strong>的情况的最优解时有效，它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。动态规划只能应用于有<strong>最优子结构</strong>的问题，最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不能完全满足，故有时需要引入一定的近似）。简单地说，问题能够分解成子问题来解决。”</p>
+<p>通俗一点来讲，动态规划和其它遍历算法（如深/广度优先搜索）都是将原问题拆成多个子问题然后求解，他们之间最本质的区别是：动态规划<strong>保存子问题的解，避免重复计算</strong>。解决动态规划问题的关键是找到<strong>状态转移方程</strong>，这样我们可以通过计算和储存子问题的解来求解最终问题。</p>
+<p>同时，我们也可以对动态规划进行<strong>空间压缩</strong>，起到节省空间消耗的效果。在一些情况下，动态规划可以看成是带有<strong>状态记录</strong> (Memoization) 的优先搜索。状态记录的意思为，如果一个子问题在优先搜索时已经计算过一次，我们可以把它的结果储存下来，之后遍历到该子问题的时候可以直接返回储存的结果：</p>
+<ul>
+<li>动态规划是自下而上的，即先解决子问题，再解决父问题。</li>
+<li>带有状态记录的优先搜索是自上而下的，即从父问题搜索到子问题，若重复搜索到同一个子问题则进行状态记录，防止重复计算。</li>
+</ul>
+<p>如果题目需求的是最终状态，那么使用动态规划比较方便；如果题目需要输出所有的路径，那么使用带有状态记录的优先搜索会比较方便。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/507084228.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/455805373.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/455805373.html" itemprop="url">
+                  一切皆可搜索
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-21T20:01:28+10:00">
+                2022-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>深度优先搜索</strong>和<strong>广度优先搜索</strong>是两种最常见的优先搜索方法，它们被广泛地运用在图和树等结构中进行搜索。</p>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>深度优先搜索 (DFS) 在搜索到一个新的节点时，立即对该新节点进行遍历；因此遍历需要用<strong>先入后出的栈</strong>来实现，也可以通过与栈等价的<strong>递归</strong>来实现。对于树结构而言，由于总是对新节点调用遍历，因此看起来是向着“深”的方向前进。</p>
+<p>深度优先搜索也可以用来<strong>检测环路</strong>：记录每个遍历过的节点的父节点，若一个节点被再次遍历且父节点不同，则说明有环。我们也可以用之后会讲到的拓扑排序判断是否有环路，若最后存在入度不为零的点，则说明有环。</p>
+<p>有时我们可能会需要对已经搜索过的节点进行标记，以防止在遍历时重复搜索某个节点，这种做法叫做<strong>状态记录</strong>或<strong>记忆化</strong> (Memoization)。</p>
+<p><a href="https://leetcode.com/problems/max-area-of-island/" target="_blank" rel="noopener">695. Max Area of Island</a><br>一般来说，深度优先搜索类型的题可以分为主函数和辅函数，主函数用于遍历所有的搜索位置，判断是否可以开始搜索，如果可以即在辅函数进行搜索。辅函数则负责深度优先搜索的递归调用。</p>
+<p><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener">547. Number of Provinces</a><br>本题拥有 n 个节点，每个节点最多有 n 条边，表示和所有城市在同一省份，最少可以有 1 条边，表示是孤立的城市。当清楚了图的表示方法后，这道题与上一道题本质相同：搜索城市圈（岛屿圈）的个数。</p>
 <blockquote>
-<p>对数组或字符串排序是常见的操作，方便之后的大小比较，排序顺序默认是从小到大。在之后的讲解中，若我们谈论的是对连续空间的变量进行操作，我们并不会明确区分数组和字符串，因为他们本质上都是在连续空间上的有序变量集合。一个字符串 “abc” 可以被看作一个数组 [“a”, “b”, “c”]。</p>
+<p>对于节点连接类问题，我们也可以利用并查集来进行快速的连接和搜索。</p>
 </blockquote>
-<p><a href="https://leetcode.com/problems/candy/" target="_blank" rel="noopener">135. Candy</a><br>存在比较关系的贪心策略并不一定需要排序。这里的贪心策略即为，在每次遍历中，只考虑并更新相邻一侧的大小关系。</p>
+<p><a href="https://leetcode.com/problems/pacific-atlantic-water-flow/" target="_blank" rel="noopener">417. Pacific Atlantic Water Flow</a><br>虽然题目要求的是满足向下流能到达两个大洋的位置，如果我们对所有的位置进行搜索，那么在不剪枝的情况下复杂度会很高。因此我们可以反过来想，从两个大洋开始向上流，这样我们只需要对矩形四条边进行搜索。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1106653324.html#more" rel="contents">
+            <a class="btn" href="/p/455805373.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -409,7 +540,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1434545921.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4177015619.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -431,8 +562,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1434545921.html" itemprop="url">
-                  Describe Core Azure Architectural Components
+                <a class="post-title-link" href="/p/4177015619.html" itemprop="url">
+                  千奇百怪的排序算法
                 </a>
               
             
@@ -448,8 +579,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-30T20:31:53+10:00">
-                2022-04-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-20T22:09:48+10:00">
+                2022-07-20
               </time>
             
 
@@ -485,17 +616,17 @@
 
       
         
-          <h2 id="Overview-of-Azure-subscriptions-management-groups-and-resources"><a href="#Overview-of-Azure-subscriptions-management-groups-and-resources" class="headerlink" title="Overview of Azure subscriptions, management groups, and resources"></a>Overview of Azure subscriptions, management groups, and resources</h2><p>You need to learn the organizing structure for resources in Azure, which has four levels: <em>Management Groups</em>, <em>Subscriptions</em>, <em>Resource Groups</em>, and <em>Resources</em>. The following image shows <strong>the top-down hierarchy of organization for these levels</strong>:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/Azure/05.png" alt></p>
-<p>Having seen the top-down hierarchy of organization, let’s <strong>describe each of those levels from the bottom up</strong>:</p>
+          <h2 id="常用排序算法"><a href="#常用排序算法" class="headerlink" title="常用排序算法"></a>常用排序算法</h2><p>虽然在 Python 里可以通过 sort() 快速排序，而且刷题时很少需要自己手写排序算法，但是熟习各种排序算法可以加深自己对算法的基本理解，以及解出由这些排序算法引申出来的题目。以下是一些最基本的<strong>排序算法</strong>：</p>
 <ul>
-<li><strong>Resources</strong>: Resources are instances of services that you create, like VMs, storage, or SQL databases;</li>
-<li><strong>Resource groups</strong>: Resources are combined into resource groups, which act as a logical container into which Azure resources like web apps, databases, and storage accounts are deployed and managed;</li>
-<li><strong>Subscriptions</strong>: A subscription groups together user accounts and the resources that have been created by those user accounts. For each subscription, there are limits or quotas on the amount of resources that you can create and use. Organizations can use subscriptions to manage costs and the resources that are created by users, teams, or projects;</li>
-<li><strong>Management groups</strong>: They help you manage access, policy, and compliance for multiple subscriptions. All subscriptions in a management group automatically inherit the conditions applied to the management group;</li>
+<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/quick_sort.py" target="_blank" rel="noopener">快速排序 (Quick Sort)</a></li>
+<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/merge_sort.py" target="_blank" rel="noopener">归并排序 (Merge Sort)</a></li>
+<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/heap_sort.py" target="_blank" rel="noopener">堆排序 (Heap Sort)</a></li>
 </ul>
+<h2 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h2><p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a><br><strong>快速选择</strong>一般用于求解 Kth Element 问题，可以在 O(n) 时间复杂度，O(1) 空间复杂度完成求解工作。</p>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a><br>顾名思义，<strong>桶排序</strong>的意思是为每个值设立一个桶，桶内记录这个值出现的次数（或其它属性），然后对桶进行排序。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1434545921.html#more" rel="contents">
+            <a class="btn" href="/p/4177015619.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -538,7 +669,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/641155808.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3797214653.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -560,8 +691,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/641155808.html" itemprop="url">
-                  Discuss Azure Fundamental Concepts
+                <a class="post-title-link" href="/p/3797214653.html" itemprop="url">
+                  居合斩！二分查找
                 </a>
               
             
@@ -577,8 +708,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-27T23:57:04+10:00">
-                2022-04-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-19T01:19:44+10:00">
+                2022-07-19
               </time>
             
 
@@ -614,160 +745,22 @@
 
       
         
-          <h2 id="Discuss-different-types-of-cloud-models"><a href="#Discuss-different-types-of-cloud-models" class="headerlink" title="Discuss different types of cloud models"></a>Discuss different types of cloud models</h2><p>There are three deployment models for cloud computing: <em>Public Cloud</em>, <em>Private Cloud</em>, and <em>Hybrid Cloud</em>. Each deployment model has <strong>different aspects that you should consider as you migrate to the cloud</strong>.</p>
-<h3 id="What-are-public-private-and-hybrid-clouds"><a href="#What-are-public-private-and-hybrid-clouds" class="headerlink" title="What are public, private, and hybrid clouds?"></a>What are public, private, and hybrid clouds?</h3><table>
-<thead>
-<tr>
-<th align="left">Deployment Model</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Public Cloud</td>
-<td align="left">Services are offered over the public internet and available to anyone who wants to purchase them. Cloud resources, such as servers and storage, are owned and operated by a third-party cloud service provider, and delivered over the internet.</td>
-</tr>
-<tr>
-<td align="left">Private Cloud</td>
-<td align="left">A private cloud consists of computing resources used exclusively by users from one business or organization. A private cloud can be physically located at your organization’s on-site (on-premises) datacenter, or it can be hosted by a third-party service provider.</td>
-</tr>
-<tr>
-<td align="left">Hybrid Cloud</td>
-<td align="left">A hybrid cloud is a computing environment that combines a public cloud and a private cloud by allowing data and applications to be shared between them.</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/641155808.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2304314973.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2304314973.html" itemprop="url">
-                  Introduction to Azure Fundamentals
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-26T00:16:19+10:00">
-                2022-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="What-is-cloud-computing"><a href="#What-is-cloud-computing" class="headerlink" title="What is cloud computing?"></a>What is cloud computing?</h2><p>Have you ever wondered what cloud computing is? It’s <strong>the delivery of computing services over the internet</strong>, which is otherwise known as the cloud. These services include servers, storage, databases, networking, software, analytics, and intelligence. Cloud computing offers faster innovation, flexible resources, and economies of scale.</p>
-<h3 id="Why-is-cloud-computing-typically-cheaper-to-use"><a href="#Why-is-cloud-computing-typically-cheaper-to-use" class="headerlink" title="Why is cloud computing typically cheaper to use?"></a>Why is cloud computing typically cheaper to use?</h3><p>Cloud computing is the delivery of computing services over the internet by using a pay-as-you-go pricing model. You typically <strong>pay only for the cloud services you use</strong>, which helps you:</p>
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>二分查找</strong>也常被称为<strong>二分法</strong>或者<strong>折半查找</strong>，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。</p>
+<p>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：</p>
 <ul>
-<li>Lower your operating costs;</li>
-<li>Run your infrastructure more efficiently;</li>
-<li>Scale as your business needs change;</li>
+<li>尝试熟练使用一种写法，比如左闭右开（满足 C++、Python 等语言的习惯）或左闭右闭（便于处理边界条件），尽量只保持这一种写法。</li>
+<li>在刷题时思考如果最后区间只剩下一个数或者两个数，自己的写法是否会陷入死循环，如果某种写法无法跳出死循环，则考虑尝试另一种写法。</li>
 </ul>
-<p>To put it another way, cloud computing is a way to <strong>rent compute power and storage from someone else’s datacenter</strong>. You can treat cloud resources like you would resources in your own datacenter. When you’re done using them, you give them back. You’re billed only for what you use.</p>
-<p><strong>Instead of maintaining CPUs and storage in your datacenter</strong>, you rent them for the time that you need them. The cloud provider takes care of maintaining the underlying infrastructure for you. The cloud enables you to quickly solve your toughest business challenges, and bring cutting-edge solutions to your users.</p>
+<p>二分查找也可以看作双指针的一种特殊情况，但我们一般会将二者区分。双指针类型的题，指针通常是一步一步移动的，而在二分查找里，指针每次移动半个区间长度。</p>
+<h2 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h2><p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></p>
+<blockquote>
+<p>mid = (lo + hi) // 2 可能会因为 lo + hi 溢出而错误，因而采用 mid = lo + ((hi - lo) &gt;&gt; 1) 的写法。</p>
+</blockquote>
+<p>另外，这道题还有一种更快的算法——<a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank" rel="noopener">牛顿迭代法</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></span><br><span class="line">    num = x</span><br><span class="line">    <span class="keyword">while</span> num * num &gt; x:</span><br><span class="line">        num = (num + x // num) // <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2304314973.html#more" rel="contents">
+            <a class="btn" href="/p/3797214653.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -810,7 +803,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2503986917.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2186165119.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -832,8 +825,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2503986917.html" itemprop="url">
-                  Azure Front Door and Azure CDN
+                <a class="post-title-link" href="/p/2186165119.html" itemprop="url">
+                  玩转双指针
                 </a>
               
             
@@ -849,8 +842,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-25T00:32:07+10:00">
-                2022-04-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+10:00">
+                2022-07-17
               </time>
             
 
@@ -886,15 +879,22 @@
 
       
         
-          <p>Several networking services in Azure are dedicated to application delivery. <em>Azure Front Door</em> and <em>Azure CDN</em> are services that allow us to create applications for global delivery and take advantage of the global network of Azure data centers. Leveraging this capability, we can <strong>provide the same experience to our users, irrespective of their physical location</strong>.</p>
-<h2 id="Create-a-front-door-instance"><a href="#Create-a-front-door-instance" class="headerlink" title="Create a front door instance"></a>Create a front door instance</h2><p><em>Azure Front Door</em> is used for the global routing of web traffic for applications distributed across different Azure regions. With front door, we can <strong>define, manage, and monitor the routing of our web traffic and enable quick global failover</strong>. It enables us to deliver our applications with the best performance and high availability.</p>
-<p>Front door is an L7 load balancer, similar to application gateway. However, there is a difference as regards global distribution. In terms of global distribution, it is similar to another service—traffic manager. Essentially, front door <strong>combines the best features of application gateway and traffic manager</strong>—the security of application gateway and the distribution capability of traffic manager.</p>
-<p>The successful sample rate ensures that endpoints in the backend are available and determines how many samples are sent at a time. <em>Successful Sample</em> <strong>defines how many requests need to be successful in order for an endpoint to be considered healthy</strong>.</p>
-<p><em>Latency Sensitivity</em> <strong>sets the tolerance between the endpoint with the lowest latency and the rest of the endpoints</strong>. For example, let’s say the latency sensitivity setting is 30ms, while the latency of endpoint A is 15ms, that of endpoint B is 30ms, and that of endpoint C is 90ms. Endpoints A and B will be placed in the fastest pool as the difference in latency is lower than the sensitivity threshold, and endpoint C is out as it’s above the threshold.</p>
-<p><em>Routing Rule</em> <strong>defines how traffic is handled and whether specific traffic needs to be redirected or forwarded</strong>. If URL rewrite is enabled, we can construct a URL that will be forwarded to a backend. If caching is enabled, front door will cache static content for faster delivery. Front door also includes a number of configurable options and rules that can help your web applications deliver a customer- and brand-centric service.</p>
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>双指针</strong>主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：</p>
+<ul>
+<li>若两个指针指向同一数组，遍历方向相同且不会相交，则也称为<strong>滑动窗口</strong>（两个指针包围的区域即为当前的窗口），经常用于区间搜索。</li>
+<li>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。</li>
+</ul>
+<p>在 C++ 中，要注意 const 的位置对指针效果的影响：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> * p1 = &amp;x; <span class="comment">// 指针可以被修改，值也可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p2 = &amp;x; <span class="comment">// 指针可以被修改，值不可以被修改 (const int)</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x; <span class="comment">// 指针不可以被修改 (* const)，值可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x; <span class="comment">// 指针不可以被修改，值也不可以被修改</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a><br>因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最右边，向左遍历。</p>
+<h2 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h2><p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a><br>因为这两个数组已经排好序，我们可以把两个指针分别放在两个数组的末尾，即 nums1 的 m−1 位和 nums2 的 n−1 位。每次将较大的那个数字复制到 nums1 的后边，然后向前移动一位。因为我们也要定位 nums1 的末尾，所以我们还需要第三个指针，以便复制。</p>
+<blockquote>
+<p>a++ 和 ++a 都是将 a 加 1，但是 a++ 返回值为 a，而 ++a 返回值为 a+1。如果只是希望增加 a 的值，而不需要返回值，则推荐使用 ++a，其运行速度会略快一些。</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2503986917.html#more" rel="contents">
+            <a class="btn" href="/p/2186165119.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -986,7 +986,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

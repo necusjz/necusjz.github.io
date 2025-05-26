@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/743133161.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4134241250.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/743133161.html" itemprop="url">
-                  Virtual Machine Networking
+                <a class="post-title-link" href="/p/4134241250.html" itemprop="url">
+                  Azure Firewall
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:39:24+10:00">
-                2022-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T15:56:47+10:00">
+                2022-04-22
               </time>
             
 
@@ -356,13 +356,13 @@
 
       
         
-          <p><em>Azure Virtual Machine</em> depends on virtual networking, and <strong>during the creation process, we need to define the network settings</strong>.</p>
-<h2 id="Create-VMs"><a href="#Create-VMs" class="headerlink" title="Create VMs"></a>Create VMs</h2><p>When a VM is created, a <em>Network Interface Card</em> (NIC) is created in the process. <strong>An NIC is used as a sort of interconnection between the VM and the VNet</strong>. A NIC is assigned a private IP address by the network. As an NIC is associated with both the VM and the VNet, the IP address is used by the VM. Using this IP address, the VM can communicate over a private network with other VMs (or other Azure resources) on the same network.</p>
-<p>Additionally, <strong>NICs and VMs can be assigned public IP addresses as well</strong>. A public address can be used to communicate with the VM over the internet, either to access services or to manage the VM.</p>
-<h2 id="View-VM-network-settings"><a href="#View-VM-network-settings" class="headerlink" title="View VM network settings"></a>View VM network settings</h2><p>After an Azure VM is created, we can review the network settings in the VM pane. Networking information is displayed in several places, including in the VM’s network settings. Additionally, each Azure resource has a separate pane and exists as an individual resource, so we can view these settings in multiple places. However, <strong>the most complete picture of VM network settings can be found in the VM pane and the NIC pane</strong>.</p>
+          <p><strong>Most Azure networking components used for security are there to stop unwanted incoming traffic</strong>. Whether we use NSGs, ASGs, or a WAF, they all have one single purpose—to stop unwanted traffic from reaching our services. <em>Azure Firewall</em> has similar functionality, including one extension that we can use to stop outbound traffic from leaving the VNet.</p>
+<h2 id="Create-a-firewall"><a href="#Create-a-firewall" class="headerlink" title="Create a firewall"></a>Create a firewall</h2><p>Azure Firewall gives us total control over our traffic. Besides controlling inbound traffic, with Azure Firewall, we can control outbound traffic as well. Azure Firewall uses a set of rules to control outbound traffic. We can <strong>either block everything by default and allow only whitelisted traffic, or we can allow everything and block only blacklisted traffic</strong>. It’s essentially the central point where we can set network policies, enforce these policies, and monitor network traffic across VNets or even subscriptions. As a firewall as a service, Azure Firewall is a managed service with built-in high availability and scalability.</p>
+<h2 id="Configure-rules"><a href="#Configure-rules" class="headerlink" title="Configure rules"></a>Configure rules</h2><p>If we want to allow specific traffic, we must create an allow rule. Rules are applied based on priority level, so a rule will be applied only when there is no other rule with higher priority. <strong>An allow rule in Azure Firewall will whitelist specific traffic</strong>. If there is a rule that would also block this traffic, the higher-priority rule will be applied.</p>
+<p>The deny rule is the most commonly used option with Azure Firewall. An approach where you block everything and allow only whitelisted traffic isn’t very practical, as we may end up adding a great many allow rules. Therefore, the most common approach is to <strong>use deny rules to block certain traffic that we want to prevent</strong>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/743133161.html#more" rel="contents">
+            <a class="btn" href="/p/4134241250.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -405,7 +405,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/457978096.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3768823570.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -427,8 +427,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/457978096.html" itemprop="url">
-                  Azure Virtual Network
+                <a class="post-title-link" href="/p/3768823570.html" itemprop="url">
+                  DNS and Routing
                 </a>
               
             
@@ -444,8 +444,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:18:23+10:00">
-                2022-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T09:55:28+10:00">
+                2022-04-22
               </time>
             
 
@@ -481,13 +481,13 @@
 
       
         
-          <p><em>Azure Virtual Network</em> represents your local network in the cloud. It enables other Azure resources to communicate over a secure private network <strong>without exposing endpoints over the internet</strong>.</p>
-<h2 id="Create-a-VNet"><a href="#Create-a-VNet" class="headerlink" title="Create a VNet"></a>Create a VNet</h2><p>We deploy VNets to resource group under subscription in the Azure data center that we choose. <em>Region</em> and <em>Subscription</em> are important parameters; we will <strong>only be able to attach Azure resources to this VNet if they are in the same subscription and region as the Azure data center</strong>.</p>
-<p>The address space option defines the number of IP addresses that will be available for our network. It uses the <em>Classless Inter-Domain Routing</em> (CIDR) format and the largest range we can choose is /8. In the portal, we need to create an initial subnet and define the subnet address range. <strong>The smallest subnet allowed is /29 and the largest is /8</strong> (however, this cannot be larger than the VNet range). For reference, the range 10.0.0.0/8 will create an address range of 167772115 IP addresses (from 10.0.0.0 to 10.255.255.255) and 10.0.0.0/29 will create a range of 8 IP addresses (from 10.0.0.0 to 10.0.0.7).</p>
-<h2 id="Add-a-subnet"><a href="#Add-a-subnet" class="headerlink" title="Add a subnet"></a>Add a subnet</h2><p>In addition to adding subnets while creating a VNet, we can <strong>add additional subnets to our network at any time</strong>. A single VNet can have multiple subnets defined. Subnets cannot overlap and must be in the range of the VNet address range. For each subnet, four IP addresses are saved for Azure management and cannot be used. Depending on the network settings, we can define the communication rules between subnets in the VNet.</p>
+          <p><em>Azure DNS</em> allows us to host <em>Domain Name System</em> (DNS) domains in Azure. When using Azure DNS, we use Microsoft infrastructure for the name resolution, which results in fast and reliable DNS queries. Azure DNS infrastructure uses a vast number of servers to provide great reliability and availability of service. <strong>Using anycast networking, each DNS query is answered by the closest available DNS server</strong> to provide a quick reply.</p>
+<h2 id="Create-a-DNS-zone"><a href="#Create-a-DNS-zone" class="headerlink" title="Create a DNS zone"></a>Create a DNS zone</h2><p>To start using Azure DNS, we must first create a DNS zone. A DNS zone holds a DNS record for a specific domain, and it can hold records for a single domain at a time. A DNS zone will <strong>hold DNS records for this domain and possible subdomains</strong>. DNS name servers are set up to reply to any query on a registered domain and point to a destination.</p>
+<p>A DNS zone is required to start using Azure DNS. A new DNS zone is required for each domain we want to host with Azure DNS, as a single DNS zone can hold information for a single domain. After we create a DNS zone, we can <strong>add records, record sets, and route tables to a domain hosted with Azure DNS</strong>. Using these, we can route traffic and define destinations using a <em>Fully Qualified Domain Name</em> (FQDN) for Azure resources (and other resources as well).</p>
+<h2 id="Create-a-private-DNS-zone"><a href="#Create-a-private-DNS-zone" class="headerlink" title="Create a private DNS zone"></a>Create a private DNS zone</h2><p>A private DNS zone operates very similarly to a DNS zone. However, instead of operating on public records, it operates inside a VNet. It is used to <strong>resolve custom names and domains inside your Azure VNet</strong>. When a VNet is created, a default DNS zone is provided. The default DNS zone uses Azure-provided names, and we must use a private DNS zone to use custom names. A private DNS zone is also required for name resolution across VNets, as default DNS doesn’t support such an option.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/457978096.html#more" rel="contents">
+            <a class="btn" href="/p/3768823570.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -530,7 +530,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/558864227.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1042644649.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -552,8 +552,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/558864227.html" itemprop="url">
-                  Bump Python SDK
+                <a class="post-title-link" href="/p/1042644649.html" itemprop="url">
+                  Local and Virtual Network Gateways
                 </a>
               
             
@@ -569,8 +569,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-11T11:40:53+10:00">
-                2022-04-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T23:37:08+10:00">
+                2022-04-21
               </time>
             
 
@@ -606,22 +606,12 @@
 
       
         
-          <h2 id="Update-corresponding-versions"><a href="#Update-corresponding-versions" class="headerlink" title="Update corresponding versions"></a>Update corresponding versions</h2><p>Update <em>package name + package version</em>:</p>
-<ul>
-<li>setup.py;</li>
-<li>requirements.py3.Linux.txt;</li>
-<li>requirements.py3.Darwin.txt;</li>
-<li>requirements.py3.Windows.txt;</li>
-</ul>
-<p>Update <em>resource type + api version</em>:</p>
-<ul>
-<li>_shared.py (latest);</li>
-</ul>
-<h2 id="Setup-development-environment"><a href="#Setup-development-environment" class="headerlink" title="Setup development environment"></a>Setup development environment</h2><p>Install expected Python packages:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
+          <p>Local and virtual network gateways are <em>Virtual Private Network</em> (VPN) gateways that are used to <strong>connect to on-premises networks and encrypt all traffic going between a VNet and a local network</strong>. Each VNet can have only one virtual network gateway, but one virtual network gateway can be used to configure multiple VPN connections.</p>
+<h2 id="Create-a-local-network-gateway"><a href="#Create-a-local-network-gateway" class="headerlink" title="Create a local network gateway"></a>Create a local network gateway</h2><p>When a Site-to-Site connection is created, we have to <strong>provide configuration for both sides of the connection</strong>—that is, both Azure and on-premises. Although a <em>Local Network Gateway</em> is created in Azure, it represents your local (on-premises) network and holds configuration information on your local network settings. It’s an essential component for creating the VPN connection that is needed to create a Site-to-Site connection between the VNet and the local network.</p>
+<p>The local network gateway is used to connect a virtual network gateway to an on-premises network. The virtual network gateway is directly connected to the VNet and has all the relevant Azure VNet information needed to create a VPN connection. On the other hand, a local network gateway <strong>holds all the local network information needed to create a VPN connection</strong>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/558864227.html#more" rel="contents">
+            <a class="btn" href="/p/1042644649.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -664,7 +654,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4269680769.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -686,8 +676,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1507841079.html" itemprop="url">
-                  Generate CLI from Swagger
+                <a class="post-title-link" href="/p/4269680769.html" itemprop="url">
+                  Manage IP Addresses
                 </a>
               
             
@@ -703,8 +693,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-08T10:21:45+10:00">
-                2022-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T22:45:13+10:00">
+                2022-04-21
               </time>
             
 
@@ -740,46 +730,13 @@
 
       
         
-          <p>It’s always good to start with a command like that:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --version=3.0.6370 --az --use=@autorest/az@latest ../azure-rest-api-specs/specification/dnsresolver/resource-manager/readme.md --azure-cli-extension-folder=./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>Make sure you have these specific versions installed:</p>
-<table>
-<thead>
-<tr>
-<th align="center">AutoRest Core</th>
-<th align="center">AutoRest CLI</th>
-<th align="center">Node.js</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">3.0.6370</td>
-<td align="center">3.5.1</td>
-<td align="center">12.20</td>
-</tr>
-</tbody></table>
-<p>Errors you might encounter nowadays:</p>
-<ul>
-<li>ERROR: Schema violation: Additional properties not allowed: x-ms-identifiers<ol>
-<li>Append <em>--pass-thru:schema-validator-swagger</em> to the command;</li>
-</ol>
-</li>
-<li>AttributeError: module ‘mistune’ has no attribute ‘BlockGrammar’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_python@5.4.0/node_modules/@autorest/python</em>;</li>
-<li>Execute <em>pip install mistune==0.8.4</em>;</li>
-</ol>
-</li>
-<li>ImportError: cannot import name ‘_unicodefun’ from ‘click’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_az@1.8.0/node_modules/@autorest/az</em>;</li>
-<li>Execute <em>pip install click==8.0.2</em>;</li>
-</ol>
-</li>
-</ul>
-<p>One more thing, it’s a good practice to clean up AutoRest extensions by:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --reset</span><br></pre></td></tr></table></figure>
+          <p>In Azure, we can have <strong>two types of IP addresses, private and public</strong>. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private communication on private networks. Addresses can be assigned to a resource or can exist as a separate resource.</p>
+<h2 id="Create-a-public-IP-address"><a href="#Create-a-public-IP-address" class="headerlink" title="Create a public IP address"></a>Create a public IP address</h2><p><em>Public IP Address</em> can be created as a separate resource or created during the creation of some other resources (a VM, for example). Therefore, <strong>a public IP can exist as part of a resource or as a standalone resource</strong>.</p>
+<p>The <em>Stock Keeping Unit</em> (SKU) can be either <em>Basic</em> or <em>Standard</em>. The main differences are that Standard is closed to inbound traffic by default (inbound traffic must be whitelisted in NSGs) and that Standard is zone redundant. Another difference is that <strong>a Standard SKU public IP address has a static assignment, while a Basic SKU can be either static or dynamic</strong>. You can choose either the <em>IPv4</em> or <em>IPv6</em> version for the IP address, or both, but choosing IPv6 will limit you to a dynamic assignment for the Basic SKU and static assignment for the Standard SKU.</p>
+<p>The <em>DNS Name Label</em> is optional—it can be used to <strong>resolve the endpoint if dynamic assignment is selected</strong>. Otherwise, there is no point in creating a DNS label, as an IP address can always be used to resolve the endpoint if static assignment is selected.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1507841079.html#more" rel="contents">
+            <a class="btn" href="/p/4269680769.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -822,7 +779,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4286004591.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/907302273.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -844,8 +801,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4286004591.html" itemprop="url">
-                  Contribute to Azure CLI
+                <a class="post-title-link" href="/p/907302273.html" itemprop="url">
+                  Network Security Groups
                 </a>
               
             
@@ -861,8 +818,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-04T18:30:21+10:00">
-                2022-04-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T13:03:11+10:00">
+                2022-04-21
               </time>
             
 
@@ -898,25 +855,16 @@
 
       
         
-          
-            <h2 id="What-is-Azure-CLI"><a href="#What-is-Azure-CLI" class="headerlink" title="What is Azure CLI?"></a>What is Azure CLI?</h2><p>Azure CLI is a command-line tool to create and manage resources. You interact with Azure by running commands in a terminal or writing scripts to automate tasks. Azure CLI interacts with the <strong>Azure Resource Manager</strong> (ARM) service, which is the management layer to interact with resources in your account.</p>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Fork and clone the repositories you wish to develop for:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/necusjz/azure-cli.git</span><br><span class="line">$ git clone https://github.com/necusjz/azure-cli-extensions.git</span><br></pre></td></tr></table></figure>
-
-<p>Add or change the upstream:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/Azure/azure-cli.git</span><br><span class="line">$ git remote set-url upstream https://github.com/Azure/azure-cli.git</span><br></pre></td></tr></table></figure>
-
-<p>Install and setup <em>azdev</em>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install azdev</span><br><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>List what extensions are currently visible to your development environment:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension list -o table</span><br><span class="line">$ azdev extension add &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Publish extensions:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension publish &#123;&#125; --storage-account &#123;&#125; --storage-container &#123;&#125; --storage-account-key &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
+          <p><em>Network Security Group</em> (NSG) is a built-in tool for network control that allow us to <strong>control incoming and outgoing traffic on an NIC or at the subnet level</strong>. They contain sets of rules that allow or deny specific traffic to specific resources or subnets in Azure. An NSG can be associated with either a subnet (by applying security rules to all resources associated with the subnet) or an NIC, which is done by applying security rules to the VM associated with the NIC.</p>
+<h2 id="Create-an-NSG"><a href="#Create-an-NSG" class="headerlink" title="Create an NSG"></a>Create an NSG</h2><p>As a first step to more effectively control network traffic, we are going to create a new NSG. <strong>The NSG deployment can be initiated during a VM deployment</strong>. This will associate the NSG to the NIC associated with the deployed VM. In this case, the NSG is already associated with the resource, and rules defined in the NSG will apply only to the associated VM.</p>
+<p>If the NSG is deployed separately, it is not associated and <strong>the rules that are created within it are not applied until an association has been created with the NIC or the subnet</strong>. When it is associated with a subnet, the NSG rules will apply to all resources on the subnet.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/907302273.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1004,7 +952,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

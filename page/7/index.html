@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/507084228.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/706693346.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/507084228.html" itemprop="url">
-                  深入浅出动态规划
+                <a class="post-title-link" href="/p/706693346.html" itemprop="url">
+                  令人头大的字符串
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-27T00:14:02+10:00">
-                2022-07-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-04-06T20:42:58+10:00">
+                2023-04-06
               </time>
             
 
@@ -356,17 +356,14 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>这里我们引用一下维基百科的描述：“<strong>动态规划</strong> (DP) 在查找有很多<strong>重叠子问题</strong>的情况的最优解时有效，它将问题重新组合成子问题。为了避免多次解决这些子问题，它们的结果都逐渐被计算并被保存，从简单的问题直到整个问题都被解决。动态规划只能应用于有<strong>最优子结构</strong>的问题，最优子结构的意思是局部最优解能决定全局最优解（对有些问题这个要求并不能完全满足，故有时需要引入一定的近似）。简单地说，问题能够分解成子问题来解决。”</p>
-<p>通俗一点来讲，动态规划和其它遍历算法（如深/广度优先搜索）都是将原问题拆成多个子问题然后求解，他们之间最本质的区别是：动态规划<strong>保存子问题的解，避免重复计算</strong>。解决动态规划问题的关键是找到<strong>状态转移方程</strong>，这样我们可以通过计算和储存子问题的解来求解最终问题。</p>
-<p>同时，我们也可以对动态规划进行<strong>空间压缩</strong>，起到节省空间消耗的效果。在一些情况下，动态规划可以看成是带有<strong>状态记录</strong> (Memoization) 的优先搜索。状态记录的意思为，如果一个子问题在优先搜索时已经计算过一次，我们可以把它的结果储存下来，之后遍历到该子问题的时候可以直接返回储存的结果：</p>
-<ul>
-<li>动态规划是自下而上的，即先解决子问题，再解决父问题。</li>
-<li>带有状态记录的优先搜索是自上而下的，即从父问题搜索到子问题，若重复搜索到同一个子问题则进行状态记录，防止重复计算。</li>
-</ul>
-<p>如果题目需求的是最终状态，那么使用动态规划比较方便；如果题目需要输出所有的路径，那么使用带有状态记录的优先搜索会比较方便。</p>
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>字符串可以看成是字符组成的数组。由于字符串是程序里经常需要处理的数据类型，因此有很多针对字符串处理的题目。</p>
+<h2 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h2><p><a href="https://leetcode.com/problems/valid-anagram/" target="_blank" rel="noopener">242. Valid Anagram</a><br>我们可以利用哈希表或者数组统计两个数组中每个数字出现的频次，若频次相同，则说明它们包含的字符完全相同。</p>
+<p><a href="https://leetcode.com/problems/isomorphic-strings/" target="_blank" rel="noopener">205. Isomorphic Strings</a><br>我们可以将问题转化一下：记录两个字符串每个位置的字符第一次出现的位置，如果两个字符串中相同位置的字符与它们第一次出现的位置一样，那么这两个字符串同构。</p>
+<p><a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">647. Palindromic Substrings</a><br>我们可以从字符串的每个位置开始，向左向右延长，判断存在多少以当前位置为中轴的回文子字符串。</p>
+<p><a href="https://leetcode.com/problems/count-binary-substrings/" target="_blank" rel="noopener">696. Count Binary Substrings</a><br>从左往右遍历数组，记录和当前位置数字相同且连续的长度，以及其之前连续的不同数字的长度。若不同数字的连续长度大于等于当前数字的连续长度，则说明存在一个且只存在一个以当前数字结尾的满足条件的子字符串。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/507084228.html#more" rel="contents">
+            <a class="btn" href="/p/706693346.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -409,7 +406,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/455805373.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3229280313.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -431,8 +428,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/455805373.html" itemprop="url">
-                  一切皆可搜索
+                <a class="post-title-link" href="/p/3229280313.html" itemprop="url">
+                  妙用数据结构
                 </a>
               
             
@@ -448,8 +445,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-21T20:01:28+10:00">
-                2022-07-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-23T23:41:56+11:00">
+                2023-03-23
               </time>
             
 
@@ -485,19 +482,26 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>深度优先搜索</strong>和<strong>广度优先搜索</strong>是两种最常见的优先搜索方法，它们被广泛地运用在图和树等结构中进行搜索。</p>
-<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>深度优先搜索 (DFS) 在搜索到一个新的节点时，立即对该新节点进行遍历；因此遍历需要用<strong>先入后出的栈</strong>来实现，也可以通过与栈等价的<strong>递归</strong>来实现。对于树结构而言，由于总是对新节点调用遍历，因此看起来是向着“深”的方向前进。</p>
-<p>深度优先搜索也可以用来<strong>检测环路</strong>：记录每个遍历过的节点的父节点，若一个节点被再次遍历且父节点不同，则说明有环。我们也可以用之后会讲到的拓扑排序判断是否有环路，若最后存在入度不为零的点，则说明有环。</p>
-<p>有时我们可能会需要对已经搜索过的节点进行标记，以防止在遍历时重复搜索某个节点，这种做法叫做<strong>状态记录</strong>或<strong>记忆化</strong> (Memoization)。</p>
-<p><a href="https://leetcode.com/problems/max-area-of-island/" target="_blank" rel="noopener">695. Max Area of Island</a><br>一般来说，深度优先搜索类型的题可以分为主函数和辅函数，主函数用于遍历所有的搜索位置，判断是否可以开始搜索，如果可以即在辅函数进行搜索。辅函数则负责深度优先搜索的递归调用。</p>
-<p><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank" rel="noopener">547. Number of Provinces</a><br>本题拥有 n 个节点，每个节点最多有 n 条边，表示和所有城市在同一省份，最少可以有 1 条边，表示是孤立的城市。当清楚了图的表示方法后，这道题与上一道题本质相同：搜索城市圈（岛屿圈）的个数。</p>
-<blockquote>
-<p>对于节点连接类问题，我们也可以利用并查集来进行快速的连接和搜索。</p>
-</blockquote>
-<p><a href="https://leetcode.com/problems/pacific-atlantic-water-flow/" target="_blank" rel="noopener">417. Pacific Atlantic Water Flow</a><br>虽然题目要求的是满足向下流能到达两个大洋的位置，如果我们对所有的位置进行搜索，那么在不剪枝的情况下复杂度会很高。因此我们可以反过来想，从两个大洋开始向上流，这样我们只需要对矩形四条边进行搜索。</p>
+          <h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><p>在刷题时，我们几乎一定会用到各种数据结构来辅助我们解决问题，因此我们必须熟悉各种数据结构的特点。C++ STL 提供的数据结构包括（实际底层细节可能因编译器而异）：</p>
+<ul>
+<li>Sequence Containers：维持顺序的容器：<ul>
+<li>vector：<strong>动态数组</strong>，是我们最常使用的数据结构之一，用于 O(1) 的随机读取。因为大部分算法的时间复杂度都会大于 O(n)，因此我们经常新建 vector 来存储各种数据或中间变量。因为在尾部增删的复杂度是 O(1)，我们也可以把它当作 stack 来用。</li>
+<li>list：<strong>双向链表</strong>，也可以当作 stack 和 queue 来使用。由于 LeetCode 的题目多用 Node 来表示链表，且链表不支持快速随机读取，因此我们很少用到这个数据结构（LRU 除外）。</li>
+<li>deque：<strong>双端队列</strong>，这是一个非常强大的数据结构，既支持 O(1) 随机读取，又支持 O(1) 时间的头部增删和尾部增删（因此可以当作 stack 和 queue 来使用），不过有一定的额外开销。</li>
+<li>array：固定大小的数组，一般在刷题时我们不使用。</li>
+<li>forward_list：单向链表，一般在刷题时我们不使用。</li>
+</ul>
+</li>
+<li>Container Adaptors：基于其它容器实现的容器：<ul>
+<li>stack：<strong>后入先出的数据结构</strong>，默认基于 deque 实现。stack 常用于深度优先搜索、一些字符串匹配问题以及单调栈问题。</li>
+<li>queue：<strong>先入先出的数据结构</strong>，默认基于 deque 实现。queue 常用于广度优先搜索。</li>
+<li>priority_queue：<strong>最大值先出的数据结构</strong>，默认基于 vector 实现堆结构。它可以在 O(nlogn) 的时间排序数组、O(logn) 的时间插入任意值、O(logn) 的时间删除最大值、O(1) 的时间获得最大值。priority_queue 常用于维护数据结构并快速获取最大值，并且可以自定义比较函数，比如通过存储负值或者更改比小函数为比大函数，即可实现最小值先出。</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/455805373.html#more" rel="contents">
+            <a class="btn" href="/p/3229280313.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -540,7 +544,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4177015619.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/300863016.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -562,8 +566,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4177015619.html" itemprop="url">
-                  千奇百怪的排序算法
+                <a class="post-title-link" href="/p/300863016.html" itemprop="url">
+                  神奇的位运算
                 </a>
               
             
@@ -579,8 +583,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-20T22:09:48+10:00">
-                2022-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-23T00:45:35+11:00">
+                2023-03-23
               </time>
             
 
@@ -616,17 +620,35 @@
 
       
         
-          <h2 id="常用排序算法"><a href="#常用排序算法" class="headerlink" title="常用排序算法"></a>常用排序算法</h2><p>虽然在 Python 里可以通过 sort() 快速排序，而且刷题时很少需要自己手写排序算法，但是熟习各种排序算法可以加深自己对算法的基本理解，以及解出由这些排序算法引申出来的题目。以下是一些最基本的<strong>排序算法</strong>：</p>
-<ul>
-<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/quick_sort.py" target="_blank" rel="noopener">快速排序 (Quick Sort)</a></li>
-<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/merge_sort.py" target="_blank" rel="noopener">归并排序 (Merge Sort)</a></li>
-<li><a href="https://github.com/necusjz/awesome-dsa/blob/main/src/heap_sort.py" target="_blank" rel="noopener">堆排序 (Heap Sort)</a></li>
-</ul>
-<h2 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h2><p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a><br><strong>快速选择</strong>一般用于求解 Kth Element 问题，可以在 O(n) 时间复杂度，O(1) 空间复杂度完成求解工作。</p>
-<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a><br>顾名思义，<strong>桶排序</strong>的意思是为每个值设立一个桶，桶内记录这个值出现的次数（或其它属性），然后对桶进行排序。</p>
+          <h2 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h2><p><strong>位运算</strong>是算法题里比较特殊的一种类型，它们利用二进制位运算的特性进行一些奇妙的优化和计算。常用的位运算符号包括：“∧ 按位异或”、“&amp; 按位与”、“| 按位或”、“~ 取反”、“&lt;&lt; 算术左移”和“&gt;&gt; 算术右移”。以下是一些常见的位运算特性，其中 0s 和 1s 分别表示只由 0 或 1 构成的二进制数字：</p>
+<table>
+<thead>
+<tr>
+<th align="center">按位异或</th>
+<th align="center">按位与</th>
+<th align="center">按位或</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x ∧ 0s = x</td>
+<td align="center">x &amp; 0s = 0</td>
+<td align="center">x | 0s = x</td>
+</tr>
+<tr>
+<td align="center">x ∧ 1s = ~x</td>
+<td align="center">x &amp; 1s = x</td>
+<td align="center">x | 1s = 1s</td>
+</tr>
+<tr>
+<td align="center">x ∧ x = 0</td>
+<td align="center">x &amp; x = x</td>
+<td align="center">x | x = x</td>
+</tr>
+</tbody></table>
+<p>除此之外，n &amp; (n - 1) 可以去除 n 的位级表示中最低的那一位，例如对于二进制表示 11110100，减去 1 得到 11110011，这两个数按位与得到 11110000。n &amp; -n 可以得到 n 的位级表示中最低的那一位，例如对于二进制表示 11110100，取负得到 00001100，这两个数按位与得到 00000100。还有更多的并不常用的技巧，若读者感兴趣可以<a href="https://catonmat.net/low-level-bit-hacks" target="_blank" rel="noopener">自行研究</a>，这里不再赘述。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/4177015619.html#more" rel="contents">
+            <a class="btn" href="/p/300863016.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -669,7 +691,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3797214653.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1176626542.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -691,8 +713,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3797214653.html" itemprop="url">
-                  居合斩！二分查找
+                <a class="post-title-link" href="/p/1176626542.html" itemprop="url">
+                  巧解数学问题
                 </a>
               
             
@@ -708,8 +730,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-19T01:19:44+10:00">
-                2022-07-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-03-16T23:24:06+11:00">
+                2023-03-16
               </time>
             
 
@@ -745,22 +767,12 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>二分查找</strong>也常被称为<strong>二分法</strong>或者<strong>折半查找</strong>，每次查找时通过将待查找区间分成两部分并只取一部分继续查找，将查找的复杂度大大减少。对于一个长度为 O(n) 的数组，二分查找的时间复杂度为 O(logn)。</p>
-<p>具体到代码上，二分查找时区间的左右端取开区间还是闭区间在绝大多数时候都可以，因此有些初学者会容易搞不清楚如何定义区间开闭性。这里我提供两个小诀窍：</p>
-<ul>
-<li>尝试熟练使用一种写法，比如左闭右开（满足 C++、Python 等语言的习惯）或左闭右闭（便于处理边界条件），尽量只保持这一种写法。</li>
-<li>在刷题时思考如果最后区间只剩下一个数或者两个数，自己的写法是否会陷入死循环，如果某种写法无法跳出死循环，则考虑尝试另一种写法。</li>
-</ul>
-<p>二分查找也可以看作双指针的一种特殊情况，但我们一般会将二者区分。双指针类型的题，指针通常是一步一步移动的，而在二分查找里，指针每次移动半个区间长度。</p>
-<h2 id="求开方"><a href="#求开方" class="headerlink" title="求开方"></a>求开方</h2><p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></p>
-<blockquote>
-<p>mid = (lo + hi) // 2 可能会因为 lo + hi 溢出而错误，因而采用 mid = lo + ((hi - lo) &gt;&gt; 1) 的写法。</p>
-</blockquote>
-<p>另外，这道题还有一种更快的算法——<a href="https://en.wikipedia.org/wiki/Newton%27s_method" target="_blank" rel="noopener">牛顿迭代法</a>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></span><br><span class="line">    num = x</span><br><span class="line">    <span class="keyword">while</span> num * num &gt; x:</span><br><span class="line">        num = (num + x // num) // <span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> num</span><br></pre></td></tr></table></figure>
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>对于 LeetCode 上数量不少的数学题，我们尽量将其按照类型划分讲解。然而很多数学题的解法并不通用，我们也很难在几道题里把所有的套路讲清楚，因此我们只选择了几道经典或是典型的题目，供大家参考。</p>
+<h2 id="公倍数与公因数"><a href="#公倍数与公因数" class="headerlink" title="公倍数与公因数"></a>公倍数与公因数</h2><p>利用<strong>辗转相除法</strong>，我们可以很方便地求得两个数的最大公因数 (GCD)；将两个数相乘再除以最大公因数即可得到最小公倍数 (LCM)。进一步地，我们也可以通过<strong>扩展欧几里得算法</strong>，在求得 a 和 b 最大公因数的同时，也得到它们的系数 x 和 y，从而使 ax + by = gcd(a, b)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd_extended</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> b, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    gcd, x1, y1 = gcd_extended(b % a, a)</span><br><span class="line">    x = y1 - (b // a) * x1</span><br><span class="line">    y = x1</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> gcd, x, y</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3797214653.html#more" rel="contents">
+            <a class="btn" href="/p/1176626542.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -803,7 +815,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2186165119.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3761608421.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -825,8 +837,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2186165119.html" itemprop="url">
-                  玩转双指针
+                <a class="post-title-link" href="/p/3761608421.html" itemprop="url">
+                  化繁为简的分治法
                 </a>
               
             
@@ -842,8 +854,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-07-17T19:04:35+10:00">
-                2022-07-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-09-19T21:45:18+10:00">
+                2022-09-19
               </time>
             
 
@@ -879,22 +891,13 @@
 
       
         
-          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><strong>双指针</strong>主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针：</p>
-<ul>
-<li>若两个指针指向同一数组，遍历方向相同且不会相交，则也称为<strong>滑动窗口</strong>（两个指针包围的区域即为当前的窗口），经常用于区间搜索。</li>
-<li>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。</li>
-</ul>
-<p>在 C++ 中，要注意 const 的位置对指针效果的影响：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> * p1 = &amp;x; <span class="comment">// 指针可以被修改，值也可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * p2 = &amp;x; <span class="comment">// 指针可以被修改，值不可以被修改 (const int)</span></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p3 = &amp;x; <span class="comment">// 指针不可以被修改 (* const)，值可以被修改</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> p4 = &amp;x; <span class="comment">// 指针不可以被修改，值也不可以被修改</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input Array Is Sorted</a><br>因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最右边，向左遍历。</p>
-<h2 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h2><p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a><br>因为这两个数组已经排好序，我们可以把两个指针分别放在两个数组的末尾，即 nums1 的 m−1 位和 nums2 的 n−1 位。每次将较大的那个数字复制到 nums1 的后边，然后向前移动一位。因为我们也要定位 nums1 的末尾，所以我们还需要第三个指针，以便复制。</p>
-<blockquote>
-<p>a++ 和 ++a 都是将 a 加 1，但是 a++ 返回值为 a，而 ++a 返回值为 a+1。如果只是希望增加 a 的值，而不需要返回值，则推荐使用 ++a，其运行速度会略快一些。</p>
-</blockquote>
+          <h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p>顾名思义，<strong>分治问题</strong>由“分 (Divide)”和“治 (Conquer)”两部分组成，通过把原问题分为子问题，再将子问题进行处理合并，从而实现对原问题的求解。我们在排序章节展示的归并排序就是典型的分治问题，其中“分”即为把大数组平均分成两个小数组，通过递归实现，最终我们会得到多个长度为 1 的子数组；“治”即为把已经排好序的两个小数组合成为一个排好序的大数组，从长度为 1 的子数组开始，最终合成一个大数组。</p>
+<p>我们也使用数学表达式来表示这个过程。定义 T(n) 表示处理一个长度为 n 的数组的时间复杂度，则归并排序的时间复杂度递推公式为 T(n) = 2T(n/2) + O(n)。其中 2T(n/2) 表示我们分成了两个长度减半的子问题，O(n) 则为合并两个长度为 n/2 数组的时间复杂度。</p>
+<p>那么怎么利用这个递推公式得到最终的时间复杂度呢？这里我们可以利用著名的<strong>主定理</strong> (Master Theorem) 求解：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/04.png" alt></p>
+<p>通过主定理我们可以知道，归并排序属于第二种情况，且时间复杂度为 O(nlogn)，其他的分治问题也可以通过主定理求得时间复杂度。另外，自上而下的分治可以和 Memoization 结合，避免重复遍历相同的子问题；如果方便推导，也可以换用自下而上的动态规划方法求解。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2186165119.html#more" rel="contents">
+            <a class="btn" href="/p/3761608421.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -986,7 +989,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

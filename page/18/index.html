@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2842312158.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3247778254.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/2842312158.html" itemprop="url">
-                  Distinct Ways
+                <a class="post-title-link" href="/p/3247778254.html" itemprop="url">
+                  搜索引擎背后的数据结构和算法
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:20:31+11:00">
-                2021-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T13:19:37+11:00">
+                2021-03-23
               </time>
             
 
@@ -356,18 +356,19 @@
 
       
         
-          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a target find a number of distinct ways to reach the target.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Sum all possible ways to reach the current state:</p>
-<blockquote>
-<p>dp[i] = dp[i-1] + dp[i-2] + … + dp[i-k]</p>
-</blockquote>
-<p>Generate sum for all values in the target and return the value for the target:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ways.size(); ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ways[j] &lt;= i) &#123;</span><br><span class="line">            dp[i] += dp[i-ways[j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[target];</span><br></pre></td></tr></table></figure>
-
-<p><strong>Note</strong>:<br>Some questions point out the number of repetitions, in that case, <strong>add one more loop</strong> to simulate every repetition.</p>
+          <h2 id="整体系统介绍"><a href="#整体系统介绍" class="headerlink" title="整体系统介绍"></a>整体系统介绍</h2><p>搜索引擎大致可以分为四个部分：<strong>搜集、分析、索引、查询</strong>：</p>
+<ol>
+<li>搜集，就是我们常说的利用爬虫爬取网页；</li>
+<li>分析，主要负责网页内容抽取、分词，构建临时索引，计算 PageRank 值这几部分工作；</li>
+<li>索引，主要负责通过分析阶段得到的临时索引，构建倒排索引；</li>
+<li>查询，主要负责响应用户的请求，根据倒排索引获取相关网页，计算网页排名，返回查询结果给用户；</li>
+</ol>
+<h2 id="搜集"><a href="#搜集" class="headerlink" title="搜集"></a>搜集</h2><p>搜索引擎<strong>把整个互联网看作数据结构中的有向图</strong>，把每个页面看作一个顶点。如果某个页面中包含另外一个页面的链接，那我们就在两个顶点之间连一条有向边。我们可以利用图的遍历搜索算法，来遍历整个互联网中的网页。我们前面介绍过两种图的遍历方法，深度优先和广度优先。<strong>搜索引擎采用的是广度优先搜索策略</strong>。具体点讲的话，那就是，我们先找一些比较知名的网页（专业的叫法是权重比较高）的链接（比如新浪主页网址、腾讯主页网址等），作为种子网页链接，放入到队列中。爬虫按照广度优先的策略，不停地从队列中取出链接，然后去爬取对应的网页，解析出网页里包含的其他网页链接，再将解析出来的链接添加到队列中。</p>
+<p>爬虫在爬取网页的过程中，涉及的四个重要的文件。其中，links.bin 和 bloom_filter.bin 这两个文件是爬虫自身所用的；另外的两个 doc_raw.bin 和 doc_id.bin 是作为搜集阶段的成果，供后面的分析、索引、查询用的。</p>
+<h3 id="待爬取网页链接文件：links-bin"><a href="#待爬取网页链接文件：links-bin" class="headerlink" title="待爬取网页链接文件：links.bin"></a>待爬取网页链接文件：links.bin</h3><p>我们可以把整个页面看作一个大的字符串，然后利用字符串匹配算法，在这个大字符串中，搜索这样一个网页标签，然后顺序读取之间的字符串 – 这其实就是网页链接。在广度优先搜索爬取页面的过程中，爬虫会不停地解析页面链接，将其放到队列中。于是，队列中的链接就会越来越多，可能会多到内存放不下。所以，我们用一个存储在磁盘中的文件（links.bin）来作为广度优先搜索中的队列。爬虫从 links.bin 文件中，取出链接去爬取对应的页面。等爬取到网页之后，将解析出来的链接，直接存储到 links.bin 文件中。这样用文件来存储网页链接的方式，还有其他好处。比如，<strong>支持断点续爬</strong>。也就是说，当机器断电之后，网页链接不会丢失；当机器重启之后，还可以从之前爬取到的位置继续爬取。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/2842312158.html#more" rel="contents">
+            <a class="btn" href="/p/3247778254.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -410,7 +411,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3410525220.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2361214650.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -432,8 +433,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3410525220.html" itemprop="url">
-                  Min/Max to Reach a Target
+                <a class="post-title-link" href="/p/2361214650.html" itemprop="url">
+                  Redis 常用数据类型对应的数据结构
                 </a>
               
             
@@ -449,8 +450,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:01:33+11:00">
-                2021-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T12:38:26+11:00">
+                2021-03-23
               </time>
             
 
@@ -486,16 +487,10 @@
 
       
         
-          <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a target find minimum (maximum) cost/path/sum to reach the target.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Choose minimum (maximum) path among all possible paths before the current state, then add value for the current state:</p>
-<blockquote>
-<p>dp[i] = min(dp[i-1], dp[i-2], …, dp[i-k]) + cost[i]</p>
-</blockquote>
-<p>Generate optimal solutions for all values in the target and return the value for the target:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ways.size(); ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ways[j] &lt;= i) &#123;</span><br><span class="line">            dp[i] = min(dp[i], dp[i-ways[j]] + cost);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[target];</span><br></pre></td></tr></table></figure>
+          <h2 id="Redis-数据库介绍"><a href="#Redis-数据库介绍" class="headerlink" title="Redis 数据库介绍"></a>Redis 数据库介绍</h2><p>Redis 是一种键值（Key-Value）数据库。相对于关系型数据库（比如 MySQL），Redis 也被叫作<strong>非关系型数据库</strong>。像 MySQL 这样的关系型数据库，表的结构比较复杂，会包含很多字段，可以通过 SQL 语句，来实现非常复杂的查询需求。而 Redis 中只包含“键”和“值”两部分，只能通过“键”来查询“值”。正是因为这样简单的存储结构，也让 Redis 的读写效率非常高；除此之外，Redis 主要是作为内存数据库来使用，也就是说，数据是存储在内存中的。尽管它经常被用作内存数据库，但是，它也支持将数据存储在硬盘中。Redis 中，键的数据类型是字符串，但是<strong>为了丰富数据存储的方式，方便开发者使用，值的数据类型有很多</strong>，常用的数据类型有这样几种，它们分别是字符串、列表、字典、集合、有序集合。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3410525220.html#more" rel="contents">
+            <a class="btn" href="/p/2361214650.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -992,7 +987,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="CodingInterview,">
+  <meta name="keywords" content="DynamicProgramming,">
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="StatementGiven a target find a number of distinct ways to reach the target. ApproachSum all possible ways to reach the current state:  dp[i] = dp[i-1] + dp[i-2] + … + dp[i-k]  Generate sum for all val">
-<meta name="keywords" content="CodingInterview">
+<meta name="description" content="StatementGiven a target find minimum (maximum) cost/path/sum to reach the target. ApproachChoose minimum (maximum) path among all possible paths before the current state, then add value for the curren">
+<meta name="keywords" content="DynamicProgramming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Distinct Ways">
-<meta property="og:url" content="https://necusjz.github.io/p/2842312158.html">
+<meta property="og:title" content="Minimum (Maximum) Path to Reach a Target">
+<meta property="og:url" content="https://necusjz.github.io/p/2170354115.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="StatementGiven a target find a number of distinct ways to reach the target. ApproachSum all possible ways to reach the current state:  dp[i] = dp[i-1] + dp[i-2] + … + dp[i-k]  Generate sum for all val">
+<meta property="og:description" content="StatementGiven a target find minimum (maximum) cost/path/sum to reach the target. ApproachChoose minimum (maximum) path among all possible paths before the current state, then add value for the curren">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2025-05-15T06:06:15.849Z">
+<meta property="og:updated_time" content="2025-05-26T13:57:13.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Distinct Ways">
-<meta name="twitter:description" content="StatementGiven a target find a number of distinct ways to reach the target. ApproachSum all possible ways to reach the current state:  dp[i] = dp[i-1] + dp[i-2] + … + dp[i-k]  Generate sum for all val">
+<meta name="twitter:title" content="Minimum (Maximum) Path to Reach a Target">
+<meta name="twitter:description" content="StatementGiven a target find minimum (maximum) cost/path/sum to reach the target. ApproachChoose minimum (maximum) path among all possible paths before the current state, then add value for the curren">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://necusjz.github.io/p/2842312158.html">
+  <link rel="canonical" href="https://necusjz.github.io/p/2170354115.html">
 
 
 
 
 
-  <title> Distinct Ways | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Minimum (Maximum) Path to Reach a Target | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -283,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2842312158.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2170354115.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -304,7 +304,7 @@
             
             
               
-                Distinct Ways
+                Minimum (Maximum) Path to Reach a Target
               
             
           </h1>
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T14:20:31+11:00">
-                2021-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2025-05-26T23:55:14+10:00">
+                2025-05-26
               </time>
             
 
@@ -355,18 +355,16 @@
       
 
       
-        <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a target find a number of distinct ways to reach the target.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Sum all possible ways to reach the current state:</p>
+        <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a target find minimum (maximum) cost/path/sum to reach the target.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Choose minimum (maximum) path among all possible paths before the current state, then add value for the current state:</p>
 <blockquote>
-<p>dp[i] = dp[i-1] + dp[i-2] + … + dp[i-k]</p>
+<p>dp[i] = min(dp[i-1], dp[i-2], …, dp[i-k]) + cost[i]</p>
 </blockquote>
-<p>Generate sum for all values in the target and return the value for the target:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ways.size(); ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ways[j] &lt;= i) &#123;</span><br><span class="line">            dp[i] += dp[i-ways[j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[target];</span><br></pre></td></tr></table></figure>
+<p>Generate optimal solutions for all values in the target and return the value for the target:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= target; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ways.size(); ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ways[j] &lt;= i) &#123;</span><br><span class="line">            dp[i] = min(dp[i], dp[i-ways[j]] + cost);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[target];</span><br></pre></td></tr></table></figure>
 
-<p><strong>Note</strong>:<br>Some questions point out the number of repetitions, in that case, <strong>add one more loop</strong> to simulate every repetition.</p>
 <a id="more"></a>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener">Climbing Stairs</a><br><a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="noopener">Unique Paths</a><br><a href="https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/" target="_blank" rel="noopener">Number of Dice Rolls With Target Sum</a><br><a href="https://leetcode.com/problems/knight-probability-in-chessboard/" target="_blank" rel="noopener">Knight Probability in Chessboard</a><br><a href="https://leetcode.com/problems/target-sum/" target="_blank" rel="noopener">Target Sum</a><br><a href="https://leetcode.com/problems/combination-sum-iv/" target="_blank" rel="noopener">Combination Sum IV</a><br><a href="https://leetcode.com/problems/knight-dialer/" target="_blank" rel="noopener">Knight Dialer</a><br><a href="https://leetcode.com/problems/dice-roll-simulation/" target="_blank" rel="noopener">Dice Roll Simulation</a><br><a href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank" rel="noopener">Partition Equal Subset Sum</a><br><a href="https://leetcode.com/problems/soup-servings/" target="_blank" rel="noopener">Soup Servings</a><br><a href="https://leetcode.com/problems/domino-and-tromino-tiling/" target="_blank" rel="noopener">Domino and Tromino Tiling</a><br><a href="https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/" target="_blank" rel="noopener">Minimum Swaps To Make Sequences Increasing</a><br><a href="https://leetcode.com/problems/number-of-longest-increasing-subsequence/" target="_blank" rel="noopener">Number of Longest Increasing Subsequence</a><br><a href="https://leetcode.com/problems/unique-paths-ii/" target="_blank" rel="noopener">Unique Paths II</a><br><a href="https://leetcode.com/problems/out-of-boundary-paths/" target="_blank" rel="noopener">Out of Boundary Paths</a><br><a href="https://leetcode.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/" target="_blank" rel="noopener">Number of Ways to Stay in the Same Place After Some Steps</a><br><a href="https://leetcode.com/problems/count-vowels-permutation/" target="_blank" rel="noopener">Count Vowels Permutation</a></p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/min-cost-climbing-stairs/" target="_blank" rel="noopener">Min Cost Climbing Stairs</a><br><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="noopener">Minimum Path Sum</a><br><a href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener">Coin Change</a><br><a href="https://leetcode.com/problems/minimum-falling-path-sum/" target="_blank" rel="noopener">Minimum Falling Path Sum</a><br><a href="https://leetcode.com/problems/minimum-cost-for-tickets/" target="_blank" rel="noopener">Minimum Cost For Tickets</a><br><a href="https://leetcode.com/problems/2-keys-keyboard/" target="_blank" rel="noopener">2 Keys Keyboard</a><br><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">Perfect Squares</a><br><a href="https://leetcode.com/problems/last-stone-weight-ii/" target="_blank" rel="noopener">Last Stone Weight II</a><br><a href="https://leetcode.com/problems/triangle/" target="_blank" rel="noopener">Triangle</a><br><a href="https://leetcode.com/problems/ones-and-zeroes/" target="_blank" rel="noopener">Ones and Zeroes</a><br><a href="https://leetcode.com/problems/maximal-square/" target="_blank" rel="noopener">Maximal Square</a><br><a href="https://leetcode.com/problems/tiling-a-rectangle-with-the-fewest-squares/" target="_blank" rel="noopener">Tiling a Rectangle with the Fewest Squares</a><br><a href="https://leetcode.com/problems/dungeon-game/" target="_blank" rel="noopener">Dungeon Game</a><br><a href="https://leetcode.com/problems/minimum-number-of-refueling-stops/" target="_blank" rel="noopener">Minimum Number of Refueling Stops</a></p>
 
       
     </div>
@@ -390,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CodingInterview/" rel="tag"># CodingInterview</a>
+            <a href="/tags/DynamicProgramming/" rel="tag"># DynamicProgramming</a>
           
         </div>
       
@@ -403,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/p/3410525220.html" rel="next" title="Min/Max to Reach a Target">
-                <i class="fa fa-chevron-left"></i> Min/Max to Reach a Target
+              <a href="/p/2116147961.html" rel="next" title="Adaptability">
+                <i class="fa fa-chevron-left"></i> Adaptability
               </a>
             
           </div>
@@ -413,8 +411,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/p/3299276735.html" rel="prev" title="Interval Merging">
-                Interval Merging <i class="fa fa-chevron-right"></i>
+              <a href="/p/2842312159.html" rel="prev" title="Distinct Ways">
+                Distinct Ways <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -496,7 +494,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

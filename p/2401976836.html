@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="CodingInterview,">
+  <meta name="keywords" content="DynamicProgramming,">
 
 
 
@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="StatementGiven a set of values find an answer with an option to choose or ignore the current value. ApproachIf you decide to choose the current value use the previous result where the value was ignore">
-<meta name="keywords" content="CodingInterview">
+<meta name="description" content="StatementGiven a set of numbers find an optimal solution for a problem considering the current number and the best you can get from the left and right sides. ApproachFind all optimal solutions for eve">
+<meta name="keywords" content="DynamicProgramming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Make Decisions">
-<meta property="og:url" content="https://necusjz.github.io/p/3468801964.html">
+<meta property="og:title" content="Merging Intervals">
+<meta property="og:url" content="https://necusjz.github.io/p/2401976836.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="StatementGiven a set of values find an answer with an option to choose or ignore the current value. ApproachIf you decide to choose the current value use the previous result where the value was ignore">
+<meta property="og:description" content="StatementGiven a set of numbers find an optimal solution for a problem considering the current number and the best you can get from the left and right sides. ApproachFind all optimal solutions for eve">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2025-05-15T06:06:15.849Z">
+<meta property="og:updated_time" content="2025-05-26T14:05:21.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Make Decisions">
-<meta name="twitter:description" content="StatementGiven a set of values find an answer with an option to choose or ignore the current value. ApproachIf you decide to choose the current value use the previous result where the value was ignore">
+<meta name="twitter:title" content="Merging Intervals">
+<meta name="twitter:description" content="StatementGiven a set of numbers find an optimal solution for a problem considering the current number and the best you can get from the left and right sides. ApproachFind all optimal solutions for eve">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://necusjz.github.io/p/3468801964.html">
+  <link rel="canonical" href="https://necusjz.github.io/p/2401976836.html">
 
 
 
 
 
-  <title> Make Decisions | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Merging Intervals | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -283,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3468801964.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2401976836.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -304,7 +304,7 @@
             
             
               
-                Make Decisions
+                Merging Intervals
               
             
           </h1>
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T15:12:37+11:00">
-                2021-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2025-05-27T00:04:36+10:00">
+                2025-05-27
               </time>
             
 
@@ -355,13 +355,16 @@
       
 
       
-        <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a set of values find an answer with an option to choose or ignore the current value.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>If you decide to choose the current value use the previous result where the value was ignored; vice versa, if you decide to ignore the current value use previous result where value was used:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i: indexing a set of values</span></span><br><span class="line"><span class="comment">// j: options to ignore j values</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">        dp[i][j] = max(&#123;dp[i][j], dp[i<span class="number">-1</span>][j] + arr[i], dp[i<span class="number">-1</span>][j<span class="number">-1</span>]&#125;);</span><br><span class="line">        dp[i][j<span class="number">-1</span>] = max(&#123;dp[i][j<span class="number">-1</span>], dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + arr[i], arr[i]&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given a set of numbers find an optimal solution for a problem considering the current number and the best you can get from the left and right sides.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Find all optimal solutions for every interval and return the best possible answer:</p>
+<blockquote>
+<p>dp[i][j] = dp[i][k] + result[k] + dp[k+1][j]</p>
+</blockquote>
+<p>Get the best from the left and right sides and add a solution for the current position:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; n; ++l) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt; j; ++k) &#123;</span><br><span class="line">            dp[i][j] = max(dp[i][j], dp[i][k] + result[k] + dp[k+<span class="number">1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dp[<span class="number">0</span>][n<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener">House Robber</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock with Transaction Fee</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock with Cooldown</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock III</a><br><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">Best Time to Buy and Sell Stock IV</a></p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/" target="_blank" rel="noopener">Minimum Cost Tree From Leaf Values</a><br><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">Unique Binary Search Trees</a><br><a href="https://leetcode.com/problems/minimum-score-triangulation-of-polygon/" target="_blank" rel="noopener">Minimum Score Triangulation of Polygon</a><br><a href="https://leetcode.com/problems/remove-boxes/" target="_blank" rel="noopener">Remove Boxes</a><br><a href="https://leetcode.com/problems/minimum-cost-to-merge-stones/" target="_blank" rel="noopener">Minimum Cost to Merge Stones</a><br><a href="https://leetcode.com/problems/burst-balloons/" target="_blank" rel="noopener">Burst Balloons</a><br><a href="https://leetcode.com/problems/guess-number-higher-or-lower-ii/" target="_blank" rel="noopener">Guess Number Higher or Lower II</a></p>
 
       
     </div>
@@ -385,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CodingInterview/" rel="tag"># CodingInterview</a>
+            <a href="/tags/DynamicProgramming/" rel="tag"># DynamicProgramming</a>
           
         </div>
       
@@ -398,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/p/1675068398.html" rel="next" title="Dynamic Programming on Strings">
-                <i class="fa fa-chevron-left"></i> Dynamic Programming on Strings
+              <a href="/p/2842312159.html" rel="next" title="Distinct Ways">
+                <i class="fa fa-chevron-left"></i> Distinct Ways
               </a>
             
           </div>
@@ -408,8 +411,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/p/2361214650.html" rel="prev" title="Redis 常用数据类型对应的数据结构">
-                Redis 常用数据类型对应的数据结构 <i class="fa fa-chevron-right"></i>
+              <a href="/p/1675068399.html" rel="prev" title="DP on Strings">
+                DP on Strings <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,7 +494,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

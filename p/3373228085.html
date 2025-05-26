@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="数据结构介绍单链表是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下： 1234class ListNode:    def __">
+<meta name="description" content="数据结构介绍单向链表是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下： 1234class ListNode:    def _">
 <meta name="keywords" content="CodingInterview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指针三剑客之一：链表">
 <meta property="og:url" content="https://necusjz.github.io/p/3373228085.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="数据结构介绍单链表是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下： 1234class ListNode:    def __">
+<meta property="og:description" content="数据结构介绍单向链表是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下： 1234class ListNode:    def _">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2025-05-15T06:06:15.859Z">
+<meta property="og:updated_time" content="2025-05-24T13:16:04.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指针三剑客之一：链表">
-<meta name="twitter:description" content="数据结构介绍单链表是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下： 1234class ListNode:    def __">
+<meta name="twitter:description" content="数据结构介绍单向链表是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下： 1234class ListNode:    def _">
 
 
 
@@ -355,7 +355,7 @@
       
 
       
-        <h2 id="数据结构介绍"><a href="#数据结构介绍" class="headerlink" title="数据结构介绍"></a>数据结构介绍</h2><p><strong>单链表</strong>是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下：</p>
+        <h2 id="数据结构介绍"><a href="#数据结构介绍" class="headerlink" title="数据结构介绍"></a>数据结构介绍</h2><p><strong>单向链表</strong>是由节点和指针构成的数据结构，每个节点存有一个值，和一个指向下一个节点的指针，因此很多链表问题可以用递归来处理。不同于数组，链表并不能直接获取任意节点的值，必须要通过指针找到该节点后才能获取其值。同理，在未遍历到链表结尾时，我们也无法知道链表的长度，除非依赖其他数据结构储存长度。LeetCode 默认的链表表示方法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, val=<span class="number">0</span>, next=None)</span>:</span></span><br><span class="line">        self.val = val</span><br><span class="line">        self.next = next</span><br></pre></td></tr></table></figure>
 
 <p>由于在进行链表操作时，尤其是删除节点时，经常会因为对当前节点进行操作而导致内存或指针出现问题。有两个小技巧可以解决这个问题：</p>
@@ -367,7 +367,7 @@
 <p>一般来说，算法题不需要删除内存。在刷 LeetCode 的时候，如果想要删除一个节点，可以直接进行指针操作而无需回收内存。实际做软件工程时，对于无用的内存，笔者建议尽量显式回收，或利用智能指针。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="链表的基本操作"><a href="#链表的基本操作" class="headerlink" title="链表的基本操作"></a>链表的基本操作</h2><p><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">206. Reverse Linked List</a><br>链表翻转是非常基础也一定要掌握的技能。我们提供了两种写法——递归和非递归，且我们建议你同时掌握这两种写法。</p>
+<h2 id="链表的基本操作"><a href="#链表的基本操作" class="headerlink" title="链表的基本操作"></a>链表的基本操作</h2><p><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">206. Reverse Linked List</a><br>链表翻转是非常基础也一定要掌握的技能。我们提供了两种写法——递归和非递归，建议你同时掌握这两种写法。</p>
 <p><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. Merge Two Sorted Lists</a><br>我们提供了递归和非递归，共两种写法。</p>
 <p><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">24. Swap Nodes in Pairs</a><br>利用指针进行交换操作，没有太大难度，但一定要细心。</p>
 <h2 id="其它链表技巧"><a href="#其它链表技巧" class="headerlink" title="其它链表技巧"></a>其它链表技巧</h2><p><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">160. Intersection of Two Linked Lists</a><br>我们使用两个指针，分别指向两个链表的头节点，并以相同的速度前进，若到达链表结尾，则移动到另一条链表的头节点继续前进。按照这种前进方法，两个指针会在 a + b + c 次前进后同时到达相交节点。</p>
@@ -505,7 +505,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

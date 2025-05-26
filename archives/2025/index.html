@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="CodingInterview,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -87,18 +87,13 @@
 
 
 
-<meta name="description" content="StatementGiven two strings s1 and s2, return a result. ApproachMost of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity: 123456789for (int i = 1; i &amp;lt;= n; +">
-<meta name="keywords" content="CodingInterview">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dynamic Programming on Strings">
-<meta property="og:url" content="https://necusjz.github.io/p/1675068398.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ethan&#39;s Blog">
+<meta property="og:url" content="https://necusjz.github.io/archives/2025/index.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="StatementGiven two strings s1 and s2, return a result. ApproachMost of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity: 123456789for (int i = 1; i &amp;lt;= n; +">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2025-05-15T06:06:15.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dynamic Programming on Strings">
-<meta name="twitter:description" content="StatementGiven two strings s1 and s2, return a result. ApproachMost of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity: 123456789for (int i = 1; i &amp;lt;= n; +">
+<meta name="twitter:title" content="Ethan&#39;s Blog">
 
 
 
@@ -126,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://necusjz.github.io/p/1675068398.html">
+  <link rel="canonical" href="https://necusjz.github.io/archives/2025/">
 
 
 
 
 
-  <title> Dynamic Programming on Strings | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Archive | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -157,7 +152,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,163 +268,203 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1675068398.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
+    <span class="archive-page-counter">
+      
+      
+       
+        
+      Excellent! 279 posts in total. Keep on posting.
     </span>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Dynamic Programming on Strings
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-01T15:00:41+11:00">
-                2021-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
 
       
       
-
       
-        <h2 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h2><p>Given two strings <strong>s1</strong> and <strong>s2</strong>, return a result.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>Most of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s1[i<span class="number">-1</span>] == s2[j<span class="number">-1</span>]) &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>If you are given one string <strong>s</strong> the approach may little vary:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; n; ++l) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - l + <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == s[j]) &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[i][j] = <span class="comment">/* code */</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">Longest Common Subsequence</a><br><a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">Palindromic Substrings</a><br><a href="https://leetcode.com/problems/longest-palindromic-subsequence/" target="_blank" rel="noopener">Longest Palindromic Subsequence</a><br><a href="https://leetcode.com/problems/shortest-common-supersequence/" target="_blank" rel="noopener">Shortest Common Supersequence</a><br><a href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="noopener">Edit Distance</a><br><a href="https://leetcode.com/problems/distinct-subsequences/" target="_blank" rel="noopener">Distinct Subsequences</a><br><a href="https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/" target="_blank" rel="noopener">Minimum ASCII Delete Sum for Two Strings</a><br><a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">Longest Palindromic Substring</a></p>
-
-      
-    </div>
-
-    <div>
       
         
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/CodingInterview/" rel="tag"># CodingInterview</a>
-          
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2025">2025</h2>
         </div>
       
+      
 
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
+            <a class="post-title-link" href="/p/3526634861.html" itemprop="url">
+              
+                <span itemprop="name">Decision Making</span>
+              
+            </a>
+        
+      </h1>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/p/3299276735.html" rel="next" title="Interval Merging">
-                <i class="fa fa-chevron-left"></i> Interval Merging
-              </a>
-            
-          </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2025-05-27T00:15:31+10:00" content="2025-05-27">
+          05-27
+        </time>
+      </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/p/3468801964.html" rel="prev" title="Make Decisions">
-                Make Decisions <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
+    
+
       
-    </div>
-  </div>
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/p/1675068399.html" itemprop="url">
+              
+                <span itemprop="name">DP on Strings</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2025-05-27T00:06:28+10:00" content="2025-05-27">
+          05-27
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/p/2401976836.html" itemprop="url">
+              
+                <span itemprop="name">Merging Intervals</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2025-05-27T00:04:36+10:00" content="2025-05-27">
+          05-27
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/p/2842312159.html" itemprop="url">
+              
+                <span itemprop="name">Distinct Ways</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2025-05-27T00:01:36+10:00" content="2025-05-27">
+          05-27
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/p/2170354115.html" itemprop="url">
+              
+                <span itemprop="name">Minimum (Maximum) Path to Reach a Target</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2025-05-26T23:55:14+10:00" content="2025-05-26">
+          05-26
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+  </section>
+
+  
+
 
           
           </div>
@@ -437,10 +472,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -460,17 +491,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
           <p class="site-author-name" itemprop="name">necusjz</p>
@@ -494,7 +516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -519,22 +541,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Statement"><span class="nav-number">1.</span> <span class="nav-text">Statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach"><span class="nav-number">2.</span> <span class="nav-text">Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode"><span class="nav-number">3.</span> <span class="nav-text">LeetCode</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -640,9 +646,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   
