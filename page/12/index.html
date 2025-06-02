@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/743133161.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2165241535.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/743133161.html" itemprop="url">
-                  Virtual Machine Networking
+                <a class="post-title-link" href="/p/2165241535.html" itemprop="url">
+                  场景：处理旅游数据
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:39:24+10:00">
-                2022-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-26T18:50:45+11:00">
+                2022-03-26
               </time>
             
 
@@ -356,13 +356,11 @@
 
       
         
-          <p><em>Azure Virtual Machine</em> depends on virtual networking, and <strong>during the creation process, we need to define the network settings</strong>.</p>
-<h2 id="Create-VMs"><a href="#Create-VMs" class="headerlink" title="Create VMs"></a>Create VMs</h2><p>When a VM is created, a <em>Network Interface Card</em> (NIC) is created in the process. <strong>An NIC is used as a sort of interconnection between the VM and the VNet</strong>. A NIC is assigned a private IP address by the network. As an NIC is associated with both the VM and the VNet, the IP address is used by the VM. Using this IP address, the VM can communicate over a private network with other VMs (or other Azure resources) on the same network.</p>
-<p>Additionally, <strong>NICs and VMs can be assigned public IP addresses as well</strong>. A public address can be used to communicate with the VM over the internet, either to access services or to manage the VM.</p>
-<h2 id="View-VM-network-settings"><a href="#View-VM-network-settings" class="headerlink" title="View VM network settings"></a>View VM network settings</h2><p>After an Azure VM is created, we can review the network settings in the VM pane. Networking information is displayed in several places, including in the VM’s network settings. Additionally, each Azure resource has a separate pane and exists as an individual resource, so we can view these settings in multiple places. However, <strong>the most complete picture of VM network settings can be found in the VM pane and the NIC pane</strong>.</p>
+          <p>Ethan 打开笔记本电脑，从电脑桌面上的文件夹里翻出两个 Excel 表格文件，在这两个文件里，分别存着最近去过普吉岛和新西兰旅游的旅客信息，需要从这两份数据里，找出那些<strong>去过普吉岛但没去过新西兰的人</strong>，再让销售人员向他们推销一些新西兰精品旅游路线。将文件转换为 JSON 格式后，里面的内容大致如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 去过普吉岛的人员数据</span><br><span class="line">users_visited_phuket = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"first_name"</span>: <span class="string">"Sirena"</span>,</span><br><span class="line">        <span class="attr">"last_name"</span>: <span class="string">"Gross"</span>,</span><br><span class="line">        <span class="attr">"phone_number"</span>: <span class="string">"650-568-0388"</span>,</span><br><span class="line">        <span class="attr">"date_visited"</span>: <span class="string">"2018-03-14"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># 去过新西兰的人员数据</span><br><span class="line">users_visited_nz = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"first_name"</span>: <span class="string">"Justin"</span>,</span><br><span class="line">        <span class="attr">"last_name"</span>: <span class="string">"Malcom"</span>,</span><br><span class="line">        <span class="attr">"phone_number"</span>: <span class="string">"267-282-1964"</span>,</span><br><span class="line">        <span class="attr">"date_visited"</span>: <span class="string">"2011-03-13"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/743133161.html#more" rel="contents">
+            <a class="btn" href="/p/2165241535.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -405,7 +403,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/457978096.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2857695660.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -427,8 +425,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/457978096.html" itemprop="url">
-                  Azure Virtual Network
+                <a class="post-title-link" href="/p/2857695660.html" itemprop="url">
+                  开发大型项目
                 </a>
               
             
@@ -444,8 +442,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-20T23:18:23+10:00">
-                2022-04-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-22T00:10:30+11:00">
+                2022-03-22
               </time>
             
 
@@ -481,13 +479,11 @@
 
       
         
-          <p><em>Azure Virtual Network</em> represents your local network in the cloud. It enables other Azure resources to communicate over a secure private network <strong>without exposing endpoints over the internet</strong>.</p>
-<h2 id="Create-a-VNet"><a href="#Create-a-VNet" class="headerlink" title="Create a VNet"></a>Create a VNet</h2><p>We deploy VNets to resource group under subscription in the Azure data center that we choose. <em>Region</em> and <em>Subscription</em> are important parameters; we will <strong>only be able to attach Azure resources to this VNet if they are in the same subscription and region as the Azure data center</strong>.</p>
-<p>The address space option defines the number of IP addresses that will be available for our network. It uses the <em>Classless Inter-Domain Routing</em> (CIDR) format and the largest range we can choose is /8. In the portal, we need to create an initial subnet and define the subnet address range. <strong>The smallest subnet allowed is /29 and the largest is /8</strong> (however, this cannot be larger than the VNet range). For reference, the range 10.0.0.0/8 will create an address range of 167772115 IP addresses (from 10.0.0.0 to 10.255.255.255) and 10.0.0.0/29 will create a range of 8 IP addresses (from 10.0.0.0 to 10.0.0.7).</p>
-<h2 id="Add-a-subnet"><a href="#Add-a-subnet" class="headerlink" title="Add a subnet"></a>Add a subnet</h2><p>In addition to adding subnets while creating a VNet, we can <strong>add additional subnets to our network at any time</strong>. A single VNet can have multiple subnets defined. Subnets cannot overlap and must be in the range of the VNet address range. For each subnet, four IP addresses are saved for Azure management and cannot be used. Depending on the network settings, we can define the communication rules between subnets in the VNet.</p>
+          <h2 id="数据模型与描述符"><a href="#数据模型与描述符" class="headerlink" title="数据模型与描述符"></a>数据模型与描述符</h2><p>在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为<strong>魔法方法</strong>（Magic Method）。</p>
+<h3 id="字符串魔法方法"><a href="#字符串魔法方法" class="headerlink" title="字符串魔法方法"></a>字符串魔法方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, favorite_color)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.favorite_color = favorite_color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 变量名后的 !r 表示在渲染字符串模版时，程序会优先使用 repr() 而非 str() 的结果</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;cls_name&#125;(name=&#123;name!r&#125;, age=&#123;age!r&#125;, favorite_color=&#123;color!r&#125;)'</span>.format(</span><br><span class="line">            cls_name=self.__class__.__name__,</span><br><span class="line">            name=self.name,</span><br><span class="line">            age=self.age,</span><br><span class="line">            color=self.favorite_color,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__format__</span><span class="params">(self, format_spec)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> format_spec == <span class="string">'verbose'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)[<span class="subst">&#123;self.favorite_color&#125;</span>]'</span></span><br><span class="line">        <span class="keyword">elif</span> format_spec == <span class="string">'simple'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)'</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/457978096.html#more" rel="contents">
+            <a class="btn" href="/p/2857695660.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -530,7 +526,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/558864227.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3290605089.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -552,8 +548,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/558864227.html" itemprop="url">
-                  Bump Python SDK
+                <a class="post-title-link" href="/p/3290605089.html" itemprop="url">
+                  场景：寻找元类替代品
                 </a>
               
             
@@ -569,8 +565,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-11T11:40:53+10:00">
-                2022-04-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T21:12:14+11:00">
+                2022-03-20
               </time>
             
 
@@ -606,22 +602,21 @@
 
       
         
-          <h2 id="Update-corresponding-versions"><a href="#Update-corresponding-versions" class="headerlink" title="Update corresponding versions"></a>Update corresponding versions</h2><p>Update <em>package name + package version</em>:</p>
+          <blockquote>
+<p>Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don’t (the people who actually need them know with certainty that they need them, and don’t need an explanation about why).<br>-- <em>Tim Peters</em></p>
+</blockquote>
+<p>元类是 Python 中的一种特殊对象，它<strong>控制着类的创建行为</strong>，就像普通类控制着实例的创建行为一样。type 是 Python 中最基本的元类，直接调用 type() 就可以创建一个类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Foo = type(&apos;Foo&apos;, (), &#123;&apos;bar&apos;: 3&#125;)</span><br><span class="line">&gt;&gt;&gt; Foo</span><br><span class="line">&lt;class &apos;__main__.Foo&apos;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在调用 type() 创建类时，需要提供三个参数，它们的含义如下：</p>
 <ul>
-<li>setup.py;</li>
-<li>requirements.py3.Linux.txt;</li>
-<li>requirements.py3.Darwin.txt;</li>
-<li>requirements.py3.Windows.txt;</li>
+<li>name: str，需要创建的类名；</li>
+<li>bases: Tuple[Type]，包含其他类的元组，代表类的所有基类；</li>
+<li>attrs: Dict[str, Any]，包含所有类成员（属性、方法）的字典；</li>
 </ul>
-<p>Update <em>resource type + api version</em>:</p>
-<ul>
-<li>_shared.py (latest);</li>
-</ul>
-<h2 id="Setup-development-environment"><a href="#Setup-development-environment" class="headerlink" title="Setup development environment"></a>Setup development environment</h2><p>Install expected Python packages:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/558864227.html#more" rel="contents">
+            <a class="btn" href="/p/3290605089.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -664,7 +659,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4207367335.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -686,8 +681,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/1507841079.html" itemprop="url">
-                  Generate CLI from Swagger
+                <a class="post-title-link" href="/p/4207367335.html" itemprop="url">
+                  面向对象编程
                 </a>
               
             
@@ -703,8 +698,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-08T10:21:45+10:00">
-                2022-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T16:39:34+11:00">
+                2022-03-20
               </time>
             
 
@@ -740,46 +735,20 @@
 
       
         
-          <p>It’s always good to start with a command like that:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --version=3.0.6370 --az --use=@autorest/az@latest ../azure-rest-api-specs/specification/dnsresolver/resource-manager/readme.md --azure-cli-extension-folder=./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>Make sure you have these specific versions installed:</p>
-<table>
-<thead>
-<tr>
-<th align="center">AutoRest Core</th>
-<th align="center">AutoRest CLI</th>
-<th align="center">Node.js</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">3.0.6370</td>
-<td align="center">3.5.1</td>
-<td align="center">12.20</td>
-</tr>
-</tbody></table>
-<p>Errors you might encounter nowadays:</p>
+          <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。<strong>在 Python 里，万物皆对象</strong>，最基础的浮点数也是一个对象。</p>
+<h3 id="类常用知识"><a href="#类常用知识" class="headerlink" title="类常用知识"></a>类常用知识</h3><p>通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。<strong>封装</strong>（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。</p>
+<p>当你使用 __{var} 的方式定义一个私有属性时，Python 解释器只是重新给了它一个包含当前类名的别名 <strong>_{class}__{var}</strong>，因此你仍然可以在外部用这个别名来访问和修改它。</p>
+<blockquote>
+<p>设计哲学：期望程序员做正确的事，而不是在语言上增加太多条条框框。</p>
+</blockquote>
+<p>在某些特殊场景下，合理利用 __dict__ 可以帮你完成常规做法难以做到的一些事情：</p>
 <ul>
-<li>ERROR: Schema violation: Additional properties not allowed: x-ms-identifiers<ol>
-<li>Append <em>--pass-thru:schema-validator-swagger</em> to the command;</li>
-</ol>
-</li>
-<li>AttributeError: module ‘mistune’ has no attribute ‘BlockGrammar’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_python@5.4.0/node_modules/@autorest/python</em>;</li>
-<li>Execute <em>pip install mistune==0.8.4</em>;</li>
-</ol>
-</li>
-<li>ImportError: cannot import name ‘_unicodefun’ from ‘click’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_az@1.8.0/node_modules/@autorest/az</em>;</li>
-<li>Execute <em>pip install click==8.0.2</em>;</li>
-</ol>
-</li>
+<li>实例的 __dict__ 里，保存着当前实例的所有数据；</li>
+<li>类的 __dict__ 里，保存着类的文档、方法等所有数据；</li>
 </ul>
-<p>One more thing, it’s a good practice to clean up AutoRest extensions by:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --reset</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/1507841079.html#more" rel="contents">
+            <a class="btn" href="/p/4207367335.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -822,7 +791,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4286004591.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4159641954.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -844,8 +813,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/4286004591.html" itemprop="url">
-                  Contribute to Azure CLI
+                <a class="post-title-link" href="/p/4159641954.html" itemprop="url">
+                  场景：查找第一张专辑
                 </a>
               
             
@@ -861,8 +830,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-04T18:30:21+10:00">
-                2022-04-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-13T15:41:54+11:00">
+                2022-03-13
               </time>
             
 
@@ -898,25 +867,14 @@
 
       
         
-          
-            <h2 id="What-is-Azure-CLI"><a href="#What-is-Azure-CLI" class="headerlink" title="What is Azure CLI?"></a>What is Azure CLI?</h2><p>Azure CLI is a command-line tool to create and manage resources. You interact with Azure by running commands in a terminal or writing scripts to automate tasks. Azure CLI interacts with the <strong>Azure Resource Manager</strong> (ARM) service, which is the management layer to interact with resources in your account.</p>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Fork and clone the repositories you wish to develop for:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/necusjz/azure-cli.git</span><br><span class="line">$ git clone https://github.com/necusjz/azure-cli-extensions.git</span><br></pre></td></tr></table></figure>
-
-<p>Add or change the upstream:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/Azure/azure-cli.git</span><br><span class="line">$ git remote set-url upstream https://github.com/Azure/azure-cli.git</span><br></pre></td></tr></table></figure>
-
-<p>Install and setup <em>azdev</em>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install azdev</span><br><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>List what extensions are currently visible to your development environment:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension list -o table</span><br><span class="line">$ azdev extension add &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Publish extensions:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension publish &#123;&#125; --storage-account &#123;&#125; --storage-container &#123;&#125; --storage-account-key &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
+          <p>iTunes 是苹果公司提供的内容商店服务，在里面可以购买世界各地的电影、音乐等数字内容。同时，iTunes 还提供了一个公开的可免费调用的内容查询 API。下面这个脚本就通过调用该 API 实现了查找歌手的第一张专辑的功能：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/4159641954.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -950,7 +908,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -993,7 +951,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">279</span>
+                <span class="site-state-item-count">274</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1004,7 +962,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/104703185.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1967124294.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/104703185.html" itemprop="url">
-                  设计通用的接口幂等框架
+                <a class="post-title-link" href="/p/1967124294.html" itemprop="url">
+                  Unix
                 </a>
               
             
@@ -319,500 +319,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:46:56+11:00">
-                2021-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="需求场景"><a href="#需求场景" class="headerlink" title="需求场景"></a>需求场景</h3><p>调用方访问公共服务平台的接口，会有<strong>三种可能的结果：成功、失败和超时</strong>。前两种结果非常明确，调用方可以自己决定收到结果之后如何处理。结果为“成功”，万事大吉；结果为“失败”，一般情况下，调用方会将失败的结果，反馈给用户（移动端 App），让用户自行决定是否重试。但是，当接口请求超时时，处理起来就没那么容易了。有可能业务逻辑已经执行成功了，只是公共服务平台返回结果给调用方的时候超时了，但也有可能业务逻辑没有执行成功，比如，因为数据库当时存在集中写入，导致部分数据写入超时。总之，<strong>超时对应的执行结果是未决的</strong>。</p>
-<p><strong>如果接口只包含查询、删除、更新这些操作，那接口天然是幂等的</strong>。所以，超时之后，重新再执行一次，也没有任何副作用。不过，这里有两点需要特殊说明一下。</p>
-<p><strong>删除操作需要当心 ABA 问题</strong>。删除操作超时了，又触发一次删除，但在这次删除之前，又有一次新的插入。后一次删除操作删除了新插入的数据，而新插入的数据本不应该删除。不过，大部分业务都可以容忍 ABA 问题。对于少数不能容忍的业务场景，我们可以针对性的特殊处理。除此之外，细究起来，update x = x + delta 这样格式的更新操作并非幂等，只有 update x = y 这样格式的更新操作才是幂等的。不过，后者也存在跟删除同样的 ABA 问题。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/104703185.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/116790431.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/116790431.html" itemprop="url">
-                  设计支持各种算法的限流框架
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:45:54+11:00">
-                2021-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>公司成立初期，团队人少。公司集中精力开发一个金融理财产品（我们把这个项目叫做 X 项目）。整个项目只做了简单的前后端分离，后端的所有代码都在一个 GitHub 仓库中，整个后端作为一个应用来部署，没有划分微服务。遇到了行业风口，公司发展得不错，公司开始招更多人，开发更多的金融产品，比如专注房贷的理财产品、专注供应链的产品、专注消费贷的借款端产品等等。在产品形态上，每个金融产品都做成了独立的 App。对于不同的金融产品，尽管移动端长得不一样，但是后端的很多功能、代码都是可以复用的。为了快速上线，针对每个应用，公司都成立一个新的团队，然后拷贝 X 项目的代码，在此基础之上修改、添加新的功能。</p>
-<p>这样成立新团队，拷贝老代码，改改就能上线一个新产品的开发模式，在一开始很受欢迎。产品上线快，也给公司赢得了竞争上的优势。但时间一长，这样的开发模式暴露出来的问题就越来越多了。而且随着公司的发展，公司也过了急速扩张期，人招得太多，公司开始考虑研发效率问题了。因为所有的项目的代码都是从 X 项目拷贝来的，多个团队同时维护相似的代码，显然是重复劳动，协作起来也非常麻烦。任何团队发现代码的 bug，都要同步到其他团队做相同的修改。而且，各个团队对代码独立迭代，改得面目全非，即便要添加一个通用的功能，每个团队也都要基于自己的代码再重复开发。</p>
-<p>除此之外，公司成立初期，各个方面条件有限，只能招到开发水平一般的员工，而且追求快速上线，所以，X 项目的代码质量很差，结构混乱、命名不规范、到处是临时解决方案、埋了很多坑，在烂代码之上不停地堆砌烂代码，时间长了，代码的可读性越来越差、维护成本越来越高，甚至高过了重新开发的成本。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/116790431.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/469711973.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/469711973.html" itemprop="url">
-                  MyBatis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-31T11:14:09+11:00">
-                2021-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="MyBatis-和-ORM-框架介绍"><a href="#MyBatis-和-ORM-框架介绍" class="headerlink" title="MyBatis 和 ORM 框架介绍"></a>MyBatis 和 ORM 框架介绍</h2><p>MyBatis 是一个 ORM（Object-Relational Mapping）框架。ORM 框架主要是根据类和数据库表之间的映射关系，帮助程序员自动实现对象与数据库中数据之间的互相转化。说得更具体点就是，<strong>ORM 负责将程序中的对象存储到数据库中、将数据库中的数据转化为程序中的对象</strong>。实际上，Java 中的 ORM 框架有很多，除了刚刚提到的 MyBatis 之外，还有 Hibernate、TopLink 等。</p>
-<p>如果用一句话来总结框架作用的话，那就是简化开发。MyBatis 框架也不例外，它<strong>简化的是数据库方面的开发</strong>。因为 MyBatis 依赖 JDBC 驱动，所以，在项目中使用 MyBatis，除了需要引入 MyBatis 框架本身（mybatis.jar）之外，还需要引入 JDBC 驱动（比如，访问 MySQL 的 JDBC 驱动实现类库 mysql-connector-java.jar）。将两个 jar 包引入项目之后，我们就可以开始编程了。使用 MyBatis 来访问数据库中用户信息的代码如下所示：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/469711973.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2270072152.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2270072152.html" itemprop="url">
-                  Spring Framework
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-29T15:45:20+11:00">
-                2021-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Spring-框架简单介绍"><a href="#Spring-框架简单介绍" class="headerlink" title="Spring 框架简单介绍"></a>Spring 框架简单介绍</h2><p>我们常说的 Spring 框架，是指 Spring Framework 基础框架。<strong>Spring Framework 是整个 Spring 生态（也被称作 Spring 全家桶）的基石</strong>。除了 Spring Framework，Spring 全家桶中还有更多基于 Spring Framework 开发出来的、整合更多功能的框架，比如 Spring Boot、Spring Cloud。在 Spring 全家桶中，Spring Framework 是最基础、最底层的一部分。它提供了最基础、最核心的 IoC 和 AOP 功能。当然，它包含的功能还不仅如此，还有其他比如事务管理（Transactions）、MVC 框架（Spring MVC）等很多功能：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/23.png" alt></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2270072152.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/24993952.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/24993952.html" itemprop="url">
-                  Google Guava
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-25T17:25:21+11:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-25T15:05:00+11:00">
                 2021-03-25
               </time>
             
@@ -849,10 +356,501 @@
 
       
         
-          <h2 id="Google-Guava-介绍"><a href="#Google-Guava-介绍" class="headerlink" title="Google Guava 介绍"></a>Google Guava 介绍</h2><p>Google Guava 是 Google 公司内部 Java 开发工具库的开源版本。Google 内部的很多 Java 项目都在使用它。它提供了一些 JDK 没有提供的功能，以及对 JDK 已有功能的增强功能。其中就包括：集合（Collections）、缓存（Caching）、原生类型支持（Primitives Support）、并发库（Concurrency Libraries）、通用注解（Common Annotation）、字符串处理（Strings Processing）、数学计算（Math）、I/O、事件总线（EventBus）等等：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/21.png" alt></p>
+          <h2 id="封装与抽象"><a href="#封装与抽象" class="headerlink" title="封装与抽象"></a>封装与抽象</h2><p>在 Unix、Linux 系统中，有一句经典的话：“Everything is a file”，翻译成中文就是：“一切皆文件”。这句话的意思就是，在 Unix、Linux 系统中，很多东西都被抽象成<code>文件</code>这样一个概念，比如 Socket、驱动、硬盘、系统信息等。它们使用文件系统的路径作为统一的命名空间（namespace），使用统一的 read、write 标准函数来访问。比如，我们要查看 CPU 的信息，在 Linux 系统中，我们只需要使用编辑器像打开其他文件一样，打开 /proc/cpuinfo，就能查看到相应的信息。除此之外，我们还可以通过查看 /proc/uptime 文件，了解系统运行了多久，查看 /proc/version 了解系统的内核版本等。</p>
+<p>封装了不同类型设备的访问细节，抽象为统一的文件访问方式，更高层的代码就能基于统一的访问方式，来访问底层不同类型的设备。这样做的好处是，隔离底层设备访问的复杂性，统一的访问方式能够简化上层代码的编写，并且代码更容易复用。除此之外，<strong>抽象和封装还能有效控制代码复杂性的蔓延，将复杂性封装在局部代码中</strong>，隔离实现的易变性，提供简单、统一的访问接口让其他模块来使用。其他模块基于抽象的接口而非具体的实现编程，代码会更加稳定。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/24993952.html#more" rel="contents">
+            <a class="btn" href="/p/1967124294.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/247514921.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/247514921.html" itemprop="url">
+                  Java Development Kit
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-24T15:45:41+11:00">
+                2021-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="工厂模式在-Calendar-类中的应用"><a href="#工厂模式在-Calendar-类中的应用" class="headerlink" title="工厂模式在 Calendar 类中的应用"></a>工厂模式在 Calendar 类中的应用</h2><p>Calendar 类提供了大量跟日期相关的功能代码，同时，又提供了一个 getInstance() 工厂方法，用来根据不同的 TimeZone 和 Locale 创建不同的 Calendar 子类对象。也就是说，功能代码和工厂方法代码耦合在了一个类中。所以，即便我们去查看它的源码，如果不细心的话，也很难发现它用到了工厂模式。同时，因为它不单单是一个工厂类，所以，它并没有以 Factory 作为后缀来命名。从代码中，我们可以看出，getInstance() 方法可以根据不同 TimeZone 和 Locale，创建不同的 Calendar 子类对象，比如 BuddhistCalendar、JapaneseImperialCalendar、GregorianCalendar，这些<strong>细节完全封装在工厂方法中，使用者只需要传递当前的时区和地址</strong>，就能够获得一个 Calendar 类对象来使用，而获得的对象具体是哪个 Calendar 子类的对象，使用者在使用的时候并不关心：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/247514921.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2048460924.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2048460924.html" itemprop="url">
+                  短网址系统背后的数据结构和算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-24T13:50:36+11:00">
+                2021-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="短网址服务整体介绍"><a href="#短网址服务整体介绍" class="headerlink" title="短网址服务整体介绍"></a>短网址服务整体介绍</h2><p>刚刚我们讲了，短网址服务的一个核心功能，就是把原始的长网址转化成短网址。除了这个功能之外，短网址服务还有另外一个必不可少的功能。那就是，<strong>当用户点击短网址的时候，短网址服务会将浏览器重定向为原始网址</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/17.png" alt></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2048460924.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2390158980.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2390158980.html" itemprop="url">
+                  微服务接口鉴权限流背后的数据结构和算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T17:06:09+11:00">
+                2021-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>大应用拆分成微服务之后，服务之间的调用关系变得更复杂，平台的整体复杂熵升高，出错的概率、Debug 问题的难度都高了好几个数量级。所以，为了解决这些问题，服务治理便成了微服务的一个技术重点。所谓服务治理，简单点讲，就是管理微服务，保证平台整体正常、平稳地运行。服务治理涉及的内容比较多，比如<strong>鉴权、限流、降级、熔断、监控告警</strong>等等。这些服务治理功能的实现，底层依赖大量的数据结构和算法。</p>
+<h2 id="鉴权背景介绍"><a href="#鉴权背景介绍" class="headerlink" title="鉴权背景介绍"></a>鉴权背景介绍</h2><p>假设我们有一个微服务叫用户服务（User Service）。它提供很多用户相关的接口，比如获取用户信息、注册、登录等，给公司内部的其他应用使用。但是，并不是公司内部所有应用，都可以访问这个用户服务，<strong>也并不是每个有访问权限的应用，都可以访问用户服务的所有接口</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/09.png" alt></p>
+<p>要实现接口鉴权功能，我们需要<strong>事先将应用对接口的访问权限规则设置好</strong>。当某个应用访问其中一个接口的时候，我们就可以拿应用的请求 URL，在规则中进行匹配。如果匹配成功，就说明允许访问；如果没有可以匹配的规则，那就说明这个应用没有这个接口的访问权限，我们就拒绝服务。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2390158980.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/942551829.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/942551829.html" itemprop="url">
+                  Disruptor 背后的数据结构和算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T14:42:45+11:00">
+                2021-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="基于循环队列的生产者-消费者模型"><a href="#基于循环队列的生产者-消费者模型" class="headerlink" title="基于循环队列的生产者-消费者模型"></a>基于循环队列的生产者-消费者模型</h2><p>非循环的顺序队列在添加、删除数据的工程中，会<strong>涉及数据的搬移操作，导致性能变差</strong>。而循环队列正好可以解决这个数据搬移的问题，所以，性能更加好。所以，大部分用到顺序队列的场景中，我们都选择用顺序队列中的循环队列。实际上，循环队列这种数据结构，就是我们今天要讲的内存消息队列的雏形。我借助循环队列，实现了一个最简单的生产者-消费者模型。为了方便你理解，对于生产者和消费者之间操作的同步，我并没有用到线程相关的操作。而是采用了“当队列满了之后，生产者就轮训等待；当队列空了之后，消费者就轮训等待”这样的措施：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/942551829.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -890,7 +888,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -933,7 +931,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">279</span>
+                <span class="site-state-item-count">274</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -944,7 +942,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
