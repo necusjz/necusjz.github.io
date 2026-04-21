@@ -280,6 +280,379 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1042644649.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1042644649.html" itemprop="url">
+                  Local and Virtual Network Gateways
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T23:37:08+10:00">
+                2022-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Local and virtual network gateways are <em>Virtual Private Network</em> (VPN) gateways that are used to <strong>connect to on-premises networks and encrypt all traffic going between a VNet and a local network</strong>. Each VNet can have only one virtual network gateway, but one virtual network gateway can be used to configure multiple VPN connections.</p>
+<h2 id="Create-a-local-network-gateway"><a href="#Create-a-local-network-gateway" class="headerlink" title="Create a local network gateway"></a>Create a local network gateway</h2><p>When a Site-to-Site connection is created, we have to <strong>provide configuration for both sides of the connection</strong>—that is, both Azure and on-premises. Although a <em>Local Network Gateway</em> is created in Azure, it represents your local (on-premises) network and holds configuration information on your local network settings. It’s an essential component for creating the VPN connection that is needed to create a Site-to-Site connection between the VNet and the local network.</p>
+<p>The local network gateway is used to connect a virtual network gateway to an on-premises network. The virtual network gateway is directly connected to the VNet and has all the relevant Azure VNet information needed to create a VPN connection. On the other hand, a local network gateway <strong>holds all the local network information needed to create a VPN connection</strong>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1042644649.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4269680769.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/4269680769.html" itemprop="url">
+                  Manage IP Addresses
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T22:45:13+10:00">
+                2022-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>In Azure, we can have <strong>two types of IP addresses, private and public</strong>. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private communication on private networks. Addresses can be assigned to a resource or can exist as a separate resource.</p>
+<h2 id="Create-a-public-IP-address"><a href="#Create-a-public-IP-address" class="headerlink" title="Create a public IP address"></a>Create a public IP address</h2><p><em>Public IP Address</em> can be created as a separate resource or created during the creation of some other resources (a VM, for example). Therefore, <strong>a public IP can exist as part of a resource or as a standalone resource</strong>.</p>
+<p>The <em>Stock Keeping Unit</em> (SKU) can be either <em>Basic</em> or <em>Standard</em>. The main differences are that Standard is closed to inbound traffic by default (inbound traffic must be whitelisted in NSGs) and that Standard is zone redundant. Another difference is that <strong>a Standard SKU public IP address has a static assignment, while a Basic SKU can be either static or dynamic</strong>. You can choose either the <em>IPv4</em> or <em>IPv6</em> version for the IP address, or both, but choosing IPv6 will limit you to a dynamic assignment for the Basic SKU and static assignment for the Standard SKU.</p>
+<p>The <em>DNS Name Label</em> is optional—it can be used to <strong>resolve the endpoint if dynamic assignment is selected</strong>. Otherwise, there is no point in creating a DNS label, as an IP address can always be used to resolve the endpoint if static assignment is selected.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/4269680769.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/907302273.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/907302273.html" itemprop="url">
+                  Network Security Groups
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T13:03:11+10:00">
+                2022-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><em>Network Security Group</em> (NSG) is a built-in tool for network control that allow us to <strong>control incoming and outgoing traffic on an NIC or at the subnet level</strong>. They contain sets of rules that allow or deny specific traffic to specific resources or subnets in Azure. An NSG can be associated with either a subnet (by applying security rules to all resources associated with the subnet) or an NIC, which is done by applying security rules to the VM associated with the NIC.</p>
+<h2 id="Create-an-NSG"><a href="#Create-an-NSG" class="headerlink" title="Create an NSG"></a>Create an NSG</h2><p>As a first step to more effectively control network traffic, we are going to create a new NSG. <strong>The NSG deployment can be initiated during a VM deployment</strong>. This will associate the NSG to the NIC associated with the deployed VM. In this case, the NSG is already associated with the resource, and rules defined in the NSG will apply only to the associated VM.</p>
+<p>If the NSG is deployed separately, it is not associated and <strong>the rules that are created within it are not applied until an association has been created with the NIC or the subnet</strong>. When it is associated with a subnet, the NSG rules will apply to all resources on the subnet.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/907302273.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/743133161.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -521,436 +894,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/558864227.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/558864227.html" itemprop="url">
-                  Bump Python SDK
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-11T11:40:53+10:00">
-                2022-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Update-corresponding-versions"><a href="#Update-corresponding-versions" class="headerlink" title="Update corresponding versions"></a>Update corresponding versions</h2><p>Update <em>package name + package version</em>:</p>
-<ul>
-<li>setup.py;</li>
-<li>requirements.py3.Linux.txt;</li>
-<li>requirements.py3.Darwin.txt;</li>
-<li>requirements.py3.Windows.txt;</li>
-</ul>
-<p>Update <em>resource type + api version</em>:</p>
-<ul>
-<li>_shared.py (latest);</li>
-</ul>
-<h2 id="Setup-development-environment"><a href="#Setup-development-environment" class="headerlink" title="Setup development environment"></a>Setup development environment</h2><p>Install expected Python packages:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/558864227.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1507841079.html" itemprop="url">
-                  Generate CLI from Swagger
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-08T10:21:45+10:00">
-                2022-04-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>It’s always good to start with a command like that:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --version=3.0.6370 --az --use=@autorest/az@latest ../azure-rest-api-specs/specification/dnsresolver/resource-manager/readme.md --azure-cli-extension-folder=./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>Make sure you have these specific versions installed:</p>
-<table>
-<thead>
-<tr>
-<th align="center">AutoRest Core</th>
-<th align="center">AutoRest CLI</th>
-<th align="center">Node.js</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">3.0.6370</td>
-<td align="center">3.5.1</td>
-<td align="center">12.20</td>
-</tr>
-</tbody></table>
-<p>Errors you might encounter nowadays:</p>
-<ul>
-<li>ERROR: Schema violation: Additional properties not allowed: x-ms-identifiers<ol>
-<li>Append <em>--pass-thru:schema-validator-swagger</em> to the command;</li>
-</ol>
-</li>
-<li>AttributeError: module ‘mistune’ has no attribute ‘BlockGrammar’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_python@5.4.0/node_modules/@autorest/python</em>;</li>
-<li>Execute <em>pip install mistune==0.8.4</em>;</li>
-</ol>
-</li>
-<li>ImportError: cannot import name ‘_unicodefun’ from ‘click’<ol>
-<li>Active the venv within <em>~/.autorest/@autorest_az@1.8.0/node_modules/@autorest/az</em>;</li>
-<li>Execute <em>pip install click==8.0.2</em>;</li>
-</ol>
-</li>
-</ul>
-<p>One more thing, it’s a good practice to clean up AutoRest extensions by:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --reset</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1507841079.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4286004591.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/4286004591.html" itemprop="url">
-                  Contribute to Azure CLI
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-04T18:30:21+10:00">
-                2022-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="What-is-Azure-CLI"><a href="#What-is-Azure-CLI" class="headerlink" title="What is Azure CLI?"></a>What is Azure CLI?</h2><p>Azure CLI is a command-line tool to create and manage resources. You interact with Azure by running commands in a terminal or writing scripts to automate tasks. Azure CLI interacts with the <strong>Azure Resource Manager</strong> (ARM) service, which is the management layer to interact with resources in your account.</p>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Fork and clone the repositories you wish to develop for:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/necusjz/azure-cli.git</span><br><span class="line">$ git clone https://github.com/necusjz/azure-cli-extensions.git</span><br></pre></td></tr></table></figure>
-
-<p>Add or change the upstream:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/Azure/azure-cli.git</span><br><span class="line">$ git remote set-url upstream https://github.com/Azure/azure-cli.git</span><br></pre></td></tr></table></figure>
-
-<p>Install and setup <em>azdev</em>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install azdev</span><br><span class="line">$ azdev setup -c -r ./azure-cli-extensions</span><br></pre></td></tr></table></figure>
-
-<p>List what extensions are currently visible to your development environment:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension list -o table</span><br><span class="line">$ azdev extension add &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Publish extensions:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ azdev extension publish &#123;&#125; --storage-account &#123;&#125; --storage-container &#123;&#125; --storage-account-key &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -993,7 +941,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">277</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1004,7 +952,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1046,7 +994,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

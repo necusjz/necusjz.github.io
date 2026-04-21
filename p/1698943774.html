@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Ethan&#39;s Blog">
 <meta property="og:description" content="数据结构介绍作为单链表的升级版，我们通常接触的树都是二叉树 (Binary Tree)，即每个节点最多有两个子节点；且除非题目说明，默认树中不存在循环结构。LeetCode 默认的树表示方法如下： 12345class TreeNode:    def __init__(self, val=0, left=None, right=None):        self.val = val">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2025-05-15T06:06:15.859Z">
+<meta property="og:updated_time" content="2025-06-04T14:53:03.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指针三剑客之二：树">
 <meta name="twitter:description" content="数据结构介绍作为单链表的升级版，我们通常接触的树都是二叉树 (Binary Tree)，即每个节点最多有两个子节点；且除非题目说明，默认树中不存在循环结构。LeetCode 默认的树表示方法如下： 12345class TreeNode:    def __init__(self, val=0, left=None, right=None):        self.val = val">
@@ -360,10 +360,10 @@
 
 <p>可以看出，其与链表的主要差别就是多了一个子节点的指针。</p>
 <a id="more"></a>
-<h2 id="树的递归"><a href="#树的递归" class="headerlink" title="树的递归"></a>树的递归</h2><p>对于一些简单的递归题，某些 LeetCode 达人喜欢写 one-line code，即用一行代码解决问题，把 if-else 判断语句压缩成问号冒号的形式。我们也会展示一些这样的代码，但是对于新手，笔者仍然建议您使用 if-else 判断语句。在很多时候，树递归的写法与深度优先搜索的递归写法相同，因此本书不会区分二者。</p>
+<h2 id="树的递归"><a href="#树的递归" class="headerlink" title="树的递归"></a>树的递归</h2><p>对于一些简单的递归题，某些 LeetCode 达人喜欢写 one-line code，即用一行代码解决问题。我们也会展示一些这样的代码，但是对于新手，笔者仍然建议您使用多行的 if-else 判断语句。在很多时候，树递归的写法与深度优先搜索的递归写法相同，因此本书不会区分二者。</p>
 <p><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. Maximum Depth of Binary Tree</a><br>利用递归，我们可以很方便地求得最大深度。</p>
 <p><a href="https://leetcode.com/problems/balanced-binary-tree/" target="_blank" rel="noopener">110. Balanced Binary Tree</a><br>解法类似于求树的最大深度，但有两个不同的地方：一是我们需要先处理子树的深度再进行比较，二是如果我们在处理子树时发现其已经不平衡了，则可以返回一个 -1，使得所有其长辈节点可以避免多余的判断。</p>
-<p><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. Diameter of Binary Tree</a><br>同样的，我们可以利用递归来处理树。解题时要注意，在我们处理某个子树时，我们更新的最长直径值和递归返回的值是不同的——待更新的最长直径值是经过该子树根节点的最长直径（即两侧长度）；而函数返回值是以该子树根节点为端点的最长直径值（即一侧长度）。</p>
+<p><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. Diameter of Binary Tree</a><br>同样的，我们可以利用递归来处理树。解题时要注意，在我们处理某个子树时，我们更新的最长直径值和递归返回的值是不同的。这是因为待更新的最长直径值是经过该子树根节点的最长直径（即两侧长度）；而函数返回值是以该子树根节点为端点的最长直径值（即一侧长度）。</p>
 <p><a href="https://leetcode.com/problems/path-sum-iii/" target="_blank" rel="noopener">437. Path Sum III</a><br>递归每个节点时，需要分情况考虑：(1) 如果选取该节点加入路径，则之后必须继续加入连续节点，或停止加入节点；(2) 如果不选取该节点加入路径，则对其左右节点进行重新进行考虑。</p>
 <p><a href="https://leetcode.com/problems/symmetric-tree/" target="_blank" rel="noopener">101. Symmetric Tree</a><br>判断一个树是否对称等价于判断左右子树是否对称。笔者一般习惯将判断两个子树是否相等或对称类型的题的解法叫做“四步法”：(1) 如果两个子树都为空指针，则它们相等或对称；(2) 如果两个子树只有一个为空指针，则它们不相等或不对称；(3) 如果两个子树根节点的值不相等，则它们不相等或不对称；(4) 根据相等或对称要求，进行递归处理。</p>
 <p><a href="https://leetcode.com/problems/delete-nodes-and-return-forest/" target="_blank" rel="noopener">1110. Delete Nodes And Return Forest</a><br>这道题最主要需要注意的细节是如果通过递归处理原树，以及需要在什么时候断开指针。同时，为了便于寻找待删除节点，可以建立一个哈希集合方便查找。</p>
@@ -372,10 +372,10 @@
 <h2 id="前中后序遍历"><a href="#前中后序遍历" class="headerlink" title="前中后序遍历"></a>前中后序遍历</h2><p>前序遍历、中序遍历和后序遍历是三种利用深度优先搜索遍历二叉树的方式。它们是在对节点访问的顺序有一点不同，其它完全相同。</p>
 <p><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. Construct Binary Tree from Preorder and Inorder Traversal</a><br>前序遍历的第一个节点是 4，意味着 4 是根节点。我们在中序遍历结果里找到 4 这个节点，根据中序遍历的性质可以得出，4 在中序遍历数组位置的左子数组为左子树；4 在中序遍历数组位置的右子数组为右子树。</p>
 <p><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. Binary Tree Preorder Traversal</a><br>因为递归的本质是栈调用，因此我们可以通过栈来实现前序遍历。注意入栈的顺序。</p>
-<h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p><strong>二叉查找树</strong> (BST) 是一种特殊的二叉树：对于每个父节点，其左子树中所有节点的值小于等于父结点的值，其右子树中所有节点的值大于等于父结点的值。因此对于一个二叉查找树，我们可以在 O(logn) 的时间内查找一个值是否存在：从根节点开始，若当前节点的值大于查找值则向左下走，若当前节点的值小于查找值则向右下走。同时因为二叉查找树是有序的，对其中序遍历的结果即为排好序的数组。</p>
+<h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p>二叉查找树 (BST) 是一种特殊的二叉树：对于每个父节点，其左子树中所有节点的值小于等于父结点的值，其右子树中所有节点的值大于等于父结点的值。因此对于一个二叉查找树，我们可以在 O(logn) 的时间内查找一个值是否存在：从根节点开始，若当前节点的值大于查找值则向左下走，若当前节点的值小于查找值则向右下走。同时因为二叉查找树是有序的，对其中序遍历的结果即为排好序的数组。</p>
 <p><a href="https://leetcode.com/problems/recover-binary-search-tree/" target="_blank" rel="noopener">99. Recover Binary Search Tree</a><br>有一个技巧是如果遍历整个序列过程中只出现了一次次序错误，说明就是这两个相邻节点需要被交换；如果出现了两次次序错误，那就需要交换这两个节点。</p>
 <p><a href="https://leetcode.com/problems/trim-a-binary-search-tree/" target="_blank" rel="noopener">669. Trim a Binary Search Tree</a><br>利用二叉查找树的大小关系，我们可以很容易地利用递归进行树的处理。</p>
-<h2 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h2><p><strong>字典树</strong> (Trie) 用于判断字符串是否存在或者是否具有某种字符串前缀。为什么需要用字典树解决这类问题呢？假如我们有一个储存了近万个单词的字典，即使我们使用哈希，在其中搜索一个单词的实际开销也是非常大的，且无法轻易支持搜索单词前缀。然而由于一个英文单词的长度 n 通常在 10 以内，如果我们使用字典树，则可以在 O(n)——近似 O(1) 的时间内完成搜索，且额外开销非常小。</p>
+<h2 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h2><p>字典树 (Trie) 用于判断字符串是否存在或者是否具有某种字符串前缀。为什么需要用字典树解决这类问题呢？假如我们有一个储存了近万个单词的字典，即使我们使用哈希，在其中搜索一个单词的实际开销也是非常大的，且无法轻易支持搜索单词前缀。然而由于一个英文单词的长度 n 通常在 10 以内，如果我们使用字典树，则可以在 O(n)——近似 O(1) 的时间内完成搜索，且额外开销非常小。</p>
 <p><a href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank" rel="noopener">208. Implement Trie (Prefix Tree)</a><br>字典树的典型实现方法。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank" rel="noopener">226. Invert Binary Tree</a><br>巧用递归，你可以在五行内完成这道题。</p>
 <p><a href="https://leetcode.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">617. Merge Two Binary Trees</a><br>同样的，利用递归可以轻松搞定。</p>
@@ -512,7 +512,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">277</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -523,7 +523,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -581,7 +581,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -1,0 +1,853 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Bogleheads,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="什么是 LEAPS？LEAPS = Long-term Equity Anticipation Securities，长期股票期权到期时间长：&amp;gt;= 1 年，常见 2-3 年我的最爱：回报高、风险可控、出场灵活比 Covered Call 更赚钱，也更安心LEAPS = 期权中的玄铁重剑 案例背景：NVDA录制当天股价 = $170.29买 100 股 = $170.29 x 100 = $1">
+<meta name="keywords" content="Bogleheads">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LEAPS Call">
+<meta property="og:url" content="https://necusjz.github.io/p/2153657546.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="什么是 LEAPS？LEAPS = Long-term Equity Anticipation Securities，长期股票期权到期时间长：&amp;gt;= 1 年，常见 2-3 年我的最爱：回报高、风险可控、出场灵活比 Covered Call 更赚钱，也更安心LEAPS = 期权中的玄铁重剑 案例背景：NVDA录制当天股价 = $170.29买 100 股 = $170.29 x 100 = $1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2026-04-20T13:11:10.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LEAPS Call">
+<meta name="twitter:description" content="什么是 LEAPS？LEAPS = Long-term Equity Anticipation Securities，长期股票期权到期时间长：&amp;gt;= 1 年，常见 2-3 年我的最爱：回报高、风险可控、出场灵活比 Covered Call 更赚钱，也更安心LEAPS = 期权中的玄铁重剑 案例背景：NVDA录制当天股价 = $170.29买 100 股 = $170.29 x 100 = $1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/2153657546.html">
+
+
+
+
+
+  <title> LEAPS Call | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2153657546.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                LEAPS Call
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-04-09T21:06:09+10:00">
+                2026-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是-LEAPS？"><a href="#什么是-LEAPS？" class="headerlink" title="什么是 LEAPS？"></a>什么是 LEAPS？</h2><p>LEAPS = Long-term Equity Anticipation Securities，长期股票期权<br>到期时间长：&gt;= 1 年，常见 2-3 年<br>我的最爱：回报高、风险可控、出场灵活<br>比 Covered Call 更赚钱，也更安心<br>LEAPS = 期权中的玄铁重剑</p>
+<h2 id="案例背景：NVDA"><a href="#案例背景：NVDA" class="headerlink" title="案例背景：NVDA"></a>案例背景：NVDA</h2><p>录制当天股价 = $170.29<br>买 100 股 = $170.29 x 100 = $17,029<br>买 LEAPS = $47.82 x 100 = $4,782<br>节省资金 = $12,247<br>Delta ~= 0.75 -&gt; 股价涨 $1，期权涨 $0.75 ~= 持有 75 股</p>
+<h2 id="权利金拆解"><a href="#权利金拆解" class="headerlink" title="权利金拆解"></a>权利金拆解</h2><p>期权总价 = $4,782<br>内在价值 = ($170.29 - $145) x 100 = $2,529<br>外在价值 = $4,782 - $2,529 = $2,253</p>
+<ul>
+<li>内在 = 眼前的钱</li>
+<li>外在 = 未来的不确定溢价</li>
+</ul>
+<a id="more"></a>
+<h2 id="最坏情境对比"><a href="#最坏情境对比" class="headerlink" title="最坏情境对比"></a>最坏情境对比</h2><p>若 NVDA 跌到 $145：</p>
+<ul>
+<li>股票持有者亏 = ($170.29 - $145) x 100 = $2,529</li>
+<li>LEAPS 亏 = 权利金 = $4,782</li>
+</ul>
+<p>差额 = 外在价值 $2,253</p>
+<h2 id="外在价值补偿逻辑"><a href="#外在价值补偿逻辑" class="headerlink" title="外在价值补偿逻辑"></a>外在价值补偿逻辑</h2><p>省下资金 = $12,247<br>风险差额 = $2,253<br>所需回报率 = $2,253 / $12,247 ~= 18%</p>
+<p>两年赚 18% 并不难<br>还可以 DCA 建仓，或买更低行权价 LEAPS</p>
+<h2 id="下行保护"><a href="#下行保护" class="headerlink" title="下行保护"></a>下行保护</h2><p>极端情况：NVDA = $0<br>持股 100 股亏 = $170.29 x 100 = $17,029<br>LEAPS 最大亏 = 权利金 = $4,782</p>
+<p>LEAPS 在极端情况更安全</p>
+<h2 id="LEAPS-的风险-amp-纪律"><a href="#LEAPS-的风险-amp-纪律" class="headerlink" title="LEAPS 的风险 &amp; 纪律"></a>LEAPS 的风险 &amp; 纪律</h2><p>最大风险：贪心不卖 -&gt; 盈利回吐甚至亏光<br>我的习惯：第一周涨 20% -&gt; 毫不犹豫卖<br>时间磨损：到期前 2-3 个月下降快<br>原则：剩 3 个月必卖，止盈止损都行<br>仓位控制：LEAPS &lt;= 总仓位的 10%-20%</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>NVDA LEAPS = 用不到 $5,000 模拟 75 股 NVDA<br>优势：省 72% 资金，风险有限，享受长期上涨<br>劣势：外在价值风险 $2,253，但可用节省资金对冲</p>
+<p>聪明的持股替代方案</p>
+<h2 id="出场-amp-入场策略"><a href="#出场-amp-入场策略" class="headerlink" title="出场 &amp; 入场策略"></a>出场 &amp; 入场策略</h2><p>出现反弹 -&gt; 卖出获利<br>或接受 Breakeven 买正股：</p>
+<ul>
+<li>Breakeven = $145 + $47.82 = $192.82</li>
+<li>若能接受两年后 $192.82 买 100 股 -&gt; 可行权</li>
+</ul>
+<p>佩罗西就用此方式低价买 NVDA<br>入场最好在低位，好公司给时间大概率会反弹</p>
+<h2 id="案例回顾：NVDA"><a href="#案例回顾：NVDA" class="headerlink" title="案例回顾：NVDA"></a>案例回顾：NVDA</h2><p>NVDA LEAPS：$4782 -&gt; $5802，短短几天 +21%<br>同期 NVDA 正股：$170 -&gt; $183，仅 +7%<br>期权放大优势 = 3 倍收益！</p>
+<h2 id="为什么选择-NVDA？"><a href="#为什么选择-NVDA？" class="headerlink" title="为什么选择 NVDA？"></a>为什么选择 NVDA？</h2><p>蓝筹股，基本面强劲<br>市值远超 500 亿，稳定性高<br>过去 12-18 个月趋势向上<br>PE ~60，在合理范围内</p>
+<h2 id="选股原则"><a href="#选股原则" class="headerlink" title="选股原则"></a>选股原则</h2><p>只做大盘股/蓝筹股/QQQ<br>小于 500 亿市值的公司不碰<br>正股小仓位 OK，但期权坚决不碰小公司<br>不追赌徒式回报，只要稳定跑赢大盘</p>
+<h2 id="入场条件"><a href="#入场条件" class="headerlink" title="入场条件"></a>入场条件</h2><p>VIX &gt; 15，市场不过度自信<br>布林带下轨 -&gt; 超卖区<br>RSI &lt; 40<br>多重信号重叠时才入场</p>
+<h2 id="价内-vs-价外"><a href="#价内-vs-价外" class="headerlink" title="价内 vs. 价外"></a>价内 vs. 价外</h2><p>价内（ITM）<br>NVDA $180 买 $150 看涨 -&gt; 行权有价值<br>权利金高，Delta 高，更贴近股价</p>
+<p>价外（OTM）<br>NVDA $180 买 $200 看涨 -&gt; 行权亏损<br>权利金低，Delta 低，涨了也不灵敏</p>
+<p>LEAPS 通常选 ITM 或近 ATM<br>长期买 Call，不买 Put<br>大盘/蓝筹股长期趋势向上<br>Put = 和趋势对赌，胜率低</p>
+<p>LEAPS 核心：顺势长期看多</p>
+<h2 id="Greeks-在-LEAPS-中的作用"><a href="#Greeks-在-LEAPS-中的作用" class="headerlink" title="Greeks 在 LEAPS 中的作用"></a>Greeks 在 LEAPS 中的作用</h2><p>Delta(Δ)：股价敏感度，LEAPS 选 ~0.7<br>Gamma(Γ)：Delta 的变化速度，LEAPS 小 -&gt; Delta 稳定<br>Theta(Θ)：时间衰减，LEAPS 慢，不像短期掉得快<br>IV：隐含波动率，IV 上升 -&gt; 期权涨价</p>
+<h2 id="出场规则"><a href="#出场规则" class="headerlink" title="出场规则"></a>出场规则</h2><p>7 天内 +10%-20% -&gt; 立即落袋<br>4 周内 +20%-40% -&gt; 止盈<br>&gt;= 100% -&gt; 强烈建议兑现<br>到期前 90 天：无论盈亏必须平仓<br>快速周转，避免浮盈变浮亏</p>
+<h2 id="心态与策略"><a href="#心态与策略" class="headerlink" title="心态与策略"></a>心态与策略</h2><p>LEAPS 是组合的加分项，不是全部<br>90% 仓位做卖方（Wheel），LEAPS 占 10%<br>不贪、不追，耐心执行纪律<br>长期跑赢大盘，就是胜利</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Bogleheads/" rel="tag"># Bogleheads</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2116147961.html" rel="next" title="Adaptability">
+                <i class="fa fa-chevron-left"></i> Adaptability
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/454669049.html" rel="prev" title="Cash Secured Put">
+                Cash Secured Put <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">277</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-LEAPS？"><span class="nav-number">1.</span> <span class="nav-text">什么是 LEAPS？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例背景：NVDA"><span class="nav-number">2.</span> <span class="nav-text">案例背景：NVDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权利金拆解"><span class="nav-number">3.</span> <span class="nav-text">权利金拆解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最坏情境对比"><span class="nav-number">4.</span> <span class="nav-text">最坏情境对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外在价值补偿逻辑"><span class="nav-number">5.</span> <span class="nav-text">外在价值补偿逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下行保护"><span class="nav-number">6.</span> <span class="nav-text">下行保护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LEAPS-的风险-amp-纪律"><span class="nav-number">7.</span> <span class="nav-text">LEAPS 的风险 &amp; 纪律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出场-amp-入场策略"><span class="nav-number">9.</span> <span class="nav-text">出场 &amp; 入场策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例回顾：NVDA"><span class="nav-number">10.</span> <span class="nav-text">案例回顾：NVDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么选择-NVDA？"><span class="nav-number">11.</span> <span class="nav-text">为什么选择 NVDA？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选股原则"><span class="nav-number">12.</span> <span class="nav-text">选股原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入场条件"><span class="nav-number">13.</span> <span class="nav-text">入场条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#价内-vs-价外"><span class="nav-number">14.</span> <span class="nav-text">价内 vs. 价外</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Greeks-在-LEAPS-中的作用"><span class="nav-number">15.</span> <span class="nav-text">Greeks 在 LEAPS 中的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出场规则"><span class="nav-number">16.</span> <span class="nav-text">出场规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心态与策略"><span class="nav-number">17.</span> <span class="nav-text">心态与策略</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

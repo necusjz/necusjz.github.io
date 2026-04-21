@@ -280,6 +280,392 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3765477483.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3765477483.html" itemprop="url">
+                  面试题 3.2：不修改数组找出重复的数字
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T22:14:42+11:00">
+                2017-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在一个长度为 n+1 的数组里的所有数字都在 1～n 的范围内，所以数组中至少有一个数字是重复的。请找出数组中任意一个重复的数字，但不能修改输入的数组。例如，如果输入长度为 8 的数组 [2, 3, 5, 4, 3, 2, 6, 7]，那么对应的输出是重复的数字 2 或者 3。</p>
+</blockquote>
+<ul>
+<li>可以创建一个长度为 n+1 的辅助数组，该方案需要 O(n) 的辅助空间。</li>
+<li>某范围里数字的个数对解决这个问题很重要。</li>
+<li>函数 countRange 将被调用 O(logn) 次，每次需要 O(n) 的时间，总时间复杂度是 O(nlogn)，相当于以时间换空间。</li>
+<li><strong>交流的重要性：</strong>面试官提出不同的<strong>功能要求</strong>或者<strong>性能要求</strong>，我们最终选取的算法也将不同。</li>
+<li>能快速、正确地实现二分查找算法的代码。</li>
+</ul>
+<p><a href="https://gist.githubusercontent.com/necusjz/74768154bc00d4b5f8c324470912b555/raw/a817b319e3f7aad1e202e0e5ff128d9f2387d7d5/03_02_FindDuplicationNoEdit.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1539951461.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1539951461.html" itemprop="url">
+                  面试题 3.1：找出数组中重复的数字
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-16T22:55:46+11:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在一个长度为 n 的数组里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入长度为 7 的数组 [2, 3, 1, 0, 2, 5, 3]，那么对应的输出是重复的数字 2 或者 3。</p>
+</blockquote>
+<ul>
+<li>排序一个长度为 n 的数组需要 O(nlogn) 的时间。</li>
+<li>利用<strong>哈希表</strong>可以实现时间复杂度为 O(n) 的算法，但代价是一个空间复杂度为 O(n) 的哈希表。</li>
+<li>重复数字通过<strong>指针</strong>，传递给函数的调用者。</li>
+<li>尽管有一个两重循环，但每个数字最多只要交换两次就能找到属于它自己的位置，故时间复杂度是 O(n)。</li>
+<li>一维数组在内存中占据连续的空间，可以根据下标定位对应的元素。</li>
+<li>问题比较复杂时，关键是能否通过<strong>具体的例子</strong>找出其中的规律。</li>
+</ul>
+<p><a href="https://gist.githubusercontent.com/necusjz/8aa1c6ddebdd9da390161900a1f6240d/raw/79ad885bd1c1163c9f59ee558e63ac0e260ee68d/03_01_FindDuplication.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1774076896.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1774076896.html" itemprop="url">
+                  面试题 4：二维数组中的查找
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T22:53:54+10:00">
+                2017-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+</blockquote>
+<ul>
+<li>通过分析简单具体的例子，试图寻找普遍的规律。</li>
+<li>在二维数组的中间选取一个数字，转变成从数组的一个角上选取数字。</li>
+<li>如果该数字大于要查找的数字，则剔除这个数字所在列；如果该数字小于要查找的数字，则剔除这个数字所在的行。</li>
+<li>也可以选取左下角的数字。</li>
+<li>注意特殊输入测试（空指针）。</li>
+<li>根据行号和列号计算出相对于数组首地址的偏移量。</li>
+</ul>
+<p><a href="https://gist.githubusercontent.com/necusjz/83dfc36a20f58eba1aea9dbc8da71bce/raw/81e306769a73284820e71f060207b028a90b14ca/04_FindInPartiallySortedMatrix.cpp" target="_blank" rel="noopener">Source Code</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3731188003.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -526,397 +912,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2996032966.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2996032966.html" itemprop="url">
-                  《面试宝典》读书笔记 Ⅱ
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-04T23:21:16+10:00">
-                2017-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>关键字、基本类型与运算、字符串与数组</p>
-</blockquote>
-<h2 id="变量命名的规则"><a href="#变量命名的规则" class="headerlink" title="变量命名的规则"></a>变量命名的规则</h2><h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><ul>
-<li>变量名</li>
-<li>函数名</li>
-<li>数组名</li>
-</ul>
-<h2 id="break、continue、return-的区别"><a href="#break、continue、return-的区别" class="headerlink" title="break、continue、return 的区别"></a>break、continue、return 的区别</h2><h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>用于直接强行跳出当前循环，不再执行剩余代码。<br>仅仅终止了内层循环的执行，而不影响外层循环的执行。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2996032966.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2841794997.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2841794997.html" itemprop="url">
-                  AOAPC 读书笔记 Ⅱ
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T17:18:43+10:00">
-                2017-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>函数和递归</p>
-</blockquote>
-<h2 id="自定义函数和结构体"><a href="#自定义函数和结构体" class="headerlink" title="自定义函数和结构体"></a>自定义函数和结构体</h2><p><strong>函数可以定义成：</strong></p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">返回类型 函数名(参数列表) </span></span><br><span class="line"><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">    函数体</span></span><br><span class="line"><span class="template-variable">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>函数体的最后一条语句，应该是“return 表达式”；<br>参数和返回值最好是“一等公民”；<br>执行过程中，碰到了 <strong>return 语句</strong>，将直接退出这个函数，不去执行后面的语句；<br>始终没有 return 语句，则会返回一个不确定的值。<br><strong>定义结构体的方法为：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> 结构体名称 </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    域定义</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2841794997.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/731546748.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/731546748.html" itemprop="url">
-                  《面试宝典》读书笔记 Ⅰ
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-30T22:46:01+10:00">
-                2017-04-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>基本概念、面向对象技术</p>
-</blockquote>
-<h2 id="Java-语言的优点"><a href="#Java-语言的优点" class="headerlink" title="Java 语言的优点"></a>Java 语言的优点</h2><h3 id="纯面向对象语言"><a href="#纯面向对象语言" class="headerlink" title="纯面向对象语言"></a>纯面向对象语言</h3><p>能够直接反应现实生活中的对象。</p>
-<h3 id="平台无关性"><a href="#平台无关性" class="headerlink" title="平台无关性"></a>平台无关性</h3><p>由于 Java 为解释型语言，编译器会把 Java 代码变成<code>中间代码</code>，然后在 JVM 上解释执行。<br>中间代码与平台无关，可以很好地跨平台执行，具有很好的可移植性。</p>
-<h3 id="提供了很多内置的类库"><a href="#提供了很多内置的类库" class="headerlink" title="提供了很多内置的类库"></a>提供了很多内置的类库</h3><p>简化了开发人员的程序设计工作，同时缩短了项目开发的时间。<br>对多线程的支持、对网络通讯的支持、垃圾回收器。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/731546748.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/52/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/54/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/52/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/54/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -959,7 +959,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-count">277</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -970,7 +970,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1012,7 +1012,7 @@
         <div class="copyright">
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
