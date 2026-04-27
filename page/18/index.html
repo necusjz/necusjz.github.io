@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/942551829.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/399501003.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -302,8 +302,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/942551829.html" itemprop="url">
-                  Disruptor 背后的数据结构和算法
+                <a class="post-title-link" href="/p/399501003.html" itemprop="url">
+                  Designing an API Rate Limiter
                 </a>
               
             
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T14:42:45+11:00">
-                2021-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T18:52:28+11:00">
+                2021-02-20
               </time>
             
 
@@ -356,397 +356,20 @@
 
       
         
-          <h2 id="基于循环队列的生产者-消费者模型"><a href="#基于循环队列的生产者-消费者模型" class="headerlink" title="基于循环队列的生产者-消费者模型"></a>基于循环队列的生产者-消费者模型</h2><p>非循环的顺序队列在添加、删除数据的工程中，会<strong>涉及数据的搬移操作，导致性能变差</strong>。而循环队列正好可以解决这个数据搬移的问题，所以，性能更加好。所以，大部分用到顺序队列的场景中，我们都选择用顺序队列中的循环队列。实际上，循环队列这种数据结构，就是我们今天要讲的内存消息队列的雏形。我借助循环队列，实现了一个最简单的生产者-消费者模型。为了方便你理解，对于生产者和消费者之间操作的同步，我并没有用到线程相关的操作。而是采用了“当队列满了之后，生产者就轮训等待；当队列空了之后，消费者就轮训等待”这样的措施：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/942551829.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3247778254.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3247778254.html" itemprop="url">
-                  搜索引擎背后的数据结构和算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T13:19:37+11:00">
-                2021-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="整体系统介绍"><a href="#整体系统介绍" class="headerlink" title="整体系统介绍"></a>整体系统介绍</h2><p>搜索引擎大致可以分为四个部分：<strong>搜集、分析、索引、查询</strong>：</p>
-<ol>
-<li>搜集，就是我们常说的利用爬虫爬取网页；</li>
-<li>分析，主要负责网页内容抽取、分词，构建临时索引，计算 PageRank 值这几部分工作；</li>
-<li>索引，主要负责通过分析阶段得到的临时索引，构建倒排索引；</li>
-<li>查询，主要负责响应用户的请求，根据倒排索引获取相关网页，计算网页排名，返回查询结果给用户；</li>
-</ol>
-<h2 id="搜集"><a href="#搜集" class="headerlink" title="搜集"></a>搜集</h2><p>搜索引擎<strong>把整个互联网看作数据结构中的有向图</strong>，把每个页面看作一个顶点。如果某个页面中包含另外一个页面的链接，那我们就在两个顶点之间连一条有向边。我们可以利用图的遍历搜索算法，来遍历整个互联网中的网页。我们前面介绍过两种图的遍历方法，深度优先和广度优先。<strong>搜索引擎采用的是广度优先搜索策略</strong>。具体点讲的话，那就是，我们先找一些比较知名的网页（专业的叫法是权重比较高）的链接（比如新浪主页网址、腾讯主页网址等），作为种子网页链接，放入到队列中。爬虫按照广度优先的策略，不停地从队列中取出链接，然后去爬取对应的网页，解析出网页里包含的其他网页链接，再将解析出来的链接添加到队列中。</p>
-<p>爬虫在爬取网页的过程中，涉及的四个重要的文件。其中，links.bin 和 bloom_filter.bin 这两个文件是爬虫自身所用的；另外的两个 doc_raw.bin 和 doc_id.bin 是作为搜集阶段的成果，供后面的分析、索引、查询用的。</p>
-<h3 id="待爬取网页链接文件：links-bin"><a href="#待爬取网页链接文件：links-bin" class="headerlink" title="待爬取网页链接文件：links.bin"></a>待爬取网页链接文件：links.bin</h3><p>我们可以把整个页面看作一个大的字符串，然后利用字符串匹配算法，在这个大字符串中，搜索这样一个网页标签，然后顺序读取之间的字符串 – 这其实就是网页链接。在广度优先搜索爬取页面的过程中，爬虫会不停地解析页面链接，将其放到队列中。于是，队列中的链接就会越来越多，可能会多到内存放不下。所以，我们用一个存储在磁盘中的文件（links.bin）来作为广度优先搜索中的队列。爬虫从 links.bin 文件中，取出链接去爬取对应的页面。等爬取到网页之后，将解析出来的链接，直接存储到 links.bin 文件中。这样用文件来存储网页链接的方式，还有其他好处。比如，<strong>支持断点续爬</strong>。也就是说，当机器断电之后，网页链接不会丢失；当机器重启之后，还可以从之前爬取到的位置继续爬取。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3247778254.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2361214650.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2361214650.html" itemprop="url">
-                  Redis 常用数据类型对应的数据结构
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-23T12:38:26+11:00">
-                2021-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Redis-数据库介绍"><a href="#Redis-数据库介绍" class="headerlink" title="Redis 数据库介绍"></a>Redis 数据库介绍</h2><p>Redis 是一种键值（Key-Value）数据库。相对于关系型数据库（比如 MySQL），Redis 也被叫作<strong>非关系型数据库</strong>。像 MySQL 这样的关系型数据库，表的结构比较复杂，会包含很多字段，可以通过 SQL 语句，来实现非常复杂的查询需求。而 Redis 中只包含“键”和“值”两部分，只能通过“键”来查询“值”。正是因为这样简单的存储结构，也让 Redis 的读写效率非常高；除此之外，Redis 主要是作为内存数据库来使用，也就是说，数据是存储在内存中的。尽管它经常被用作内存数据库，但是，它也支持将数据存储在硬盘中。Redis 中，键的数据类型是字符串，但是<strong>为了丰富数据存储的方式，方便开发者使用，值的数据类型有很多</strong>，常用的数据类型有这样几种，它们分别是字符串、列表、字典、集合、有序集合。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2361214650.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/522404174.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/522404174.html" itemprop="url">
-                  Additional Resources
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-28T01:44:04+11:00">
-                2021-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Here are some useful links for further reading:</p>
+          <h2 id="What-is-a-Rate-Limiter"><a href="#What-is-a-Rate-Limiter" class="headerlink" title="What is a Rate Limiter?"></a>What is a Rate Limiter?</h2><p>Imagine we have a service which is receiving a huge number of requests, but it can only serve a limited number of requests per second. To handle this problem we would need some kind of throttling or rate limiting mechanism that would allow only a certain number of requests so our service can respond to all of them. A rate limiter, at a high level, limits the number of events an entity (user, device, IP, etc.) can perform in a particular time window. For example:</p>
 <ul>
-<li><a href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" target="_blank" rel="noopener">Dynamo</a> - Highly available key-value store;</li>
-<li><a href="http://notes.stephenholiday.com/Kafka.pdf" target="_blank" rel="noopener">Kafka</a> - A distributed messaging system for log processing;</li>
-<li><a href="https://www.akamai.com/es/es/multimedia/documents/technical-publication/consistent-hashing-and-random-trees-distributed-caching-protocols-for-relieving-hot-spots-on-the-world-wide-web-technical-publication.pdf" target="_blank" rel="noopener">Consistent Hashing</a> - Original paper;</li>
-<li><a href="https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf" target="_blank" rel="noopener">Paxos</a> - Protocol for distributed consensus;</li>
-<li><a href="http://sites.fas.harvard.edu/~cs265/papers/kung-1981.pdf" target="_blank" rel="noopener">Concurrency Controls</a> -<br>Optimistic methods for concurrency controls;</li>
-<li><a href="http://highscalability.com/blog/2011/11/14/using-gossip-protocols-for-failure-detection-monitoring-mess.html" target="_blank" rel="noopener">Gossip Protocol</a> - For failure detection and more;</li>
-<li><a href="http://static.googleusercontent.com/media/research.google.com/en/us/archive/chubby-osdi06.pdf" target="_blank" rel="noopener">Chubby</a> - Lock service for loosely-coupled distributed systems;</li>
-<li><a href="https://www.usenix.org/legacy/event/usenix10/tech/full_papers/Hunt.pdf" target="_blank" rel="noopener">ZooKeeper</a> - Wait-free coordination for Internet-scale systems;</li>
-<li><a href="https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener">MapReduce</a> - Simplified data processing on large clusters;</li>
-<li><a href="https://storageconference.us/2010/Papers/MSST/Shvachko.pdf" target="_blank" rel="noopener">Hadoop</a> - A distributed file system;</li>
+<li>A user can send only one message per second;</li>
+<li>A user is allowed only three failed credit card transactions per day;</li>
+<li>A single IP can only create twenty accounts per day;</li>
 </ul>
-
-          
+<p>In general, a rate limiter caps how many requests a sender can issue in a specific time window. It then blocks requests once the cap is reached.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/399501003.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -785,7 +408,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3434091281.html">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3988606675.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="necusjz">
@@ -807,8 +430,8 @@
             
               
                 
-                <a class="post-title-link" href="/p/3434091281.html" itemprop="url">
-                  Designing Ticketmaster
+                <a class="post-title-link" href="/p/3988606675.html" itemprop="url">
+                  Designing Typeahead Suggestion
                 </a>
               
             
@@ -824,8 +447,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-28T00:32:58+11:00">
-                2021-02-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-18T17:33:31+11:00">
+                2021-02-18
               </time>
             
 
@@ -861,27 +484,436 @@
 
       
         
-          <h2 id="What-is-an-Online-Movie-Ticket-Booking-System"><a href="#What-is-an-Online-Movie-Ticket-Booking-System" class="headerlink" title="What is an Online Movie Ticket Booking System?"></a>What is an Online Movie Ticket Booking System?</h2><p>A movie ticket booking system provides its customers the ability to purchase theatre seats online. E-ticketing systems allow the customers to browse through movies currently being played and to book seats, anywhere anytime.</p>
-<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Our ticket booking service should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
+          <h2 id="What-is-Typeahead-Suggestion"><a href="#What-is-Typeahead-Suggestion" class="headerlink" title="What is Typeahead Suggestion?"></a>What is Typeahead Suggestion?</h2><p>Typeahead suggestions enable users to search for known and frequently searched terms. As the user types into the search box, it tries to predict the query based on the characters the user has entered and gives a list of suggestions to complete the query. Typeahead suggestions help the user to articulate their search queries better. It’s not about speeding up the search process but rather about guiding the users and lending them a helping hand in constructing their search query.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><ul>
+<li><strong>Functional Requirements</strong>: As the user types in their query, our service should suggest top 10 terms starting with whatever the user has typed;</li>
+<li><strong>Non-Function Requirements</strong>: The suggestions should appear in real-time. The user should be able to see the suggestions within 200ms;</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3988606675.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3903474270.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3903474270.html" itemprop="url">
+                  Designing Youtube or Netflix
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-18T14:00:29+11:00">
+                2021-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Why-Youtube"><a href="#Why-Youtube" class="headerlink" title="Why Youtube?"></a>Why Youtube?</h2><p>Youtube is one of the most popular video sharing websites in the world. Users of the service can upload, view, share, rate, and report videos as well as add comments on videos.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>For the sake of this exercise, we plan to design a simpler version of Youtube with following requirements:<br><strong>Functional Requirements</strong>:</p>
 <ol>
-<li>Our ticket booking service should be able to list different cities where its affiliate cinemas are located;</li>
-<li>Once the user selects the city, the service should display the movies released in that particular city;</li>
-<li>Once the user selects a movie, the service should display the cinemas running that movie and its available showtimes;</li>
-<li>The user should be able to choose a show at a particular cinema and book their tickets;</li>
-<li>The service should be able to show the user the seating arrangement of the cinema hall. The user should be able to select multiple seats according to their preference;</li>
-<li>The user should be able to distinguish available seats from booked ones;</li>
-<li>Users should be able to put a hold on the seats for five minutes before they make a payment to finalize the booking;</li>
-<li>The user should be able to wait if there is a chance that the seats might become available, e.g., when holds by other users expire;</li>
-<li>Waiting customers should be serviced in a fair, first come, first serve manner;</li>
+<li>Users should be able to upload videos;</li>
+<li>Users should be able to share and view videos;</li>
+<li>Users should be able to perform searches based on video titles;</li>
+<li>Our services should be able to record stats of videos, e.g., likes/dislikes, total number of views, etc;</li>
+<li>Users should be able to add and view comments on videos;</li>
 </ol>
 <p><strong>Non-Functional Requirements</strong>:</p>
 <ol>
-<li>The system would need to be highly concurrent. There will be multiple booking requests for the same seat at any particular point in time. The service should handle this gracefully and fairly;</li>
-<li>The core thing of the service is ticket booking, which means financial transactions. This means that the system should be secure and the database ACID compliant;</li>
+<li>The system should be highly reliable, any video uploaded should not be lost;</li>
+<li>The system should be highly available. Consistency can take a hit (in the interest of availability); if a user doesn’t see a video for a while, it should be fine;</li>
+<li>Users should have a real-time experience while watching videos and should not feel any lag;</li>
+</ol>
+<p><strong>Not in Scope</strong>: Video recommendations, most popular videos, channels, subscriptions, watch later, favorites, etc.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3903474270.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1116262314.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1116262314.html" itemprop="url">
+                  Designing Twitter
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-17T18:41:07+11:00">
+                2021-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="What-is-Twitter"><a href="#What-is-Twitter" class="headerlink" title="What is Twitter?"></a>What is Twitter?</h2><p>Twitter is an online social networking service where users post and read short 140-character messages called “tweets”. Registered users can post and read tweets, but those who are not registered can only read them. Users access Twitter through their website interface, SMS, or mobile app.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>We will be designing a simpler version of Twitter with the following requirements:<br><strong>Functional Requirements</strong>:</p>
+<ol>
+<li>Users should be able to post new tweets;</li>
+<li>A user should be able to follow other users;</li>
+<li>Users should be able to mark tweets as favorites;</li>
+<li>The service should be able to create and display a user’s timeline consisting of top tweets from all the people the user follows;</li>
+<li>Tweets can contain photos and videos;</li>
+</ol>
+<p><strong>Non-Functional Requirements</strong>:</p>
+<ol>
+<li>Our service needs to be highly available;</li>
+<li>Acceptable latency of the system is 200ms for timeline generation;</li>
+<li>Consistency can take a hit (in the interest of availability); if a user doesn’t see a tweet for a while, it should be fine;</li>
+</ol>
+<p><strong>Extended Requirements</strong>:</p>
+<ol>
+<li>Searching for tweets;</li>
+<li>Replying to a tweet;</li>
+<li>Trending topics – current hot topics/searches;</li>
+<li>Tagging other users;</li>
+<li>Tweet Notification;</li>
+<li>Who to follow? Suggestions?</li>
+<li>Moments;</li>
 </ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/p/3434091281.html#more" rel="contents">
+            <a class="btn" href="/p/1116262314.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1494138080.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1494138080.html" itemprop="url">
+                  Designing Facebook Messenger
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-14T23:23:35+11:00">
+                2021-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="What-is-Facebook-Messenger"><a href="#What-is-Facebook-Messenger" class="headerlink" title="What is Facebook Messenger?"></a>What is Facebook Messenger?</h2><p>Facebook Messenger is a software application which provides text-based instant messaging services to its users. Messenger users can chat with their Facebook friends both from cell-phones and Facebook’s website.</p>
+<h2 id="Requirements-and-Goals-of-the-System"><a href="#Requirements-and-Goals-of-the-System" class="headerlink" title="Requirements and Goals of the System"></a>Requirements and Goals of the System</h2><p>Our Messenger should meet the following requirements:<br><strong>Functional Requirements</strong>:</p>
+<ol>
+<li>Messenger should support one-on-one conversations between users;</li>
+<li>Messenger should keep track of the online/offline statuses of its users;</li>
+<li>Messenger should support the persistent storage of chat history;</li>
+</ol>
+<p><strong>Non-Functional Requirements</strong>:</p>
+<ol>
+<li>Users should have real-time chat experience with minimum latency;</li>
+<li>Our system should be highly consistent; users should be able to see the same chat history on all their devices;</li>
+<li>Messenger’s high availability is desirable; we can tolerate lower availability in the interest of consistency;</li>
+</ol>
+<p><strong>Extended Requirements</strong>:</p>
+<ol>
+<li>Group Chats: Messenger should support multiple people talking to each other in a group;</li>
+<li>Push notifications: Messenger should be able to notify users of new messages when they are offline;</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1494138080.html#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -919,7 +951,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -962,7 +994,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">280</span>
+                <span class="site-state-item-count">270</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -973,7 +1005,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
