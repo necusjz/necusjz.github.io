@@ -280,6 +280,393 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1492973727.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1492973727.html" itemprop="url">
+                  Top K Elements
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T22:56:12+11:00">
+                2021-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>heapq 的大型应用现场，常与 freq 配合使用。借助 index 可以实现对复杂 object 的比较，也可以通过 total_ordering 定义数据类。有时需要用队列暂存 heappop 的元素。</p>
+</blockquote>
+<p>Any problem that asks us to find the <em>Top K Elements</em> among a given set falls under this pattern.</p>
+<p>The best data structure that comes to mind to keep track of “K” elements is <strong>heap</strong>. This pattern will make use of the heap to solve multiple problems dealing with “K” elements at a time from a set of given elements.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">freq = dict()</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> s:</span><br><span class="line">    freq[char] = freq.get(char, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">max_heap = []</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> freq:</span><br><span class="line">    heappush(max_heap, (-freq[char], char))</span><br><span class="line"></span><br><span class="line">ans = <span class="string">""</span></span><br><span class="line"><span class="keyword">while</span> max_heap:</span><br><span class="line">    queue, k = [], <span class="number">2</span>  <span class="comment"># store pop-up items</span></span><br><span class="line">    <span class="keyword">while</span> max_heap <span class="keyword">and</span> k &gt; <span class="number">0</span>:</span><br><span class="line">        count, char = heappop(max_heap)</span><br><span class="line">        ans += char</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> -count - <span class="number">1</span> &gt; <span class="number">0</span>:</span><br><span class="line">            queue.append((count + <span class="number">1</span>, char))</span><br><span class="line">        </span><br><span class="line">        k -= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> queue:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> queue:</span><br><span class="line">        heappush(max_heap, item)  <span class="comment"># push back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/top-k-frequent-words/" target="_blank" rel="noopener">692. Top K Frequent Words</a><br><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a><br><a href="https://leetcode.com/problems/k-closest-points-to-origin/" target="_blank" rel="noopener">973. K Closest Points to Origin</a><br><a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/" target="_blank" rel="noopener">1167. Minimum Cost to Connect Sticks</a><br><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. Top K Frequent Elements</a><br><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target="_blank" rel="noopener">451. Sort Characters By Frequency</a><br><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/" target="_blank" rel="noopener">703. Kth Largest Element in a Stream</a><br><a href="https://leetcode.com/problems/find-k-closest-elements/" target="_blank" rel="noopener">658. Find K Closest Elements</a><br><a href="https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/" target="_blank" rel="noopener">1481. Least Number of Unique Integers after K Removals</a><br><a href="https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/" target="_blank" rel="noopener">1508. Range Sum of Sorted Subarray Sums</a><br><a href="https://leetcode.com/problems/reorganize-string/" target="_blank" rel="noopener">767. Reorganize String</a><br><a href="https://leetcode.com/problems/rearrange-string-k-distance-apart/" target="_blank" rel="noopener">358. Rearrange String k Distance Apart</a><br><a href="https://leetcode.com/problems/task-scheduler/" target="_blank" rel="noopener">621. Task Scheduler</a><br><a href="https://leetcode.com/problems/maximum-frequency-stack/" target="_blank" rel="noopener">895. Maximum Frequency Stack</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/836241768.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/836241768.html" itemprop="url">
+                  Bitwise XOR
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T20:56:43+11:00">
+                2021-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>四两拨千斤的位运算，比如：剥离最右边的 1、将最右边的 1 置 0 等等。更多技巧可以参考 <a href="https://catonmat.net/low-level-bit-hacks" target="_blank" rel="noopener">Low Level Bit Hacks</a>。</p>
+</blockquote>
+<p><em>Bitwise XOR</em> returns 0 (false) if both bits are the same and returns 1 (true) otherwise. In other words, it only returns 1 if exactly one bit is set to 1 out of the two bits in comparison:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/educative/04.png" alt></p>
+<p>It is surprising to know the approaches that the XOR operator enables us to solve certain problems. For example, let’s take a look at the following problem:</p>
+<blockquote>
+<p>Given an array of n-1 integers in the range from 1 to n, find the one number that is missing from the array.</p>
+</blockquote>
+<p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span></span><br><span class="line">Answer: <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>A straight forward approach to solve this problem can be:</p>
+<ol>
+<li>Find the sum of all integers from 1 to n; let’s call it: s1.</li>
+<li>Subtract all the numbers in the input array from s1; this will give us the missing number.</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/836241768.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/581537989.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/581537989.html" itemprop="url">
+                  Modified Binary Search
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-31T20:46:57+11:00">
+                2021-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>无处不在的二分思想。往往通过外部变量 track 中间结果，元素不是 distinct 时需要单独处理。有时仅为解法的一小步，bisect_left 第一个大于等于；bisect_right 第一个大于。</p>
+</blockquote>
+<p>As we know, whenever we are given <strong>a sorted array or linked list or matrix</strong>, and we are asked to find a certain element, the best algorithm we can use is binary search.</p>
+<p>This pattern describes an efficient way to handle all problems involving <em>Binary Search</em>. We will go through a set of problems that will help us build an understanding of this pattern so that we can apply this technique to other problems we might come across in the interviews.</p>
+<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lo, hi = <span class="number">0</span>, len(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> lo &lt;= hi:</span><br><span class="line">    mid = lo + ((hi - lo) &gt;&gt; <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> nums[mid] &gt;= target:</span><br><span class="line">        <span class="keyword">if</span> mid == <span class="number">0</span> <span class="keyword">or</span> nums[mid<span class="number">-1</span>] &lt; target:  <span class="comment"># find leftmost element</span></span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        </span><br><span class="line">        hi = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        lo = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> len(nums)  <span class="comment"># all less</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/binary-search/" target="_blank" rel="noopener">704. Binary Search</a><br><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a><br><a href="https://leetcode.com/problems/find-smallest-letter-greater-than-target/" target="_blank" rel="noopener">744. Find Smallest Letter Greater Than Target</a><br><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. Find First and Last Position of Element in Sorted Array</a><br><a href="https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/" target="_blank" rel="noopener">702. Search in a Sorted Array of Unknown Size</a><br><a href="https://leetcode.com/problems/closest-binary-search-tree-value/" target="_blank" rel="noopener">270. Closest Binary Search Tree Value</a><br><a href="https://leetcode.com/problems/peak-index-in-a-mountain-array/" target="_blank" rel="noopener">852. Peak Index in a Mountain Array</a><br><a href="https://leetcode.com/problems/find-in-mountain-array/" target="_blank" rel="noopener">1095. Find in Mountain Array</a><br><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. Search in Rotated Sorted Array</a><br><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">153. Find Minimum in Rotated Sorted Array</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2189758150.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -522,383 +909,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2074145294.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2074145294.html" itemprop="url">
-                  Tree Depth-First Search
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T17:34:51+11:00">
-                2021-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>重点掌握左右子树相关和不相关时，两种递归代码的写法。</p>
-</blockquote>
-<p>This pattern is based on the <em>Depth-First Search</em> (DFS) technique to traverse a tree.</p>
-<p>We will be using recursion (or we can also use a <strong>stack</strong> for the iterative approach) to keep track of all the previous (parent) nodes while traversing. This also means that the space complexity of the algorithm will be O(H), where “H” is <strong>the maximum height of the tree</strong>.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""L&amp;R Unrelated"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root, path)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    path = path + [root.val]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right <span class="keyword">and</span> sum(path) == targetSum:</span><br><span class="line">        ans.append(path)</span><br><span class="line">    </span><br><span class="line">    dfs(root.left, path)</span><br><span class="line">    dfs(root.right, path)</span><br><span class="line"></span><br><span class="line">ans = []</span><br><span class="line">dfs(root, [])</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""L&amp;R Related"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    l = max(<span class="number">0</span>, dfs(root.left))</span><br><span class="line">    r = max(<span class="number">0</span>, dfs(root.right))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">nonlocal</span> ans</span><br><span class="line">    ans = max(ans, l + r + root.val)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max(l, r) + root.val</span><br><span class="line"></span><br><span class="line">ans = root.val</span><br><span class="line">dfs(root)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/path-sum/" target="_blank" rel="noopener">112. Path Sum</a><br><a href="https://leetcode.com/problems/path-sum-ii/" target="_blank" rel="noopener">113. Path Sum II</a><br><a href="https://leetcode.com/problems/sum-root-to-leaf-numbers/" target="_blank" rel="noopener">129. Sum Root to Leaf Numbers</a><br><a href="https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/" target="_blank" rel="noopener">1430. Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree</a><br><a href="https://leetcode.com/problems/path-sum-iii/" target="_blank" rel="noopener">437. Path Sum III</a><br><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. Diameter of Binary Tree</a><br><a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">124. Binary Tree Maximum Path Sum</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2304129997.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2304129997.html" itemprop="url">
-                  Tree Breadth-First Search
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T17:22:57+11:00">
-                2021-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>基本就是 deque 一把梭，不过需要单纯处理 root 为 None 的情况。借助同层节点的 index 可实现更细微的操作。</p>
-</blockquote>
-<p>This pattern is based on the <em>Breadth-First Search</em> (BFS) technique to traverse a tree.</p>
-<p>Any problem involving the traversal of a tree in a level-by-level order can be efficiently solved using this approach. We will use a <strong>queue</strong> to keep track of all the nodes of a level before we jump onto the next level. This also means that the space complexity of the algorithm will be O(W), where “W” is <strong>the maximum number of nodes on any level</strong>.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">queue = deque([root])</span><br><span class="line"><span class="keyword">while</span> queue:</span><br><span class="line">    curr_len = len(queue)</span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> range(curr_len):</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        <span class="keyword">if</span> idx != curr_len - <span class="number">1</span>:</span><br><span class="line">            node.next = queue[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># bfs</span></span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            queue.append(node.left)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            queue.append(node.right)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">102. Binary Tree Level Order Traversal</a><br><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="noopener">107. Binary Tree Level Order Traversal II</a><br><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">103. Binary Tree Zigzag Level Order Traversal</a><br><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/" target="_blank" rel="noopener">637. Average of Levels in Binary Tree</a><br><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">111. Minimum Depth of Binary Tree</a><br><a href="https://leetcode.com/problems/n-ary-tree-level-order-traversal/" target="_blank" rel="noopener">429. N-ary Tree Level Order Traversal</a><br><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/" target="_blank" rel="noopener">117. Populating Next Right Pointers in Each Node II</a><br><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">116. Populating Next Right Pointers in Each Node</a><br><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank" rel="noopener">199. Binary Tree Right Side View</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3232636938.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3232636938.html" itemprop="url">
-                  In-Place Reversal of a Linked List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-30T17:09:24+11:00">
-                2021-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>除了掌握反转链表的写法外，设置哨兵节点（前一个节点）、由远及近地处理 next pointer 也很重要。</p>
-</blockquote>
-<p>In a lot of problems, we are asked to reverse the links between a set of nodes of a linked list. Often, the constraint is that we need to do this <strong>in-place</strong>, i.e., using the existing node objects and without using extra memory.</p>
-<p><em>In-Place Reversal of a Linked List</em> pattern describes an efficient way to solve the above problem.</p>
-<h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dummy, dummy.next = ListNode(), head  <span class="comment"># set sentinel</span></span><br><span class="line">ptr = dummy</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(left - <span class="number">1</span>):</span><br><span class="line">    ptr = ptr.next</span><br><span class="line"></span><br><span class="line">prev, curr = <span class="literal">None</span>, ptr.next</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(right - left + <span class="number">1</span>):</span><br><span class="line">    curr.next, prev, curr = prev, curr, curr.next</span><br><span class="line"></span><br><span class="line"><span class="comment"># link</span></span><br><span class="line">ptr.next.next = curr</span><br><span class="line">ptr.next = prev</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> dummy.next</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><p><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">206. Reverse Linked List</a><br><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">92. Reverse Linked List II</a><br><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank" rel="noopener">25. Reverse Nodes in k-Group</a><br><a href="https://leetcode.com/problems/reverse-nodes-in-even-length-groups/" target="_blank" rel="noopener">2074. Reverse Nodes in Even Length Groups</a><br><a href="https://leetcode.com/problems/rotate-list/" target="_blank" rel="noopener">61. Rotate List</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -946,7 +956,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">277</span>
+                <span class="site-state-item-count">280</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

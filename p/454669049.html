@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="什么是 CSP？CSP 全称：Cash Secured Put（现金担保卖权）承诺在某个价格买股票，如果没跌到就收权利金两种结局：  低价买入心仪股票 没买到也能收租金  实战案例：特斯拉当前股价：$429卖出 $400 执行价 Put 期权，到期日 10/31（28 天后）可收权利金约 $1,530要么低价买入 TSLA，要么白拿权利金 关键指标解读Max Return：$1,530（最大收益）">
+<meta name="description" content="什么是 CSPCSP 全称：Cash Secured Put（现金担保卖权）承诺在某个价格买股票，如果没跌到就收权利金两种结局：  低价买入心仪股票 没买到也能收租金  实战案例：特斯拉当前股价：$429卖出 $400 执行价 Put 期权，到期日 10/31（28 天后）可收权利金约 $1,530要么低价买入 TSLA，要么白拿权利金 关键指标解读Max Return：$1,530（最大收益）M">
 <meta name="keywords" content="Bogleheads">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cash Secured Put">
 <meta property="og:url" content="https://necusjz.github.io/p/454669049.html">
 <meta property="og:site_name" content="Ethan&#39;s Blog">
-<meta property="og:description" content="什么是 CSP？CSP 全称：Cash Secured Put（现金担保卖权）承诺在某个价格买股票，如果没跌到就收权利金两种结局：  低价买入心仪股票 没买到也能收租金  实战案例：特斯拉当前股价：$429卖出 $400 执行价 Put 期权，到期日 10/31（28 天后）可收权利金约 $1,530要么低价买入 TSLA，要么白拿权利金 关键指标解读Max Return：$1,530（最大收益）">
+<meta property="og:description" content="什么是 CSPCSP 全称：Cash Secured Put（现金担保卖权）承诺在某个价格买股票，如果没跌到就收权利金两种结局：  低价买入心仪股票 没买到也能收租金  实战案例：特斯拉当前股价：$429卖出 $400 执行价 Put 期权，到期日 10/31（28 天后）可收权利金约 $1,530要么低价买入 TSLA，要么白拿权利金 关键指标解读Max Return：$1,530（最大收益）M">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2026-04-20T11:55:52.697Z">
+<meta property="og:updated_time" content="2026-04-27T11:21:53.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cash Secured Put">
-<meta name="twitter:description" content="什么是 CSP？CSP 全称：Cash Secured Put（现金担保卖权）承诺在某个价格买股票，如果没跌到就收权利金两种结局：  低价买入心仪股票 没买到也能收租金  实战案例：特斯拉当前股价：$429卖出 $400 执行价 Put 期权，到期日 10/31（28 天后）可收权利金约 $1,530要么低价买入 TSLA，要么白拿权利金 关键指标解读Max Return：$1,530（最大收益）">
+<meta name="twitter:description" content="什么是 CSPCSP 全称：Cash Secured Put（现金担保卖权）承诺在某个价格买股票，如果没跌到就收权利金两种结局：  低价买入心仪股票 没买到也能收租金  实战案例：特斯拉当前股价：$429卖出 $400 执行价 Put 期权，到期日 10/31（28 天后）可收权利金约 $1,530要么低价买入 TSLA，要么白拿权利金 关键指标解读Max Return：$1,530（最大收益）M">
 
 
 
@@ -355,7 +355,7 @@
       
 
       
-        <h2 id="什么是-CSP？"><a href="#什么是-CSP？" class="headerlink" title="什么是 CSP？"></a>什么是 CSP？</h2><p>CSP 全称：Cash Secured Put（现金担保卖权）<br>承诺在某个价格买股票，如果没跌到就收权利金<br>两种结局：</p>
+        <h2 id="什么是-CSP"><a href="#什么是-CSP" class="headerlink" title="什么是 CSP"></a>什么是 CSP</h2><p>CSP 全称：Cash Secured Put（现金担保卖权）<br>承诺在某个价格买股票，如果没跌到就收权利金<br>两种结局：</p>
 <ol>
 <li>低价买入心仪股票</li>
 <li>没买到也能收租金</li>
@@ -366,7 +366,7 @@
 <h2 id="入场逻辑"><a href="#入场逻辑" class="headerlink" title="入场逻辑"></a>入场逻辑</h2><p>偏看涨市场最佳<br>VIX &gt; 15<br>RSI &lt; 40<br>股价在布林带下半区<br>此时卖出溢价更高，胜率更大</p>
 <h2 id="出场逻辑"><a href="#出场逻辑" class="headerlink" title="出场逻辑"></a>出场逻辑</h2><p>临近行权不想接手 -&gt; Roll 展期<br>股价接近/跌破行权价时 -&gt; Roll 到远期合约<br>权利金衰减 90% 以上 -&gt; 提前买回，解锁资金<br>极端下跌 -&gt; Roll 到更低行权价摊低成本<br>暴跌时 IV 飙升，溢价更高，Roll 并非坏事</p>
 <h2 id="风险分析"><a href="#风险分析" class="headerlink" title="风险分析"></a>风险分析</h2><p>最大风险不是买太高<br>而是错过抄底机会（捡芝麻丢西瓜）<br>需要锁定大额资金 -&gt; 机会成本<br>长期优质股：即使被行权，最终仍能赚钱</p>
-<h2 id="谁适合-CSP？"><a href="#谁适合-CSP？" class="headerlink" title="谁适合 CSP？"></a>谁适合 CSP？</h2><p>有闲置现金，想稳定收租的人<br>不在乎错过绝对低点的投资者<br>愿意长期持有优质股的人<br>有人靠 CSP 收租：每月卖 5-10 张，月入上万美金</p>
+<h2 id="谁适合-CSP"><a href="#谁适合-CSP" class="headerlink" title="谁适合 CSP"></a>谁适合 CSP</h2><p>有闲置现金，想稳定收租的人<br>不在乎错过绝对低点的投资者<br>愿意长期持有优质股的人<br>有人靠 CSP 收租：每月卖 5-10 张，月入上万美金</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>CSP：稳健、保守，用现金换稳定收益<br>还能低价买进优质股票<br>适合心态稳、目标明确的人</p>
 
       
@@ -486,7 +486,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">277</span>
+                <span class="site-state-item-count">280</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -532,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-CSP？"><span class="nav-number">1.</span> <span class="nav-text">什么是 CSP？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战案例：特斯拉"><span class="nav-number">2.</span> <span class="nav-text">实战案例：特斯拉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键指标解读"><span class="nav-number">3.</span> <span class="nav-text">关键指标解读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入场逻辑"><span class="nav-number">4.</span> <span class="nav-text">入场逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出场逻辑"><span class="nav-number">5.</span> <span class="nav-text">出场逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#风险分析"><span class="nav-number">6.</span> <span class="nav-text">风险分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谁适合-CSP？"><span class="nav-number">7.</span> <span class="nav-text">谁适合 CSP？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-CSP"><span class="nav-number">1.</span> <span class="nav-text">什么是 CSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战案例：特斯拉"><span class="nav-number">2.</span> <span class="nav-text">实战案例：特斯拉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键指标解读"><span class="nav-number">3.</span> <span class="nav-text">关键指标解读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入场逻辑"><span class="nav-number">4.</span> <span class="nav-text">入场逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出场逻辑"><span class="nav-number">5.</span> <span class="nav-text">出场逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#风险分析"><span class="nav-number">6.</span> <span class="nav-text">风险分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谁适合-CSP"><span class="nav-number">7.</span> <span class="nav-text">谁适合 CSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

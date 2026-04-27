@@ -280,6 +280,457 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2993337315.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2993337315.html" itemprop="url">
+                  Design a Unique ID Generator in Distributed Systems
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-02T23:57:06+11:00">
+                2023-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>In this chapter, you are asked to design a unique ID generator in distributed systems. Your first thought might be to use a primary key with the <em>auto_increment</em> attribute in a traditional database. However, <em>auto_increment</em> does not work in a distributed environment because a single database server is not large enough and generating unique IDs across multiple databases with minimal delay is challenging.</p>
+<p>Here are a few examples of unique IDs:<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/08/00.svg" alt></p>
+<h2 id="Step-1-Understand-the-problem-and-establish-design-scope"><a href="#Step-1-Understand-the-problem-and-establish-design-scope" class="headerlink" title="Step 1 - Understand the problem and establish design scope"></a>Step 1 - Understand the problem and establish design scope</h2><p>Asking clarification questions is the first step to tackle any system design interview question. Here is an example of candidate-interviewer interaction:<br>Candidate: What are the characteristics of unique IDs?<br>Interviewer: IDs must be unique and sortable.<br>C: For each new record, does ID increment by 1?<br>I: The ID increments by time but not necessarily only increments by 1. IDs created in the evening are larger than those created in the morning on the same day.<br>C: Do IDs only contain numerical values?<br>I: Yes, that is correct.<br>C: What is the ID length requirement?<br>I: IDs should fit into 64-bit.<br>C: What is the scale of the system?<br>I: The system should be able to generate 10,000 IDs per second.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2993337315.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/58895832.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/58895832.html" itemprop="url">
+                  Design a Key-value Store
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-25T15:35:55+11:00">
+                2023-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>A key-value store, also referred to as a key-value database, is a non-relational database. Each unique identifier is stored as a key with its associated value. This data pairing is known as a “key-value” pair.</p>
+<p>In a key-value pair, the key must be unique, and the value associated with the key can be accessed through the key. Keys can be plain text or hashed values. For performance reasons, a short key works better. What do keys look like? Here are a few examples:</p>
+<ul>
+<li>Plain text key: “last_logged_in_at”</li>
+<li>Hashed key: 253DDEC4</li>
+</ul>
+<p>The value in a key-value pair can be strings, lists, objects, etc. The value is usually treated as an opaque object in key-value stores, such as Amazon dynamo [1], Memcached [2], Redis [3], etc.</p>
+<p>Here is a data snippet in a key-value store:</p>
+<table>
+<thead>
+<tr>
+<th align="left">key</th>
+<th align="left">value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">145</td>
+<td align="left">john</td>
+</tr>
+<tr>
+<td align="left">147</td>
+<td align="left">bob</td>
+</tr>
+<tr>
+<td align="left">160</td>
+<td align="left">julia</td>
+</tr>
+</tbody></table>
+<p>In this chapter, you are asked to design a key-value store that supports the following operations:</p>
+<ul>
+<li>put(key, value)  // insert “value” associated with “key”</li>
+<li>get(key)  // get “value” associated with “key”</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/58895832.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3609435369.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3609435369.html" itemprop="url">
+                  Design Consistent Hashing
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-23T22:44:09+11:00">
+                2023-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly across servers. Consistent hashing is a commonly used technique to achieve this goal. But first, let us take an in-depth look at the problem.</p>
+<h2 id="The-rehashing-problem"><a href="#The-rehashing-problem" class="headerlink" title="The rehashing problem"></a>The rehashing problem</h2><p>If you have n cache servers, a common way to balance the load is to use the following hash method:<br><em>serverIndex = hash(key) % N</em>, where N is the size of the server pool.</p>
+<p>Let us use an example to illustrate how it works. As shown in Table 1, we have 4 servers and 8 string keys with their hashes:</p>
+<table>
+<thead>
+<tr>
+<th align="left">key</th>
+<th align="left">hash</th>
+<th align="left">hash % 4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">key0</td>
+<td align="left">18358617</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key1</td>
+<td align="left">26143584</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key2</td>
+<td align="left">18131146</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">key3</td>
+<td align="left">35863496</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">key4</td>
+<td align="left">34085809</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">key5</td>
+<td align="left">27581703</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">key6</td>
+<td align="left">38164978</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">key7</td>
+<td align="left">22530351</td>
+<td align="left">3</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3609435369.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/679484188.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -529,418 +980,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1174292260.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1174292260.html" itemprop="url">
-                  Back-of-the-envelope Estimation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-14T15:21:21+11:00">
-                2023-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>In a system design interview, sometimes you are asked to estimate system capacity or performance requirements using a back-of-the-envelope estimation. According to Jeff Dean, Google Senior Fellow, “back-of-the-envelope calculations are estimates you create using a combination of thought experiments and common performance numbers to get a good feel for which designs will meet your requirements” [1].</p>
-<p>You need to have a good sense of scalability basics to effectively carry out back-of-the-envelope estimation. The following concepts should be well understood: power of two [2], latency numbers every programmer should know, and availability numbers.</p>
-<h2 id="Power-of-two"><a href="#Power-of-two" class="headerlink" title="Power of two"></a>Power of two</h2><p>Although data volume can become enormous when dealing with distributed systems, calculation all boils down to the basics. To obtain correct calculations, it is critical to know the data volume unit using the power of 2. A byte is a sequence of 8 bits. An ASCII character uses one byte of memory (8 bits). Below is a table explaining the data volume unit (Table 1):</p>
-<table>
-<thead>
-<tr>
-<th align="left">Power</th>
-<th align="left">Approximate value</th>
-<th align="left">Full name</th>
-<th align="left">Short name</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">10</td>
-<td align="left">1 Thousand</td>
-<td align="left">1 Kilobyte</td>
-<td align="left">1 KB</td>
-</tr>
-<tr>
-<td align="left">20</td>
-<td align="left">1 Million</td>
-<td align="left">1 Megabyte</td>
-<td align="left">1 MB</td>
-</tr>
-<tr>
-<td align="left">30</td>
-<td align="left">1 Billion</td>
-<td align="left">1 Gigabyte</td>
-<td align="left">1 GB</td>
-</tr>
-<tr>
-<td align="left">40</td>
-<td align="left">1 Trillion</td>
-<td align="left">1 Terabyte</td>
-<td align="left">1 TB</td>
-</tr>
-<tr>
-<td align="left">50</td>
-<td align="left">1 Quadrillion</td>
-<td align="left">1 Petabyte</td>
-<td align="left">1 PB</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1174292260.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1166998146.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1166998146.html" itemprop="url">
-                  Scale from Zero to Millions of Users
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-13T14:05:27+11:00">
-                2023-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Designing a system that supports millions of users is challenging, and it is a journey that requires continuous refinement and endless improvement. In this chapter, we build a system that supports a single user and gradually scale it up to serve millions of users. After reading this chapter, you will master a handful of techniques that will help you to crack the system design interview questions.</p>
-<h2 id="Single-server-setup"><a href="#Single-server-setup" class="headerlink" title="Single server setup"></a>Single server setup</h2><p>A journey of a thousand miles begins with a single step, and building a complex system is no different. To start with something simple, everything is running on a single server. Figure 1 shows the illustration of a single server setup where everything is running on one server: web app, database, cache, etc.<br><img src="https://raw.githubusercontent.com/necusjz/p/master/SystemDesign/bytebytego/02/00.png" alt></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1166998146.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1243524743.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1243524743.html" itemprop="url">
-                  更加复杂的数据结构
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-04-15T18:59:01+10:00">
-                2023-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>目前为止，我们接触了大量的数据结构，包括利用指针实现的三剑客和 C++ 自带的 STL 等。对于一些题目，我们不仅需要利用多个数据结果解决问题，还需要把这些数据结构进行嵌套和联动，进行更为复杂、更为快速的操作。</p>
-<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p><strong>并查集</strong> (Union-Fnd) 可以动态地连通两个点，并且可以非常快速地判断两个点是否连通。假设存在 n 个节点，我们先将所有节点的父亲标为自己；每次要连接节点 i 和 j 时，我们可以将 i 的父亲标为 j；每次要查询两个节点是否相连时，我们可以查找 i 和 j 的祖先是否最终为同一个人：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CodingInterview/leetcode/09.png" alt></p>
-<p>其中 union 操作可以将两个集合连在一起，ﬁnd 操作可以查找给定节点的祖先，并且如果可以的话，将集合的层数/高度降低。</p>
-<p><a href="https://leetcode.com/problems/redundant-connection/" target="_blank" rel="noopener">684. Redundant Connection</a><br>因为需要判断是否两个节点被重复连通，所以我们可以使用并查集来解决此类问题。为了加速查找，我们可以使用路径压缩和按秩合并来优化并查集。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1243524743.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -988,7 +1027,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">277</span>
+                <span class="site-state-item-count">280</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

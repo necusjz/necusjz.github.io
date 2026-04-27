@@ -1,0 +1,889 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Bogleheads,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="选股 vs. 系统选股：  极强专业能力 大量时间精力 高风险、精神折磨  系统：  只需纪律，不需天赋 每周 1-2 小时足够 风险可控、心态稳定  「指数 + 期权」双轨交易系统上轨：QQQ 指数定投，长期复利增长下轨：QQQ Wheel + LEAPS，现金流，利润加速 $2W -&amp;gt; $10W -&amp;gt; $100W -&amp;gt; 退休">
+<meta name="keywords" content="Bogleheads">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Position Sizing">
+<meta property="og:url" content="https://necusjz.github.io/p/18064595.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="选股 vs. 系统选股：  极强专业能力 大量时间精力 高风险、精神折磨  系统：  只需纪律，不需天赋 每周 1-2 小时足够 风险可控、心态稳定  「指数 + 期权」双轨交易系统上轨：QQQ 指数定投，长期复利增长下轨：QQQ Wheel + LEAPS，现金流，利润加速 $2W -&amp;gt; $10W -&amp;gt; $100W -&amp;gt; 退休">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2026-04-26T13:39:00.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Position Sizing">
+<meta name="twitter:description" content="选股 vs. 系统选股：  极强专业能力 大量时间精力 高风险、精神折磨  系统：  只需纪律，不需天赋 每周 1-2 小时足够 风险可控、心态稳定  「指数 + 期权」双轨交易系统上轨：QQQ 指数定投，长期复利增长下轨：QQQ Wheel + LEAPS，现金流，利润加速 $2W -&amp;gt; $10W -&amp;gt; $100W -&amp;gt; 退休">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/18064595.html">
+
+
+
+
+
+  <title> Position Sizing | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/18064595.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Position Sizing
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-04-22T00:43:22+10:00">
+                2026-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="选股-vs-系统"><a href="#选股-vs-系统" class="headerlink" title="选股 vs. 系统"></a>选股 vs. 系统</h2><p>选股：</p>
+<ul>
+<li>极强专业能力</li>
+<li>大量时间精力</li>
+<li>高风险、精神折磨</li>
+</ul>
+<p>系统：</p>
+<ul>
+<li>只需纪律，不需天赋</li>
+<li>每周 1-2 小时足够</li>
+<li>风险可控、心态稳定</li>
+</ul>
+<h2 id="「指数-期权」双轨交易系统"><a href="#「指数-期权」双轨交易系统" class="headerlink" title="「指数 + 期权」双轨交易系统"></a>「指数 + 期权」双轨交易系统</h2><p>上轨：QQQ 指数定投，长期复利增长<br>下轨：QQQ Wheel + LEAPS，现金流，利润加速</p>
+<p>$2W -&gt; $10W -&gt; $100W -&gt; 退休</p>
+<a id="more"></a>
+<h3 id="第一阶段：起步期"><a href="#第一阶段：起步期" class="headerlink" title="第一阶段：起步期"></a>第一阶段：起步期</h3><p>$2W -&gt; $10W<br>核心武器：QQQ Sell Put (CSP)<br>预计时间：3-5 年（含工资持续投入）</p>
+<h4 id="为什么用-QQQ-做-Sell-Put"><a href="#为什么用-QQQ-做-Sell-Put" class="headerlink" title="为什么用 QQQ 做 Sell Put"></a>为什么用 QQQ 做 Sell Put</h4><p>直接持有 TQQQ：震荡损耗严重（Volatility Decay）<br>买 TQQQ LEAPS：杠杆 x 3 x LEAPS 杠杆 = 波动失控<br>Sell Put QQQ：赚高波动率权利金，不被动持股</p>
+<h4 id="Sell-Put-核心指标"><a href="#Sell-Put-核心指标" class="headerlink" title="Sell Put 核心指标"></a>Sell Put 核心指标</h4><p>QQQ 当前价：$49.17<br>盈亏平衡点：$45 - $2.1 = $42.9，即使 QQQ 暴跌 13%，依然不亏<br>抵押回报率：$210 / $4,290 = 4.9%（34 天），月度范围：3%-6%（随 IV 浮动）</p>
+<h4 id="起步期仓位策略"><a href="#起步期仓位策略" class="headerlink" title="起步期仓位策略"></a>起步期仓位策略</h4><p>$20,000 -&gt; $4,290 一张 CSP 保证金 + $15,710 现金后备军<br>目标：完成 10 轮完整循环，到期收租或被行权 -&gt; 卖 Call 闭环，都算成功<br>起步期可超配，账户变大后回归正常比例</p>
+<h4 id="Wheel-Strategy"><a href="#Wheel-Strategy" class="headerlink" title="Wheel Strategy"></a>Wheel Strategy</h4><ol>
+<li>Sell Put，收 $210 权利金</li>
+<li>被行权，持股成本 $42.9</li>
+<li>Covered Call，收 $180 权利金</li>
+<li>Called Away，获利出场</li>
+</ol>
+<p>车轮永不停转，每一圈都在收钱<br>被行权期间积极卖 Call = 对冲震荡损耗</p>
+<h4 id="高胜率开仓三步曲"><a href="#高胜率开仓三步曲" class="headerlink" title="高胜率开仓三步曲"></a>高胜率开仓三步曲</h4><ol>
+<li>看底气：大趋势向上<br>确认 QQQ 价格稳稳站在 200 日均线之上，代表长牛格局</li>
+<li>等洗盘：RSI 跌破 50<br>买盘枯竭，散户恐慌抛售，出现健康的洗盘回调</li>
+<li>迎暴击：明显下跌阴线<br>恐慌导致 IV 飙升，此时 Sell Put 权利金最丰厚</li>
+</ol>
+<h4 id="被行权后的两种局面"><a href="#被行权后的两种局面" class="headerlink" title="被行权后的两种局面"></a>被行权后的两种局面</h4><p>QQQ &gt; 200 SMA<br>黄金坑<br>大趋势护盘<br>放心卖 Covered Call<br>等待反弹获利出场</p>
+<p>QQQ &lt; 200 SMA<br>接飞刀<br>立刻止损保命<br>或卖 ITM Call 极端防御<br>绝不用杠杆 ETF 死扛</p>
+<p>牛熊分界线 = 你的操作分水岭</p>
+<h3 id="第二阶段：加速期"><a href="#第二阶段：加速期" class="headerlink" title="第二阶段：加速期"></a>第二阶段：加速期</h3><p>劳动收入 + 投资收入并驾齐驱，3-5 年滚到 $10W<br>策略必须升级，构建三足鼎立系统<br>QQQ 底仓 + QQQ Wheel 现金流 + QQQ LEAPS 爆发力</p>
+<h4 id="QQQ-LEAPS"><a href="#QQQ-LEAPS" class="headerlink" title="QQQ LEAPS"></a>QQQ LEAPS</h4><p>Delta 0.8，到期日 2 年，Deep ITM</p>
+<h4 id="LEAPS-风险控制"><a href="#LEAPS-风险控制" class="headerlink" title="LEAPS 风险控制"></a>LEAPS 风险控制</h4><p>风险场景：QQQ -30% -&gt; LEAPS -60+%<br>仓位控制：期权池 20% = 总资产 8%，即使归零 -&gt; 仅损失 8%</p>
+<p>敢拿、拿得住、亏得起</p>
+<h4 id="利润流向"><a href="#利润流向" class="headerlink" title="利润流向"></a>利润流向</h4><p>Wheel + LEAPS 期权利润 -&gt; QQQ 底仓<br>底层资本越大，你的系统越稳</p>
+<h4 id="完美资产配比公式"><a href="#完美资产配比公式" class="headerlink" title="完美资产配比公式"></a>完美资产配比公式</h4><p>年龄 + 20 = 正股底仓占比<br>现金仓位 10%，VIX &gt; 30 时主动抄底</p>
+<h4 id="总仓位配比"><a href="#总仓位配比" class="headerlink" title="总仓位配比"></a>总仓位配比</h4><p>50% QQQ 底仓，稳定<br>10% 现金，防守<br>32% QQQ Wheel，现金流<br>8% QQQ LEAPS，爆发力</p>
+<p>底仓保稳定，Wheel 保现金流，LEAPS 保爆发力</p>
+<h4 id="压力测试：2022-极端熊市"><a href="#压力测试：2022-极端熊市" class="headerlink" title="压力测试：2022 极端熊市"></a>压力测试：2022 极端熊市</h4><p>满仓 TQQQ：-79%，账户几乎归零<br>本系统仓位配比：</p>
+<ul>
+<li>50% QQQ -&gt; -16.5%</li>
+<li>32% Wheel -&gt; -16%（CC 回血）</li>
+<li>8% LEAPS -&gt; -6.4%</li>
+<li>10% 现金 -&gt; 抄底弹药</li>
+</ul>
+<p>总回撤 ~= -25%-35%<br>2023 纳指反弹 +55% -&gt; 全部收回 + 盈余</p>
+<p>亏了能活，活了能回来</p>
+<h4 id="没有-2W-怎么办"><a href="#没有-2W-怎么办" class="headerlink" title="没有 $2W 怎么办"></a>没有 $2W 怎么办</h4><ol>
+<li>审视赚钱能力，专研一门高收入技艺</li>
+<li>开源节流，降低消费欲望</li>
+<li>省吃俭用攒下第一桶金</li>
+</ol>
+<p>第一桶金靠的不是智商，而是自律和汗水</p>
+<h3 id="第三阶段：终极思维"><a href="#第三阶段：终极思维" class="headerlink" title="第三阶段：终极思维"></a>第三阶段：终极思维</h3><p>$100W 之后的终极配置：</p>
+<ul>
+<li>50%-60%：QQQ + 现金：家族传承底仓，抵抗通胀</li>
+<li>8%：LEAPS：牛市周期的 Alpha 增益器</li>
+<li>32%: Wheel：人造退休金，源源不断的现金流</li>
+</ul>
+<p>资金在涨 + 现金流不断 = 安心退休</p>
+<h4 id="年龄增长，仓位自然过渡"><a href="#年龄增长，仓位自然过渡" class="headerlink" title="年龄增长，仓位自然过渡"></a>年龄增长，仓位自然过渡</h4><p>30 岁：正股 50%，期权池 40%<br>40 岁：正股 60%，期权池 30%<br>50 岁：正股 70%，期权池 20%</p>
+<p>$100W x 32% = $32W vs. $200W x 25% = $50W<br>占比虽小，绝对金额增长 -&gt; 期权现金流不减反增</p>
+<h4 id="可复制的百万美金系统"><a href="#可复制的百万美金系统" class="headerlink" title="可复制的百万美金系统"></a>可复制的百万美金系统</h4><ol>
+<li>攒 $2W 门票</li>
+<li>QQQ Sell Put + 每月存钱</li>
+<li>$10W 后引入 LEAPS</li>
+<li>年龄 + 20 构建底仓</li>
+<li>百万后仓位养老</li>
+</ol>
+<p>慢就是快，用几年的纪律，换后半生的自由</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Bogleheads/" rel="tag"># Bogleheads</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/973092958.html" rel="next" title="Covered Call">
+                <i class="fa fa-chevron-left"></i> Covered Call
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/2933734546.html" rel="prev" title="Position Management">
+                Position Management <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">280</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#选股-vs-系统"><span class="nav-number">1.</span> <span class="nav-text">选股 vs. 系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#「指数-期权」双轨交易系统"><span class="nav-number">2.</span> <span class="nav-text">「指数 + 期权」双轨交易系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一阶段：起步期"><span class="nav-number">2.1.</span> <span class="nav-text">第一阶段：起步期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么用-QQQ-做-Sell-Put"><span class="nav-number">2.1.1.</span> <span class="nav-text">为什么用 QQQ 做 Sell Put</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sell-Put-核心指标"><span class="nav-number">2.1.2.</span> <span class="nav-text">Sell Put 核心指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#起步期仓位策略"><span class="nav-number">2.1.3.</span> <span class="nav-text">起步期仓位策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wheel-Strategy"><span class="nav-number">2.1.4.</span> <span class="nav-text">Wheel Strategy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高胜率开仓三步曲"><span class="nav-number">2.1.5.</span> <span class="nav-text">高胜率开仓三步曲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#被行权后的两种局面"><span class="nav-number">2.1.6.</span> <span class="nav-text">被行权后的两种局面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二阶段：加速期"><span class="nav-number">2.2.</span> <span class="nav-text">第二阶段：加速期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#QQQ-LEAPS"><span class="nav-number">2.2.1.</span> <span class="nav-text">QQQ LEAPS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEAPS-风险控制"><span class="nav-number">2.2.2.</span> <span class="nav-text">LEAPS 风险控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利润流向"><span class="nav-number">2.2.3.</span> <span class="nav-text">利润流向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完美资产配比公式"><span class="nav-number">2.2.4.</span> <span class="nav-text">完美资产配比公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总仓位配比"><span class="nav-number">2.2.5.</span> <span class="nav-text">总仓位配比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压力测试：2022-极端熊市"><span class="nav-number">2.2.6.</span> <span class="nav-text">压力测试：2022 极端熊市</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#没有-2W-怎么办"><span class="nav-number">2.2.7.</span> <span class="nav-text">没有 $2W 怎么办</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三阶段：终极思维"><span class="nav-number">2.3.</span> <span class="nav-text">第三阶段：终极思维</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#年龄增长，仓位自然过渡"><span class="nav-number">2.3.1.</span> <span class="nav-text">年龄增长，仓位自然过渡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可复制的百万美金系统"><span class="nav-number">2.3.2.</span> <span class="nav-text">可复制的百万美金系统</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
