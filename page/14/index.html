@@ -280,6 +280,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1666378453.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1666378453.html" itemprop="url">
+                  从容器到容器云：谈谈 Kubernetes 的本质
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-25T19:13:33+10:00">
+                2021-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="容器的核心知识"><a href="#容器的核心知识" class="headerlink" title="容器的核心知识"></a>容器的核心知识</h2><p>一个容器，实际上是一个由 Linux Namespace、Linux Cgroups 和 rootfs 三种技术构建出来的进程的隔离环境。从这个结构中我们不难看出，一个正在运行的 Linux 容器，其实可以被“一分为二”地看待：</p>
+<ol>
+<li>一组联合挂载在 /var/lib/docker/aufs/mnt 上的 rootfs，这一部分我们称为<strong>容器镜像</strong>（Container Image），是容器的静态视图；</li>
+<li>一个由 Namespace + Cgroups 构成的隔离环境，这一部分我们称为<strong>容器运行时</strong>（Container Runtime），是容器的动态视图；</li>
+</ol>
+<p>更进一步地说，作为一名开发者，我并不关心容器运行时的差异。因为，在整个“开发 -&gt; 测试 -&gt; 发布”的流程中，真正承载着容器信息进行传递的，是容器镜像，而不是容器运行时。这个重要假设，正是容器技术圈在 Docker 项目成功后不久，就迅速走向了“容器编排”这个“上层建筑”的主要原因：作为一家云服务商或者基础设施提供商，我只要能够<strong>将用户提交的 Docker 镜像以容器的方式运行起来，就能成为这个非常热闹的容器生态图上的一个承载点</strong>，从而将整个容器技术栈上的价值，沉淀在我的这个节点上。更重要的是，只要从我这个承载点向 Docker 镜像制作者和使用者方向回溯，整条路径上的各个服务节点，比如 CI/CD、监控、安全、网络、存储等等，都有我可以发挥和盈利的余地。这个逻辑，正是所有云计算提供商如此热衷于容器技术的重要原因：通过容器镜像，它们可以和潜在用户（即，开发者）直接关联起来。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1666378453.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3629374418.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -766,133 +893,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2270072152.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/2270072152.html" itemprop="url">
-                  Spring Framework
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-29T15:45:20+11:00">
-                2021-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Spring-框架简单介绍"><a href="#Spring-框架简单介绍" class="headerlink" title="Spring 框架简单介绍"></a>Spring 框架简单介绍</h2><p>我们常说的 Spring 框架，是指 Spring Framework 基础框架。<strong>Spring Framework 是整个 Spring 生态（也被称作 Spring 全家桶）的基石</strong>。除了 Spring Framework，Spring 全家桶中还有更多基于 Spring Framework 开发出来的、整合更多功能的框架，比如 Spring Boot、Spring Cloud。在 Spring 全家桶中，Spring Framework 是最基础、最底层的一部分。它提供了最基础、最核心的 IoC 和 AOP 功能。当然，它包含的功能还不仅如此，还有其他比如事务管理（Transactions）、MVC 框架（Spring MVC）等很多功能：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/OpenSource/geek/23.png" alt></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/2270072152.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -935,7 +940,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">271</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

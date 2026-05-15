@@ -280,6 +280,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1654306293.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1654306293.html" itemprop="url">
+                  堆的应用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-07T23:58:31+11:00">
+                2021-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="堆的应用一：优先级队列"><a href="#堆的应用一：优先级队列" class="headerlink" title="堆的应用一：优先级队列"></a>堆的应用一：优先级队列</h2><p>优先级队列，顾名思义，它首先应该是一个队列。不过，在优先级队列中，数据的出队顺序不是先进先出，而是按照优先级来，<strong>优先级最高的，最先出队</strong>。一个堆就可以看作一个优先级队列，很多时候，它们只是概念上的区分而已。往优先级队列中插入一个元素，就相当于往堆中插入一个元素；从优先级队列中取出优先级最高的元素，就相当于取出堆顶元素。</p>
+<p>优先级队列的应用场景非常多。比如，赫夫曼编码、图的最短路径、最小生成树算法等等。不仅如此，很多语言中，都提供了优先级队列的实现，比如，Java 的 PriorityQueue，C++ 的 priority_queue 等。只讲这些应用场景比较空泛，现在，我举两个具体的例子：</p>
+<ol>
+<li>合并有序小文件：<br>假设我们有 100 个小文件，每个文件的大小是 100MB，每个文件中存储的都是有序的字符串。我们希望将这些 100 个小文件合并成一个有序的大文件。我们用数组这种数据结构，来存储从小文件中取出来的字符串。<strong>每次从数组中取最小字符串，都需要循环遍历整个数组</strong>，显然，这不是很高效。<br>这里就可以用到优先级队列，也可以说是堆。我们将从小文件中取出来的字符串放入到小顶堆中，那堆顶的元素，也就是优先级队列队首的元素，就是最小的字符串。我们将这个字符串放入到大文件中，并将其从堆中删除。然后再从小文件中取出下一个字符串，放入到堆中。循环这个过程，就可以将 100 个小文件中的数据依次放入到大文件中。我们知道，删除堆顶数据和往堆中插入数据的时间复杂度都是 O(logn)，n 表示堆中的数据个数，这里就是 100，比原来数组存储的方式高效了很多；</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1654306293.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/799889741.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -770,147 +896,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/585302133.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/585302133.html" itemprop="url">
-                  哈希算法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-03T16:39:06+11:00">
-                2021-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="什么是哈希算法？"><a href="#什么是哈希算法？" class="headerlink" title="什么是哈希算法？"></a>什么是哈希算法？</h2><p><strong>将任意长度的二进制值串映射为固定长度的二进制值串，这个映射的规则就是哈希算法</strong>，而通过原始数据映射之后得到的二进制值串就是<code>哈希值</code>。但是，要想设计一个优秀的哈希算法并不容易，根据我的经验，我总结了需要满足的几点要求：</p>
-<ul>
-<li>从哈希值不能反向推导出原始数据（所以哈希算法也叫单向哈希算法）；</li>
-<li>对输入数据非常敏感，哪怕原始数据只修改了一个 bit，最后得到的哈希值也大不相同；</li>
-<li>散列冲突的概率要很小，对于不同的原始数据，哈希值相同的概率非常小；</li>
-<li>哈希算法的执行效率要尽量高效，针对较长的文本，也能快速地计算出哈希值；</li>
-</ul>
-<p>我们分别对“今天我来讲哈希算法”和“jiajia”这两个文本，计算 MD5 哈希值，得到两串看起来毫无规律的字符串（MD5 的哈希值是 128 位的 bit 长度，为了方便表示，我把它们转化成了 16 进制编码）。可以看出来，无论要哈希的文本有多长、多短，通过 MD5 哈希之后，得到的哈希值的长度都是相同的，而且得到的哈希值看起来像一堆随机数，完全没有规律：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MD5(<span class="string">"今天我来讲哈希算法"</span>) = bb4767201ad42c74e650c1b6c03d78fa</span><br><span class="line">MD5(<span class="string">"jiajia"</span>) = cd611a31ea969b908932d44d126d195b</span><br></pre></td></tr></table></figure>
-
-<p>我们再来看两个非常相似的文本，“我今天讲哈希算法！”和“我今天讲哈希算法”。这两个文本只有一个感叹号的区别。如果用 MD5 哈希算法分别计算它们的哈希值，你会发现，尽管只有一字之差，得到的哈希值也是完全不同的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MD5(<span class="string">"我今天讲哈希算法！"</span>) = <span class="number">425f</span>0d5a917188d2c3c3dc85b5e4f2cb</span><br><span class="line">MD5(<span class="string">"我今天讲哈希算法"</span>) = a1fb91ac128e6aa37fe42c663971ac3d</span><br></pre></td></tr></table></figure>
-
-<p>通过哈希算法得到的哈希值，很难反向推导出原始数据。比如上面的例子中，我们就很难通过哈希值“a1fb91ac128e6aa37fe42c663971ac3d”反推出对应的文本“我今天讲哈希算法”。哈希算法要处理的文本可能是各种各样的。比如，对于非常长的文本，<strong>如果哈希算法的计算时间很长，那就只能停留在理论研究的层面，很难应用到实际的软件开发中</strong>。比如，我们把今天这篇包含 4000 多个汉字的文章，用 MD5 计算哈希值，用不了 1ms 的时间。</p>
-<p>哈希算法的应用非常非常多，我选了最常见的七个，分别是：安全加密、唯一标识、数据校验、散列函数、负载均衡、数据分片、分布式存储。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/585302133.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/28/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/30/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/28/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/30/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -953,7 +943,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">271</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

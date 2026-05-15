@@ -280,6 +280,130 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/144465771.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/144465771.html" itemprop="url">
+                  线性排序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-30T17:57:19+11:00">
+                2020-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>时间复杂度是线性的排序算法叫作<code>线性排序</code>（Linear Sort）。之所以能做到线性的时间复杂度，主要原因是它们<strong>不涉及元素之间的比较操作，但是对要排序的数据要求很苛刻</strong>，应用不是非常广泛。学习重点是掌握这些排序算法的适用场景。</p>
+<h2 id="桶排序（Bucket-Sort）"><a href="#桶排序（Bucket-Sort）" class="headerlink" title="桶排序（Bucket Sort）"></a>桶排序（Bucket Sort）</h2><p>桶排序，顾名思义，会用到“桶”，核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。桶内排完序之后，再<strong>把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了</strong>：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/61.png" alt></p>
+<p>如果要排序的数据有 n 个，我们把它们均匀地划分到 m 个桶内，每个桶里就有 k=n/m 个元素。每个桶内部使用快速排序，时间复杂度为 O(k * logk)。m 个桶排序的时间复杂度就是 O(m * k * logk)，因为 k=n/m，所以整个桶排序的时间复杂度就是 O(n*log(n/m))。当桶的个数 m 接近数据个数 n 时，log(n/m) 就是一个非常小的常量，这个时候桶排序的时间复杂度接近 O(n)。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/144465771.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2755965992.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -768,140 +892,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/593668330.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/593668330.html" itemprop="url">
-                  链表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-27T01:14:38+11:00">
-                2020-12-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>缓存</code>是一种提高数据读取性能的技术，在硬件设计、软件开发中都有着非常广泛的应用，比如常见的 CPU 缓存、数据库缓存、浏览器缓存等等。缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有三种：</p>
-<ul>
-<li>先进先出策略 FIFO（First In, First Out）；</li>
-<li>最少使用策略 LFU（Least Frequently Used）；</li>
-<li>最近最少使用策略 LRU（Least Recently Used）；</li>
-</ul>
-<h2 id="五花八门的链表结构"><a href="#五花八门的链表结构" class="headerlink" title="五花八门的链表结构"></a>五花八门的链表结构</h2><p>相比数组，<code>链表</code>（Linked List）是一种稍微复杂一点的数据结构。我们先从<strong>底层的存储结构</strong>上来看一看，为了直观地对比，我画了一张图：<br><img src="https://raw.githubusercontent.com/necusjz/p/master/CLRS/geek/10.png" alt></p>
-<p>从图中我们看到，数组需要一块<strong>连续的内存空间</strong>来存储，对内存的要求比较高。如果我们申请一个 100MB 大小的数组，当内存中没有连续的、足够大的存储空间时，即便内存的剩余总可用空间大于 100MB，仍然会申请失败；而链表恰恰相反，它并不需要一块连续的内存空间，它通过“指针”将一组<strong>零散的内存块</strong>串联起来使用，所以如果我们申请的是 100MB 大小的链表，根本不会有问题。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/593668330.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/30/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/32/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/30/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><span class="page-number current">31</span><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/32/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -944,7 +939,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">271</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

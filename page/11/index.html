@@ -280,6 +280,164 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1507841079.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1507841079.html" itemprop="url">
+                  Generate CLI from Swagger
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-08T10:21:45+10:00">
+                2022-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>It’s always good to start with a command like that:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --version=3.0.6370 --az --use=@autorest/az@latest ../azure-rest-api-specs/specification/dnsresolver/resource-manager/readme.md --azure-cli-extension-folder=./azure-cli-extensions</span><br></pre></td></tr></table></figure>
+
+<p>Make sure you have these specific versions installed:</p>
+<table>
+<thead>
+<tr>
+<th align="center">AutoRest Core</th>
+<th align="center">AutoRest CLI</th>
+<th align="center">Node.js</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">3.0.6370</td>
+<td align="center">3.5.1</td>
+<td align="center">12.20</td>
+</tr>
+</tbody></table>
+<p>Errors you might encounter nowadays:</p>
+<ul>
+<li>ERROR: Schema violation: Additional properties not allowed: x-ms-identifiers<ol>
+<li>Append <em>--pass-thru:schema-validator-swagger</em> to the command;</li>
+</ol>
+</li>
+<li>AttributeError: module ‘mistune’ has no attribute ‘BlockGrammar’<ol>
+<li>Active the venv within <em>~/.autorest/@autorest_python@5.4.0/node_modules/@autorest/python</em>;</li>
+<li>Execute <em>pip install mistune==0.8.4</em>;</li>
+</ol>
+</li>
+<li>ImportError: cannot import name ‘_unicodefun’ from ‘click’<ol>
+<li>Active the venv within <em>~/.autorest/@autorest_az@1.8.0/node_modules/@autorest/az</em>;</li>
+<li>Execute <em>pip install click==8.0.2</em>;</li>
+</ol>
+</li>
+</ul>
+<p>One more thing, it’s a good practice to clean up AutoRest extensions by:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ autorest --reset</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1507841079.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4286004591.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -783,143 +941,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4207367335.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/4207367335.html" itemprop="url">
-                  面向对象编程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T16:39:34+11:00">
-                2022-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>几乎所有现代编程语言都支持面向对象功能，但由于设计理念不同，不同编程语言所支持的面向对象有许多差异。<strong>在 Python 里，万物皆对象</strong>，最基础的浮点数也是一个对象。</p>
-<h3 id="类常用知识"><a href="#类常用知识" class="headerlink" title="类常用知识"></a>类常用知识</h3><p>通过类，我们可以把头脑中的抽象概念进行建模，进而实现复杂的功能。<strong>封装</strong>（Encapsulation）是面向对象编程里的一个重要概念，为了更好地体现类的封装性，许多编程语言支持将属性设置为公开或私有，只是方式略有不同。</p>
-<p>当你使用 __{var} 的方式定义一个私有属性时，Python 解释器只是重新给了它一个包含当前类名的别名 <strong>_{class}__{var}</strong>，因此你仍然可以在外部用这个别名来访问和修改它。</p>
-<blockquote>
-<p>设计哲学：期望程序员做正确的事，而不是在语言上增加太多条条框框。</p>
-</blockquote>
-<p>在某些特殊场景下，合理利用 __dict__ 可以帮你完成常规做法难以做到的一些事情：</p>
-<ul>
-<li>实例的 __dict__ 里，保存着当前实例的所有数据；</li>
-<li>类的 __dict__ 里，保存着类的文档、方法等所有数据；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/4207367335.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -962,7 +988,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">271</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

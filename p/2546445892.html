@@ -1,0 +1,845 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Bogleheads,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="传统观念的数学陷阱起源：1994 年 William Bengen假设：美国经济腾飞的黄金年代模式：坐吃山空（Depleting Assets） 现实隐患：收益序列风险（Sequence of Returns Risk）结果：本金永久性损耗（Permanent Capital Loss） 范式转移：从赌徒到保险公司赌徒，赌方向（Betting on Direction），不确定性高 -&amp;gt; 保">
+<meta name="keywords" content="Bogleheads">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wheel Strategy">
+<meta property="og:url" content="https://necusjz.github.io/p/2546445892.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="传统观念的数学陷阱起源：1994 年 William Bengen假设：美国经济腾飞的黄金年代模式：坐吃山空（Depleting Assets） 现实隐患：收益序列风险（Sequence of Returns Risk）结果：本金永久性损耗（Permanent Capital Loss） 范式转移：从赌徒到保险公司赌徒，赌方向（Betting on Direction），不确定性高 -&amp;gt; 保">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2026-05-15T04:09:12.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wheel Strategy">
+<meta name="twitter:description" content="传统观念的数学陷阱起源：1994 年 William Bengen假设：美国经济腾飞的黄金年代模式：坐吃山空（Depleting Assets） 现实隐患：收益序列风险（Sequence of Returns Risk）结果：本金永久性损耗（Permanent Capital Loss） 范式转移：从赌徒到保险公司赌徒，赌方向（Betting on Direction），不确定性高 -&amp;gt; 保">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/2546445892.html">
+
+
+
+
+
+  <title> Wheel Strategy | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2546445892.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Wheel Strategy
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-05-04T22:36:27+10:00">
+                2026-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="传统观念的数学陷阱"><a href="#传统观念的数学陷阱" class="headerlink" title="传统观念的数学陷阱"></a>传统观念的数学陷阱</h2><p>起源：1994 年 William Bengen<br>假设：美国经济腾飞的黄金年代<br>模式：坐吃山空（Depleting Assets）</p>
+<p>现实隐患：收益序列风险（Sequence of Returns Risk）<br>结果：本金永久性损耗（Permanent Capital Loss）</p>
+<h2 id="范式转移：从赌徒到保险公司"><a href="#范式转移：从赌徒到保险公司" class="headerlink" title="范式转移：从赌徒到保险公司"></a>范式转移：从赌徒到保险公司</h2><p>赌徒，赌方向（Betting on Direction），不确定性高 -&gt; 保险公司，卖出安全感（Selling Certainty），赚取波动率溢价</p>
+<p>像保险公司一样，赚取市场稳定的现金流</p>
+<h2 id="CSP-的底层逻辑"><a href="#CSP-的底层逻辑" class="headerlink" title="CSP 的底层逻辑"></a>CSP 的底层逻辑</h2><p>不赌方向，只定价格</p>
+<p>卖出看跌期权，收取权利金：</p>
+<ol>
+<li>股价未跌，白赚保费</li>
+<li>股价下跌，以折扣价买入资产</li>
+</ol>
+<p>买方支付权利金：你的保费收入<br>你的义务：承诺在未来以约定价格买入股票<br>反脆弱结构：要么赚现金，要么低价抄底优质资产</p>
+<a id="more"></a>
+<h2 id="双重收益叠加（Double-Dipping）"><a href="#双重收益叠加（Double-Dipping）" class="headerlink" title="双重收益叠加（Double Dipping）"></a>双重收益叠加（Double Dipping）</h2><p>资金利用率最大化</p>
+<p>模型假设：本金 $10,000，标的 XYZ：</p>
+<ul>
+<li>第一层：时间的馈赠（利息），3.95%</li>
+<li>第二层：恐惧的溢价（权利金），~15%</li>
+</ul>
+<p>年化收益 ~18.95%，同一笔资金，打两份工</p>
+<h2 id="Wheel-Strategy：现金流永动闭环"><a href="#Wheel-Strategy：现金流永动闭环" class="headerlink" title="Wheel Strategy：现金流永动闭环"></a>Wheel Strategy：现金流永动闭环</h2><p>无论涨跌持续，持续收租：</p>
+<ol>
+<li>Sell Put，收租金 + 拿利息</li>
+<li>Assignment，接盘股票</li>
+<li>Sell Covered Call，卖出看涨期权</li>
+<li>Called Away，股票卖出 -&gt; 回到现金</li>
+</ol>
+<p>持有现金时：赚恐慌的钱 + 利息<br>持有股票时：赚贪婪的钱 + 分红</p>
+<h2 id="收益永远是风险的定价"><a href="#收益永远是风险的定价" class="headerlink" title="收益永远是风险的定价"></a>收益永远是风险的定价</h2><p>我们需要诚实评估自己的风险承受能力（Risk Tolerance）：</p>
+<ul>
+<li>保守型（Conservative）</li>
+<li>稳健型（Moderate）</li>
+<li>激进型（Aggressive）</li>
+</ul>
+<p>目标：月入 $10,000 现金流</p>
+<h3 id="第一档：保守型配置（Fortress）"><a href="#第一档：保守型配置（Fortress）" class="headerlink" title="第一档：保守型配置（Fortress）"></a>第一档：保守型配置（Fortress）</h3><h3 id="第二档：稳健型配置（Sweet-Spot）"><a href="#第二档：稳健型配置（Sweet-Spot）" class="headerlink" title="第二档：稳健型配置（Sweet Spot）"></a>第二档：稳健型配置（Sweet Spot）</h3><h3 id="第三档：激进型配置（High-Wire）"><a href="#第三档：激进型配置（High-Wire）" class="headerlink" title="第三档：激进型配置（High Wire）"></a>第三档：激进型配置（High Wire）</h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Bogleheads/" rel="tag"># Bogleheads</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2451049189.html" rel="next" title="Rolling">
+                <i class="fa fa-chevron-left"></i> Rolling
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">271</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统观念的数学陷阱"><span class="nav-number">1.</span> <span class="nav-text">传统观念的数学陷阱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#范式转移：从赌徒到保险公司"><span class="nav-number">2.</span> <span class="nav-text">范式转移：从赌徒到保险公司</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSP-的底层逻辑"><span class="nav-number">3.</span> <span class="nav-text">CSP 的底层逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双重收益叠加（Double-Dipping）"><span class="nav-number">4.</span> <span class="nav-text">双重收益叠加（Double Dipping）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wheel-Strategy：现金流永动闭环"><span class="nav-number">5.</span> <span class="nav-text">Wheel Strategy：现金流永动闭环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收益永远是风险的定价"><span class="nav-number">6.</span> <span class="nav-text">收益永远是风险的定价</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一档：保守型配置（Fortress）"><span class="nav-number">6.1.</span> <span class="nav-text">第一档：保守型配置（Fortress）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二档：稳健型配置（Sweet-Spot）"><span class="nav-number">6.2.</span> <span class="nav-text">第二档：稳健型配置（Sweet Spot）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三档：激进型配置（High-Wire）"><span class="nav-number">6.3.</span> <span class="nav-text">第三档：激进型配置（High Wire）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

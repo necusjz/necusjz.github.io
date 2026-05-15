@@ -280,6 +280,130 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2931158028.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2931158028.html" itemprop="url">
+                  Connect to Resources Securely
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-22T23:40:35+10:00">
+                2022-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>Exposing management endpoints (RDP, SSH, HTTP, and others) over a public IP address is not a good idea</strong>. Any kind of management access should be controlled and allowed only over a secure connection. Usually, this is done by connecting to a private network (via S2S or P2S) and accessing resources over private IP addresses. In some situations, this is not easy to achieve. The cause of this can be insufficient local infrastructure, or in some cases, the scenario may be too complex. Fortunately, there are other ways to achieve the same goal. We can safely connect to our resources using <em>Azure Bastion</em>, <em>Azure Virtual WAN</em>, and <em>Azure Private Link</em>.</p>
+<h2 id="Create-a-bastion-instance"><a href="#Create-a-bastion-instance" class="headerlink" title="Create a bastion instance"></a>Create a bastion instance</h2><p><em>Azure Bastion</em> allows us to connect securely to our Azure resources without additional infrastructure. All we need is a browser. It is essentially <strong>a PaaS service provisioned in our VNet that provides a secure RDP/SSH connection to Azure VMs</strong>. The connection is made directly from the Azure Portal over <em>Transport Layer Security</em> (TLS). Using TLS, it provides a secure RDP and SSH connection to all resources on that network. The connection is made through a browser session, and no public IP address is required. This means that we don’t need to expose any of the management ports over a public IP address.</p>
+<h2 id="Connect-to-a-VM-with-bastion"><a href="#Connect-to-a-VM-with-bastion" class="headerlink" title="Connect to a VM with bastion"></a>Connect to a VM with bastion</h2><p>With Azure Bastion, we can connect to a VM through the browser without a public IP address and without exposing it publicly. Azure Bastion <strong>uses a subnet in the VNet to connect to VMs in that specific network</strong>. It provides a safe connection over TLS and allows a connection to a VM without exposing it over a public IP address.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2931158028.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3597318647.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -769,136 +893,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4269680769.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/4269680769.html" itemprop="url">
-                  Manage IP Addresses
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-21T22:45:13+10:00">
-                2022-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>In Azure, we can have <strong>two types of IP addresses, private and public</strong>. Public addresses can be accessed over the internet. Private addresses are from the VNet address space and are used for private communication on private networks. Addresses can be assigned to a resource or can exist as a separate resource.</p>
-<h2 id="Create-a-public-IP-address"><a href="#Create-a-public-IP-address" class="headerlink" title="Create a public IP address"></a>Create a public IP address</h2><p><em>Public IP Address</em> can be created as a separate resource or created during the creation of some other resources (a VM, for example). Therefore, <strong>a public IP can exist as part of a resource or as a standalone resource</strong>.</p>
-<p>The <em>Stock Keeping Unit</em> (SKU) can be either <em>Basic</em> or <em>Standard</em>. The main differences are that Standard is closed to inbound traffic by default (inbound traffic must be whitelisted in NSGs) and that Standard is zone redundant. Another difference is that <strong>a Standard SKU public IP address has a static assignment, while a Basic SKU can be either static or dynamic</strong>. You can choose either the <em>IPv4</em> or <em>IPv6</em> version for the IP address, or both, but choosing IPv6 will limit you to a dynamic assignment for the Basic SKU and static assignment for the Standard SKU.</p>
-<p>The <em>DNS Name Label</em> is optional—it can be used to <strong>resolve the endpoint if dynamic assignment is selected</strong>. Otherwise, there is no point in creating a DNS label, as an IP address can always be used to resolve the endpoint if static assignment is selected.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/4269680769.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -941,7 +940,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">271</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

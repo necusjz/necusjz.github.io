@@ -280,6 +280,136 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1696831211.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/1696831211.html" itemprop="url">
+                  Single Responsibility Principle (SRP)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T23:19:08+10:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="如何理解-SRP"><a href="#如何理解-SRP" class="headerlink" title="如何理解 SRP"></a>如何理解 SRP</h2><p><code>单一职责原则</code>的英文是 Single Responsibility Principle，缩写为 SRP。这个原则的英文描述是这样的：</p>
+<blockquote>
+<p>A class or module should have a single responsibility.</p>
+</blockquote>
+<p>如果我们把它翻译成中文，那就是：<strong>一个类或者模块只负责完成一个职责（或者功能）</strong>。</p>
+<p>注意，这个原则描述的对象包含两个，一个是类（class），一个是模块（module）。关于这两个概念，在专栏中，有两种理解方式。一种理解是：<strong>把模块看作比类更加抽象的概念</strong>，类也可以看作模块。另一种理解是：<strong>把模块看作比类更加粗粒度的代码块</strong>，模块中包含多个类，多个类组成一个模块。</p>
+<p>单一职责原则的定义描述非常简单，也不难理解。一个类只负责完成一个职责或者功能。也就是说，<strong>不要设计大而全的类，要设计粒度小、功能单一的类</strong>。换个角度来讲就是，一个类包含了两个或者两个以上业务不相干的功能，那我们就说它职责不够单一，应该将它拆分成多个功能更加单一、粒度更细的类。</p>
+<h2 id="如何判断-SRP"><a href="#如何判断-SRP" class="headerlink" title="如何判断 SRP"></a>如何判断 SRP</h2><p>在一个社交产品中，我们用下面的 UserInfo 类来记录用户的信息。你觉得，UserInfo 类的设计是否满足单一职责原则呢：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> userId;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="keyword">private</span> String telephone;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> createTime;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> lastLoginTime;</span><br><span class="line">    <span class="keyword">private</span> String avatarUrl;</span><br><span class="line">    <span class="keyword">private</span> String provinceOfAddress; <span class="comment">// 省</span></span><br><span class="line">    <span class="keyword">private</span> String cityOfAddress; <span class="comment">// 市</span></span><br><span class="line">    <span class="keyword">private</span> String regionOfAddress; <span class="comment">// 区 </span></span><br><span class="line">    <span class="keyword">private</span> String detailedAddress; <span class="comment">// 详细地址</span></span><br><span class="line">    <span class="comment">//...省略其他属性和方法...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/1696831211.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2168036125.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -773,136 +903,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1069733446.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1069733446.html" itemprop="url">
-                  抽象类 vs. 接口
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-29T23:00:12+10:00">
-                2020-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在面向对象编程中，抽象类和接口是两个经常被用到的语法概念，是面向对象四大特性，以及很多设计模式、设计思想、设计原则编程实现的基础。比如，我们可以<strong>使用抽象类来实现面向对象的继承特性和模版设计模式，使用接口来实现面向对象的抽象特性、多态特性和基于接口而非实现的设计原则</strong>。</p>
-<p>不过，并不是所有的面向对象编程语言都支持这两个语法概念，比如，C++ 这种编程语言只支持抽象类，不支持接口；而像 Python 这样的动态编程语言，既不支持抽象类，也不支持接口。尽管有些编程语言没有提供现成的语法来支持接口和抽象类，我们仍然可以<strong>通过一些手段来模拟实现这两个语法概念</strong>。</p>
-<h2 id="什么是抽象类和接口"><a href="#什么是抽象类和接口" class="headerlink" title="什么是抽象类和接口"></a>什么是抽象类和接口</h2><p>Java 这种编程语言，既支持抽象类，也支持接口，所以，为了让你对这两个语法概念有比较直观的认识，我们拿 Java 这种编程语言来举例讲解。</p>
-<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>下面这段代码是一个比较典型的抽象类的使用场景（<code>模板设计模式</code>）。Logger 是一个记录日志的抽象类，FileLogger 和 MessageQueueLogger 继承 Logger，分别实现两种不同的日志记录方式：记录日志到文件中和记录日志到消息队列中。FileLogger 和 MessageQueueLogger 两个子类复用了父类 Logger 中的 name、enabled、minPermittedLevel 属性和 log() 方法，但因为这两个子类写日志的方式不同，它们又各自重写了父类中的 doLog() 方法：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1069733446.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/39/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/41/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/39/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/41/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -945,7 +950,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">270</span>
+                <span class="site-state-item-count">271</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
