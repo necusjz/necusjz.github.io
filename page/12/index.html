@@ -280,6 +280,262 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/2857695660.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/2857695660.html" itemprop="url">
+                  开发大型项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-22T00:10:30+11:00">
+                2022-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="数据模型与描述符"><a href="#数据模型与描述符" class="headerlink" title="数据模型与描述符"></a>数据模型与描述符</h2><p>在 Python 中，数据模型（Data Model）是一个非常重要的概念，假如把 Python 语言看作一个框架，数据模型就描述了框架如何工作，创建怎样的对象才能更好地融入 Python 这个框架。所有与数据模型有关的方法，基本都是以双下划线 __ 开头和结尾，它们通常被称为<strong>魔法方法</strong>（Magic Method）。</p>
+<h3 id="字符串魔法方法"><a href="#字符串魔法方法" class="headerlink" title="字符串魔法方法"></a>字符串魔法方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, favorite_color)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.favorite_color = favorite_color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 变量名后的 !r 表示在渲染字符串模版时，程序会优先使用 repr() 而非 str() 的结果</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;cls_name&#125;(name=&#123;name!r&#125;, age=&#123;age!r&#125;, favorite_color=&#123;color!r&#125;)'</span>.format(</span><br><span class="line">            cls_name=self.__class__.__name__,</span><br><span class="line">            name=self.name,</span><br><span class="line">            age=self.age,</span><br><span class="line">            color=self.favorite_color,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__format__</span><span class="params">(self, format_spec)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> format_spec == <span class="string">'verbose'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)[<span class="subst">&#123;self.favorite_color&#125;</span>]'</span></span><br><span class="line">        <span class="keyword">elif</span> format_spec == <span class="string">'simple'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>(<span class="subst">&#123;self.age&#125;</span>)'</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/2857695660.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3290605089.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/p/3290605089.html" itemprop="url">
+                  场景：寻找元类替代品
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T21:12:14+11:00">
+                2022-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don’t (the people who actually need them know with certainty that they need them, and don’t need an explanation about why).<br>-- <em>Tim Peters</em></p>
+</blockquote>
+<p>元类是 Python 中的一种特殊对象，它<strong>控制着类的创建行为</strong>，就像普通类控制着实例的创建行为一样。type 是 Python 中最基本的元类，直接调用 type() 就可以创建一个类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Foo = type(&apos;Foo&apos;, (), &#123;&apos;bar&apos;: 3&#125;)</span><br><span class="line">&gt;&gt;&gt; Foo</span><br><span class="line">&lt;class &apos;__main__.Foo&apos;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在调用 type() 创建类时，需要提供三个参数，它们的含义如下：</p>
+<ul>
+<li>name: str，需要创建的类名；</li>
+<li>bases: Tuple[Type]，包含其他类的元组，代表类的所有基类；</li>
+<li>attrs: Dict[str, Any]，包含所有类成员（属性、方法）的字典；</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/p/3290605089.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/4207367335.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -670,264 +926,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/1989037369.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/1989037369.html" itemprop="url">
-                  函数与装饰器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-12T21:17:54+11:00">
-                2022-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>Python 是一门支持面向对象的编程语言，但除此之外，Python 对函数的支持也毫不逊色。函数在 Python 中是一等对象，这意味着我们可以把函数自身作为函数参数来使用。</p>
-<h3 id="函数参数的常用技巧"><a href="#函数参数的常用技巧" class="headerlink" title="函数参数的常用技巧"></a>函数参数的常用技巧</h3><p>参数（Parameter）是函数的重要组成部分，它是函数最主要的输入源，决定了调用方使用函数时的体验。Python 函数的参数默认值只会在函数定义阶段被创建一次，别将可变类型作为参数默认值，使用 None 来替代：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=[])</span>:</span></span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_value</span><span class="params">(value, items=None)</span>:</span></span><br><span class="line">    <span class="comment"># 在函数内部进行判断，保证参数默认每次都使用一个新的空列表</span></span><br><span class="line">    <span class="keyword">if</span> items <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        items = []</span><br><span class="line">    items.append(value)</span><br><span class="line">    <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
-
-<p>定义一个特殊对象（标记变量）作为参数默认值，严格区分调用方是不是<strong>真的</strong>提供了这个默认参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># object 通常不会单独使用，但是拿来做这种标记变量刚刚好</span></span><br><span class="line">_not_set = object()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dump_value</span><span class="params">(value, extra=_not_set)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> extra <span class="keyword">is</span> _not_set:</span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> 调用方没有传递 extra 参数</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/1989037369.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3014737985.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="necusjz">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ethan's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/p/3014737985.html" itemprop="url">
-                  场景：数字统计任务
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-06T22:06:47+11:00">
-                2022-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Ethan 是一位 Python 初学者，在学习了如何用 Python 读取文件后，他想要做一个小练习：统计某个文件中数字字符的数量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_digits</span><span class="params">(fname)</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> open(fname) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">            <span class="keyword">for</span> s <span class="keyword">in</span> line:</span><br><span class="line">                <span class="keyword">if</span> s.isdigit():</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
-
-<p>首先用 with open(file_name) 上下文管理器语法获得一个文件对象，然后用 for 循环迭代它，<strong>逐行</strong>获取文件里的内容。它有两个好处：</p>
-<ul>
-<li>with 上下文管理器会自动关闭文件描述符；</li>
-<li>在迭代文件对象时，内容是一行一行返回的，不会占用太多内存；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/p/3014737985.html#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -975,7 +973,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">271</span>
+                <span class="site-state-item-count">273</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
