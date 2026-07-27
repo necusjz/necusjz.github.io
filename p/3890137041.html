@@ -1,0 +1,910 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Bogleheads,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="21 DTE散户为何爱死磕到底为赚几十美金苍蝇腿，承担无限雷区风险岁月静好的包租婆，贪婪作祟，眼看 50% 浮盈 -&amp;gt; 方向对赌的狂徒，最后三周突然下杀回调，利润全吐，甚至割肉接盘 破局之道：金字塔原理核心结论：45 天进场，寻找融化最快的冰雕时间价值损耗（Theta Decay）：45 天到 21 天这个区间，冰化得最快，过了这个村，剩下的冰碴子不值得冒风险守着 金字塔中层：50% 止盈投">
+<meta name="keywords" content="Bogleheads">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Option Parameters">
+<meta property="og:url" content="https://necusjz.github.io/p/3890137041.html">
+<meta property="og:site_name" content="Ethan&#39;s Blog">
+<meta property="og:description" content="21 DTE散户为何爱死磕到底为赚几十美金苍蝇腿，承担无限雷区风险岁月静好的包租婆，贪婪作祟，眼看 50% 浮盈 -&amp;gt; 方向对赌的狂徒，最后三周突然下杀回调，利润全吐，甚至割肉接盘 破局之道：金字塔原理核心结论：45 天进场，寻找融化最快的冰雕时间价值损耗（Theta Decay）：45 天到 21 天这个区间，冰化得最快，过了这个村，剩下的冰碴子不值得冒风险守着 金字塔中层：50% 止盈投">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2026-07-27T13:55:13.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Option Parameters">
+<meta name="twitter:description" content="21 DTE散户为何爱死磕到底为赚几十美金苍蝇腿，承担无限雷区风险岁月静好的包租婆，贪婪作祟，眼看 50% 浮盈 -&amp;gt; 方向对赌的狂徒，最后三周突然下杀回调，利润全吐，甚至割肉接盘 破局之道：金字塔原理核心结论：45 天进场，寻找融化最快的冰雕时间价值损耗（Theta Decay）：45 天到 21 天这个区间，冰化得最快，过了这个村，剩下的冰碴子不值得冒风险守着 金字塔中层：50% 止盈投">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://necusjz.github.io/p/3890137041.html">
+
+
+
+
+
+  <title> Option Parameters | Ethan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ethan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://necusjz.github.io/p/3890137041.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="necusjz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Option Parameters
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-07-26T22:36:35+10:00">
+                2026-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="21-DTE"><a href="#21-DTE" class="headerlink" title="21 DTE"></a>21 DTE</h2><h3 id="散户为何爱死磕到底"><a href="#散户为何爱死磕到底" class="headerlink" title="散户为何爱死磕到底"></a>散户为何爱死磕到底</h3><p>为赚几十美金苍蝇腿，承担无限雷区风险<br>岁月静好的包租婆，贪婪作祟，眼看 50% 浮盈 -&gt; 方向对赌的狂徒，最后三周突然下杀回调，利润全吐，甚至割肉接盘</p>
+<h3 id="破局之道：金字塔原理"><a href="#破局之道：金字塔原理" class="headerlink" title="破局之道：金字塔原理"></a>破局之道：金字塔原理</h3><p>核心结论：45 天进场，寻找融化最快的冰雕<br>时间价值损耗（Theta Decay）：45 天到 21 天这个区间，冰化得最快，过了这个村，剩下的冰碴子不值得冒风险守着</p>
+<h3 id="金字塔中层：50-止盈"><a href="#金字塔中层：50-止盈" class="headerlink" title="金字塔中层：50% 止盈"></a>金字塔中层：50% 止盈</h3><p>投资界老话，不赚最后一个铜板：</p>
+<ul>
+<li>赚前 50% 的利润，耗时仅仅 20%</li>
+<li>熬最后 50% 的尾部利润，耗时整整 80%，盈亏比极不划算</li>
+</ul>
+<h3 id="1-5-万次真实数据大对决"><a href="#1-5-万次真实数据大对决" class="headerlink" title="1.5 万次真实数据大对决"></a>1.5 万次真实数据大对决</h3><p>设定：机械卖出 SPY 45 天到期 Delta 16 的 Put：</p>
+<ul>
+<li>对比组 A（死扛组）：卖出后就装死，不到最后一天到期日，绝不平仓</li>
+<li>对比组 B（纪律组）：<ul>
+<li>盈利达到权利金 50% 自动止盈</li>
+<li>距离到期剩 21 天，不管账面盈亏强行平仓</li>
+</ul>
+</li>
+</ul>
+<p>纪律组全面碾压，胜率飙升突破 90%，资金周转率起飞</p>
+<a id="more"></a>
+<h3 id="最后-21-天，期权为何变为毒药"><a href="#最后-21-天，期权为何变为毒药" class="headerlink" title="最后 21 天，期权为何变为毒药"></a>最后 21 天，期权为何变为毒药</h3><p>Gamma 爆炸：避开迎面撞来的重型火车<br>回忆 2024 年 8 月黑色星期一，末日期权敏感度极高，大盘微跌，期权飙升 500%，提前 21 天跑路，把风险转嫁给赌徒</p>
+<h3 id="保姆级实操一：选定目标"><a href="#保姆级实操一：选定目标" class="headerlink" title="保姆级实操一：选定目标"></a>保姆级实操一：选定目标</h3><p>机械化操作，不用随时盯盘，45 天进场，寻找流动性极好的大盘 ETF：</p>
+<ul>
+<li>标的：SPY/QQQ/确定性大蓝筹</li>
+<li>到期日：30-45 天</li>
+<li>目标 Delta：0.16-0.20</li>
+<li>限价单：避免滑点损失</li>
+</ul>
+<p>如果可以接受接股，可以卖 0.3 甚至 0.5 ATM 的期权</p>
+<h3 id="保姆级实操二：双保险与-GTC"><a href="#保姆级实操二：双保险与-GTC" class="headerlink" title="保姆级实操二：双保险与 GTC"></a>保姆级实操二：双保险与 GTC</h3><p>系统化机器保安，自动帮你锁利润，开仓即设双保险，安心上班，连电脑都不用开：</p>
+<ul>
+<li>在订单成交的下一秒，立刻挂买入平仓单</li>
+<li>价格设为收到权利金的 50%</li>
+<li>订单有效期设置为 GTC（直到取消）</li>
+</ul>
+<p>严苛的仓位管理才是活下去的根本，每次开仓，Sell Put 占用的保证金绝不能超过账户总净值的 5%</p>
+<h3 id="保姆级实操三：生死闹钟与展期"><a href="#保姆级实操三：生死闹钟与展期" class="headerlink" title="保姆级实操三：生死闹钟与展期"></a>保姆级实操三：生死闹钟与展期</h3><p>到了 21 天没止盈？无脑手动平仓，随时准备抢救，别怕亏损：</p>
+<ul>
+<li>小亏损直接平仓认错，资金周转效率第一，把保证金释放出来寻找新机会</li>
+<li>逻辑没变，果然执行展期，Roll Out 或 Roll Down &amp; Out 一个月，用时间换空间，还能小收一笔权利金</li>
+</ul>
+<h3 id="慢就是快：用纪律换取自由"><a href="#慢就是快：用纪律换取自由" class="headerlink" title="慢就是快：用纪律换取自由"></a>慢就是快：用纪律换取自由</h3><p>一台没有情绪的自动吐现金流的复利永动机，解决时间价值流失，更解决人性的贪婪与恐惧<br>放弃嬴者通吃的快感，用纪律换取资金周转的效率，当现金流稳稳螺旋上升时，你会彻底爱上这种机械化的无聊，成为像保险公司一样的稳健卖家</p>
+<h2 id="Delta"><a href="#Delta" class="headerlink" title="Delta"></a>Delta</h2><h3 id="寻找期权黄金-Delta"><a href="#寻找期权黄金-Delta" class="headerlink" title="寻找期权黄金 Delta"></a>寻找期权黄金 Delta</h3><p>抄机构底牌，解锁 90% 胜率完美收租法：</p>
+<ul>
+<li>选太近，回调高位接盘套牢</li>
+<li>选太远，占用资金只赚碎银</li>
+</ul>
+<h3 id="贪婪型散户的悲剧"><a href="#贪婪型散户的悲剧" class="headerlink" title="贪婪型散户的悲剧"></a>贪婪型散户的悲剧</h3><p>眼红高额权利金，卖出 ATM 提心吊胆：</p>
+<ul>
+<li>幻觉：大盘这么强怎么跌？一上来就卖贴近现价的 Put，只看得到肥美的权利金</li>
+<li>现实：市场打个喷嚏就暴雷，正常回调瞬间变 ITM，浮亏剧烈放大，晚上练觉都睡不着</li>
+</ul>
+<h3 id="恐惧型散户的陷阱"><a href="#恐惧型散户的陷阱" class="headerlink" title="恐惧型散户的陷阱"></a>恐惧型散户的陷阱</h3><p>只敢卖 Deep OTM，赚不到钱还藏着大雷：</p>
+<ul>
+<li>极度畸形的盈亏比，$10,000 锁一个月，只赚 5 块钱，年化连 2% 都不到，跑不赢货币基金</li>
+<li>伪安全感下的黑天鹅，遇到系统性股灾，期权价格剧烈膨胀直接导致保证金爆仓</li>
+</ul>
+<h3 id="核心指标：认识-Delta"><a href="#核心指标：认识-Delta" class="headerlink" title="核心指标：认识 Delta"></a>核心指标：认识 Delta</h3><p>不需要懂微积分，它就是被迫接盘的理论概率：</p>
+<ul>
+<li>Delta 5：安全感拉满，收益可怜</li>
+<li>Delta 50：权利金丰厚，翻车率极高</li>
+</ul>
+<h3 id="揭晓底牌：黄金甜点区"><a href="#揭晓底牌：黄金甜点区" class="headerlink" title="揭晓底牌：黄金甜点区"></a>揭晓底牌：黄金甜点区</h3><p>华尔街量化机构的最优解：Delta 16-20：</p>
+<ul>
+<li>胜率护城河，避开频繁打穿</li>
+<li>资金效率，远超深度 OTM 的回报</li>
+<li>波动率套利，收割恐慌溢价最佳点</li>
+</ul>
+<h3 id="三大阵营量化大对决"><a href="#三大阵营量化大对决" class="headerlink" title="三大阵营量化大对决"></a>三大阵营量化大对决</h3><p>假设 QQQ 目前 $600：</p>
+<ul>
+<li>激进组（Delta 30）：收 $1,000，看着多，连跌三天面临接盘，账面浮亏瞬间爆炸，收益覆盖不住心跳</li>
+<li>保守组（Delta 10）：收 $150，胜率逼近 95%，但为这点钱担惊受怕一个月，资金使用效率惨不忍睹，年化回报极低</li>
+<li>王者组（Delta 16-20）：收 $350 左右，保守组两倍以上，进可攻退可守</li>
+</ul>
+<h3 id="胜率飙升的魔法"><a href="#胜率飙升的魔法" class="headerlink" title="胜率飙升的魔法"></a>胜率飙升的魔法</h3><p>完美打破收益、胜率、回撤的不可能三角</p>
+<p>84% 理论不被打穿率 + 风控纪律（50% 止盈/21 DTE）= 90+% 实际历史胜率<br>极低风险 + 肥美权利金 = 完美答卷</p>
+<h3 id="核心机密：VRP-波动率风险溢价"><a href="#核心机密：VRP-波动率风险溢价" class="headerlink" title="核心机密：VRP 波动率风险溢价"></a>核心机密：VRP 波动率风险溢价</h3><p>市场是傻子吗？为什么给你高赔率？</p>
+<p>VRP (Volatility Risk Premium) = IV (Implied Volatility) − RV (Realized Volatility)：</p>
+<ul>
+<li>IV：人们想象中的恐慌，大家不计成本买 Put 买保险，原本值 1 块的保险被炒到 5 块</li>
+<li>RV：真实发生的跌幅，跨越几十年的铁律，IV 远远大于 RV</li>
+</ul>
+<p>我们就是台风天以 5 倍价格卖保险的精算师，赚取概率差与价格差，稳吃溢价</p>
+<h3 id="傻瓜式保姆级实操指南"><a href="#傻瓜式保姆级实操指南" class="headerlink" title="傻瓜式保姆级实操指南"></a>傻瓜式保姆级实操指南</h3><p>像机器人一样，无脑执行这三步：</p>
+<ol>
+<li>定时间：别看末日期权，直接找距离到期日 30-45 天的合约</li>
+<li>看 Delta：别纠结行权价数字，直接锁定 Delta 数值落在 0.16-0.20 的行权价</li>
+<li>挂单风控：拿到权利金立刻挂 50% 止盈单，手机设闹钟，剩余 21 天强制平仓</li>
+</ol>
+<h3 id="避坑指南：小心-TQQQ"><a href="#避坑指南：小心-TQQQ" class="headerlink" title="避坑指南：小心 TQQQ"></a>避坑指南：小心 TQQQ</h3><p>高倍杠杆 ETF 的隐形陷阱，新手千万别乱提高 Delta 抄底 TQQQ<br>很多人想把 Delta 提高到 0.3，权当低位吸筹接盘 TQQQ 做轮子，但 TQQQ 自带三倍杠杆，存在极大的波动率损耗</p>
+<p>稳健大盘 ETF（如 QQQ）才适合闭眼纯收租，玩高波标的，先去修炼内功</p>
+<h3 id="高阶：卖平值-Put"><a href="#高阶：卖平值-Put" class="headerlink" title="高阶：卖平值 Put"></a>高阶：卖平值 Put</h3><p>遇到关键支撑位，且极其愿意接股时，直接卖 ATM，获取极致权利金与时间损耗</p>
+<p>要求极高的盘感与仓位管理</p>
+<h3 id="总结与忠告"><a href="#总结与忠告" class="headerlink" title="总结与忠告"></a>总结与忠告</h3><p>慢就是快，做赚取概率钱的精算师</p>
+<p>放弃凭直觉选价的赌徒思维：</p>
+<ul>
+<li>黄金甜区：Delta 16-20</li>
+<li>进场时机：45 DTE</li>
+<li>铁血风控：50% 止盈/21 天离场</li>
+</ul>
+<p>长久赚钱靠的不是预测涨跌，而是成为保险公司</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Bogleheads/" rel="tag"># Bogleheads</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2391252464.html" rel="next" title="Roll">
+                <i class="fa fa-chevron-left"></i> Roll
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="necusjz">
+          <p class="site-author-name" itemprop="name">necusjz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">274</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-DTE"><span class="nav-number">1.</span> <span class="nav-text">21 DTE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#散户为何爱死磕到底"><span class="nav-number">1.1.</span> <span class="nav-text">散户为何爱死磕到底</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#破局之道：金字塔原理"><span class="nav-number">1.2.</span> <span class="nav-text">破局之道：金字塔原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#金字塔中层：50-止盈"><span class="nav-number">1.3.</span> <span class="nav-text">金字塔中层：50% 止盈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-万次真实数据大对决"><span class="nav-number">1.4.</span> <span class="nav-text">1.5 万次真实数据大对决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后-21-天，期权为何变为毒药"><span class="nav-number">1.5.</span> <span class="nav-text">最后 21 天，期权为何变为毒药</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保姆级实操一：选定目标"><span class="nav-number">1.6.</span> <span class="nav-text">保姆级实操一：选定目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保姆级实操二：双保险与-GTC"><span class="nav-number">1.7.</span> <span class="nav-text">保姆级实操二：双保险与 GTC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保姆级实操三：生死闹钟与展期"><span class="nav-number">1.8.</span> <span class="nav-text">保姆级实操三：生死闹钟与展期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慢就是快：用纪律换取自由"><span class="nav-number">1.9.</span> <span class="nav-text">慢就是快：用纪律换取自由</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delta"><span class="nav-number">2.</span> <span class="nav-text">Delta</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找期权黄金-Delta"><span class="nav-number">2.1.</span> <span class="nav-text">寻找期权黄金 Delta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪型散户的悲剧"><span class="nav-number">2.2.</span> <span class="nav-text">贪婪型散户的悲剧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恐惧型散户的陷阱"><span class="nav-number">2.3.</span> <span class="nav-text">恐惧型散户的陷阱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心指标：认识-Delta"><span class="nav-number">2.4.</span> <span class="nav-text">核心指标：认识 Delta</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#揭晓底牌：黄金甜点区"><span class="nav-number">2.5.</span> <span class="nav-text">揭晓底牌：黄金甜点区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三大阵营量化大对决"><span class="nav-number">2.6.</span> <span class="nav-text">三大阵营量化大对决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#胜率飙升的魔法"><span class="nav-number">2.7.</span> <span class="nav-text">胜率飙升的魔法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心机密：VRP-波动率风险溢价"><span class="nav-number">2.8.</span> <span class="nav-text">核心机密：VRP 波动率风险溢价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#傻瓜式保姆级实操指南"><span class="nav-number">2.9.</span> <span class="nav-text">傻瓜式保姆级实操指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避坑指南：小心-TQQQ"><span class="nav-number">2.10.</span> <span class="nav-text">避坑指南：小心 TQQQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶：卖平值-Put"><span class="nav-number">2.11.</span> <span class="nav-text">高阶：卖平值 Put</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结与忠告"><span class="nav-number">2.12.</span> <span class="nav-text">总结与忠告</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">necusjz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
